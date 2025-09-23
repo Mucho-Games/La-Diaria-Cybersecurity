@@ -1,0 +1,35 @@
+html, body 
+{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+.root 
+{
+  width: 100%;
+  height: 100%;
+  background-color: salmon;
+}
+.container 
+{
+	width: 100%;
+	height: 100%;
+	display: grid;
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+	grid-template-columns: 10vw repeat(14, minmax(0, 1fr)) 10vw;
+	grid-template-rows: 7vh repeat(8, minmax(0, 1fr)) 2vh;
+	margin-left: auto;
+	margin-right: auto;
+}
+.container .header 
+{
+    grid-area: 2 / 3 / 5 / 15;
+	display: flex;
+	align-self: stretch;
+	justify-content: flex-start;
+	justify-self: auto;
+	width: auto;
+	height: auto;	
+	padding: 0px;
+}
