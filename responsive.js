@@ -3,6 +3,10 @@ function adjustElementSize()
     const aspectRatio = window.innerWidth / window.innerHeight;
     const thresholdRatio = 1 / 1;
 
+    const minWidthGrid = 650;
+    const maxWidthGrid = 900;
+    const gridWidthToHeightMinRatio = 0.79;
+
     var pageWidth = document.body.clientWidth;
 
     if (aspectRatio >= thresholdRatio) /*LAND MODE---------------------*/
@@ -23,7 +27,7 @@ function adjustElementSize()
         //GRID LAND RESPONSIVENESS
         var gridLand = document.querySelector(".container");
         gridLand.style.height = '100%';
-        gridLand.style.width = `${gridLand.clientHeight * 0.69}px`;
+        gridLand.style.width = `${clamp(gridLand.clientHeight * 0.69 + window.innerWidth * 0.1, minWidthGrid, maxWidthGrid)}px`;
         
 
         //GRID FOOTER RESPONSIVENESS
@@ -48,8 +52,22 @@ function adjustElementSize()
 
         //GRID LAND RESPONSIVENESS
         var gridLand = document.querySelector(".container");
-        gridLand.style.width = '100%';
-        gridLand.style.height = `${gridLand.clientWidth / 0.3}px`;
+        var targetWidthValue = gridLand.clientHeight * 0.69 + window.innerWidth * 0.1;
+
+        if (aspectRatio < gridWidthToHeightMinRatio) 
+        {
+            console.log("On height adjustment mode");
+            gridLand.style.width = '100%';
+            gridLand.style.height = `${window.innerWidth / gridWidthToHeightMinRatio}px`;
+            
+        }
+        else
+        {
+            console.log("On width adjustment mode");
+            gridLand.style.height = '100%';
+            gridLand.style.width = `${clamp(targetWidthValue, minWidthGrid, maxWidthGrid)}px`;
+        }
+        
 
         //GRID TOAST RESPONSIVENESS
         //var gridToast = document.querySelector(".toast");
@@ -85,3 +103,7 @@ window.addEventListener("resize", () => {
     }
     resizeTimeout = requestAnimationFrame(adjustElementSize);
 });
+
+function clamp(num, min, max) {
+  return Math.max(min, Math.min(num, max));
+}
