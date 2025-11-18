@@ -14,7 +14,25 @@ html, body
   justify-content: center;   /* center horizontally */
   align-items: flex-end;     /* stick to bottom */
 }
-.container 
+
+/* DEBUG -------------------------------------------------*/
+.debugBar {
+  position: fixed; /* Positions relative to the viewport */
+  top: 0; /* Aligns to the top edge of the viewport */
+  left: 0; /* Aligns to the left edge of the viewport */
+  width: 100%; /* Spans the full width of the viewport */
+  height: 50px; /* Spans the full height of the viewport */
+  z-index: 9999; /* Ensures it's on top of most other elements */
+  background-color: rgba(0, 0, 0, 0.5); /* Example: semi-transparent black background */
+  display: flex; /* Example: use flexbox for content centering */
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+/* TITLE SCREEN -----------------------------------------------------------*/
+.titleScreen#container 
 {
 	width: 100%;
 	height: 100%;
@@ -26,7 +44,7 @@ html, body
 	margin-left: auto;
 	margin-right: auto;
 }
-.container .header 
+.titleScreen#header
 {
   grid-area: 2 / 2 / 5 / 14;
 	display: flex;
@@ -37,9 +55,9 @@ html, body
 	height: auto;	
 	padding: 0px;
 }
-.container .character 
+.titleScreen#character 
 {
-  grid-area: 2 / 2 / 5 / 14;
+  grid-area: 10 / 2 / 11 / 14;
 	display: flex;
 	align-self: stretch;
 	justify-content: flex-start;
@@ -47,4 +65,79 @@ html, body
 	width: auto;
 	height: auto;	
 	padding: 0px;
+}
+
+/* GAME -----------------------------------------------------------*/
+.game#container 
+{
+	width: 100%;
+	height: 100%;
+	display: grid;
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+	grid-template-columns: repeat(14, minmax(0, 1fr));
+	grid-template-rows: repeat(12, minmax(0, 1fr));
+	margin-left: auto;
+	margin-right: auto;
+}
+.game#header
+{
+  grid-area: 2 / 2 / 4 / 14;
+	display: flex;
+	align-self: stretch;
+	justify-content: flex-start;
+	justify-self: auto;
+	width: auto;
+	height: auto;	
+	padding: 0px;
+}
+.game#timer
+{
+  grid-area: 4 / 2 / 5 / 14;
+  display: flex;
+  align-self: stretch;
+  justify-content: space-evenly;
+  justify-self: auto;
+  width: auto;
+  height: auto;
+  padding: 0px;
+  flex-direction: column;
+}
+.game#score
+{
+  grid-area: 5 / 2 / 7 / 14;
+  display: flex;
+  align-self: stretch;
+  justify-content: space-evenly;
+  justify-self: auto;
+  width: auto;
+  height: auto;
+  padding: 0px;
+  flex-direction: column;
+}
+.game#multipleChoice 
+{
+  grid-area: 7 / 2 / 12 / 14;
+  display: flex;
+  align-self: stretch;
+  justify-content: space-evenly;
+  justify-self: auto;
+  width: auto;
+  height: auto;
+  padding: 0px;
+  flex-direction: column;
+}
+.game .option 
+{
+	display: flex;
+  width: 100%;
+  height: 20%;
+}
+
+/* UTILS -----------------------------------------------------------*/
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  text-align: center;
 }

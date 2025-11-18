@@ -15,20 +15,72 @@
   
 <div class="root">
 
-<div class="container">
-  <div class="header" style="background-color: black;">
+<!-- TITLESCREEN -------------------------------------------------------------------------------------------------------------------------------------------------->
+<div class="titleScreen" id="container">
+  <div class="titleScreen" id="header" style="background-color: yellow;">
 
   </div>
-  <div class="character" style="background-color: yellow;">
-
+  <div class="titleScreen" id="character" style="background-color: black;">
+    <p style="color: white;" class="center">Comenzar</p>
   </div>
   
 </div>
   
+<!-- GAME -------------------------------------------------------------------------------------------------------------------------------------------------->
+<div class="game" id="container">
+
+  <div class="game" id="header" style="background-color: goldenrod;">
+    <p class="center"> 
+      ¿La pregunta es cual es: Si alguien sabe algo de algo y alguien sabe algo de otra cosa, que pasa? 
+    </p>
+  </div>
+
+  <div class="game" id="timer" style="background-color: chocolate;">
+    <p class="center"> 
+      60
+    </p>
+  </div>
+
+  <div class="game" id="score" style="background-color: seagreen;">
+    <p class="center">
+    Puntaje: 000
+    </p>
+  </div>
+
+  <div class="game" id="multipleChoice" style="background-color: lavender;">
+
+    <button class="option" id="option1" onclick="onClickButtonOption(0)" style="background-color: blueviolet;">
+      <p class="center"> 
+      Opcion 1 blah 
+      </p>
+    </button>
+    <button class="option" id="option2" onclick="onClickButtonOption(1)" style="background-color: blueviolet;">
+      <p class="center"> 
+      Opcion 1 blah 
+      </p>
+    </button>
+    <button class="option" id="option3" onclick="onClickButtonOption(2)" style="background-color: blueviolet;">
+      <p class="center"> 
+      Opcion 1 blah 
+      </p>
+    </button>
+
+  </div>
+  
+</div>
+
+
+<!--DEBUG ------------------------------------------------------------------------------------------------------------------------------------------->
+<div class="debugBar">
+  <p id="fps"> 60</p> 
+</div>
 </div>
 
 <script src="responsive.js" defer></script>
 <script>
+  function onClickButtonOption (index) {
+    onClickOption(index);
+  }
 </script>
 
 </body>
