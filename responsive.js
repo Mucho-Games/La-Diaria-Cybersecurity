@@ -1,3 +1,4 @@
+const questionsImgDirectory = './game/questions/img/';
 const fps = 30;
 const maxAspectRatio = 3/4;
 const useTimer = false;
@@ -18,6 +19,8 @@ var currentQuestion;
 var currentPlayerScore = 0;
 var currentQuestionTimer = 0;
 
+var multipleChoiceDisabled = false;
+
 //DOM ELEMENTS
 var elemGameHUDCont;
 var elemQuestionCont;
@@ -26,17 +29,21 @@ var elemMultipleChoiceCont;
 var elemPlayerScore;
 var elemGameQuestionTimer;
 var elemGameQuestion;
+var elemGameQuestionImg;
 var elemGameQuestionOptions = [];
+
+var elemAnimationAnswer;
 
 //DEBUG VARS
 var elementDebugFPS;
 var elemDebugAspectRatio;
 
 class Question {
-    constructor(question, options, correctAnswer) {
+    constructor(question, img, options, correctAnswer) {
         this.question = question;
         this.options = options;
         this.correctAnswer = correctAnswer;
+        this.img = img;
     }
 }
 
@@ -74,7 +81,10 @@ async function initialize ()
     elemPlayerScore = document.querySelector(".game > #hud > p");
     elemGameQuestionTimer = document.querySelector(".game > #timer > p");
     elemGameQuestion = document.querySelector(".game > #question > p");
+    elemGameQuestionImg = document.getElementById('questionImage');
     elemGameQuestionOptions = document.querySelectorAll('.game > .option > p');
+
+    elemAnimationAnswer = document.querySelector('#answerAnim');
 
     // var buttons = document.querySelectorAll('.game > .option');
     // for (var i =  0; i < buttons.length; i++) 
@@ -137,19 +147,35 @@ function endQuestion (state)
     else if (state == 1) //wrong answer
     {
         currentPlayerScore -= 10;
+
+        elemAnimationAnswer.style.backgroundColor = 'red';
+        elemAnimationAnswer.querySelector('p').innerHTML = "EQUIVOCADO!";
+        playAnimation(elemAnimationAnswer, 2);
     }
     else if (state == 0) //right answer
     {
         currentPlayerScore += 30;
+
+        elemAnimationAnswer.style.backgroundColor = 'green';
+        elemAnimationAnswer.querySelector('p').innerHTML = "BIEN HECHO!";
+        playAnimation(elemAnimationAnswer, 2);
     }
 
-    newQuestion();
+    multipleChoiceDisabled = true;
+    setTimeout(function() 
+    { 
+        multipleChoiceDisabled = false;
+        newQuestion();
+    }, 
+    2000);   
 }
 function newQuestion () 
 {
     currentQuestion = getRandomElement(questionBank);
 
     elemGameQuestion.innerHTML = currentQuestion.question;
+    elemGameQuestionImg.src = questionsImgDirectory + currentQuestion.img + '.jpg';
+    elemGameQuestionImg.style.display = 'inline';
 
     for (var i = 0; i < elemGameQuestionOptions.length; i++) 
     {
@@ -162,7 +188,7 @@ function onClickOption (option)
 {
     console.log("Clicked option: " + option);
 
-    if (!currentQuestion) return;
+    if (!currentQuestion || multipleChoiceDisabled) return;
 
     if (currentQuestion.correctAnswer == option) 
     {
@@ -186,7 +212,11 @@ function setView (newView)
 
     adjustElementSize();
 }
-
+function playAnimation (animElement, duration) 
+{
+    animElement.style.display = 'inline';
+    setTimeout(function() {animElement.style.display = 'none';}, duration * 1000);
+}
 async function loadQuestions() {
     try {
         const response = await fetch('./data.json');
@@ -198,6 +228,7 @@ async function loadQuestions() {
         questionBank = data.questions.map(q => {
             return new Question(
                 q.question,
+                q.img,
                 q.options,
                 q.correctOption
             );
@@ -258,7 +289,7 @@ function adjustElementSize()
 
             //MULTIPLE CHOICE CONTAINER
         }
-    }   
+    }
 }
 
 function onClick () 

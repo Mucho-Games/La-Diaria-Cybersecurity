@@ -1,9 +1,12 @@
 {
   "questions":[
-    {"question": "¿Primera pregunta?", "options": ["A1", "B1", "C1"], "correctOption": 1},
-    {"question": "¿Segunda pregunta?", "options": ["A2", "B2", "C2"], "correctOption": 2},
-    {"question": "¿Tercera pregunta?", "options": ["A3", "B3", "C3"], "correctOption": 0},
-    {"question": "¿Cuarta pregunta?", "options": ["A4", "B4", "C4"], "correctOption": 1},
-    {"question": "¿Quinta pregunta?", "options": ["A5", "B5", "C5"], "correctOption": 2}
+    {"question": "¿Primera pregunta?", "img": 1, "options": ["A1", "B1", "C1"], "correctOption": 1},
+    {"question": "¿Segunda pregunta?", "img": 2, "options": ["A2", "B2", "C2"], "correctOption": 2},
+    {"question": "¿Tercera pregunta?", "img": 3, "options": ["A3", "B3", "C3"], "correctOption": 0},
+    {"question": "¿Cuarta pregunta?", "img": 4, "options": ["A4", "B4", "C4"], "correctOption": 1},
+    {"question": "¿Quinta pregunta?", "img": 5, "options": ["A5", "B5", "C5"], "correctOption": 2},
+    {"question": "¿Cuarta pregunta?", "img": 6, "options": ["A4", "B4", "C4"], "correctOption": 1},
+    {"question": "¿Quinta pregunta?", "img": 7, "options": ["A5", "B5", "C5"], "correctOption": 2},
+    {"question": "¿Cuarta pregunta?", "img": 8, "options": ["A4", "B4", "C4"], "correctOption": 1}
   ]
 }

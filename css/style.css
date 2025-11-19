@@ -6,6 +6,9 @@ html, body
 }
 .root 
 {
+  /* ANIMATION CURVES */
+  --bounce-ease: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+
   width: 100%;
   height: 100%;
   background-color: salmon;
@@ -117,6 +120,14 @@ html, body
   justify-content: flex-start;
   justify-self: auto; 
 }
+#questionImage 
+{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  display: none;
+}
 .game#multipleChoice 
 {
   position: absolute;
@@ -138,10 +149,62 @@ html, body
   height: 50%;
 }
 
+#answerAnim 
+{
+  position: absolute;
+  width: 100%;
+  height: 30%;
+  top: 35%;
+
+  display: none;
+
+  background-color: darkgreen;
+
+  animation-name: appearScale;
+  animation-duration: 0.3s;
+  animation-timing-function: var(--bounce-ease);
+}
+#answerAnim > p 
+{
+  position: absolute;
+
+  color: whitesmoke;
+
+  animation-name: slide;
+  animation-duration: 2s;
+  animation-timing-function: easeOut;
+  animation-iteration-count: infinite;
+}
+
 /* UTILS -----------------------------------------------------------*/
 .center {
   margin: auto;
   width: 50%;
   padding: 10px;
   text-align: center;
+}
+
+/* ANIMATIONS DEFS --------------------------------------------------------*/
+
+@keyframes appearScale{
+  from {
+    transform: scale(0, 0);
+  }
+  to {
+    transform: scale(1, 1);
+  }
+}
+@keyframes slide {
+  /* Start position */
+  from {
+    left: 0;
+    transform: translateX(0);
+  }
+  /* End position */
+  to {
+    /* Moves the left edge to the rightmost side of the parent */
+    left: 100%;
+    /* Pulls the element back by its own full width, so it stays inside the parent's boundary */
+    transform: translateX(-100%); 
+  }
 }
