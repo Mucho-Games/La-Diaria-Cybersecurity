@@ -1,6 +1,9 @@
 const fps = 30;
+const maxAspectRatio = 3/4;
+const useTimer = false;
 const debug = false;
 
+var aspectRatio = 0.0;
 var deltaTime = 0;
 var lastTimeUpdate = 0;
 var initialized = false;
@@ -15,6 +18,11 @@ var currentQuestion;
 var currentPlayerScore = 0;
 var currentQuestionTimer = 0;
 
+//DOM ELEMENTS
+var elemGameHUDCont;
+var elemQuestionCont;
+var elemMultipleChoiceCont;
+
 var elemPlayerScore;
 var elemGameQuestionTimer;
 var elemGameQuestion;
@@ -22,6 +30,7 @@ var elemGameQuestionOptions = [];
 
 //DEBUG VARS
 var elementDebugFPS;
+var elemDebugAspectRatio;
 
 class Question {
     constructor(question, options, correctAnswer) {
@@ -56,10 +65,15 @@ async function initialize ()
     debugBar.style.display = debug ? "flex" : "none";
 
     elementDebugFPS = document.querySelector(".debugBar > #fps");
+    elemDebugAspectRatio = document.querySelector(".debugBar > #aspectRatio");
 
-    elemPlayerScore = document.querySelector(".game > #score > p");
+    elemGameHUDCont = document.querySelector(".game > #hud");
+    elemQuestionCont = document.querySelector(".game > #question");
+    elemMultipleChoiceCont = document.querySelector(".game > #multipleChoice");
+
+    elemPlayerScore = document.querySelector(".game > #hud > p");
     elemGameQuestionTimer = document.querySelector(".game > #timer > p");
-    elemGameQuestion = document.querySelector(".game > #header > p");
+    elemGameQuestion = document.querySelector(".game > #question > p");
     elemGameQuestionOptions = document.querySelectorAll('.game > .option > p');
 
     // var buttons = document.querySelectorAll('.game > .option');
@@ -91,19 +105,25 @@ function update()
 
     if (currentView == 1) 
     {
-        currentQuestionTimer -= deltaTime;
-
         elemPlayerScore.innerHTML = "Puntaje: " + currentPlayerScore;
-        elemGameQuestionTimer.innerHTML = Math.trunc(currentQuestionTimer);
 
-        if (currentQuestionTimer < 0) {
-            endQuestion(2);
+        if (useTimer) 
+        {
+            currentQuestionTimer -= deltaTime;
+
+            elemGameQuestionTimer.innerHTML = Math.trunc(currentQuestionTimer);
+
+            if (currentQuestionTimer < 0) 
+            {
+                endQuestion(2);
+            }
         }
     }
 
     if (debug)
     {
-        elementDebugFPS.innerHTML = deltaTime;
+        elementDebugFPS.innerHTML = 'FPS: ' + truncate(1/deltaTime, 1);
+        elemDebugAspectRatio.innerHTML = 'ASPECT RATIO: ' + truncate(aspectRatio, 2);
     }
 }
 
@@ -194,98 +214,51 @@ async function loadQuestions() {
 
 function adjustElementSize() 
 {
-    const aspectRatio = window.innerWidth / window.innerHeight;
-    const thresholdRatio = 1 / 1;
+    aspectRatio = window.innerWidth / window.innerHeight;
 
-    const minWidthGrid = 650;
-    const maxWidthGrid = 900;
-    const gridWidthToHeightMinRatio = 0.79;
+    const thresholdRatio = maxAspectRatio + 0.1; //added a little padding to avoid small gaps on layout at the borders
 
     var pageWidth = document.body.clientWidth;
 
-    var grid = document.querySelector(`.${views[currentView]}#container`);
+    var main = document.querySelector(`.${views[currentView]}#container`);
+
+    var width = 0; //declaring this var here to be read and written all over the function execution and only here
+    var height = 0; //declaring this var here to be read and written all over the function execution and only here
 
     if (aspectRatio >= thresholdRatio) /*LAND MODE---------------------*/
     {
         console.log("On Land mode");
 
-        //document.getElementById("site-style-portrait").disabled = true;      
+        main.style.height = '100%';
+        main.style.width = `${main.clientHeight * maxAspectRatio}px`;
 
-        //GENERAL P AND H3 SIZE RESPONSIVENESS
-        //document.documentElement.style.setProperty('--header-font-size', `${pageWidth * 0.027}px`);
-        //document.documentElement.style.setProperty('--body-font-size', `${pageWidth * 0.011}px`); 
-
-        //CONTACT US
-        //var contactUs = document.querySelector(".contactus");
-        //var contactUsSize = parseFloat(getComputedStyle(contactUs).height)
-        //document.documentElement.style.setProperty('--contact-font-size', `${contactUsSize * 0.13}px`);
-
-        //GRID LAND RESPONSIVENESS
-        
-        grid.style.height = '100%';
-        grid.style.width = `${clamp(grid.clientHeight * 0.69 + window.innerWidth * 0.1, minWidthGrid, maxWidthGrid)}px`;
-        
-
-        //GRID FOOTER RESPONSIVENESS
-        //var gridFooter = document.querySelector(".mobile-footer");
-        //gridFooter.style.width = '100%';
-        //gridFooter.style.height = `${gridFooter.clientWidth / 7}px`;
-
-        //GRID FOOTER SLIDER
-        //var gridFooterSlider = document.querySelector(".mobile-footer .slider");
-        //var footerBrandHeight = parseFloat(getComputedStyle(gridFooterSlider).height)
-        //var footerBrandWidth = footerBrandHeight * 2;
+        if (initialized) 
+        {
+            //QUESTION CONTAINER
+            height = main.clientWidth * 0.7;
+            elemQuestionCont.style.height = `${height}px`;
+            elemQuestionCont.style.top = `${main.clientHeight * 0.5 - (height * 0.5)}px`;
+        }
     } 
     else /*PORTRAIT MODE---------------------*/
     {
         console.log("On Portrait mode");
-        //document.getElementById("site-style-portrait").disabled = false; 
-      
 
-        //GENERAL P AND H3 SIZE RESPONSIVENESS
-       // document.documentElement.style.setProperty('--header-font-size', `${pageWidth * 0.057}px`);
-        //document.documentElement.style.setProperty('--body-font-size', `${pageWidth * 0.032}px`);
+        var targetWidthValue = main.clientHeight * 0.69 + window.innerWidth * 0.1;
 
-        //GRID LAND RESPONSIVENESS
-        var targetWidthValue = grid.clientHeight * 0.69 + window.innerWidth * 0.1;
+        main.style.height = '100%';
+        main.style.width = '100%';
 
-        if (aspectRatio < gridWidthToHeightMinRatio) 
+        if (initialized) 
         {
-            console.log("On height adjustment mode");
-            grid.style.width = '100%';
-            grid.style.height = `${window.innerWidth / gridWidthToHeightMinRatio}px`;
-            
+            //QUESTION CONTAINER
+            height = main.clientWidth * lerp(0.7, 0.9, 1-inverseLerp(aspectRatio, 0.6, 0.9));
+            elemQuestionCont.style.height = `${height}px`;
+            elemQuestionCont.style.top = `${main.clientHeight * 0.5 - (height * 0.5)}px`;
+
+            //MULTIPLE CHOICE CONTAINER
         }
-        else
-        {
-            console.log("On width adjustment mode");
-            grid.style.height = '100%';
-            grid.style.width = `${clamp(targetWidthValue, minWidthGrid, maxWidthGrid)}px`;
-        }
-        
-
-        //GRID TOAST RESPONSIVENESS
-        //var gridToast = document.querySelector(".toast");
-       // gridToast.style.width = '100%';
-        //gridToast.style.height = `${gridToast.clientWidth / 0.495}px`;
-
-        //GRID PROJECTS RESPONSIVENESS
-        //var gridProjects = document.querySelector(".mobile-proto"); 
-        //gridProjects.style.width = `100%`;
-        //gridProjects.style.height = `${gridProjects.clientWidth / 0.513}px`;
-
-        //GRID FOOTER SLIDER
-        //var gridFooterSlider = document.querySelector(".mobile-footer .slider");
-        //var footerBrandHeight = parseFloat(getComputedStyle(gridFooterSlider).height)
-        //var footerBrandWidth = footerBrandHeight * 2;     
-
     }   
-
-    //document.documentElement.style.setProperty('--footer-brand-width', `${footerBrandWidth}px`);
-
-    //var gridFooterSliderTrack = document.querySelector(".mobile-footer .slider .slide-track");
-
-    //gridFooterSliderTrack.style.width = `${footerBrandWidth * 18}px`;
 }
 
 function onClick () 
@@ -294,6 +267,16 @@ function onClick ()
         startGame();
 }
 
+function truncate(num, digits) {
+    var multiplier = Math.pow(10, digits);
+    return (Math[num < 0 ? 'ceil' : 'floor'](num * multiplier) / multiplier);
+}
+function inverseLerp (val, a, b) {
+    return clamp((val - a) / (b - a), 0, 1);
+}
+function lerp(a, b, t) {
+  return a + (b - a) * t;
+}
 function clamp(num, min, max) {
   return Math.max(min, Math.min(num, max));
 }
