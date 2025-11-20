@@ -1,12 +1,82 @@
 {
-  "questions":[
-    {"question": "¿Primera pregunta?", "img": 1, "options": ["A1", "B1", "C1"], "correctOption": 1},
-    {"question": "¿Segunda pregunta?", "img": 2, "options": ["A2", "B2", "C2"], "correctOption": 2},
-    {"question": "¿Tercera pregunta?", "img": 3, "options": ["A3", "B3", "C3"], "correctOption": 0},
-    {"question": "¿Cuarta pregunta?", "img": 4, "options": ["A4", "B4", "C4"], "correctOption": 1},
-    {"question": "¿Quinta pregunta?", "img": 5, "options": ["A5", "B5", "C5"], "correctOption": 2},
-    {"question": "¿Cuarta pregunta?", "img": 6, "options": ["A4", "B4", "C4"], "correctOption": 1},
-    {"question": "¿Quinta pregunta?", "img": 7, "options": ["A5", "B5", "C5"], "correctOption": 2},
-    {"question": "¿Cuarta pregunta?", "img": 8, "options": ["A4", "B4", "C4"], "correctOption": 1}
+  "questions":
+  [
+    {
+      "question": "¿Primera pregunta?", 
+      "img": 1, 
+      "subQuestions": 
+      [
+        {"subQuestion": "lalalalalalal", "options": ["A1", "B1", "C2"], "correctOption": 1},
+        {"subQuestion": "sosososososososoos", "options": ["D1", "E1", "F2"], "correctOption": 2},
+        {"subQuestion": "joojojojojojojojoooooo", "options": ["G1", "H1", "I2"], "correctOption": 2}
+      ], 
+      "correctOption": 1
+    },
+    {
+      "question": "¿SEGUNDA pregunta?", 
+      "img": 2, 
+      "subQuestions": 
+      [
+        {"subQuestion": "lalalalalalal", "options": ["A1", "B1", "C2"], "correctOption": 1},
+        {"subQuestion": "sosososososososoos", "options": ["D1", "E1", "F2"], "correctOption": 2},
+        {"subQuestion": "joojojojojojojojoooooo", "options": ["G1", "H1", "I2"], "correctOption": 1}
+      ], 
+      "correctOption": 0
+    },
+    {
+      "question": "TERCERA pregunta?", 
+      "img": 3, 
+      "subQuestions": 
+      [
+        {"subQuestion": "lalalalalalal", "options": ["A1", "B1", "C2"], "correctOption": 1},
+        {"subQuestion": "sosososososososoos", "options": ["D1", "E1", "F2"], "correctOption": 2},
+        {"subQuestion": "joojojojojojojojoooooo", "options": ["G1", "H1", "I2"], "correctOption": 0}
+      ], 
+      "correctOption": 1
+    },
+    {
+      "question": "QUARTA pregunta?", 
+      "img": 4, 
+      "subQuestions": 
+      [
+        {"subQuestion": "lalalalalalal", "options": ["A1", "B1", "C2"], "correctOption": 0},
+        {"subQuestion": "sosososososososoos", "options": ["D1", "E1", "F2"], "correctOption": 2},
+        {"subQuestion": "joojojojojojojojoooooo", "options": ["G1", "H1", "I2"], "correctOption": 0}
+      ], 
+      "correctOption": 2
+    },
+    {
+      "question": "QUINTA pregunta?", 
+      "img": 5, 
+      "subQuestions": 
+      [
+        {"subQuestion": "lalalalalalal", "options": ["A1", "B1", "C2"], "correctOption": 0},
+        {"subQuestion": "sosososososososoos", "options": ["D1", "E1", "F2"], "correctOption": 2},
+        {"subQuestion": "joojojojojojojojoooooo", "options": ["G1", "H1", "I2"], "correctOption": 2}
+      ], 
+      "correctOption": 1
+    },
+    {
+      "question": "SEXTA pregunta?", 
+      "img": 6, 
+      "subQuestions": 
+      [
+        {"subQuestion": "lalalalalalal", "options": ["A1", "B1", "C2"], "correctOption": 2},
+        {"subQuestion": "sosososososososoos", "options": ["D1", "E1", "F2"], "correctOption": 0},
+        {"subQuestion": "joojojojojojojojoooooo", "options": ["G1", "H1", "I2"], "correctOption": 2}
+      ], 
+      "correctOption": 2
+    },
+    {
+      "question": "SEPTIMA pregunta?", 
+      "img": 7, 
+      "subQuestions": 
+      [
+        {"subQuestion": "lalalalalalal", "options": ["A1", "B1", "C2"], "correctOption": 2},
+        {"subQuestion": "sosososososososoos", "options": ["D1", "E1", "F2"], "correctOption": 0},
+        {"subQuestion": "joojojojojojojojoooooo", "options": ["G1", "H1", "I2"], "correctOption": 2}
+      ], 
+      "correctOption": 0
+    }
   ]
 }

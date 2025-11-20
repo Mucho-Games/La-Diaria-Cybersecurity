@@ -68,6 +68,30 @@
 
   </div>
 
+  <div class="game" id="mulChoicePart2" style="background-color: black;">
+
+    <p id="mulChoice2Question">
+      ¿bla bla bla bla bla bla bla bla bla bla bla bla bla?
+    </p>
+
+    <button class="option2" id="option2_1" onclick="onClickButtonOption(0)" style="background-color: blueviolet;">
+      <p class="center"> 
+      Opcion 1 blah 
+      </p>
+    </button>
+    <button class="option2" id="option2_2" onclick="onClickButtonOption(1)" style="background-color: blueviolet;">
+      <p class="center"> 
+      Opcion 1 blah 
+      </p>
+    </button>
+    <button class="option2" id="option2_3" onclick="onClickButtonOption(2)" style="background-color: blueviolet;">
+      <p class="center"> 
+      Opcion 1 blah 
+      </p>
+    </button>
+
+  </div>
+
   <!-- Answer animation --->
   <div class="animation" id="answerAnim">
     <p> Bien Hecho! </p>
@@ -83,7 +107,7 @@
 </div>
 </div>
 
-<script src="main.js" defer></script>
+<script type="module" src="main.js" defer></script>
 <script>
   function onClickButtonOption (index) {
     onClickOption(index);

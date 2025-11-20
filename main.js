@@ -1,3 +1,7 @@
+import * as Utils from './utils.js';
+
+window.onClickOption = onClickOption;
+
 const questionsImgDirectory = './game/questions/img/';
 const fps = 30;
 const maxAspectRatio = 3/4;
@@ -8,6 +12,7 @@ var aspectRatio = 0.0;
 var deltaTime = 0;
 var lastTimeUpdate = 0;
 var initialized = false;
+var questionState = -1;
 var currentView = 0;
 const views = ["titleScreen", "game"];
 
@@ -31,6 +36,9 @@ var elemGameQuestionTimer;
 var elemGameQuestion;
 var elemGameQuestionImg;
 var elemGameQuestionOptions = [];
+var elemGameQuestion2PopUp;
+var elemGameQuestion2;
+var elemGameQuestion2Options = [];
 
 var elemAnimationAnswer;
 
@@ -39,11 +47,18 @@ var elementDebugFPS;
 var elemDebugAspectRatio;
 
 class Question {
-    constructor(question, img, options, correctAnswer) {
+    constructor(question, img, correctAnswer, subQuestions) {
         this.question = question;
-        this.options = options;
         this.correctAnswer = correctAnswer;
         this.img = img;
+        this.subQuestions = subQuestions;
+    }
+}
+class SubQuestion {
+    constructor(subQuestion, options, correctAnswer) {
+        this.subQuestion = subQuestion;
+        this.options = options;
+        this.correctAnswer = correctAnswer;
     }
 }
 
@@ -83,6 +98,9 @@ async function initialize ()
     elemGameQuestion = document.querySelector(".game > #question > p");
     elemGameQuestionImg = document.getElementById('questionImage');
     elemGameQuestionOptions = document.querySelectorAll('.game > .option > p');
+    elemGameQuestion2PopUp = document.getElementById('mulChoicePart2');
+    elemGameQuestion2 = document.getElementById('mulChoice2Question');
+    elemGameQuestion2Options = document.querySelectorAll('.game > .option2 > p');
 
     elemAnimationAnswer = document.querySelector('#answerAnim');
 
@@ -125,19 +143,19 @@ function update()
 
             if (currentQuestionTimer < 0) 
             {
-                endQuestion(2);
+                answerQuestion(2);
             }
         }
     }
 
     if (debug)
     {
-        elementDebugFPS.innerHTML = 'FPS: ' + truncate(1/deltaTime, 1);
-        elemDebugAspectRatio.innerHTML = 'ASPECT RATIO: ' + truncate(aspectRatio, 2);
+        elementDebugFPS.innerHTML = 'FPS: ' + Utils.truncate(1/deltaTime, 1);
+        elemDebugAspectRatio.innerHTML = 'ASPECT RATIO: ' + Utils.truncate(aspectRatio, 2);
     }
 }
 
-function endQuestion (state) 
+function answerQuestion (state) 
 {
 
     if (state == 2) //missed by time
@@ -162,41 +180,111 @@ function endQuestion (state)
     }
 
     multipleChoiceDisabled = true;
+    questionState++;
+
     setTimeout(function() 
     { 
         multipleChoiceDisabled = false;
-        newQuestion();
+        showSubQuestion(questionState-1);
     }, 
     2000);   
 }
 function newQuestion () 
 {
-    currentQuestion = getRandomElement(questionBank);
+    currentQuestion = Utils.getRandomElement(questionBank);
 
     elemGameQuestion.innerHTML = currentQuestion.question;
     elemGameQuestionImg.src = questionsImgDirectory + currentQuestion.img + '.jpg';
     elemGameQuestionImg.style.display = 'inline';
 
-    for (var i = 0; i < elemGameQuestionOptions.length; i++) 
-    {
-        elemGameQuestionOptions[i].innerHTML = currentQuestion.options[i];
-    }
+    // for (var i = 0; i < elemGameQuestionOptions.length; i++) 
+    // {
+    //     elemGameQuestionOptions[i].innerHTML = currentQuestion.options[i];
+    // }
 
     currentQuestionTimer = questionDuration;
+    questionState = 0;
 }
-function onClickOption (option) 
+function showSubQuestion (index) 
+{
+    elemGameQuestion2PopUp.style.display = 'flex';
+
+    elemGameQuestion2.innerHTML = currentQuestion.subQuestions[index].subQuestion;
+
+    for (var i = 0; i < elemGameQuestion2Options.length; i++) 
+    {
+        elemGameQuestion2Options[i].innerHTML = currentQuestion.subQuestions[index].options[i];
+    }
+}
+function answerSubQuestion (state) 
+{
+    elemGameQuestion2PopUp.style.display = 'none';
+
+    if (state == 2) //missed by time
+    {
+        currentPlayerScore -= 20;
+    }
+    else if (state == 1) //wrong answer
+    {
+        currentPlayerScore -= 0;
+
+        elemAnimationAnswer.style.backgroundColor = 'red';
+        elemAnimationAnswer.querySelector('p').innerHTML = "EQUIVOCADO!";
+        playAnimation(elemAnimationAnswer, 2);
+    }
+    else if (state == 0) //right answer
+    {
+        currentPlayerScore += 10;
+
+        elemAnimationAnswer.style.backgroundColor = 'green';
+        elemAnimationAnswer.querySelector('p').innerHTML = "BIEN HECHO!";
+        playAnimation(elemAnimationAnswer, 2);
+    }
+
+    multipleChoiceDisabled = true;
+    questionState++;
+
+    setTimeout(function() 
+    { 
+        multipleChoiceDisabled = false;
+        if (questionState >= 4) 
+        {
+            newQuestion();
+        }
+        else
+        {
+            showSubQuestion(questionState-1);
+        }
+    }, 
+    2000); 
+}
+export function onClickOption (option) 
 {
     console.log("Clicked option: " + option);
 
     if (!currentQuestion || multipleChoiceDisabled) return;
 
-    if (currentQuestion.correctAnswer == option) 
+    if (questionState == 0) //On main question
     {
-        endQuestion(0);
+        if (currentQuestion.correctAnswer == option) 
+        {
+            answerQuestion(0);
+        }
+        else
+        {
+            answerQuestion(1);
+        }
     }
-    else
+    else if (questionState > 0) //On second instance of question
     {
-        endQuestion(1);
+        if (currentQuestion.subQuestions[questionState-1].correctAnswer == option)
+        {
+            answerSubQuestion(0);
+        }
+        else
+        {
+            answerSubQuestion(1);
+        }
     }
 }
 function setView (newView) 
@@ -229,8 +317,14 @@ async function loadQuestions() {
             return new Question(
                 q.question,
                 q.img,
-                q.options,
-                q.correctOption
+                q.correctOption,
+                q.subQuestions.map(sq => { 
+                    return new SubQuestion(
+                        sq.subQuestion,
+                        sq.options,
+                        sq.correctOption
+                        );
+                })
             );
         });
 
@@ -283,7 +377,7 @@ function adjustElementSize()
         if (initialized) 
         {
             //QUESTION CONTAINER
-            height = main.clientWidth * lerp(0.7, 0.9, 1-inverseLerp(aspectRatio, 0.6, 0.9));
+            height = main.clientWidth * Utils.lerp(0.7, 0.9, 1-Utils.inverseLerp(aspectRatio, 0.6, 0.9));
             elemQuestionCont.style.height = `${height}px`;
             elemQuestionCont.style.top = `${main.clientHeight * 0.5 - (height * 0.5)}px`;
 
@@ -296,22 +390,4 @@ function onClick ()
 {
     if (currentView == 0)
         startGame();
-}
-
-function truncate(num, digits) {
-    var multiplier = Math.pow(10, digits);
-    return (Math[num < 0 ? 'ceil' : 'floor'](num * multiplier) / multiplier);
-}
-function inverseLerp (val, a, b) {
-    return clamp((val - a) / (b - a), 0, 1);
-}
-function lerp(a, b, t) {
-  return a + (b - a) * t;
-}
-function clamp(num, min, max) {
-  return Math.max(min, Math.min(num, max));
-}
-function getRandomElement(arr) {
-    const randomIndex = Math.floor(Math.random() * arr.length);
-    return arr[randomIndex];
 }
