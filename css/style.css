@@ -1,17 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
 html, body 
-{
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-.root 
 {
   /* ANIMATION CURVES */
   --bounce-ease: cubic-bezier(0.68, -0.55, 0.27, 1.55);
 
+  /*COLORS */
+  --color-olive: #434113;
+  --color-green: #39d32f;
+  --color-yellow: #fff749;
+  --color-orange: #ff6e10;
+  --color-blue: #0388f0;
+  --color-white: #fffcd7;
+
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+p 
+{
+  font-family: Karla;
+}
+.root 
+{
   width: 100%;
   height: 100%;
-  background-color: salmon;
+  background-color: black;
 
   display: flex;
   justify-content: center;   /* center horizontally */
@@ -73,52 +87,61 @@ html, body
 /* GAME -----------------------------------------------------------*/
 .game#container 
 {
+  position: relative;
 	width: 100%;
 	height: 100%;
-  position: relative;
-	display: flex;
-	margin-left: auto;
-	margin-right: auto;
-}
-.game#timer
-{
-  display: none;
-/*  grid-area: 4 / 2 / 5 / 14;
-  display: flex;
-  align-self: stretch;
-  justify-content: space-evenly;
-  justify-self: auto;
-  width: auto;
-  height: auto;
-  padding: 0px;
-  flex-direction: column;*/
-}
-.game#hud
-{
-  position: absolute;
-  top: 0px;
-  width: 100%;
-  height: 12%; 
-  padding: 0px;
 
-  display: flex;
-  align-self: stretch;
-  justify-content: space-evenly;
-  justify-self: auto;
+	display: flex;
   flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+}
+#hud
+{
+    width: 100%;
+    height: 9%;
+    padding: 0px;
+
+    display: flex;
+
+    align-self: stretch;
+    justify-content: space-around;
+    justify-self: auto;
+    flex-direction: row;
+    align-items: center;
+
+    background-color: var(--color-olive);
+    border-radius: 25px;
+}
+#hud > #score 
+{
+
+}
+#hud > #header 
+{
+  width: 50%;
+  height: 75%;
+  background-color: white;
+}
+#gamePanel 
+{
+  position: relative;
+  width: 100%;
+  height: 80%;
+  background-color: var(--color-white);
+  border-radius: 25px;
 }
 .game#question
 {
   position: absolute;
-  top: 50%;
-  width: 100%;
-  height: 200px;
+
   padding: 0px;
 
-  display: flex;
   align-self: stretch;
   justify-content: flex-start;
   justify-self: auto; 
+
+  border-radius: 25px;
 }
 #questionImage 
 {
@@ -126,12 +149,12 @@ html, body
   width: 100%;
   height: 100%;
 
-  display: none;
+  border-radius: 25px;
 }
 .game#multipleChoice 
 {
   position: absolute;
-  bottom: 2%;
+  bottom: 5%;
   width: 100%;
   height: 10%;
 
@@ -146,7 +169,7 @@ html, body
 {
 	display: flex;
   width: 30%;
-  height: 50%;
+  height: 70%;
 }
 
 .game#mulChoicePart2 

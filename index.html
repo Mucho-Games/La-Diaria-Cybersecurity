@@ -29,26 +29,27 @@
 <!-- GAME -------------------------------------------------------------------------------------------------------------------------------------------------->
 <div class="game" id="container">
 
-  <div class="game" id="timer" style="background-color: chocolate;">
-    <p class="center"> 
-      60
-    </p>
+  <div id="hud">
+    <div id="header"> 
+      
+    </div>
+    <div id="score"> 
+      <p class="center"> 1/05 </p>
+    </div>
   </div>
 
-  <div class="game" id="hud" style="background-color: seagreen;">
-    <p class="center">
-    Puntaje: 000
-    </p>
-  </div>
+<div id="gamePanel">
 
-    <div class="game" id="question" style="background-color: goldenrod;">
-    <p class="center"> 
+  <div class="game" id="question" style="background-color: goldenrod;">
+
+    <p class="center" style="display: none;"> 
       ¿La pregunta es cual es: Si alguien sabe algo de algo y alguien sabe algo de otra cosa, que pasa? 
     </p>
     <img src="" alt="" id="questionImage">
+
   </div>
 
-  <div class="game" id="multipleChoice" style="background-color: lavender;">
+  <div class="game" id="multipleChoice">
 
     <button class="option" id="option1" onclick="onClickButtonOption(0)" style="background-color: blueviolet;">
       <p class="center"> 
@@ -67,6 +68,8 @@
     </button>
 
   </div>
+
+</div>
 
   <div class="game" id="mulChoicePart2" style="background-color: black;">
 

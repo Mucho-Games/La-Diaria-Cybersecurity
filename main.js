@@ -4,7 +4,8 @@ window.onClickOption = onClickOption;
 
 const questionsImgDirectory = './game/questions/img/';
 const fps = 30;
-const maxAspectRatio = 3/4;
+const maxLandAspectRatio = 3/4;
+const maxPortraitAspectRatio = 10/16;
 const useTimer = false;
 const debug = false;
 
@@ -27,6 +28,9 @@ var currentQuestionTimer = 0;
 var multipleChoiceDisabled = false;
 
 //DOM ELEMENTS
+var elemRoot;
+
+var elemGameContainer;
 var elemGameHUDCont;
 var elemQuestionCont;
 var elemMultipleChoiceCont;
@@ -89,13 +93,17 @@ async function initialize ()
     elementDebugFPS = document.querySelector(".debugBar > #fps");
     elemDebugAspectRatio = document.querySelector(".debugBar > #aspectRatio");
 
-    elemGameHUDCont = document.querySelector(".game > #hud");
-    elemQuestionCont = document.querySelector(".game > #question");
-    elemMultipleChoiceCont = document.querySelector(".game > #multipleChoice");
+    elemRoot = document.querySelector('.root');
 
-    elemPlayerScore = document.querySelector(".game > #hud > p");
-    elemGameQuestionTimer = document.querySelector(".game > #timer > p");
-    elemGameQuestion = document.querySelector(".game > #question > p");
+    elemGameContainer = document.getElementById('gamePanel');
+
+    elemGameHUDCont = document.querySelector("#hud");
+    elemQuestionCont = document.querySelector("#question");
+    elemMultipleChoiceCont = document.querySelector("#multipleChoice");
+
+    elemPlayerScore = document.querySelector("#hud > #score > p");
+    elemGameQuestionTimer = document.querySelector("#timer > p");
+    elemGameQuestion = document.querySelector("#question > p");
     elemGameQuestionImg = document.getElementById('questionImage');
     elemGameQuestionOptions = document.querySelectorAll('.game > .option > p');
     elemGameQuestion2PopUp = document.getElementById('mulChoicePart2');
@@ -295,8 +303,10 @@ function setView (newView)
 
     for (var i = views.length - 1; i >= 0; i--) {
         var viewGrid = document.querySelector(`.${views[i]}#container`);
-        viewGrid.style.display = i == currentView ? `grid` : `none`;
+        viewGrid.style.display = i == currentView ? `flex` : `none`;
     }
+
+    elemRoot.style.backgroundColor = currentView == 0 ? 'var(--color-green)' : 'var(--color-blue)';
 
     adjustElementSize();
 }
@@ -341,7 +351,7 @@ function adjustElementSize()
 {
     aspectRatio = window.innerWidth / window.innerHeight;
 
-    const thresholdRatio = maxAspectRatio + 0.1; //added a little padding to avoid small gaps on layout at the borders
+    const thresholdRatio = 0.62; //added a little padding to avoid small gaps on layout at the borders
 
     var pageWidth = document.body.clientWidth;
 
@@ -350,39 +360,35 @@ function adjustElementSize()
     var width = 0; //declaring this var here to be read and written all over the function execution and only here
     var height = 0; //declaring this var here to be read and written all over the function execution and only here
 
+    var maxWidth = window.innerWidth - 40;
+
     if (aspectRatio >= thresholdRatio) /*LAND MODE---------------------*/
     {
         console.log("On Land mode");
 
-        main.style.height = '100%';
-        main.style.width = `${main.clientHeight * maxAspectRatio}px`;
+        width = Utils.clamp(window.innerHeight * maxLandAspectRatio, 0, maxWidth); 
 
-        if (initialized) 
-        {
-            //QUESTION CONTAINER
-            height = main.clientWidth * 0.7;
-            elemQuestionCont.style.height = `${height}px`;
-            elemQuestionCont.style.top = `${main.clientHeight * 0.5 - (height * 0.5)}px`;
-        }
+        main.style.height = '95%';
+        main.style.width = `${width}px`;
+        main.style.bottom = '2.5%'
+
     } 
     else /*PORTRAIT MODE---------------------*/
     {
         console.log("On Portrait mode");
 
-        var targetWidthValue = main.clientHeight * 0.69 + window.innerWidth * 0.1;
+        height = main.clientWidth / maxPortraitAspectRatio;
+        main.style.height = `${height}px`;
+        main.style.width = '95%';
+        main.style.bottom = `${((window.innerHeight - height) / 2)}px`;
+    }
 
-        main.style.height = '100%';
-        main.style.width = '100%';
-
-        if (initialized) 
-        {
-            //QUESTION CONTAINER
-            height = main.clientWidth * Utils.lerp(0.7, 0.9, 1-Utils.inverseLerp(aspectRatio, 0.6, 0.9));
-            elemQuestionCont.style.height = `${height}px`;
-            elemQuestionCont.style.top = `${main.clientHeight * 0.5 - (height * 0.5)}px`;
-
-            //MULTIPLE CHOICE CONTAINER
-        }
+    if (initialized) 
+    {
+        elemQuestionCont.style.width = '95%';
+        elemQuestionCont.style.height = `${(elemQuestionCont.offsetWidth * 0.75)}px`;
+        elemQuestionCont.style.left  = '2.5%';
+        elemQuestionCont.style.top  = `${main.offsetWidth * 0.025}px`;
     }
 }
 
