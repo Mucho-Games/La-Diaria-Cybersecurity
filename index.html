@@ -17,13 +17,20 @@
 
 <!-- TITLESCREEN -------------------------------------------------------------------------------------------------------------------------------------------------->
 <div class="titleScreen" id="container">
-  <div class="titleScreen" id="header" style="background-color: yellow;">
 
+  <div class="titleScreen" id="header" >
+    <img src="assets/logo.svg" alt="">
+    <div class="eye" style="left: 14.7%;"> 
+      <img src="assets/circle-black.svg" alt="">
+    </div>
+    <div class="eye" style="left: 19.6%;"> 
+      <img src="assets/circle-black.svg" alt="">
+    </div>
   </div>
-  <div class="titleScreen" id="character" style="background-color: black;">
-    <p style="color: white;" class="center">Comenzar</p>
-  </div>
-  
+
+  <div class="titleScreen" id="buttonPlay">
+     <img src="assets/button-play.svg" alt="">
+  </div>  
 </div>
   
 <!-- GAME -------------------------------------------------------------------------------------------------------------------------------------------------->
@@ -31,10 +38,12 @@
 
   <div id="hud">
     <div id="header"> 
-      
+      <img src="assets/logo-alt.svg" alt="">
     </div>
     <div id="score"> 
-      <p class="center"> 1/05 </p>
+      <p> 01 </p>
+      <p id="goalScore"> /05 </p>
+      <div id="scoreIcon"> <img src="assets/circle-yellow.svg" alt=""> </div>
     </div>
   </div>
 

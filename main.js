@@ -22,6 +22,7 @@ var questionBank = [];
 const questionDuration = 20;
 
 var currentQuestion;
+var currentQuestionsAmount = 0;
 var currentPlayerScore = 0;
 var currentQuestionTimer = 0;
 
@@ -36,6 +37,7 @@ var elemQuestionCont;
 var elemMultipleChoiceCont;
 
 var elemPlayerScore;
+var elemScoreIcon;
 var elemGameQuestionTimer;
 var elemGameQuestion;
 var elemGameQuestionImg;
@@ -73,6 +75,7 @@ const currentUpdate = setInterval(update, 1000.0/fps);
 // INITIALIZE GAME
 document.addEventListener("DOMContentLoaded", initialize);
 document.addEventListener('click', onClick);
+document.addEventListener('mousemove', e => eyesFollowMouse(e.clientX, e.clientY));
 
 let resizeTimeout;
 window.addEventListener("resize", () => {
@@ -98,6 +101,7 @@ async function initialize ()
     elemGameContainer = document.getElementById('gamePanel');
 
     elemGameHUDCont = document.querySelector("#hud");
+    elemScoreIcon = document.getElementById('scoreIcon');
     elemQuestionCont = document.querySelector("#question");
     elemMultipleChoiceCont = document.querySelector("#multipleChoice");
 
@@ -141,7 +145,7 @@ function update()
 
     if (currentView == 1) 
     {
-        elemPlayerScore.innerHTML = "Puntaje: " + currentPlayerScore;
+        elemPlayerScore.innerHTML = "0"+currentQuestionsAmount;
 
         if (useTimer) 
         {
@@ -212,6 +216,7 @@ function newQuestion ()
 
     currentQuestionTimer = questionDuration;
     questionState = 0;
+    currentQuestionsAmount++;
 }
 function showSubQuestion (index) 
 {
@@ -346,6 +351,23 @@ async function loadQuestions() {
     }
 }
 
+function eyesFollowMouse (mousePosX, mousePosY) 
+{
+    if (!initialized) return;
+    if (currentView != 0) return;
+
+    var eyesCenters = document.querySelectorAll('.titleScreen#header .eye');
+    var eyes = document.querySelectorAll('.titleScreen#header .eye img');
+
+    for (var i = eyesCenters.length - 1; i >= 0; i--) {
+        var pos = Utils.getElementScreenPosition(eyesCenters[i]);
+        var delta = {x: mousePosX - pos.x, y: mousePosY - pos.y};
+        var dir = Utils.normalize(delta.x, delta.y);
+
+        eyes[i].style.transform = `translate(${40 * dir.x}%,${40 * dir.y}%)`;
+    }
+    // console.log(eyes);
+}
 
 function adjustElementSize() 
 {
@@ -356,17 +378,18 @@ function adjustElementSize()
     var pageWidth = document.body.clientWidth;
 
     var main = document.querySelector(`.${views[currentView]}#container`);
+    var widthMultiplier = currentView == 0 ? 1.5 : 1; //title screen is wider
 
     var width = 0; //declaring this var here to be read and written all over the function execution and only here
     var height = 0; //declaring this var here to be read and written all over the function execution and only here
 
-    var maxWidth = window.innerWidth - 40;
+    var maxWidth = window.innerWidth - 60;
 
     if (aspectRatio >= thresholdRatio) /*LAND MODE---------------------*/
     {
         console.log("On Land mode");
 
-        width = Utils.clamp(window.innerHeight * maxLandAspectRatio, 0, maxWidth); 
+        width = Utils.clamp(window.innerHeight * maxLandAspectRatio * widthMultiplier, 0, maxWidth); 
 
         main.style.height = '95%';
         main.style.width = `${width}px`;
@@ -379,7 +402,7 @@ function adjustElementSize()
 
         height = main.clientWidth / maxPortraitAspectRatio;
         main.style.height = `${height}px`;
-        main.style.width = '95%';
+        main.style.width = currentView == 0 ? '85%' : '95%';
         main.style.bottom = `${((window.innerHeight - height) / 2)}px`;
     }
 
@@ -389,6 +412,14 @@ function adjustElementSize()
         elemQuestionCont.style.height = `${(elemQuestionCont.offsetWidth * 0.75)}px`;
         elemQuestionCont.style.left  = '2.5%';
         elemQuestionCont.style.top  = `${main.offsetWidth * 0.025}px`;
+
+        elemScoreIcon.style.width = `${elemGameHUDCont.offsetHeight * 0.8}px`;
+    }
+
+    if (currentView == 0) //titlescreen layout updates
+    {
+        var buttonPlay = document.querySelector('.titleScreen#buttonPlay');
+        buttonPlay.style.height = `${document.querySelector('.titleScreen#header').offsetHeight}px`;
     }
 }
 
