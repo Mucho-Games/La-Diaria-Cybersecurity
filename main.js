@@ -1,76 +1,43 @@
-import * as Utils from './utils.js';
-
-window.onClickOption = onClickOption;
-
-const questionsImgDirectory = './game/questions/img/';
-const fps = 30;
-const maxLandAspectRatio = 3/4;
-const maxPortraitAspectRatio = 10/16;
-const useTimer = false;
-const debug = false;
-
 var aspectRatio = 0.0;
 var deltaTime = 0;
 var lastTimeUpdate = 0;
 var initialized = false;
 var questionState = -1;
 var currentView = 0;
-const views = ["titleScreen", "game"];
 
 //GAME VARS
 var questionBank = [];
-const questionDuration = 20;
 
 var currentQuestion;
 var currentQuestionsAmount = 0;
 var currentPlayerScore = 0;
-var currentQuestionTimer = 0;
 
 var multipleChoiceDisabled = false;
 
-//DOM ELEMENTS
+//DOM ELEMENTS--------------------------------------------
 var elemRoot;
-
 var elemGameContainer;
-var elemGameHUDCont;
-var elemQuestionCont;
-var elemMultipleChoiceCont;
 
+//HUD Elements
+var elemGameHUDCont;
 var elemPlayerScore;
 var elemScoreIcon;
-var elemGameQuestionTimer;
-var elemGameQuestion;
-var elemGameQuestionImg;
-var elemGameQuestionOptions = [];
-var elemGameQuestion2PopUp;
-var elemGameQuestion2;
-var elemGameQuestion2Options = [];
+
+//Question Elements
+var elemQuestionCont;
+var elemMultipleChoiceCont;
 
 var elemAnimationAnswer;
 
 //DEBUG VARS
 var elementDebugFPS;
 var elemDebugAspectRatio;
-
-class Question {
-    constructor(question, img, correctAnswer, subQuestions) {
-        this.question = question;
-        this.correctAnswer = correctAnswer;
-        this.img = img;
-        this.subQuestions = subQuestions;
-    }
-}
-class SubQuestion {
-    constructor(subQuestion, options, correctAnswer) {
-        this.subQuestion = subQuestion;
-        this.options = options;
-        this.correctAnswer = correctAnswer;
-    }
-}
-
+//DOM ELEMENTS--------------------------------------------
 
 //RUN UPDATE
 const currentUpdate = setInterval(update, 1000.0/fps);
+
+window.onClickOption = onClickOption;
 
 // INITIALIZE GAME
 document.addEventListener("DOMContentLoaded", initialize);
@@ -84,7 +51,6 @@ window.addEventListener("resize", () => {
     }
     resizeTimeout = requestAnimationFrame(adjustElementSize);
 });
-
 
 async function initialize () 
 {
@@ -102,33 +68,48 @@ async function initialize ()
 
     elemGameHUDCont = document.querySelector("#hud");
     elemScoreIcon = document.getElementById('scoreIcon');
-    elemQuestionCont = document.querySelector("#question");
+    elemQuestionCont = document.getElementById("question");
     elemMultipleChoiceCont = document.querySelector("#multipleChoice");
 
     elemPlayerScore = document.querySelector("#hud > #score > p");
-    elemGameQuestionTimer = document.querySelector("#timer > p");
-    elemGameQuestion = document.querySelector("#question > p");
-    elemGameQuestionImg = document.getElementById('questionImage');
-    elemGameQuestionOptions = document.querySelectorAll('.game > .option > p');
-    elemGameQuestion2PopUp = document.getElementById('mulChoicePart2');
-    elemGameQuestion2 = document.getElementById('mulChoice2Question');
-    elemGameQuestion2Options = document.querySelectorAll('.game > .option2 > p');
-
     elemAnimationAnswer = document.querySelector('#answerAnim');
-
-    // var buttons = document.querySelectorAll('.game > .option');
-    // for (var i =  0; i < buttons.length; i++) 
-    // {
-    //     buttons[i].addEventListener('click', () => onClickOption(i));
-    //     buttons[i].setAttribute('role', 'button');
-    //     buttons[i].setAttribute('tabindex', i);
-    // }
 
     setView(0);
 
     await loadQuestions();
 
     initialized = true;
+}
+
+async function loadQuestions() {
+    try {
+        const response = await fetch('./data.json');
+        if (!response.ok) {
+            throw new Error('Network response was not ok: ' + response.statusText);
+        }
+        const data = await response.json();
+
+        questionBank = data.questions.map(q => {
+            return new Question(
+                q.question,
+                q.img,
+                q.correctOption,
+                q.subQuestions.map(sq => { 
+                    return new SubQuestion(
+                        sq.subQuestion,
+                        sq.options,
+                        sq.correctOption
+                        );
+                })
+            );
+        });
+
+        console.log("Question Bank:", questionBank);
+
+    } catch (error) {
+        console.error('Could not load questions:', error);
+        document.getElementById('output').textContent = 'Error loading questions.';
+    }
 }
 
 function startGame () {
@@ -146,24 +127,12 @@ function update()
     if (currentView == 1) 
     {
         elemPlayerScore.innerHTML = "0"+currentQuestionsAmount;
-
-        if (useTimer) 
-        {
-            currentQuestionTimer -= deltaTime;
-
-            elemGameQuestionTimer.innerHTML = Math.trunc(currentQuestionTimer);
-
-            if (currentQuestionTimer < 0) 
-            {
-                answerQuestion(2);
-            }
-        }
     }
 
     if (debug)
     {
-        elementDebugFPS.innerHTML = 'FPS: ' + Utils.truncate(1/deltaTime, 1);
-        elemDebugAspectRatio.innerHTML = 'ASPECT RATIO: ' + Utils.truncate(aspectRatio, 2);
+        elementDebugFPS.innerHTML = 'FPS: ' + truncate(1/deltaTime, 1);
+        elemDebugAspectRatio.innerHTML = 'ASPECT RATIO: ' + truncate(aspectRatio, 2);
     }
 }
 
@@ -203,11 +172,11 @@ function answerQuestion (state)
 }
 function newQuestion () 
 {
-    currentQuestion = Utils.getRandomElement(questionBank);
+    currentQuestion = getRandomElement(questionBank);
 
     elemGameQuestion.innerHTML = currentQuestion.question;
     elemGameQuestionImg.src = questionsImgDirectory + currentQuestion.img + '.jpg';
-    elemGameQuestionImg.style.display = 'inline';
+    //elemGameQuestionImg.style.display = 'inline';
 
     // for (var i = 0; i < elemGameQuestionOptions.length; i++) 
     // {
@@ -271,7 +240,7 @@ function answerSubQuestion (state)
     }, 
     2000); 
 }
-export function onClickOption (option) 
+function onClickOption (option) 
 {
     console.log("Clicked option: " + option);
 
@@ -320,36 +289,7 @@ function playAnimation (animElement, duration)
     animElement.style.display = 'inline';
     setTimeout(function() {animElement.style.display = 'none';}, duration * 1000);
 }
-async function loadQuestions() {
-    try {
-        const response = await fetch('./data.json');
-        if (!response.ok) {
-            throw new Error('Network response was not ok: ' + response.statusText);
-        }
-        const data = await response.json();
 
-        questionBank = data.questions.map(q => {
-            return new Question(
-                q.question,
-                q.img,
-                q.correctOption,
-                q.subQuestions.map(sq => { 
-                    return new SubQuestion(
-                        sq.subQuestion,
-                        sq.options,
-                        sq.correctOption
-                        );
-                })
-            );
-        });
-
-        console.log("Question Bank:", questionBank);
-
-    } catch (error) {
-        console.error('Could not load questions:', error);
-        document.getElementById('output').textContent = 'Error loading questions.';
-    }
-}
 
 function eyesFollowMouse (mousePosX, mousePosY) 
 {
@@ -360,9 +300,9 @@ function eyesFollowMouse (mousePosX, mousePosY)
     var eyes = document.querySelectorAll('.titleScreen#header .eye img');
 
     for (var i = eyesCenters.length - 1; i >= 0; i--) {
-        var pos = Utils.getElementScreenPosition(eyesCenters[i]);
+        var pos = getElementScreenPosition(eyesCenters[i]);
         var delta = {x: mousePosX - pos.x, y: mousePosY - pos.y};
-        var dir = Utils.normalize(delta.x, delta.y);
+        var dir = normalize(delta.x, delta.y);
 
         eyes[i].style.transform = `translate(${40 * dir.x}%,${40 * dir.y}%)`;
     }
@@ -389,7 +329,7 @@ function adjustElementSize()
     {
         console.log("On Land mode");
 
-        width = Utils.clamp(window.innerHeight * maxLandAspectRatio * widthMultiplier, 0, maxWidth); 
+        width = clamp(window.innerHeight * maxLandAspectRatio * widthMultiplier, 0, maxWidth); 
 
         main.style.height = '95%';
         main.style.width = `${width}px`;
@@ -408,10 +348,10 @@ function adjustElementSize()
 
     if (initialized) 
     {
-        elemQuestionCont.style.width = '95%';
-        elemQuestionCont.style.height = `${(elemQuestionCont.offsetWidth * 0.75)}px`;
-        elemQuestionCont.style.left  = '2.5%';
-        elemQuestionCont.style.top  = `${main.offsetWidth * 0.025}px`;
+        // elemQuestionCont.style.width = '95%';
+        // elemQuestionCont.style.height = `${(elemQuestionCont.offsetWidth * 0.75)}px`;
+        // elemQuestionCont.style.left  = '2.5%';
+        // elemQuestionCont.style.top  = `${main.offsetWidth * 0.025}px`;
 
         elemScoreIcon.style.width = `${elemGameHUDCont.offsetHeight * 0.8}px`;
     }

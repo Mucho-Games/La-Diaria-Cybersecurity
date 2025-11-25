@@ -49,32 +49,53 @@
 
 <div id="gamePanel">
 
-  <div class="game" id="question" style="background-color: goldenrod;">
+  <div id="layoutGame">
 
-    <p class="center" style="display: none;"> 
-      ¿La pregunta es cual es: Si alguien sabe algo de algo y alguien sabe algo de otra cosa, que pasa? 
-    </p>
-    <img src="" alt="" id="questionImage">
+    <div id="question-container">
 
-  </div>
+      <div id="question-type-a"> <!--QUESTION TYPE A-->
+        <div class="question-header"> 
+          <img src="">
+          <div class="question-profile">
+            <h3> ladiaria </h3>
+            <p> ladiaria.com </p>
+          </div>
+        </div>
+        <div class="question-content">
+          <div class="question-image">
+            <img src="" alt="">
+            <p> ladiaria.com </p>
+          </div>
+          <div class="question-body">
+            <h3> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibamet, consectetuer adipiscing elit, sed diam nonummy nibmmy nibamet. </h3>
+            <p> 
+              Adipiscing elit, sed diam nonummy nibh Lorem ipsum dolor  amet, consectetuer adisum dolor
+              sit amet, consectetuer adipiscing elit, sed diam nonummy nibiam nonummy nibh Lorem ipsum dolor  amet, consectetuer adipiscing elit, sedpsum dolor
+              sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.
+            </p>
+          </div>
+        </div>
+      </div>
 
-  <div class="game" id="multipleChoice">
+    </div>
 
-    <button class="option" id="option1" onclick="onClickButtonOption(0)" style="background-color: blueviolet;">
-      <p class="center"> 
-      Opcion 1 blah 
-      </p>
-    </button>
-    <button class="option" id="option2" onclick="onClickButtonOption(1)" style="background-color: blueviolet;">
-      <p class="center"> 
-      Opcion 1 blah 
-      </p>
-    </button>
-    <button class="option" id="option3" onclick="onClickButtonOption(2)" style="background-color: blueviolet;">
-      <p class="center"> 
-      Opcion 1 blah 
-      </p>
-    </button>
+    <div class="game" id="multipleChoice">
+
+      <button class="option" id="option1" onclick="onClickButtonOption(0)">
+        <img src="assets/button-back-orange.svg" style="position: absolute; width: 100%; height: 100%;">
+        <img src="assets/label-fake.svg" style="position: absolute; width: 100%; height: 34%;">
+      </button>
+      <button class="option" id="option2" onclick="onClickButtonOption(1)">
+        <img src="assets/button-back-blue.svg" style="position: absolute; width: 100%; height: 100%;">
+        <img src="assets/label-sus.svg" style="position: absolute; width: 100%; height: 43%; bottom: 31%;">
+      </button>
+      <button class="option" id="option3" onclick="onClickButtonOption(2)">
+        <img src="assets/button-back-green.svg" style="position: absolute; width: 100%; height: 100%;">
+        <img src="assets/label-true.svg" style="position: absolute; width: 100%; height: 33%;">
+      </button>
+
+
+    </div>
 
   </div>
 
@@ -119,7 +140,13 @@
 </div>
 </div>
 
-<script type="module" src="main.js" defer></script>
+<script src="config.js"></script>
+<script src="utils.js"></script>
+<script src="question-type-a.js"></script>
+<script src="sub-question.js"></script>
+
+<script src="main.js" defer></script>
+
 <script>
   function onClickButtonOption (index) {
     onClickOption(index);

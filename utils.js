@@ -1,26 +1,26 @@
 //UTILS
 
-export function truncate(num, digits) {
+function truncate(num, digits) {
     var multiplier = Math.pow(10, digits);
     return (Math[num < 0 ? 'ceil' : 'floor'](num * multiplier) / multiplier);
 }
-export function inverseLerp (val, a, b) {
+function inverseLerp (val, a, b) {
     return clamp((val - a) / (b - a), 0, 1);
 }
-export function lerp(a, b, t) {
+function lerp(a, b, t) {
   return a + (b - a) * t;
 }
-export function clamp(num, min, max) {
+function clamp(num, min, max) {
   return Math.max(min, Math.min(num, max));
 }
-export function getRandomElement(arr) {
+function getRandomElement(arr) {
     const randomIndex = Math.floor(Math.random() * arr.length);
     return arr[randomIndex];
 }
 
 //Vectors and positions
 
-export function getElementScreenPosition (elem) {
+function getElementScreenPosition (elem) {
     var e = elem.getBoundingClientRect();
     return {
         x: e.left + e.width/2,
@@ -28,7 +28,7 @@ export function getElementScreenPosition (elem) {
     };
 }
 
-export function normalize(x, y) {
+function normalize(x, y) {
     const len = Math.hypot(x, y);
     if (len === 0) return { x: 0, y: 0 };
     return { x: x / len, y: y / len };

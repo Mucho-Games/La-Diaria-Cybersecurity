@@ -1,82 +1,155 @@
 {
   "questions":
   [
-    {
-      "question": "¿Primera pregunta?", 
-      "img": 1, 
+    { 
+      //QUESTION START ----------------------------------------------------------------------------------------------------------------------------------->
+
+      "question-type": 0,
+      "profilePic": "pp-03",
+      "username": "ladiaria",
+      "usernameURL": "ladiaria.com",
+      "img": "img-01",
+      "footNote": "fuente ladiaria.com",
+      "header": "Habia un perrito en un momento que le debía plata a otro perrito y entonces se destruyó la economía",
+      "body": "Dicen entonces que los perritos y etc entonces dicen que pasa algo y que luego hay consecuencias y ahora un testimonio de un vecino que lo vio todo y ahora una pequeña conclusión.",
+
+      "correctOption": 1,
+
       "subQuestions": 
       [
-        {"subQuestion": "lalalalalalal", "options": ["A1", "B1", "C2"], "correctOption": 1},
-        {"subQuestion": "sosososososososoos", "options": ["D1", "E1", "F2"], "correctOption": 2},
-        {"subQuestion": "joojojojojojojojoooooo", "options": ["G1", "H1", "I2"], "correctOption": 2}
-      ], 
-      "correctOption": 1
+        {
+          "subQuestion": "lalalalalalal", 
+          "options": 
+          [
+            "A1", 
+            "B1", 
+            "C2"
+          ], 
+          "correctOption": 1
+        },
+        {
+          "subQuestion": "lalalalalalal", 
+          "options": 
+          [
+            "A1", 
+            "B1", 
+            "C2"
+          ], 
+          "correctOption": 0
+        },
+        {
+          "subQuestion": "lalalalalalal", 
+          "options": 
+          [
+            "A1", 
+            "B1", 
+            "C2"
+          ], 
+          "correctOption": 2
+        }
+      ]
+
+      //QUESTION END ----------------------------------------------------------------------------------------------------------------------------------->
     },
-    {
-      "question": "¿SEGUNDA pregunta?", 
-      "img": 2, 
+    { 
+      //QUESTION START ----------------------------------------------------------------------------------------------------------------------------------->
+
+      "question-type": 0,
+      "profilePic": "pp-02",
+      "username": "ladiaria",
+      "usernameURL": "ladiaria.com",
+      "img": "img-02",
+      "footNote": "fuente ladiaria.com",
+      "header": "Habia un perrito en un momento que le debía plata a otro perrito y entonces se destruyó la economía",
+      "body": "Dicen entonces que los perritos y etc entonces dicen que pasa algo y que luego hay consecuencias y ahora un testimonio de un vecino que lo vio todo y ahora una pequeña conclusión.",
+
+      "correctOption": 0,
+
       "subQuestions": 
       [
-        {"subQuestion": "lalalalalalal", "options": ["A1", "B1", "C2"], "correctOption": 1},
-        {"subQuestion": "sosososososososoos", "options": ["D1", "E1", "F2"], "correctOption": 2},
-        {"subQuestion": "joojojojojojojojoooooo", "options": ["G1", "H1", "I2"], "correctOption": 1}
-      ], 
-      "correctOption": 0
+        {
+          "subQuestion": "lalalalalalal", 
+          "options": 
+          [
+            "A1", 
+            "B1", 
+            "C2"
+          ], 
+          "correctOption": 1
+        },
+        {
+          "subQuestion": "lalalalalalal", 
+          "options": 
+          [
+            "A1", 
+            "B1", 
+            "C2"
+          ], 
+          "correctOption": 0
+        },
+        {
+          "subQuestion": "lalalalalalal", 
+          "options": 
+          [
+            "A1", 
+            "B1", 
+            "C2"
+          ], 
+          "correctOption": 2
+        }
+      ]
+
+      //QUESTION END ----------------------------------------------------------------------------------------------------------------------------------->
     },
-    {
-      "question": "TERCERA pregunta?", 
-      "img": 3, 
+    { 
+      //QUESTION START ----------------------------------------------------------------------------------------------------------------------------------->
+
+      "question-type": 0,
+      "profilePic": "pp-01",
+      "username": "ladiaria",
+      "usernameURL": "ladiaria.com",
+      "img": "img-03",
+      "footNote": "fuente ladiaria.com",
+      "header": "Habia un perrito en un momento que le debía plata a otro perrito y entonces se destruyó la economía",
+      "body": "Dicen entonces que los perritos y etc entonces dicen que pasa algo y que luego hay consecuencias y ahora un testimonio de un vecino que lo vio todo y ahora una pequeña conclusión.",
+
+      "correctOption": 2,
+
       "subQuestions": 
       [
-        {"subQuestion": "lalalalalalal", "options": ["A1", "B1", "C2"], "correctOption": 1},
-        {"subQuestion": "sosososososososoos", "options": ["D1", "E1", "F2"], "correctOption": 2},
-        {"subQuestion": "joojojojojojojojoooooo", "options": ["G1", "H1", "I2"], "correctOption": 0}
-      ], 
-      "correctOption": 1
-    },
-    {
-      "question": "QUARTA pregunta?", 
-      "img": 4, 
-      "subQuestions": 
-      [
-        {"subQuestion": "lalalalalalal", "options": ["A1", "B1", "C2"], "correctOption": 0},
-        {"subQuestion": "sosososososososoos", "options": ["D1", "E1", "F2"], "correctOption": 2},
-        {"subQuestion": "joojojojojojojojoooooo", "options": ["G1", "H1", "I2"], "correctOption": 0}
-      ], 
-      "correctOption": 2
-    },
-    {
-      "question": "QUINTA pregunta?", 
-      "img": 5, 
-      "subQuestions": 
-      [
-        {"subQuestion": "lalalalalalal", "options": ["A1", "B1", "C2"], "correctOption": 0},
-        {"subQuestion": "sosososososososoos", "options": ["D1", "E1", "F2"], "correctOption": 2},
-        {"subQuestion": "joojojojojojojojoooooo", "options": ["G1", "H1", "I2"], "correctOption": 2}
-      ], 
-      "correctOption": 1
-    },
-    {
-      "question": "SEXTA pregunta?", 
-      "img": 6, 
-      "subQuestions": 
-      [
-        {"subQuestion": "lalalalalalal", "options": ["A1", "B1", "C2"], "correctOption": 2},
-        {"subQuestion": "sosososososososoos", "options": ["D1", "E1", "F2"], "correctOption": 0},
-        {"subQuestion": "joojojojojojojojoooooo", "options": ["G1", "H1", "I2"], "correctOption": 2}
-      ], 
-      "correctOption": 2
-    },
-    {
-      "question": "SEPTIMA pregunta?", 
-      "img": 7, 
-      "subQuestions": 
-      [
-        {"subQuestion": "lalalalalalal", "options": ["A1", "B1", "C2"], "correctOption": 2},
-        {"subQuestion": "sosososososososoos", "options": ["D1", "E1", "F2"], "correctOption": 0},
-        {"subQuestion": "joojojojojojojojoooooo", "options": ["G1", "H1", "I2"], "correctOption": 2}
-      ], 
-      "correctOption": 0
+        {
+          "subQuestion": "lalalalalalal", 
+          "options": 
+          [
+            "A1", 
+            "B1", 
+            "C2"
+          ], 
+          "correctOption": 1
+        },
+        {
+          "subQuestion": "lalalalalalal", 
+          "options": 
+          [
+            "A1", 
+            "B1", 
+            "C2"
+          ], 
+          "correctOption": 0
+        },
+        {
+          "subQuestion": "lalalalalalal", 
+          "options": 
+          [
+            "A1", 
+            "B1", 
+            "C2"
+          ], 
+          "correctOption": 2
+        }
+      ]
+
+      //QUESTION END ----------------------------------------------------------------------------------------------------------------------------------->
     }
-  ]
+    ]
 }
