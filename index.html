@@ -52,7 +52,6 @@
   <div id="layoutGame">
 
     <div id="question-container">
-
       <div id="question-type-a"> <!--QUESTION TYPE A-->
         <div class="question-header"> 
           <img src="">
@@ -76,11 +75,9 @@
           </div>
         </div>
       </div>
-
     </div>
 
     <div class="game" id="multipleChoice">
-
       <button class="option" id="option1" onclick="onClickButtonOption(0)">
         <img src="assets/button-back-orange.svg" style="position: absolute; width: 100%; height: 100%;">
         <img src="assets/label-fake.svg" style="position: absolute; width: 100%; height: 34%;">
@@ -93,37 +90,39 @@
         <img src="assets/button-back-green.svg" style="position: absolute; width: 100%; height: 100%;">
         <img src="assets/label-true.svg" style="position: absolute; width: 100%; height: 33%;">
       </button>
-
-
     </div>
 
   </div>
 
+  <div id="subQuestions">
+    <div id="subQuestions-container">
+      <div id="subQuestions-header">
+        <h3>
+          ¿bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla?bla bla bla bla bla?
+        </h3>
+      </div>
+      <div id="subQuestions-options">
+        <button class="option2" id="option2-1" onclick="onClickButtonOption(0)">
+          <p class="center"> 
+          Opcion 1 blah 
+          </p>
+        </button>
+        <button class="option2" id="option2-2" onclick="onClickButtonOption(1)">
+          <p class="center"> 
+          Opcion 1 blah 
+          </p>
+        </button>
+        <button class="option2" id="option2-3" onclick="onClickButtonOption(2)">
+          <p class="center"> 
+          Opcion 1 blah 
+          </p>
+        </button>
+      </div>
+    </div>
+  </div>
+
 </div>
 
-  <div class="game" id="mulChoicePart2" style="background-color: black;">
-
-    <p id="mulChoice2Question">
-      ¿bla bla bla bla bla bla bla bla bla bla bla bla bla?
-    </p>
-
-    <button class="option2" id="option2_1" onclick="onClickButtonOption(0)" style="background-color: blueviolet;">
-      <p class="center"> 
-      Opcion 1 blah 
-      </p>
-    </button>
-    <button class="option2" id="option2_2" onclick="onClickButtonOption(1)" style="background-color: blueviolet;">
-      <p class="center"> 
-      Opcion 1 blah 
-      </p>
-    </button>
-    <button class="option2" id="option2_3" onclick="onClickButtonOption(2)" style="background-color: blueviolet;">
-      <p class="center"> 
-      Opcion 1 blah 
-      </p>
-    </button>
-
-  </div>
 
   <!-- Answer animation --->
   <div class="animation" id="answerAnim">

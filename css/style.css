@@ -339,6 +339,8 @@ p
 
 /* QUESTION ELEMENTS ----------------------------------------------------------------------------------------------- END */
 
+/* BOTTOM BUTTONS ELEMENTS ----------------------------------------------------------------------------------------------- */
+
 .game#multipleChoice 
 {
   position: absolute;
@@ -367,23 +369,52 @@ p
   border: none;
 }
 
-.game#mulChoicePart2 
+/* BOTTOM BUTTONS ELEMENTS ----------------------------------------------------------------------------------------------- END */
+
+/* SUBQUESTION ELEMENTS ----------------------------------------------------------------------------------------------- */
+#subQuestions
 {
   position: absolute;
-  top: 30%;
   width: 100%;
-  height: 40%;
+  height: 100%;
 
   display: none;
-  align-self: stretch;
-  justify-content: space-evenly;
-  justify-self: auto;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--color-olive);
+  border-radius: var(--round-corners);
+  opacity: 0.9;
+}
+#subQuestions-container
+{
+  width: 80%;
+  height: 78%;
+  display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
 }
-#mulChoice2Question
+#subQuestions-header
 {
-  color: whitesmoke;
+  height: 25%;
+}
+#subQuestions-header h3
+{
+    font-family: Karla;
+    font-weight: 700;
+    color: var(--color-white);
+    font-size: var(--font-size-header);
+    margin-bottom: 0px;
+}
+#subQuestions-options
+{
+  height: 60%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 .game .option2 
 {
@@ -391,6 +422,7 @@ p
   width: 70%;
   height: 15%;
 }
+/* SUBQUESTION ELEMENTS ----------------------------------------------------------------------------------------------- END */
 
 #answerAnim 
 {
