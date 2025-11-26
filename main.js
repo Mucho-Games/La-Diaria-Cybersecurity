@@ -89,19 +89,34 @@ async function loadQuestions() {
         }
         const data = await response.json();
 
-        questionBank = data.questions.map(q => {
-            return new Question(
-                q.question,
-                q.img,
-                q.correctOption,
-                q.subQuestions.map(sq => { 
-                    return new SubQuestion(
-                        sq.subQuestion,
-                        sq.options,
-                        sq.correctOption
-                        );
-                })
-            );
+        questionBank = data.questions.map(
+            q => {
+            if (q.questionType == 0) //contemplating future type of questions structure
+            {
+                return new QuestionTypeA 
+                (
+                    q.profilePic,
+                    q.username,
+                    q.usernameURL,
+                    q.img,
+                    q.footNote,
+                    q.header,
+                    q.body,
+                    q.correctOption,
+                    q.subQuestions.map(
+                        sq => { 
+                        return new SubQuestion(
+                            sq.subQuestion,
+                            sq.options,
+                            sq.correctOption
+                            );
+                    })
+                );
+            }
+            else
+            {
+                return null;
+            }           
         });
 
         console.log("Question Bank:", questionBank);
@@ -174,16 +189,9 @@ function newQuestion ()
 {
     currentQuestion = getRandomElement(questionBank);
 
-    elemGameQuestion.innerHTML = currentQuestion.question;
-    elemGameQuestionImg.src = questionsImgDirectory + currentQuestion.img + '.jpg';
-    //elemGameQuestionImg.style.display = 'inline';
+    currentQuestion.getDOMElements();
+    currentQuestion.populate();
 
-    // for (var i = 0; i < elemGameQuestionOptions.length; i++) 
-    // {
-    //     elemGameQuestionOptions[i].innerHTML = currentQuestion.options[i];
-    // }
-
-    currentQuestionTimer = questionDuration;
     questionState = 0;
     currentQuestionsAmount++;
 }
