@@ -26,6 +26,7 @@ var elemScoreIcon;
 //Question Elements
 var elemQuestionCont;
 var elemMultipleChoiceCont;
+var elemSubQuestionCont;
 
 var elemAnimationAnswer;
 
@@ -66,10 +67,11 @@ async function initialize ()
 
     elemGameContainer = document.getElementById('gamePanel');
 
-    elemGameHUDCont = document.querySelector("#hud");
+    elemGameHUDCont = document.getElementById("hud");
     elemScoreIcon = document.getElementById('scoreIcon');
     elemQuestionCont = document.getElementById("question");
-    elemMultipleChoiceCont = document.querySelector("#multipleChoice");
+    elemMultipleChoiceCont = document.getElementById("multipleChoice");
+    elemSubQuestionCont = document.getElementById('subQuestions');
 
     elemPlayerScore = document.querySelector("#hud > #score > p");
     elemAnimationAnswer = document.querySelector('#answerAnim');
@@ -197,14 +199,10 @@ function newQuestion ()
 }
 function showSubQuestion (index) 
 {
-    elemGameQuestion2PopUp.style.display = 'flex';
+    elemSubQuestionCont.style.display = 'flex';
 
-    elemGameQuestion2.innerHTML = currentQuestion.subQuestions[index].subQuestion;
-
-    for (var i = 0; i < elemGameQuestion2Options.length; i++) 
-    {
-        elemGameQuestion2Options[i].innerHTML = currentQuestion.subQuestions[index].options[i];
-    }
+    currentQuestion.subQuestions[index].getDOMElements();
+    currentQuestion.subQuestions[index].populate();
 }
 function answerSubQuestion (state) 
 {

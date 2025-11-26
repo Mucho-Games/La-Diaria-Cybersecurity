@@ -1,4 +1,3 @@
-var elemSubQuestionPopUp;
 var elemSubQuestionHeader;
 var elemSubQuestionOptions = [];
 
@@ -13,8 +12,7 @@ class SubQuestion
 
     getDOMElements () 
     {
-        elemSubQuestionPopUp = document.getElementById('mulChoicePart2');
-        elemSubQuestionHeader = document.getElementById('mulChoice2Question');
+        elemSubQuestionHeader = document.querySelector('#subQuestions-header h3');
         elemSubQuestionOptions = document.querySelectorAll('.game > .option2 > p');
     }
     populate () 
@@ -23,7 +21,7 @@ class SubQuestion
 
         for (var i = 0; i < elemSubQuestionOptions.length; i++) 
         {
-            elemSubQuestionOptions[i].innerHTML = this.options[i];
+            elemSubQuestionOptions[i].innerHTML = i +". " + this.options[i];
         }
     }
 }
