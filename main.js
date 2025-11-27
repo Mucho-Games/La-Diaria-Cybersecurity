@@ -204,9 +204,9 @@ function showSubQuestion (index)
     currentQuestion.subQuestions[index].getDOMElements();
     currentQuestion.subQuestions[index].populate();
 }
-function answerSubQuestion (state) 
+function answerSubQuestion (option, state) 
 {
-    elemGameQuestion2PopUp.style.display = 'none';
+    var subQuestionIndex = questionState-1;
 
     if (state == 2) //missed by time
     {
@@ -216,17 +216,22 @@ function answerSubQuestion (state)
     {
         currentPlayerScore -= 0;
 
-        elemAnimationAnswer.style.backgroundColor = 'red';
-        elemAnimationAnswer.querySelector('p').innerHTML = "EQUIVOCADO!";
-        playAnimation(elemAnimationAnswer, 2);
+        currentQuestion.subQuestions[subQuestionIndex].markWrong(option);
+        currentQuestion.subQuestions[subQuestionIndex].markCorrect(currentQuestion.subQuestions[subQuestionIndex].correctAnswer, false);
+
+        // elemAnimationAnswer.style.backgroundColor = 'red';
+        // elemAnimationAnswer.querySelector('p').innerHTML = "EQUIVOCADO!";
+        // playAnimation(elemAnimationAnswer, 2);
     }
     else if (state == 0) //right answer
     {
         currentPlayerScore += 10;
 
-        elemAnimationAnswer.style.backgroundColor = 'green';
-        elemAnimationAnswer.querySelector('p').innerHTML = "BIEN HECHO!";
-        playAnimation(elemAnimationAnswer, 2);
+        currentQuestion.subQuestions[subQuestionIndex].markCorrect(option, true);
+
+        // elemAnimationAnswer.style.backgroundColor = 'green';
+        // elemAnimationAnswer.querySelector('p').innerHTML = "BIEN HECHO!";
+        // playAnimation(elemAnimationAnswer, 2);
     }
 
     multipleChoiceDisabled = true;
@@ -235,6 +240,8 @@ function answerSubQuestion (state)
     setTimeout(function() 
     { 
         multipleChoiceDisabled = false;
+        elemSubQuestionCont.style.display = 'none';
+
         if (questionState >= 4) 
         {
             newQuestion();
@@ -244,7 +251,7 @@ function answerSubQuestion (state)
             showSubQuestion(questionState-1);
         }
     }, 
-    2000); 
+    3000); 
 }
 function onClickOption (option) 
 {
@@ -267,11 +274,11 @@ function onClickOption (option)
     {
         if (currentQuestion.subQuestions[questionState-1].correctAnswer == option)
         {
-            answerSubQuestion(0);
+            answerSubQuestion(option, 0);
         }
         else
         {
-            answerSubQuestion(1);
+            answerSubQuestion(option, 1);
         }
     }
 }
