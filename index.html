@@ -32,6 +32,11 @@
      <img src="assets/button-play.svg" alt="">
   </div>  
 </div>
+
+<!-- INTRO ANIMATION -------------------------------------------------------------------------------------------------------------------------------------------------->
+<div class="introAnimation" id="container" style="display: none;">
+
+</div>
   
 <!-- GAME -------------------------------------------------------------------------------------------------------------------------------------------------->
 <div class="game" id="container">
@@ -47,93 +52,95 @@
     </div>
   </div>
 
-<div id="gamePanel">
+  <div id="gamePanel">
 
-  <div id="layoutGame">
+    <div id="layoutGame">
 
-    <div id="question-container">
-      <div id="question-type-a"> <!--QUESTION TYPE A-->
-        <div class="question-header"> 
-          <img src="">
-          <div class="question-profile">
-            <h3> ladiaria </h3>
-            <p> ladiaria.com </p>
+      <div id="question-container">
+        <div id="question-type-a"> <!--QUESTION TYPE A-->
+          <div class="question-header"> 
+            <img src="">
+            <div class="question-profile">
+              <h3> ladiaria </h3>
+              <p> ladiaria.com </p>
+            </div>
+          </div>
+          <div class="question-content">
+            <div class="question-image">
+              <img src="" alt="">
+              <p> ladiaria.com </p>
+            </div>
+            <div class="question-body">
+              <h3> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibamet, consectetuer adipiscing elit, sed diam nonummy nibmmy nibamet. </h3>
+              <p> 
+                Adipiscing elit, sed diam nonummy nibh Lorem ipsum dolor  amet, consectetuer adisum dolor
+                sit amet, consectetuer adipiscing elit, sed diam nonummy nibiam nonummy nibh Lorem ipsum dolor  amet, consectetuer adipiscing elit, sedpsum dolor
+                sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.
+              </p>
+            </div>
           </div>
         </div>
-        <div class="question-content">
-          <div class="question-image">
-            <img src="" alt="">
-            <p> ladiaria.com </p>
-          </div>
-          <div class="question-body">
-            <h3> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibamet, consectetuer adipiscing elit, sed diam nonummy nibmmy nibamet. </h3>
-            <p> 
-              Adipiscing elit, sed diam nonummy nibh Lorem ipsum dolor  amet, consectetuer adisum dolor
-              sit amet, consectetuer adipiscing elit, sed diam nonummy nibiam nonummy nibh Lorem ipsum dolor  amet, consectetuer adipiscing elit, sedpsum dolor
-              sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.
+      </div>
+
+      <div class="game" id="multipleChoice">
+        <button class="option" id="option1" onclick="onClickButtonOption(0)">
+          <img src="assets/button-back-orange.svg" style="position: absolute; width: 100%; height: 100%;">
+          <img src="assets/label-fake.svg" style="position: absolute; width: 100%; height: 34%;">
+        </button>
+        <button class="option" id="option2" onclick="onClickButtonOption(1)">
+          <img src="assets/button-back-blue.svg" style="position: absolute; width: 100%; height: 100%;">
+          <img src="assets/label-sus.svg" style="position: absolute; width: 100%; height: 43%; bottom: 31%;">
+        </button>
+        <button class="option" id="option3" onclick="onClickButtonOption(2)">
+          <img src="assets/button-back-green.svg" style="position: absolute; width: 100%; height: 100%;">
+          <img src="assets/label-true.svg" style="position: absolute; width: 100%; height: 33%;">
+        </button>
+      </div>
+
+    </div>
+
+    <div id="subQuestions">
+      <div id="subQuestions-container">
+        <div id="subQuestions-header">
+          <h3>
+            ¿bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla?bla bla bla bla bla?
+          </h3>
+        </div>
+        <div id="subQuestions-options">
+          <button class="option2" id="option2-1" onclick="onClickButtonOption(0)">
+            <div class="wrong-answer-circle"> <img src="assets/circle-orange.svg"> <img src="assets/cross.svg"> </div>
+            <p class="center">  
+            Opcion 1 blah 
             </p>
-          </div>
+          </button>
+          <button class="option2" id="option2-2" onclick="onClickButtonOption(1)">
+            <div class="wrong-answer-circle"> <img src="assets/circle-orange.svg"> <img src="assets/cross.svg"> </div>
+            <p class="center"> 
+            Opcion 1 blah 
+            </p>
+          </button>
+          <button class="option2" id="option2-3" onclick="onClickButtonOption(2)">
+            <div class="wrong-answer-circle"> <img src="assets/circle-orange.svg"> <img src="assets/cross.svg"> </div>
+            <p class="center"> 
+            Opcion 1 blah 
+            </p>
+          </button>
         </div>
       </div>
     </div>
-
-    <div class="game" id="multipleChoice">
-      <button class="option" id="option1" onclick="onClickButtonOption(0)">
-        <img src="assets/button-back-orange.svg" style="position: absolute; width: 100%; height: 100%;">
-        <img src="assets/label-fake.svg" style="position: absolute; width: 100%; height: 34%;">
-      </button>
-      <button class="option" id="option2" onclick="onClickButtonOption(1)">
-        <img src="assets/button-back-blue.svg" style="position: absolute; width: 100%; height: 100%;">
-        <img src="assets/label-sus.svg" style="position: absolute; width: 100%; height: 43%; bottom: 31%;">
-      </button>
-      <button class="option" id="option3" onclick="onClickButtonOption(2)">
-        <img src="assets/button-back-green.svg" style="position: absolute; width: 100%; height: 100%;">
-        <img src="assets/label-true.svg" style="position: absolute; width: 100%; height: 33%;">
-      </button>
-    </div>
-
   </div>
 
-  <div id="subQuestions">
-    <div id="subQuestions-container">
-      <div id="subQuestions-header">
-        <h3>
-          ¿bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla?bla bla bla bla bla?
-        </h3>
-      </div>
-      <div id="subQuestions-options">
-        <button class="option2" id="option2-1" onclick="onClickButtonOption(0)">
-          <div class="wrong-answer-circle"> <img src="assets/circle-orange.svg"> <img src="assets/cross.svg"> </div>
-          <p class="center">  
-          Opcion 1 blah 
-          </p>
-        </button>
-        <button class="option2" id="option2-2" onclick="onClickButtonOption(1)">
-          <div class="wrong-answer-circle"> <img src="assets/circle-orange.svg"> <img src="assets/cross.svg"> </div>
-          <p class="center"> 
-          Opcion 1 blah 
-          </p>
-        </button>
-        <button class="option2" id="option2-3" onclick="onClickButtonOption(2)">
-          <div class="wrong-answer-circle"> <img src="assets/circle-orange.svg"> <img src="assets/cross.svg"> </div>
-          <p class="center"> 
-          Opcion 1 blah 
-          </p>
-        </button>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-
-  <!-- Answer animation --->
+    <!-- Answer animation --->
   <div class="animation" id="answerAnim">
-    <p> Bien Hecho! </p>
+      <p> Bien Hecho! </p>
   </div>
   
 </div>
 
+<!-- ENDSCREEN -------------------------------------------------------------------------------------------------------------------------------------------------->
+<div class="endScreen" id="container" style="display: none;">
+
+</div>
 
 <!--DEBUG ------------------------------------------------------------------------------------------------------------------------------------------->
 <div class="debugBar">
@@ -144,8 +151,12 @@
 
 <script src="config.js"></script>
 <script src="utils.js"></script>
-<script src="question-type-a.js"></script>
-<script src="sub-question.js"></script>
+
+<script src="game/question-type-a.js"></script>
+<script src="game/sub-question.js"></script>
+<script src="game/game.js"></script>
+
+<script src="titleScreen.js" defer></script>
 
 <script src="main.js" defer></script>
 

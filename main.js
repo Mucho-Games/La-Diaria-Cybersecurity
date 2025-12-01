@@ -1,56 +1,23 @@
-var aspectRatio = 0.0;
 var deltaTime = 0;
 var lastTimeUpdate = 0;
 var initialized = false;
-var questionState = -1;
-var currentView = 0;
+var currentUpdate = null;
+var aspectRatio = 0.0;
 
-//GAME VARS
 var questionBank = [];
-
-var currentQuestion;
-var currentQuestionsAmount = 0;
-var currentPlayerScore = 0;
-
-var multipleChoiceDisabled = false;
-
-//DOM ELEMENTS--------------------------------------------
-var elemRoot;
-var elemGameContainer;
-
-//HUD Elements
-var elemGameHUDCont;
-var elemPlayerScore;
-var elemScoreIcon;
-
-//Question Elements
-var elemQuestionCont;
-var elemMultipleChoiceCont;
-var elemSubQuestionCont;
-
-var elemAnimationAnswer;
-
-//DEBUG VARS
-var elementDebugFPS;
-var elemDebugAspectRatio;
-//DOM ELEMENTS--------------------------------------------
-
-//RUN UPDATE
-const currentUpdate = setInterval(update, 1000.0/fps);
-
-window.onClickOption = onClickOption;
 
 // INITIALIZE GAME
 document.addEventListener("DOMContentLoaded", initialize);
-document.addEventListener('click', onClick);
-document.addEventListener('mousemove', e => eyesFollowMouse(e.clientX, e.clientY));
 
+document.addEventListener('click', onClickAnywhere);
+
+//RESPONSIVE 
 let resizeTimeout;
 window.addEventListener("resize", () => {
     if (resizeTimeout) {
         cancelAnimationFrame(resizeTimeout);
     }
-    resizeTimeout = requestAnimationFrame(adjustElementSize);
+    resizeTimeout = requestAnimationFrame(onScreenSizeChange);
 });
 
 async function initialize () 
@@ -76,11 +43,14 @@ async function initialize ()
     elemPlayerScore = document.querySelector("#hud > #score > p");
     elemAnimationAnswer = document.querySelector('#answerAnim');
 
-    setView(0);
+    setView('titleScreen');
 
     await loadQuestions();
 
     initialized = true;
+
+    //RUN UPDATE
+    currentUpdate = setInterval(update, 1000.0/fps);
 }
 
 async function loadQuestions() {
@@ -129,22 +99,10 @@ async function loadQuestions() {
     }
 }
 
-function startGame () {
-    setView(1);
-    newQuestion();
-}
-
 function update() 
 {
-    if (!initialized) return;
-
     deltaTime = (performance.now() - lastTimeUpdate) * 0.001;
     lastTimeUpdate = performance.now();
-
-    if (currentView == 1) 
-    {
-        elemPlayerScore.innerHTML = "0"+currentQuestionsAmount;
-    }
 
     if (debug)
     {
@@ -153,150 +111,29 @@ function update()
     }
 }
 
-function answerQuestion (state) 
-{
-
-    if (state == 2) //missed by time
-    {
-        currentPlayerScore -= 20;
-    }
-    else if (state == 1) //wrong answer
-    {
-        currentPlayerScore -= 10;
-
-        elemAnimationAnswer.style.backgroundColor = 'red';
-        elemAnimationAnswer.querySelector('p').innerHTML = "EQUIVOCADO!";
-        playAnimation(elemAnimationAnswer, 2);
-    }
-    else if (state == 0) //right answer
-    {
-        currentPlayerScore += 30;
-
-        elemAnimationAnswer.style.backgroundColor = 'green';
-        elemAnimationAnswer.querySelector('p').innerHTML = "BIEN HECHO!";
-        playAnimation(elemAnimationAnswer, 2);
-    }
-
-    multipleChoiceDisabled = true;
-    questionState++;
-
-    setTimeout(function() 
-    { 
-        multipleChoiceDisabled = false;
-        showSubQuestion(questionState-1);
-    }, 
-    2000);   
-}
-function newQuestion () 
-{
-    currentQuestion = getRandomElement(questionBank);
-
-    currentQuestion.getDOMElements();
-    currentQuestion.populate();
-
-    questionState = 0;
-    currentQuestionsAmount++;
-}
-function showSubQuestion (index) 
-{
-    elemSubQuestionCont.style.display = 'flex';
-
-    currentQuestion.subQuestions[index].getDOMElements();
-    currentQuestion.subQuestions[index].populate();
-}
-function answerSubQuestion (option, state) 
-{
-    var subQuestionIndex = questionState-1;
-
-    if (state == 2) //missed by time
-    {
-        currentPlayerScore -= 20;
-    }
-    else if (state == 1) //wrong answer
-    {
-        currentPlayerScore -= 0;
-
-        currentQuestion.subQuestions[subQuestionIndex].markWrong(option);
-        currentQuestion.subQuestions[subQuestionIndex].markCorrect(currentQuestion.subQuestions[subQuestionIndex].correctAnswer, false);
-
-        // elemAnimationAnswer.style.backgroundColor = 'red';
-        // elemAnimationAnswer.querySelector('p').innerHTML = "EQUIVOCADO!";
-        // playAnimation(elemAnimationAnswer, 2);
-    }
-    else if (state == 0) //right answer
-    {
-        currentPlayerScore += 10;
-
-        currentQuestion.subQuestions[subQuestionIndex].markCorrect(option, true);
-
-        // elemAnimationAnswer.style.backgroundColor = 'green';
-        // elemAnimationAnswer.querySelector('p').innerHTML = "BIEN HECHO!";
-        // playAnimation(elemAnimationAnswer, 2);
-    }
-
-    multipleChoiceDisabled = true;
-    questionState++;
-
-    setTimeout(function() 
-    { 
-        multipleChoiceDisabled = false;
-        elemSubQuestionCont.style.display = 'none';
-
-        if (questionState >= 4) 
-        {
-            newQuestion();
-        }
-        else
-        {
-            showSubQuestion(questionState-1);
-        }
-    }, 
-    3000); 
-}
-function onClickOption (option) 
-{
-    console.log("Clicked option: " + option);
-
-    if (!currentQuestion || multipleChoiceDisabled) return;
-
-    if (questionState == 0) //On main question
-    {
-        if (currentQuestion.correctAnswer == option) 
-        {
-            answerQuestion(0);
-        }
-        else
-        {
-            answerQuestion(1);
-        }
-    }
-    else if (questionState > 0) //On second instance of question
-    {
-        if (currentQuestion.subQuestions[questionState-1].correctAnswer == option)
-        {
-            answerSubQuestion(option, 0);
-        }
-        else
-        {
-            answerSubQuestion(option, 1);
-        }
-    }
-}
 function setView (newView) 
 {
     console.log("Setting new view: " + newView);
 
-    currentView = newView;
+    for (var i = views.length - 1; i >= 0; i--) 
+    {
+        if (views[i] == newView) {
+        	currentView = i;
+        	break;
+        }
+    }
 
-    for (var i = views.length - 1; i >= 0; i--) {
+    for (var i = views.length - 1; i >= 0; i--) 
+    {
         var viewGrid = document.querySelector(`.${views[i]}#container`);
         viewGrid.style.display = i == currentView ? `flex` : `none`;
     }
 
-    elemRoot.style.backgroundColor = currentView == 0 ? 'var(--color-green)' : 'var(--color-blue)';
+    elemRoot.style.backgroundColor = `var(${viewsColors[currentView]})`;
 
-    adjustElementSize();
+    onScreenSizeChange();
 }
+
 function playAnimation (animElement, duration) 
 {
     animElement.style.display = 'inline';
@@ -304,25 +141,13 @@ function playAnimation (animElement, duration)
 }
 
 
-function eyesFollowMouse (mousePosX, mousePosY) 
+function onClickAnywhere () 
 {
-    if (!initialized) return;
-    if (currentView != 0) return;
-
-    var eyesCenters = document.querySelectorAll('.titleScreen#header .eye');
-    var eyes = document.querySelectorAll('.titleScreen#header .eye img');
-
-    for (var i = eyesCenters.length - 1; i >= 0; i--) {
-        var pos = getElementScreenPosition(eyesCenters[i]);
-        var delta = {x: mousePosX - pos.x, y: mousePosY - pos.y};
-        var dir = normalize(delta.x, delta.y);
-
-        eyes[i].style.transform = `translate(${40 * dir.x}%,${40 * dir.y}%)`;
-    }
-    // console.log(eyes);
+    if (currentView == 0)
+        setView('introAnimation');
 }
 
-function adjustElementSize() 
+function onScreenSizeChange() 
 {
     aspectRatio = window.innerWidth / window.innerHeight;
 
@@ -374,10 +199,4 @@ function adjustElementSize()
         var buttonPlay = document.querySelector('.titleScreen#buttonPlay');
         buttonPlay.style.height = `${document.querySelector('.titleScreen#header').offsetHeight}px`;
     }
-}
-
-function onClick () 
-{
-    if (currentView == 0)
-        startGame();
 }
