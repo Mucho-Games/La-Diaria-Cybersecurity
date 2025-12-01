@@ -6,6 +6,8 @@ var aspectRatio = 0.0;
 
 var questionBank = [];
 
+var updateSubscribers = [];
+
 // INITIALIZE GAME
 document.addEventListener("DOMContentLoaded", initialize);
 
@@ -103,12 +105,23 @@ function update()
 {
     deltaTime = (performance.now() - lastTimeUpdate) * 0.001;
     lastTimeUpdate = performance.now();
+    
+	updateSubscribers.forEach(fn => fn(deltaTime));
 
     if (debug)
     {
         elementDebugFPS.innerHTML = 'FPS: ' + truncate(1/deltaTime, 1);
         elemDebugAspectRatio.innerHTML = 'ASPECT RATIO: ' + truncate(aspectRatio, 2);
     }
+}
+
+function subscribe(fn) {
+    updateSubscribers.push(fn);
+}
+
+function unsubscribe(fn) {
+    const index = updateSubscribers.indexOf(fn);
+    if (index !== -1) updateSubscribers.splice(index, 1);
 }
 
 function setView (newView) 
@@ -144,7 +157,7 @@ function playAnimation (animElement, duration)
 function onClickAnywhere () 
 {
     if (currentView == 0)
-        setView('introAnimation');
+        showIntroAnimation();
 }
 
 function onScreenSizeChange() 
@@ -156,7 +169,7 @@ function onScreenSizeChange()
     var pageWidth = document.body.clientWidth;
 
     var main = document.querySelector(`.${views[currentView]}#container`);
-    var widthMultiplier = currentView == 0 ? 1.5 : 1; //title screen is wider
+    var widthMultiplier = currentView <= 1 ? 1.7 : 1; //title screen is wider
 
     var width = 0; //declaring this var here to be read and written all over the function execution and only here
     var height = 0; //declaring this var here to be read and written all over the function execution and only here

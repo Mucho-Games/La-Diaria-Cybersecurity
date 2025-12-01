@@ -34,8 +34,41 @@
 </div>
 
 <!-- INTRO ANIMATION -------------------------------------------------------------------------------------------------------------------------------------------------->
-<div class="introAnimation" id="container" style="display: none;">
-
+<div class="introAnimation" id="container" style="display: none;"> <!--viewport-->
+  <div> <!--container-->
+    <div class="dialogueBoxes"> <!--dialogue boxes-->
+      <div class="characterDialogueBox" id="characterDialogueBoxDuck01">
+        <p>No lo sé, Ro... parece <b>falso</b></p>
+        <img src="assets/text-box-bottom-yellow-left.svg" style="left: 15%;">
+      </div>
+      <div class="characterDialogueBox" id="characterDialogueBoxDog01" style="background-color: var(--color-white);">
+        <p>A mí me huele a gato encerrado</p>
+        <img src="assets/text-box-bottom-white-right.svg" style="right: 15%;">
+      </div>
+      <div class="characterDialogueBox" id="characterDialogueBoxCat01">
+        <p style="font-weight: 900;">¡hey!</p>
+        <img src="assets/text-box-bottom-yellow-right.svg" style="right: 30%;">
+      </div>
+    </div> <!--END dialogue boxes-->
+    <div class="characters"> <!--characters-->
+      <div id="introCharactersLeft" style="width: 50%; height: 100%; display: flex; flex-direction: row; align-items: center;">
+        <div class="character" id="duck"> 
+          <img src="assets/personaje-pato.png">
+          <div class="characterBackground"></div>      
+        </div>
+      </div>
+      <div id="introCharactersRight" style="width: 50%; height: 100%; display: flex; flex-direction: row-reverse; align-items: center; gap: 2.5em;">
+        <div class="character" id="cat"> 
+          <img src="assets/personaje-gato.png" style="left: -59.8%; width: 210%; top: 2%;">
+          <div class="characterBackground" style="background-color: var(--color-orange);"></div>      
+        </div>
+        <div class="character" id="dog" style="width: 230px; border-radius: 90px;"> 
+          <img src="assets/personaje-perro.png" style="left: -10%; top: 10%;">
+          <div class="characterBackground" style="background-color: var(--color-blue);"></div>      
+        </div>
+      </div>
+    </div> <!--END characters-->  
+  </div>
 </div>
   
 <!-- GAME -------------------------------------------------------------------------------------------------------------------------------------------------->
@@ -157,6 +190,7 @@
 <script src="game/game.js"></script>
 
 <script src="titleScreen.js" defer></script>
+<script src="introAnimation.js" defer></script>
 
 <script src="main.js" defer></script>
 

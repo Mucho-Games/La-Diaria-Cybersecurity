@@ -6,12 +6,12 @@ html, body
   --bounce-ease: cubic-bezier(0.68, -0.55, 0.27, 1.55);
 
   /*COLORS */
-  --color-olive: #434113;
-  --color-green: #39d32f;
-  --color-yellow: #fff749;
-  --color-orange: #ff6e10;
-  --color-blue: #0388f0;
-  --color-white: #fffcd7;
+  --color-olive: #434106;
+  --color-green: #00D700;
+  --color-yellow: #FFF600;
+  --color-orange: #FF6100;
+  --color-blue: #008BF8;
+  --color-white: #FFFCD7;
 
   --round-corners: 30px;
   --game-layout-margin: 0.4em;
@@ -26,6 +26,9 @@ html, body
 p 
 {
   font-family: Karla;
+}
+b {
+    font-weight: 900;
 }
 .root 
 {
@@ -123,6 +126,99 @@ p
   width: auto;
   height: 100%;
   display: block;
+}
+/* INTRO ANIMATION -----------------------------------------------------------*/
+.introAnimation#container 
+{
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8%;
+}
+
+.introAnimation > div:nth-of-type(1)
+{
+  position: relative;
+  width: 100%;
+  height: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.introAnimation .dialogueBoxes
+{
+  position: relative;
+  width: 100%;
+  height: 40%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5em;
+}
+.introAnimation .characterDialogueBox 
+{
+  position: relative;
+  background-color: var(--color-yellow);
+  border-radius: 50px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.introAnimation .characterDialogueBox p 
+{
+  margin-left: 3em;
+  margin-right: 3em;
+  font-size: var(--font-size-header );
+  color: var(--color-olive);
+}
+.introAnimation .characterDialogueBox img
+{
+  position: absolute;
+  height: 30px;
+  bottom: -30px;
+}
+.introAnimation .characters
+{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.introAnimation .character
+{
+  position: relative;
+  height: 100%;
+  width: 170px;
+  border-radius: 170px;
+  overflow: hidden;
+}
+.introAnimation .character img 
+{
+  position: absolute;
+  z-index: 100;
+  width: 130%;
+  top: 0%;
+}
+.introAnimation .characterBackground 
+{
+  position: absolute;
+  width: 100%;
+  height: 170px;
+  background-color: var(--color-white);
+  border-radius: 170px;
+  bottom: 0px;
 }
 /* GAME -----------------------------------------------------------*/
 .game#container 
