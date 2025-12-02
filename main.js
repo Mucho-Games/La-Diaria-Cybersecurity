@@ -3,6 +3,7 @@ var lastTimeUpdate = 0;
 var initialized = false;
 var currentUpdate = null;
 var aspectRatio = 0.0;
+var landscape = true;
 
 var questionBank = [];
 
@@ -171,7 +172,7 @@ function onScreenSizeChange()
     var width = 0; //declaring this var here to be read and written all over the function execution and only here
     var height = 0; //declaring this var here to be read and written all over the function execution and only here
 
-    var landscape = aspectRatio >= thresholdRatio;
+    landscape = aspectRatio >= thresholdRatio;
 
     if (landscape) /*LAND MODE---------------------*/
     {
@@ -249,7 +250,11 @@ function onScreenSizeChange()
     }
     else if (currentView == 1)
     {
-        
+        var containerLand = document.querySelector(`.introAnimation .landScape`); 
+        var containerPortrait = document.querySelector(`.introAnimation .portrait`); 
+
+        containerLand.style.display = landscape ? 'flex' : 'none';
+        containerPortrait.style.display = landscape ? 'none' : 'flex';
     }
     else if (currentView == 2)
     {

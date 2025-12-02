@@ -35,40 +35,75 @@
 
 <!-- INTRO ANIMATION -------------------------------------------------------------------------------------------------------------------------------------------------->
 <div class="introAnimation" id="container" style="display: none;"> <!--viewport-->
-  <div> <!--container-->
+  <div class="landScape"> <!--container LAND-->
     <div class="dialogueBoxes"> <!--dialogue boxes-->
-      <div class="characterDialogueBox" id="characterDialogueBoxDuck01">
+      <div class="characterDialogueBox" id="characterDialogueBoxDuck01-landScape">
         <p>No lo sé, Ro... parece <b>falso</b></p>
         <img src="assets/text-box-bottom-yellow-left.svg" style="left: 15%;">
       </div>
-      <div class="characterDialogueBox" id="characterDialogueBoxDog01" style="background-color: var(--color-white);">
+      <div class="characterDialogueBox" id="characterDialogueBoxDog01-landScape" style="background-color: var(--color-white);">
         <p>A mí me huele a gato encerrado</p>
         <img src="assets/text-box-bottom-white-right.svg" style="right: 15%;">
       </div>
-      <div class="characterDialogueBox" id="characterDialogueBoxCat01">
+      <div class="characterDialogueBox" id="characterDialogueBoxCat01-landScape">
         <p style="font-weight: 900;">¡hey!</p>
         <img src="assets/text-box-bottom-yellow-right.svg" style="right: 30%;">
       </div>
     </div> <!--END dialogue boxes-->
     <div class="characters"> <!--characters-->
       <div id="introCharactersLeft" style="width: 50%; height: 100%; display: flex; flex-direction: row; align-items: center;">
-        <div class="character" id="duck"> 
+        <div class="character" id="duck-landScape"> 
           <img src="assets/personaje-pato.png">
           <div class="characterBackground"></div>      
         </div>
       </div>
       <div id="introCharactersRight" style="width: 50%; height: 100%; display: flex; flex-direction: row-reverse; align-items: center; gap: 2.5em;">
-        <div class="character" id="cat"> 
+        <div class="character" id="cat-landScape"> 
           <img src="assets/personaje-gato.png" style="left: -59.8%; width: 210%; top: 2%;">
           <div class="characterBackground" style="background-color: var(--color-orange);"></div>      
         </div>
-        <div class="character" id="dog" style="width: 230px; border-radius: 90px;"> 
+        <div class="character" id="dog-landScape" style="width: 230px; border-radius: 90px;"> 
           <img src="assets/personaje-perro.png" style="left: -10%; top: 10%;">
           <div class="characterBackground" style="background-color: var(--color-blue);"></div>      
         </div>
       </div>
     </div> <!--END characters-->  
-  </div>
+  </div>  <!--END LAND-->  
+
+  <div class="portrait"> <!--container PORTRAIT-->
+    <div class="line">
+      <div class="character" id="duck-portrait"> 
+        <img src="assets/personaje-pato.png" style="top: 20%">
+        <div class="characterBackground"></div>      
+      </div>
+      <div class="characterDialogueBox" id="characterDialogueBoxDuck01-portrait">
+        <p>No lo sé, Ro... parece <b>falso</b></p>
+        <img src="assets/text-box-bottom-yellow-left.svg" style="left: 15%;">
+      </div>
+    </div>
+
+    <div class="line">
+      <div class="character" id="dog-portrait" style="right: 0px; left: auto;"> 
+        <img src="assets/personaje-perro.png" style="left: -22%;top: 22%;width: 160%;">
+        <div class="characterBackground" style="background-color: var(--color-blue);"></div>      
+      </div>
+      <div class="characterDialogueBox" id="characterDialogueBoxDog01-portrait" style="background-color: var(--color-white); right: auto; left: 0px;">
+        <p>A mí me huele a gato encerrado</p>
+        <img src="assets/text-box-bottom-white-right.svg" style="right: 15%;">
+      </div>
+    </div>
+
+    <div class="line">
+      <div class="character" id="cat-portrait"> 
+        <img src="assets/personaje-gato.png" style="left: -59.8%; width: 210%; top: 2%;">
+        <div class="characterBackground" style="background-color: var(--color-orange);"></div>      
+      </div>
+      <div class="characterDialogueBox" id="characterDialogueBoxCat01-portrait" style="left: 33%; right: auto;">
+        <p style="font-weight: 900;">¡hey!</p>
+        <img src="assets/text-box-bottom-yellow-left.svg" style="right: 30%;">
+      </div>
+    </div>
+  </div>  <!--END PORTRAIT-->  
 </div>
   
 <!-- GAME -------------------------------------------------------------------------------------------------------------------------------------------------->

@@ -14,23 +14,26 @@ var elemCharacterCat;
 var introAnimationTime = 0;
 var dialogueTexts = [];
 
+
 function showIntroAnimation () 
 {
 	setView('introAnimation');
 	subscribe(introAnimation)
 
-	elemDialogueBoxDuck = document.getElementById('characterDialogueBoxDuck01');
-	elemDialogueBoxDog = document.getElementById('characterDialogueBoxDog01');
-	elemDialogueBoxCat = document.getElementById('characterDialogueBoxCat01');
+	var suffix = landscape ?  'landScape' : 'portrait';
 
-	elemDialogueText = document.querySelectorAll('.introAnimation .characterDialogueBox p');
+	elemDialogueBoxDuck = document.getElementById('characterDialogueBoxDuck01-'+suffix);
+	elemDialogueBoxDog = document.getElementById('characterDialogueBoxDog01-'+suffix);
+	elemDialogueBoxCat = document.getElementById('characterDialogueBoxCat01-'+suffix);
+
+	elemDialogueText = document.querySelectorAll('.introAnimation .'+suffix+ ' .characterDialogueBox p');
 
 	elemCharactersLeft = document.getElementById('introCharactersLeft');
 	elemCharactersRight = document.getElementById('introCharactersRight');
 
-	elemCharacterDuck = document.getElementById('duck');
-	elemCharacterDog = document.getElementById('dog');
-	elemCharacterCat = document.getElementById('cat');
+	elemCharacterDuck = document.getElementById('duck-'+suffix);
+	elemCharacterDog = document.getElementById('dog-'+suffix);
+	elemCharacterCat = document.getElementById('cat-'+suffix);
 
 	for (var i = 0; i < elemDialogueText.length; i++) {
 		dialogueTexts.push(elemDialogueText[i].innerHTML);
@@ -42,6 +45,7 @@ function showIntroAnimation ()
 	elemDialogueBoxCat.style.display = 'none';
 	elemCharactersRight.style.display = 'none';
 	elemCharacterCat.style.display = 'none';
+	elemCharacterDog.style.display = 'none';
 
 	new Dialogue(elemDialogueText[0], dialogueTexts[0]);
 }
@@ -53,6 +57,7 @@ function introAnimation (deltaTime)
 	{
 		elemDialogueBoxDog.style.display = 'flex';
 		elemCharactersRight.style.display = 'flex';
+		elemCharacterDog.style.display = 'flex';
 		new Dialogue(elemDialogueText[1], dialogueTexts[1]);
 	}
 	if (introAnimationTime > 4 && elemDialogueBoxCat.style.display == 'none') 
@@ -62,7 +67,7 @@ function introAnimation (deltaTime)
 		new Dialogue(elemDialogueText[2], dialogueTexts[2]);
 	}
 	if (introAnimationTime > 7) {
-		//startGame();
+		startGame();
 		unsubscribe(introAnimation);
 	}
 }

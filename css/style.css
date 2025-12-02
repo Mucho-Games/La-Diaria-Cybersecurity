@@ -141,7 +141,7 @@ b {
   gap: 8%;
 }
 
-.introAnimation > div:nth-of-type(1)
+.introAnimation .landScape
 {
   position: relative;
   width: 100%;
@@ -151,8 +151,24 @@ b {
   justify-content: space-around;
   align-items: center;
 }
+.introAnimation .portrait
+{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 90%;
+  height: 100%;
+  gap: 12%;
+}
 
-.introAnimation .dialogueBoxes
+.introAnimation .line
+{
+  height: 25%;
+  position: relative;
+}
+
+.introAnimation .landScape .dialogueBoxes
 {
   position: relative;
   width: 100%;
@@ -163,7 +179,8 @@ b {
   align-items: center;
   gap: 1.5em;
 }
-.introAnimation .characterDialogueBox 
+
+.introAnimation .landScape .characterDialogueBox 
 {
   position: relative;
   background-color: var(--color-yellow);
@@ -173,10 +190,29 @@ b {
   flex-direction: column;
   justify-content: center;
 }
+.introAnimation .portrait .characterDialogueBox
+{
+  position: absolute;
+  background-color: var(--color-yellow);
+  border-radius: 50px;
+  height: 29%;
+  right: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .introAnimation .characterDialogueBox p 
 {
   margin-left: 3em;
   margin-right: 3em;
+  font-size: var(--font-size-header );
+  color: var(--color-olive);
+}
+.introAnimation .portrait .characterDialogueBox p 
+{
+  margin-left: 2em;
+  margin-right: 2em;
   font-size: var(--font-size-header );
   color: var(--color-olive);
 }
@@ -186,7 +222,8 @@ b {
   height: 30px;
   bottom: -30px;
 }
-.introAnimation .characters
+
+.introAnimation .landScape .characters
 {
   position: relative;
   width: 100%;
@@ -196,7 +233,8 @@ b {
   justify-content: space-around;
   align-items: center;
 }
-.introAnimation .character
+
+.introAnimation .landScape .character
 {
   position: relative;
   height: 100%;
@@ -204,6 +242,15 @@ b {
   border-radius: 170px;
   overflow: hidden;
 }
+.introAnimation .portrait .character
+{
+  position: absolute;
+  height: 100%;
+  width: 160px;
+  border-radius: 160px;
+  overflow: hidden;
+}
+
 .introAnimation .character img 
 {
   position: absolute;
@@ -211,13 +258,22 @@ b {
   width: 130%;
   top: 0%;
 }
-.introAnimation .characterBackground 
+.introAnimation .landScape .characterBackground 
 {
   position: absolute;
   width: 100%;
   height: 170px;
   background-color: var(--color-white);
   border-radius: 170px;
+  bottom: 0px;
+}
+.introAnimation .portrait .characterBackground 
+{
+  position: absolute;
+  width: 100%;
+  height: 160px;
+  background-color: var(--color-white);
+  border-radius: 160px;
   bottom: 0px;
 }
 /* GAME -----------------------------------------------------------*/
