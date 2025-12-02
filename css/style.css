@@ -60,7 +60,7 @@ b {
 /* TITLE SCREEN -----------------------------------------------------------*/
 .titleScreen#container 
 {
-  position: relative;
+  position: absolute;
 	width: 100%;
 	height: 100%;
 
@@ -130,7 +130,7 @@ b {
 /* INTRO ANIMATION -----------------------------------------------------------*/
 .introAnimation#container 
 {
-  position: relative;
+  position: absolute;
   width: 100%;
   height: 100%;
 
@@ -223,7 +223,7 @@ b {
 /* GAME -----------------------------------------------------------*/
 .game#container 
 {
-  position: relative;
+  position: absolute;
 
 	display: flex;
   flex-direction: column;

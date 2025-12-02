@@ -62,7 +62,7 @@ function introAnimation (deltaTime)
 		new Dialogue(elemDialogueText[2], dialogueTexts[2]);
 	}
 	if (introAnimationTime > 7) {
-		startGame();
+		//startGame();
 		unsubscribe(introAnimation);
 	}
 }

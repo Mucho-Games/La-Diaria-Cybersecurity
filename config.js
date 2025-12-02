@@ -5,3 +5,5 @@ const maxPortraitAspectRatio = 10/16;
 const debug = false;
 const views = ["titleScreen", "introAnimation", "game", "endScreen"];
 const viewsColors = ["--color-green", "--color-green", "--color-blue", "--color-orange"];
+const viewsRefResolutions = [[1100, 910], [1100, 910], [670, 910]];
+const viewsRefResolutionsPortrait = [[910, 910], [550, 910], [550, 910]];

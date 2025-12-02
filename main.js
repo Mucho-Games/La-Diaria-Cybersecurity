@@ -164,52 +164,99 @@ function onScreenSizeChange()
 {
     aspectRatio = window.innerWidth / window.innerHeight;
 
-    const thresholdRatio = 0.62; //added a little padding to avoid small gaps on layout at the borders
+    const thresholdRatio = 0.75; //added a little padding to avoid small gaps on layout at the borders
 
-    var pageWidth = document.body.clientWidth;
-
-    var main = document.querySelector(`.${views[currentView]}#container`);
-    var widthMultiplier = currentView <= 1 ? 1.7 : 1; //title screen is wider
+    var view = document.querySelector(`.${views[currentView]}#container`);
 
     var width = 0; //declaring this var here to be read and written all over the function execution and only here
     var height = 0; //declaring this var here to be read and written all over the function execution and only here
 
-    var maxWidth = window.innerWidth - 60;
+    var landscape = aspectRatio >= thresholdRatio;
 
-    if (aspectRatio >= thresholdRatio) /*LAND MODE---------------------*/
+    if (landscape) /*LAND MODE---------------------*/
     {
-        console.log("On Land mode");
+        var windowWidth = window.innerWidth - 80;
+        var windowHeight = window.innerHeight - 60;
 
-        width = clamp(window.innerHeight * maxLandAspectRatio * widthMultiplier, 0, maxWidth); 
+        var viewRefSize = viewsRefResolutions[currentView];
+        var viewScalingWidth = 1;
+        var viewScalingHeight = 1;
+        var viewFinalScaling = 1;
 
-        main.style.height = '95%';
-        main.style.width = `${width}px`;
-        main.style.bottom = '2.5%'
 
+        viewScalingWidth = (windowWidth / viewRefSize[0]);
+        viewScalingHeight = (windowHeight / viewRefSize[1]);
+
+        if (viewScalingWidth < viewScalingHeight) 
+        { 
+            viewFinalScaling = viewScalingWidth;
+            //view.style.backgroundColor = 'blue';
+        }
+        else 
+        {
+            viewFinalScaling = viewScalingHeight;
+            //view.style.backgroundColor = 'red';
+        }
+
+        view.style.height = `${viewRefSize[1]}px`;
+        view.style.width = `${viewRefSize[0]}px`;
+        view.style.transformOrigin = 'bottom center'
+        view.style.transform = `scale(${viewFinalScaling})`;
+
+        var bottom = (window.innerHeight - (viewRefSize[1] * viewFinalScaling)) / 2;
+        view.style.bottom  = `${bottom}px`;
     } 
     else /*PORTRAIT MODE---------------------*/
     {
-        console.log("On Portrait mode");
+        var windowWidth = window.innerWidth - 30;
+        var windowHeight = window.innerHeight - 60;
 
-        height = main.clientWidth / maxPortraitAspectRatio;
-        main.style.height = `${height}px`;
-        main.style.width = currentView == 0 ? '85%' : '95%';
-        main.style.bottom = `${((window.innerHeight - height) / 2)}px`;
+        var viewRefSize = viewsRefResolutionsPortrait[currentView];
+        var viewScalingWidth = 1;
+        var viewScalingHeight = 1;
+        var viewFinalScaling = 1;
+
+        viewScalingWidth = (windowWidth / viewRefSize[0]);
+        viewScalingHeight = (windowHeight / viewRefSize[1]);
+
+        if (viewScalingWidth < viewScalingHeight) 
+        { 
+            viewFinalScaling = viewScalingWidth;
+            //view.style.backgroundColor = 'blue';
+        }
+        else 
+        {
+            viewFinalScaling = viewScalingHeight;
+            //view.style.backgroundColor = 'red';
+        }
+
+        view.style.height = `${viewRefSize[1]}px`;
+        view.style.width = `${viewRefSize[0]}px`;
+        view.style.transformOrigin = 'bottom center'
+        view.style.transform = `scale(${viewFinalScaling})`;
+
+        var bottom = (window.innerHeight - (viewRefSize[1] * viewFinalScaling)) / 2;
+        view.style.bottom  = `${bottom}px`;
     }
 
-    if (initialized) 
-    {
-        // elemQuestionCont.style.width = '95%';
-        // elemQuestionCont.style.height = `${(elemQuestionCont.offsetWidth * 0.75)}px`;
-        // elemQuestionCont.style.left  = '2.5%';
-        // elemQuestionCont.style.top  = `${main.offsetWidth * 0.025}px`;
 
-        elemScoreIcon.style.width = `${elemGameHUDCont.offsetHeight * 0.8}px`;
-    }
+    if (!initialized) return; //layouts specifics
 
     if (currentView == 0) //titlescreen layout updates
     {
         var buttonPlay = document.querySelector('.titleScreen#buttonPlay');
         buttonPlay.style.height = `${document.querySelector('.titleScreen#header').offsetHeight}px`;
+    }
+    else if (currentView == 1)
+    {
+        
+    }
+    else if (currentView == 2)
+    {
+        var container = document.querySelector(`.game#container`);
+        container.style.justifyContent = landscape ? 'center' : 'space-around';
+        elemScoreIcon.style.width = `${elemGameHUDCont.offsetHeight * 0.8}px`;
+        var options = document.querySelectorAll(`.game .option`);
+        options.forEach(o => o.style.width = landscape ? '26%' : '30%');
     }
 }
