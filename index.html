@@ -110,13 +110,20 @@
 <div class="game" id="container">
 
   <div id="hud">
+    <div id="score"> 
+      <img src="assets/icon-points.svg" alt="">
+      <p> 000 </p>
+    </div>
     <div id="header"> 
       <img src="assets/logo-alt.svg" alt="">
     </div>
-    <div id="score"> 
+    <div id="level"> 
       <p> 01 </p>
-      <p id="goalScore"> /05 </p>
-      <div id="scoreIcon"> <img src="assets/circle-yellow.svg" alt=""> </div>
+      <p id="goalLevel"> /05 </p>
+      <div class="character-portrait"> 
+        <img src="assets/personaje-pato.png">
+        <div class="characterBackground"></div>      
+      </div>
     </div>
   </div>
 
@@ -208,6 +215,53 @@
 <!-- ENDSCREEN -------------------------------------------------------------------------------------------------------------------------------------------------->
 <div class="endScreen" id="container" style="display: none;">
 
+  <div class="logo">
+    <img src="assets/logo-alt.svg">
+  </div>
+
+  <div id="results">
+    <div class="your-score">
+      <div class="header">
+        <p> Tu puntaje: </p>
+      </div>
+      <div class="final-score">
+        <img src="assets/icon-points.svg">
+        <p> 000 </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialogue">
+
+    <!--DIALOGUE 01-->
+    <div class="character-dialogue" style="height: 100%; width: 25%;">
+      <div class="character-portrait"> 
+        <img src="assets/personaje-perro.png" style="left: -22%;top: 22%;width: 160%;">
+        <div class="characterBackground" style="background-color: var(--color-blue);"></div>      
+      </div>
+
+      <div class="character-bubble" style="background-color: var(--color-white);">
+        <p>¡Bien hecho!</p>
+        <img src="assets/text-box-bottom-white-left.svg" style="right: 20%; bottom: -57%;">
+      </div>
+    </div>
+    <!--DIALOGUE 01-->
+
+    <!--DIALOGUE 02-->
+    <div class="character-dialogue" style="height: 100%; width: 25%;">
+      <div class="character-portrait" style="left: auto; right: 0;"> 
+        <img src="assets/personaje-gato.png" style="left: -32%;top: 22%;width: 160%;">
+        <div class="characterBackground" style="background-color: var(--color-green);"></div>      
+      </div>
+
+      <div class="character-bubble" style="background-color: var(--color-yellow); right: auto; left: 0;">
+        <p>¡Así se hace!</p>
+        <img src="assets/text-box-bottom-yellow-right.svg" style="right: 15%; bottom: -57%;">
+      </div>
+    </div>
+    <!--DIALOGUE 02-->
+
+  </div>
 </div>
 
 <!--DEBUG ------------------------------------------------------------------------------------------------------------------------------------------->

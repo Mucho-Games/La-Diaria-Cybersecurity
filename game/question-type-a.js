@@ -17,7 +17,7 @@ class QuestionTypeA
     	this.footNote = footNote;
     	this.header = header;
     	this.body = body;
-    	this.correctOption = correctOption;
+    	this.correctAnswer = correctOption;
     	this.subQuestions = subQuestions;
     }
 

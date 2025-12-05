@@ -304,50 +304,87 @@ b {
     background-color: var(--color-olive);
     border-radius: var(--round-corners);
 }
-#hud > #header 
+#hud > #score 
 {
-  width: 43%;
+  width: 15%;
   height: 75%;
   display: flex;
-
   padding-left: 4%;
+  align-items: center;
+}
+#hud > #score p
+{
+  font-size: 1.4em;
+  color: var(--color-yellow);
+  font-weight: 800;
+}
+#hud > #score img
+{
+  width: auto;
+  height: 60%;
+  margin-right: 10px;
+}
+#hud > #header 
+{
+  width: 40%;
+  height: 75%;
+  display: flex;
 }
 #hud > #header img
 {
   width: 100%;
   height: auto;
 }
-#hud > #score
+#hud > #level
 {
   height: 100%;
-
+  width: 15%;
   display: flex;
   padding-right: 4%;
   align-items: center;
   flex-direction: row;
   justify-content: center;
 }
-#hud > #score p
+#hud > #level p
 {
   font-size: 1.2em;
   color: var(--color-white);
   font-weight: 800;
 }
-#hud > #score > #goalScore
+#hud > #level > #goalLevel
 {
   color: var(--color-yellow);
+  margin-right: 10px;
 }
-#scoreIcon
+#levelIcon
 {
   padding-left: 10%;
   height: 65%;
   display: flex;
 }
-#hud > #score img
+#level > .character-portrait
 {
-  height: auto;
+  position: relative;
+  height: 70%;
+  margin-bottom: 8px;
+  width: 40%;
+  border-radius: 250px;
+  overflow: hidden;
+}
+#level > .character-portrait img 
+{
+  z-index: 10;
+  position: absolute;
+  width: 150%;
+}
+#level .characterBackground 
+{
+  position: absolute;
   width: 100%;
-  color: var(--color-yellow);
+  aspect-ratio: 1;
+  background-color: #fff600;
+  border-radius: 200px;
+  bottom: 0%;
 }
 
 #gamePanel 
@@ -611,6 +648,142 @@ b {
 }
 /* SUBQUESTION ELEMENTS ----------------------------------------------------------------------------------------------- END */
 
+/* END SCREEN ------------------------------------------------------------------------------------------------------------------ */
+.endScreen#container 
+{
+  position: absolute;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3%;
+}
+.endScreen .logo
+{
+  display: flex;
+  width: 100%;
+  height: 10%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.endScreen .logo img
+{
+  width: 50%;
+}
+.endScreen #results
+{
+  border-radius: var(--round-corners);
+  background-color: var(--color-olive);
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.endScreen #results .your-score 
+{
+  width: 80%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.endScreen #results .your-score .header
+{
+  width: 80%;
+  height: 30%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  text-transform: uppercase;
+  font-family: Karla;
+  font-weight: 800;
+  color: var(--color-white);
+  font-size: calc(var(--font-size-header) * 1.5);
+}
+.endScreen #results .your-score .final-score
+{
+  width: 80%;
+  height: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2%;
+
+  text-transform: uppercase;
+  font-family: Karla;
+  font-weight: 800;
+  color: var(--color-yellow);
+  font-size: calc(var(--font-size-header) * 3);
+  margin: 0;
+}
+.endScreen #results .your-score .final-score img
+{
+  height: 60%;
+}
+.endScreen .dialogue
+{
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.character-dialogue 
+{
+  position: relative;
+}
+
+.character-dialogue .character-portrait
+{
+  position: absolute;
+  width: 180px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  border-radius: 300px;
+  left: 0;
+}
+.character-dialogue .character-portrait .characterBackground 
+{
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 100%;
+}
+.character-dialogue .character-portrait img
+{
+  position: absolute;
+}
+
+.character-dialogue .character-bubble 
+{
+  position: absolute;
+  border-radius: var(--round-corners);
+  height: calc(var(--round-corners) * 2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+}
+.character-dialogue .character-bubble p 
+{
+  margin-inline: 30px;
+}
+.character-dialogue .character-bubble img 
+{
+  position: absolute;
+}
+/* END SCREEN ------------------------------------------------------------------------------------------------------------------ */
 #answerAnim 
 {
   position: absolute;

@@ -13,6 +13,9 @@ function lerp(a, b, t) {
 function clamp(num, min, max) {
   return Math.max(min, Math.min(num, max));
 }
+function clamp01(num) {
+  return Math.max(0, Math.min(num, 1));
+}
 function getRandomElement(arr) {
     const randomIndex = Math.floor(Math.random() * arr.length);
     return arr[randomIndex];

@@ -14,8 +14,11 @@ var elemGameContainer;
 
 //HUD Elements
 var elemGameHUDCont;
+var elemPlayerLevel;
+var elemPlayerLevelsAmount;
 var elemPlayerScore;
-var elemScoreIcon;
+var elemPlayerScoreCont;
+var elemPlayerLevelCont;
 
 //Question Elements
 var elemQuestionCont;
@@ -23,6 +26,10 @@ var elemMultipleChoiceCont;
 var elemSubQuestionCont;
 
 var elemAnimationAnswer;
+
+//END SCREEN ELEM
+var elemFinalPlayerScore;
+
 //DOM ELEMENTS--------------------------------------------
 
 window.onClickOption = onClickOption;
@@ -31,28 +38,28 @@ function startGame ()
 {
     if (!initialized) return;
 
+    elemPlayerLevelsAmount.innerHTML = "/" + String(levelsAmount).padStart(2, "0");
     setView('game');
     newQuestion();
 }
 
+function endGame () 
+{
+    elemFinalPlayerScore.innerHTML = String(currentPlayerScore).padStart(3, "0");
+    setView('endScreen');
+}
+
 function answerQuestion (state) 
 {
-
-    if (state == 2) //missed by time
+    if (state == 1) //wrong answer
     {
-        currentPlayerScore -= 20;
-    }
-    else if (state == 1) //wrong answer
-    {
-        currentPlayerScore -= 10;
-
         elemAnimationAnswer.style.backgroundColor = 'red';
         elemAnimationAnswer.querySelector('p').innerHTML = "EQUIVOCADO!";
         playAnimation(elemAnimationAnswer, 2);
     }
     else if (state == 0) //right answer
     {
-        currentPlayerScore += 30;
+        updatePlayerScore(currentPlayerScore + 100);
 
         elemAnimationAnswer.style.backgroundColor = 'green';
         elemAnimationAnswer.querySelector('p').innerHTML = "BIEN HECHO!";
@@ -79,7 +86,7 @@ function newQuestion ()
     questionState = 0;
     currentQuestionsAmount++;
 
-    elemPlayerScore.innerHTML = "0"+currentQuestionsAmount;
+    elemPlayerLevel.innerHTML = "0"+currentQuestionsAmount;
 }
 function showSubQuestion (index) 
 {
@@ -92,14 +99,8 @@ function answerSubQuestion (option, state)
 {
     var subQuestionIndex = questionState-1;
 
-    if (state == 2) //missed by time
+    if (state == 1) //wrong answer
     {
-        currentPlayerScore -= 20;
-    }
-    else if (state == 1) //wrong answer
-    {
-        currentPlayerScore -= 0;
-
         currentQuestion.subQuestions[subQuestionIndex].markWrong(option);
         currentQuestion.subQuestions[subQuestionIndex].markCorrect(currentQuestion.subQuestions[subQuestionIndex].correctAnswer, false);
 
@@ -109,7 +110,7 @@ function answerSubQuestion (option, state)
     }
     else if (state == 0) //right answer
     {
-        currentPlayerScore += 10;
+        updatePlayerScore(currentPlayerScore + 30);
 
         currentQuestion.subQuestions[subQuestionIndex].markCorrect(option, true);
 
@@ -128,7 +129,10 @@ function answerSubQuestion (option, state)
 
         if (questionState >= 4) 
         {
-            newQuestion();
+            if (currentQuestionsAmount >= levelsAmount) 
+                endGame();
+            else
+                newQuestion();
         }
         else
         {
@@ -164,5 +168,29 @@ function onClickOption (option)
         {
             answerSubQuestion(option, 1);
         }
+    }
+}
+
+var updatePlayerScore_currentT = 0;
+var updatePlayerScore_currentTN = 0;
+var updatePlayerScore_startValue = 0;
+function updatePlayerScore (newValue) 
+{
+    updatePlayerScore_currentT = 0;
+    updatePlayerScore_startValue = currentPlayerScore;
+    currentPlayerScore = newValue;
+
+    subscribe(_updatePlayerScore);
+} 
+function _updatePlayerScore (deltaTime)
+{
+    updatePlayerScore_currentT += deltaTime;
+    updatePlayerScore_currentTN = clamp01(updatePlayerScore_currentT);
+
+    var val = Math.floor(lerp(updatePlayerScore_startValue, currentPlayerScore, updatePlayerScore_currentTN));
+    elemPlayerScore.innerHTML = String(val).padStart(3, "0");
+
+    if (updatePlayerScore_currentTN >= 1) {
+        unsubscribe(_updatePlayerScore);
     }
 }

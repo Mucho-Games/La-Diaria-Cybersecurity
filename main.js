@@ -37,14 +37,22 @@ async function initialize ()
 
     elemGameContainer = document.getElementById('gamePanel');
 
-    elemGameHUDCont = document.getElementById("hud");
-    elemScoreIcon = document.getElementById('scoreIcon');
     elemQuestionCont = document.getElementById("question");
     elemMultipleChoiceCont = document.getElementById("multipleChoice");
     elemSubQuestionCont = document.getElementById('subQuestions');
 
-    elemPlayerScore = document.querySelector("#hud > #score > p");
+    //HUD
+    elemGameHUDCont = document.getElementById("hud");
+    elemPlayerScore = document.querySelector('#hud > #score p');
+    elemPlayerScoreCont = document.querySelector('#hud > #score');
+    elemPlayerLevelCont = document.querySelector('#hud > #level');
+    elemPlayerLevel = document.querySelector("#hud > #level > p");
+    elemPlayerLevelsAmount = document.querySelector('#hud > #level > #goalLevel');
+
     elemAnimationAnswer = document.querySelector('#answerAnim');
+
+    //End Screen
+    elemFinalPlayerScore = document.querySelector('.endScreen #results .your-score .final-score p');
 
     setView('titleScreen');
 
@@ -108,15 +116,13 @@ function update()
     lastTimeUpdate = performance.now();
     
 	updateSubscribers.forEach(fn => fn(deltaTime));
-
-    if (debug)
-    {
-        elementDebugFPS.innerHTML = 'FPS: ' + truncate(1/deltaTime, 1);
-        elemDebugAspectRatio.innerHTML = 'ASPECT RATIO: ' + truncate(aspectRatio, 2);
-    }
 }
 
-function subscribe(fn) {
+function subscribe(fn) 
+{
+    const index = updateSubscribers.indexOf(fn);
+    if (index !== -1) updateSubscribers.splice(index, 1);
+
     updateSubscribers.push(fn);
 }
 
@@ -158,7 +164,8 @@ function playAnimation (animElement, duration)
 function onClickAnywhere () 
 {
     if (currentView == 0)
-        showIntroAnimation();
+        //showIntroAnimation();
+        startGame();
 }
 
 function onScreenSizeChange() 
@@ -260,7 +267,8 @@ function onScreenSizeChange()
     {
         var container = document.querySelector(`.game#container`);
         container.style.justifyContent = landscape ? 'center' : 'space-around';
-        elemScoreIcon.style.width = `${elemGameHUDCont.offsetHeight * 0.8}px`;
+        elemPlayerScoreCont.style.width = landscape ? '15%' : '18%';
+        elemPlayerLevelCont.style.width = landscape ? '15%' : '18%';
         var options = document.querySelectorAll(`.game .option`);
         options.forEach(o => o.style.width = landscape ? '26%' : '30%');
     }
