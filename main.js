@@ -164,8 +164,8 @@ function playAnimation (animElement, duration)
 function onClickAnywhere () 
 {
     if (currentView == 0)
-        //showIntroAnimation();
-        startGame();
+        showIntroAnimation();
+        //startGame();
 }
 
 function onScreenSizeChange() 
