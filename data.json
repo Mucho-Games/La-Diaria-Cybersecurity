@@ -13,39 +13,34 @@
 
       "correctOption": 1,
 
+      "textsAnswer":
+      [
+        "Yo también desconfío aunque solo leyendo el aviso no tengo pruebas para afirmar que es falso. Saquen sus lupas, a investigar!.",
+        "Correcto! es una pena pero Perro se quedará sin show. Esta publicación puede ser una estafa.",
+        "Mis orejas indican lo contrario. Es un contenido dudoso."
+      ],
+
       "subQuestions": 
       [
         {
-          "subQuestion": "lalalalalalal 222", 
+          "subQuestion": "¿Qué pasos puedas dar para saber si es o no un publicación falsa?", 
           "options": 
           [
-            "A1", 
-            "B1", 
-            "C2"
+            "Leer los comentarios para ver si alguien comenta que haya tenido una mala experiencia.", 
+            "Investigar la cuenta Espectáculos y eventos Uruguay, corroborar fecha, hora y lugar del show.", 
+            "Aplicar la búsqueda reversa de imágenes con Google Lens directo en la publicación para ver si otra persona hizo una denuncia online por este contenido."
           ], 
-          "correctOption": 1
-        },
-        {
-          "subQuestion": "lalalalalalal 333", 
-          "options": 
+          "optionsValues": 
           [
-            "A1", 
-            "B1", 
-            "C2"
-          ], 
-          "correctOption": 0
-        },
-        {
-          "subQuestion": "lalalalalalal 444", 
-          "options": 
-          [
-            "A1", 
-            "B1", 
-            "C2"
-          ], 
-          "correctOption": 2
+            true,
+            true,
+            true
+          ],
+          "message": "Las tres opciones son correctas, este tipo de publicaciones pueden ser una estafa, aplicá estos tres pasos para no caer en un fraude."
         }
-      ]
+      ],
+
+      "finalMessage": "No es confiable ponerse en contacto directo por wtsp con desconocidos. Además, es fácil simular los tickets digitales para asistir a espectáculos, pero pueden ser falsos. Es preferible acudir a los medios de venta oficiales."
     },
     { 
       "questionType": 0,
@@ -57,41 +52,36 @@
       "header": "Habia un perrito en un momento que le debía plata a otro perrito y entonces se destruyó la economía",
       "body": "Dicen entonces que los perritos y etc entonces dicen que pasa algo y que luego hay consecuencias y ahora un testimonio de un vecino que lo vio todo y ahora una pequeña conclusión.",
 
-      "correctOption": 0,
+      "correctOption": 1,
+
+      "textsAnswer":
+      [
+        "Yo también desconfío aunque solo leyendo el aviso no tengo pruebas para afirmar que es falso. Saquen sus lupas, a investigar!.",
+        "Correcto! es una pena pero Perro se quedará sin show. Esta publicación puede ser una estafa.",
+        "Mis orejas indican lo contrario. Es un contenido dudoso."
+      ],
 
       "subQuestions": 
       [
         {
-          "subQuestion": "lalalalalalal aaaaaa", 
+          "subQuestion": "¿Qué pasos puedas dar para saber si es o no un publicación falsa?", 
           "options": 
           [
-            "A1", 
-            "B1", 
-            "C2"
+            "Leer los comentarios para ver si alguien comenta que haya tenido una mala experiencia.", 
+            "Investigar la cuenta Espectáculos y eventos Uruguay, corroborar fecha, hora y lugar del show.", 
+            "Aplicar la búsqueda reversa de imágenes con Google Lens directo en la publicación para ver si otra persona hizo una denuncia online por este contenido."
           ], 
-          "correctOption": 1
-        },
-        {
-          "subQuestion": "lalalalalalal dddddddddddd", 
-          "options": 
+          "optionsValues": 
           [
-            "A1", 
-            "B1", 
-            "C2"
-          ], 
-          "correctOption": 0
-        },
-        {
-          "subQuestion": "lalalalalalal hhhhhhhh", 
-          "options": 
-          [
-            "A1", 
-            "B1", 
-            "C2"
-          ], 
-          "correctOption": 2
+            true,
+            true,
+            true
+          ],
+          "message": "Las tres opciones son correctas, este tipo de publicaciones pueden ser una estafa, aplicá estos tres pasos para no caer en un fraude."
         }
-      ]
+      ],
+
+      "finalMessage": "No es confiable ponerse en contacto directo por wtsp con desconocidos. Además, es fácil simular los tickets digitales para asistir a espectáculos, pero pueden ser falsos. Es preferible acudir a los medios de venta oficiales."
     },
     { 
       "questionType": 0,
@@ -103,41 +93,36 @@
       "header": "Habia un perrito en un momento que le debía plata a otro perrito y entonces se destruyó la economía",
       "body": "Dicen entonces que los perritos y etc entonces dicen que pasa algo y que luego hay consecuencias y ahora un testimonio de un vecino que lo vio todo y ahora una pequeña conclusión.",
 
-      "correctOption": 2,
+      "correctOption": 1,
 
-      "subQuestions": 
+      "textsAnswer":
+      [
+        "Yo también desconfío aunque solo leyendo el aviso no tengo pruebas para afirmar que es falso. Saquen sus lupas, a investigar!.",
+        "Correcto! es una pena pero Perro se quedará sin show. Esta publicación puede ser una estafa.",
+        "Mis orejas indican lo contrario. Es un contenido dudoso."
+      ],
+
+     "subQuestions": 
       [
         {
-          "subQuestion": "Lorem ipsum dolorsit amet, consectetuer adipiscing elit, sed diam nonummy nibm ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.", 
+          "subQuestion": "¿Qué pasos puedas dar para saber si es o no un publicación falsa?", 
           "options": 
           [
-            "Sed diam nonummy nibh Adipiscing elit, sed diam nonummy nibh Lorem ipsum dolor  amet, consectetuer.", 
-            "Sed diam nonummy nibh Adipiscing elit, sed diam nonummy nibh Lorem ipsum dolor  amet, conseced diam nonummy nibh Adipiscing elit, sed diam nonummy nibh Lorem ipsum dolor  amet, consectetuer.", 
-            "Sed diam nonummy nibh Adipiscing elit, sed diam nonummy nibh Lorem ipsum dolor  amet, consectetuer."
+            "Leer los comentarios para ver si alguien comenta que haya tenido una mala experiencia.", 
+            "Investigar la cuenta Espectáculos y eventos Uruguay, corroborar fecha, hora y lugar del show.", 
+            "Aplicar la búsqueda reversa de imágenes con Google Lens directo en la publicación para ver si otra persona hizo una denuncia online por este contenido."
           ], 
-          "correctOption": 1
-        },
-        {
-          "subQuestion": "lalalalalalal tytyt", 
-          "options": 
+          "optionsValues": 
           [
-            "Sed diam nonummy nibh Adipiscing elit, sed diam nonummy nibh Lorem ipsum dolor  amet, conseced diam nonummy nibh Adipiscing elit, sed diam nonummy nibh Lorem ipsum dolor  amet, consectetuer.", 
-            "Sed diam nonummy nibh Adipiscing elit, sed diam nonummy nibh Lorem ipsum dolor  amet, conseced diam nonummy nibh Adipiscing elit, sed diam nonummy nibh Lorem ipsum dolor  amet, consectetuer.", 
-            "Sed diam nonummy nibh Adipiscing elit, sed diam nonummy nibh Lorem ipsum dolor  amet, consectetuer."
-          ], 
-          "correctOption": 0
-        },
-        {
-          "subQuestion": "lalalalalalal kikikiki", 
-          "options": 
-          [
-            "A1", 
-            "B1", 
-            "C2"
-          ], 
-          "correctOption": 2
+            true,
+            true,
+            true
+          ],
+          "message": "Las tres opciones son correctas, este tipo de publicaciones pueden ser una estafa, aplicá estos tres pasos para no caer en un fraude."
         }
-      ]
+      ],
+
+      "finalMessage": "No es confiable ponerse en contacto directo por wtsp con desconocidos. Además, es fácil simular los tickets digitales para asistir a espectáculos, pero pueden ser falsos. Es preferible acudir a los medios de venta oficiales."
     }
     ]
 }

@@ -12,6 +12,7 @@ var elemCharacterDog;
 var elemCharacterCat;
 
 var introAnimationTime = 0;
+var introAnimationPlaying = false;
 var dialogueTexts = [];
 
 
@@ -47,6 +48,9 @@ function showIntroAnimation ()
 	elemCharacterCat.style.display = 'none';
 	elemCharacterDog.style.display = 'none';
 
+	introAnimationPlaying = true;
+	introAnimationTime = 0;
+
 	new Dialogue(elemDialogueText[0], dialogueTexts[0]);
 }
 function introAnimation (deltaTime) 
@@ -67,8 +71,8 @@ function introAnimation (deltaTime)
 		new Dialogue(elemDialogueText[2], dialogueTexts[2]);
 	}
 	if (introAnimationTime > 7) {
-		startGame();
 		unsubscribe(introAnimation);
+		introAnimationPlaying = false;
 	}
 }
 

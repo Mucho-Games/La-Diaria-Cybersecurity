@@ -25,6 +25,15 @@ var elemQuestionCont;
 var elemMultipleChoiceCont;
 var elemSubQuestionCont;
 
+//Answer main Question Elms
+var elemAnswerMainCont;
+var elemAnswerMainBottom;
+var elemAnswerMainCharacter;
+var elemAnswerMainBubble;
+var elemAnswerMainBubbleArrow;
+var elemAnswerMainText;
+var elemAnswerMainTitle;
+
 var elemAnimationAnswer;
 
 //END SCREEN ELEM
@@ -39,7 +48,7 @@ function startGame ()
     if (!initialized) return;
 
     elemPlayerLevelsAmount.innerHTML = "/" + String(levelsAmount).padStart(2, "0");
-    setView('game');
+
     newQuestion();
 }
 
@@ -49,36 +58,19 @@ function endGame ()
     setView('endScreen');
 }
 
-function answerQuestion (state) 
+
+
+async function newQuestion () 
 {
-    if (state == 1) //wrong answer
-    {
-        elemAnimationAnswer.style.backgroundColor = 'red';
-        elemAnimationAnswer.querySelector('p').innerHTML = "EQUIVOCADO!";
-        playAnimation(elemAnimationAnswer, 2);
-    }
-    else if (state == 0) //right answer
-    {
-        updatePlayerScore(currentPlayerScore + 100);
+    document.removeEventListener('click', newQuestion);
 
-        elemAnimationAnswer.style.backgroundColor = 'green';
-        elemAnimationAnswer.querySelector('p').innerHTML = "BIEN HECHO!";
-        playAnimation(elemAnimationAnswer, 2);
-    }
-
-    multipleChoiceDisabled = true;
-    questionState++;
-
-    setTimeout(function() 
-    { 
-        multipleChoiceDisabled = false;
-        showSubQuestion(questionState-1);
-    }, 
-    2000);   
-}
-function newQuestion () 
-{
     currentQuestion = getRandomElement(questionBank);
+
+    showIntroAnimation();
+
+    console.log(introAnimationPlaying);
+    await waitFor(() => !introAnimationPlaying);
+    console.log(introAnimationPlaying);
 
     currentQuestion.getDOMElements();
     currentQuestion.populate();
@@ -87,14 +79,68 @@ function newQuestion ()
     currentQuestionsAmount++;
 
     elemPlayerLevel.innerHTML = "0"+currentQuestionsAmount;
+
+    elemAnswerMainCont.style.display = 'none';
+
+    multipleChoiceDisabled = false;
+
+    setView('game');
 }
+
+async function answerQuestion (state, option) 
+{
+    if (state == 1) //wrong answer
+    {
+        // elemAnimationAnswer.style.backgroundColor = 'red';
+        // elemAnimationAnswer.querySelector('p').innerHTML = "EQUIVOCADO!";
+        // playAnimation(elemAnimationAnswer, 2);
+    }
+    else if (state == 0) //right answer
+    {
+        updatePlayerScore(currentPlayerScore + 100);
+
+        // elemAnimationAnswer.style.backgroundColor = 'green';
+        // elemAnimationAnswer.querySelector('p').innerHTML = "BIEN HECHO!";
+        // playAnimation(elemAnimationAnswer, 2);
+    }
+
+    elemAnswerMainCont.style.display = 'block';
+    elemAnswerMainBottom.style.backgroundColor = option == 0 ? 'var(--color-orange)' : option == 1 ? 'var(--color-blue)' : 'var(--color-green)';
+    elemAnswerMainTitle.src = option == 0 ? 'assets/label-fake.svg' : option == 1 ? 'assets/label-sus.svg' : 'assets/label-true.svg';
+    elemAnswerMainTitle.style.display = 'inline-block';
+    elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
+    elemAnswerMainBubbleArrow.src = 'assets/text-box-bottom-white-left.svg';
+
+    new Dialogue(elemAnswerMainText, currentQuestion.textsAnswer[option]);
+
+    multipleChoiceDisabled = true;
+    questionState++;
+
+    setTimeout(function() 
+    { 
+        document.addEventListener('click', endMainQuestion);
+    }, 
+    1000);    
+}
+
+function endMainQuestion () 
+{ 
+    showSubQuestion(questionState-1); 
+    document.removeEventListener('click', endMainQuestion);
+}
+
 function showSubQuestion (index) 
 {
+    multipleChoiceDisabled = false;
+    elemAnswerMainCont.style.display = 'none';
+
     elemSubQuestionCont.style.display = 'flex';
+    elemSubQuestionCont.style.height = '100%';
 
     currentQuestion.subQuestions[index].getDOMElements();
     currentQuestion.subQuestions[index].populate();
 }
+
 function answerSubQuestion (option, state) 
 {
     var subQuestionIndex = questionState-1;
@@ -122,25 +168,66 @@ function answerSubQuestion (option, state)
     multipleChoiceDisabled = true;
     questionState++;
 
+    elemAnswerMainCont.style.display = 'block';
+    elemAnswerMainBottom.style.backgroundColor = 'var(--color-white)';
+    elemAnswerMainTitle.style.display = 'none';
+    elemAnswerMainBubble.style.backgroundColor = 'var(--color-yellow)';
+    elemAnswerMainBubbleArrow.src = 'assets/text-box-bottom-yellow-left.svg';
+
+    elemSubQuestionCont.style.height = '73%';
+
+    new Dialogue(elemAnswerMainText, currentQuestion.subQuestions[subQuestionIndex].message);
+
     setTimeout(function() 
     { 
-        multipleChoiceDisabled = false;
-        elemSubQuestionCont.style.display = 'none';
-
-        if (questionState >= 4) 
-        {
-            if (currentQuestionsAmount >= levelsAmount) 
-                endGame();
-            else
-                newQuestion();
-        }
-        else
-        {
-            showSubQuestion(questionState-1);
-        }
+        document.addEventListener('click', endSubQuestion);
     }, 
-    3000); 
+    1000); 
 }
+function endSubQuestion () 
+{
+    multipleChoiceDisabled = false;
+    elemSubQuestionCont.style.display = 'none';
+
+    if (questionState >= currentQuestion.subQuestions.length) 
+    {
+        if (currentQuestionsAmount >= levelsAmount) 
+            endGame();
+        else
+            endLevel();
+    }
+    else
+    {
+        showSubQuestion(questionState-1);
+    }
+
+    document.removeEventListener('click', endSubQuestion);
+}
+
+function endLevel () 
+{
+    multipleChoiceDisabled = true;
+
+    elemAnswerMainCont.style.display = 'block';
+    elemAnswerMainBottom.style.backgroundColor = 'var(--color-white)';
+    elemAnswerMainTitle.style.display = 'none';
+    elemAnswerMainBubble.style.backgroundColor = 'var(--color-yellow)';
+    elemAnswerMainBubbleArrow.src = 'assets/text-box-bottom-yellow-left.svg';
+
+    elemSubQuestionCont.style.height = '73%';
+
+    new Dialogue(elemAnswerMainText, currentQuestion.finalMessage);
+
+    setTimeout(function() 
+    { 
+        document.addEventListener('click', newQuestion);
+    }, 
+    1000); 
+}
+
+
+
+
 function onClickOption (option) 
 {
     console.log("Clicked option: " + option);
@@ -151,16 +238,16 @@ function onClickOption (option)
     {
         if (currentQuestion.correctAnswer == option) 
         {
-            answerQuestion(0);
+            answerQuestion(0, option);
         }
         else
         {
-            answerQuestion(1);
+            answerQuestion(1, option);
         }
     }
     else if (questionState > 0) //On second instance of question
     {
-        if (currentQuestion.subQuestions[questionState-1].correctAnswer == option)
+        if (currentQuestion.subQuestions[questionState-1].optionsValues[option])
         {
             answerSubQuestion(option, 0);
         }

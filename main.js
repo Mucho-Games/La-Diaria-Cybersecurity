@@ -49,6 +49,15 @@ async function initialize ()
     elemPlayerLevel = document.querySelector("#hud > #level > p");
     elemPlayerLevelsAmount = document.querySelector('#hud > #level > #goalLevel');
 
+    //Elems answer main question
+    elemAnswerMainCont = document.getElementById("answer-main-animation-cont");
+    elemAnswerMainBottom = document.getElementById("answerAnimation");
+    elemAnswerMainCharacter = document.querySelector('#answerAnimationCharacter img');
+    elemAnswerMainBubble = document.querySelector('#answerAnimation .character-bubble');
+    elemAnswerMainBubbleArrow = document.querySelector('#answerAnimation .character-bubble .character-bubble-arrow-wrapper img');
+    elemAnswerMainText = document.querySelector('.character-bubble p');
+    elemAnswerMainTitle = document.querySelector('#answer-animation-header img');
+
     elemAnimationAnswer = document.querySelector('#answerAnim');
 
     //End Screen
@@ -86,14 +95,17 @@ async function loadQuestions() {
                     q.header,
                     q.body,
                     q.correctOption,
+                    q.textsAnswer,
                     q.subQuestions.map(
                         sq => { 
                         return new SubQuestion(
                             sq.subQuestion,
                             sq.options,
-                            sq.correctOption
+                            sq.optionsValues,
+                            sq.message
                             );
-                    })
+                    }),
+                    q.finalMessage
                 );
             }
             else
@@ -164,8 +176,7 @@ function playAnimation (animElement, duration)
 function onClickAnywhere () 
 {
     if (currentView == 0)
-        showIntroAnimation();
-        //startGame();
+        startGame();
 }
 
 function onScreenSizeChange() 

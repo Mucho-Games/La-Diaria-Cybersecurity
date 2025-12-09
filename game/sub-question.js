@@ -5,11 +5,12 @@ var elemSubQuestionOptionsWrongCircle = [];
 
 class SubQuestion 
 {
-    constructor(subQuestion, options, correctAnswer) 
+    constructor(subQuestion, options, optionsValues, message) 
     {
         this.subQuestion = subQuestion;
         this.options = options;
-        this.correctAnswer = correctAnswer;
+        this.optionsValues = optionsValues;
+        this.message = message;
     }
 
     getDOMElements () 

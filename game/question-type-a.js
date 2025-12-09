@@ -8,7 +8,7 @@ var elemNewsBody;
 
 class QuestionTypeA 
 {
-    constructor(profilePic, username, usernameURL, image, footNote, header, body, correctOption, subQuestions) 
+    constructor(profilePic, username, usernameURL, image, footNote, header, body, correctOption, textsAnswer, subQuestions, finalMessage) 
     {
     	this.profilePic = profilePic;
     	this.username = username;
@@ -18,7 +18,9 @@ class QuestionTypeA
     	this.header = header;
     	this.body = body;
     	this.correctAnswer = correctOption;
+    	this.textsAnswer = textsAnswer;
     	this.subQuestions = subQuestions;
+    	this.finalMessage = finalMessage;
     }
 
     getDOMElements () 

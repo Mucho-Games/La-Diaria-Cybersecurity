@@ -36,3 +36,14 @@ function normalize(x, y) {
     if (len === 0) return { x: 0, y: 0 };
     return { x: x / len, y: y / len };
 }
+
+//executions
+function waitFor(condition) {
+    return new Promise(resolve => {
+        function check() {
+            if (condition()) resolve();
+            else requestAnimationFrame(check);
+        }
+        check();
+    });
+}
