@@ -50,7 +50,7 @@ function introAnimation (deltaTime)
 	else 
 	{
 		introAnimationTime += deltaTime;
-		if (introAnimationTime > 3.5) 
+		if (introAnimationTime > 4) 
 		{
 			unsubscribe(introAnimation);
 			introAnimationPlaying = false;
