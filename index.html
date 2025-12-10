@@ -37,23 +37,25 @@
 <div class="introAnimation" id="container" style="display: none;"> <!--viewport-->
   <div class="landScape"> <!--container LAND-->
     <div class="dialogueBoxes"> <!--dialogue boxes-->
-      <div class="characterDialogueBox" id="characterDialogueBoxDuck01-landScape">
-        <p>No lo sé, Ro... parece <b>falso</b></p>
+      <div class="characterDialogueBox" id="characterDialogueBoxDuck01-landScape" style="max-width: 40%;">
+        <p>Tengo ganas de ir a un recital pero <b>me quedé sin entradas!</b></p>
         <img src="assets/text-box-bottom-yellow-left.svg" style="left: 15%;">
       </div>
-      <div class="characterDialogueBox" id="characterDialogueBoxDog01-landScape" style="background-color: var(--color-white);">
-        <p>A mí me huele a gato encerrado</p>
+      <div class="characterDialogueBox" id="characterDialogueBoxDog01-landScape" style="background-color: var(--color-white); max-width: 40%;">
+        <p>Tranqui Pato, te ayudo a buscar alguna en las redes :)</p>
         <img src="assets/text-box-bottom-white-right.svg" style="right: 15%;">
       </div>
-      <div class="characterDialogueBox" id="characterDialogueBoxCat01-landScape">
-        <p style="font-weight: 900;">¡hey!</p>
+      <div class="characterDialogueBox" id="characterDialogueBoxCat01-landScape" style="width: 20%">
+        <p>Me sumo!</p>
         <img src="assets/text-box-bottom-yellow-right.svg" style="right: 30%;">
       </div>
     </div> <!--END dialogue boxes-->
     <div class="characters"> <!--characters-->
       <div id="introCharactersLeft" style="width: 50%; height: 100%; display: flex; flex-direction: row; align-items: center;">
         <div class="character" id="duck-landScape"> 
-          <img src="assets/personaje-pato.png">
+          <img src="assets/personaje-pato2.png" style="    width: 160%;
+    left: -35%;
+    top: -15%;">
           <div class="characterBackground"></div>      
         </div>
       </div>
@@ -73,11 +75,13 @@
   <div class="portrait"> <!--container PORTRAIT-->
     <div class="line">
       <div class="character" id="duck-portrait"> 
-        <img src="assets/personaje-pato.png" style="top: 20%">
+        <img src="assets/personaje-pato2.png" style="    width: 160%;
+    left: -35%;
+    top: -15%;">
         <div class="characterBackground"></div>      
       </div>
       <div class="characterDialogueBox" id="characterDialogueBoxDuck01-portrait">
-        <p>No lo sé, Ro... parece <b>falso</b></p>
+        <p>Tengo ganas de ir a un recital pero <b>me quedé sin entradas!</b></p>
         <img src="assets/text-box-bottom-yellow-left.svg" style="left: 15%;">
       </div>
     </div>
@@ -88,7 +92,7 @@
         <div class="characterBackground" style="background-color: var(--color-blue);"></div>      
       </div>
       <div class="characterDialogueBox" id="characterDialogueBoxDog01-portrait" style="background-color: var(--color-white); right: auto; left: 0px;">
-        <p>A mí me huele a gato encerrado</p>
+        <p>Tranqui Pato, te ayudo a buscar alguna en las redes :)</p>
         <img src="assets/text-box-bottom-white-right.svg" style="right: 15%;">
       </div>
     </div>
@@ -99,7 +103,7 @@
         <div class="characterBackground" style="background-color: var(--color-orange);"></div>      
       </div>
       <div class="characterDialogueBox" id="characterDialogueBoxCat01-portrait" style="left: 33%; right: auto;">
-        <p style="font-weight: 900;">¡hey!</p>
+        <p>Me sumo!</p>
         <img src="assets/text-box-bottom-yellow-left.svg" style="right: 30%;">
       </div>
     </div>
@@ -120,10 +124,14 @@
     <div id="level"> 
       <p> 01 </p>
       <p id="goalLevel"> /05 </p>
+
+      <div class="character-portrait-wrapper" style="left: 10%; bottom: 7%; position: relative;">
       <div class="character-portrait"> 
-        <img src="assets/personaje-pato.png">
-        <div class="characterBackground"></div>      
+          <img src="assets/personaje-pato2.png" style="left: -40%;top: -10%;">
+          <div class="characterBackground" style="background-color: var(--color-yellow);"></div>      
       </div>
+    </div>
+
     </div>
   </div>
 
@@ -249,20 +257,40 @@
   </div>
 
   <div id="results">
+
+    <div class="character-portrait-wrapper" style="left: 10%; bottom: 7%; position: relative;">
+      <div class="character-portrait"> 
+          <img src="assets/personaje-perro.png" style="left: -30%;">
+          <div class="characterBackground" style="background-color: var(--color-blue);"></div>      
+      </div>
+    </div>
+
+    <div class="character-bubble-space" style="position: absolute; width: 65%; height: 50%; right: 4%; top: -6%; align-items: flex-start;">
+      <div class="character-bubble" style="background-color: var(--color-white);">
+        <div class="character-bubble-wrapper">
+          <p>Increíble pero cierto!</p>
+          <div class="character-bubble-arrow-wrapper" style="left: var(--round-corners);">
+            <img src="assets/text-box-bottom-white-left.svg">
+          </div>           
+        </div>
+      </div>
+    </div>
+
     <div class="your-score">
       <div class="header">
-        <p> Tu puntaje: </p>
+        <p style="margin: 0px;"> Tu puntaje: </p>
       </div>
       <div class="final-score">
         <img src="assets/icon-points.svg">
         <p> 000 </p>
       </div>
     </div>
+
   </div>
 
-  <div class="dialogue">
+<!--   <div class="dialogue">
 
-    <!--DIALOGUE 01-->
+
     <div class="character-dialogue" style="height: 100%; width: 25%;">
       <div class="character-portrait"> 
         <img src="assets/personaje-perro.png" style="left: -22%;top: 22%;width: 160%;">
@@ -274,9 +302,9 @@
         <img src="assets/text-box-bottom-white-left.svg" style="right: 20%; bottom: -57%;">
       </div>
     </div>
-    <!--DIALOGUE 01-->
 
-    <!--DIALOGUE 02-->
+
+
     <div class="character-dialogue" style="height: 100%; width: 25%;">
       <div class="character-portrait" style="left: auto; right: 0;"> 
         <img src="assets/personaje-gato.png" style="left: -32%;top: 22%;width: 160%;">
@@ -288,9 +316,9 @@
         <img src="assets/text-box-bottom-yellow-right.svg" style="right: 15%; bottom: -57%;">
       </div>
     </div>
-    <!--DIALOGUE 02-->
 
-  </div>
+
+  </div> -->
 </div>
 
 <!--DEBUG ------------------------------------------------------------------------------------------------------------------------------------------->

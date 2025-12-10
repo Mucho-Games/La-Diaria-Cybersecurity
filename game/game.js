@@ -64,6 +64,11 @@ async function newQuestion ()
 {
     document.removeEventListener('click', newQuestion);
 
+    if (currentQuestionsAmount >= levelsAmount)  {//<---------------------------------------- has to move this from here this is nasty
+        endGame();
+        return;
+    }
+
     currentQuestion = getRandomElement(questionBank);
 
     showIntroAnimation();
@@ -191,10 +196,7 @@ function endSubQuestion ()
 
     if (questionState >= currentQuestion.subQuestions.length) 
     {
-        if (currentQuestionsAmount >= levelsAmount) 
-            endGame();
-        else
-            endLevel();
+        endLevel();
     }
     else
     {
