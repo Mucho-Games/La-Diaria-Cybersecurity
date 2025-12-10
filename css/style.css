@@ -168,11 +168,24 @@ b {
   gap: 12%;
 }
 
+
+.introAnimation > .container
+{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .introAnimation .line
 {
-  height: 25%;
+  height: 26%;
   position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }
+
 
 .introAnimation .landScape .dialogueBoxes
 {

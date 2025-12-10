@@ -35,79 +35,74 @@
 
 <!-- INTRO ANIMATION -------------------------------------------------------------------------------------------------------------------------------------------------->
 <div class="introAnimation" id="container" style="display: none;"> <!--viewport-->
-  <div class="landScape"> <!--container LAND-->
-    <div class="dialogueBoxes"> <!--dialogue boxes-->
-      <div class="characterDialogueBox" id="characterDialogueBoxDuck01-landScape" style="max-width: 40%;">
-        <p>Tengo ganas de ir a un recital pero <b>me quedé sin entradas!</b></p>
-        <img src="assets/text-box-bottom-yellow-left.svg" style="left: 15%;">
-      </div>
-      <div class="characterDialogueBox" id="characterDialogueBoxDog01-landScape" style="background-color: var(--color-white); max-width: 40%;">
-        <p>Tranqui Pato, te ayudo a buscar alguna en las redes :)</p>
-        <img src="assets/text-box-bottom-white-right.svg" style="right: 15%;">
-      </div>
-      <div class="characterDialogueBox" id="characterDialogueBoxCat01-landScape" style="width: 20%">
-        <p>Me sumo!</p>
-        <img src="assets/text-box-bottom-yellow-right.svg" style="right: 30%;">
-      </div>
-    </div> <!--END dialogue boxes-->
-    <div class="characters"> <!--characters-->
-      <div id="introCharactersLeft" style="width: 50%; height: 100%; display: flex; flex-direction: row; align-items: center;">
-        <div class="character" id="duck-landScape"> 
-          <img src="assets/personaje-pato2.png" style="    width: 160%;
-    left: -35%;
-    top: -15%;">
-          <div class="characterBackground"></div>      
-        </div>
-      </div>
-      <div id="introCharactersRight" style="width: 50%; height: 100%; display: flex; flex-direction: row-reverse; align-items: center; gap: 2.5em;">
-        <div class="character" id="cat-landScape"> 
-          <img src="assets/personaje-gato.png" style="left: -59.8%; width: 210%; top: 2%;">
-          <div class="characterBackground" style="background-color: var(--color-orange);"></div>      
-        </div>
-        <div class="character" id="dog-landScape" style="width: 230px; border-radius: 90px;"> 
-          <img src="assets/personaje-perro.png" style="left: -10%; top: 10%;">
-          <div class="characterBackground" style="background-color: var(--color-blue);"></div>      
-        </div>
-      </div>
-    </div> <!--END characters-->  
-  </div>  <!--END LAND-->  
 
-  <div class="portrait"> <!--container PORTRAIT-->
-    <div class="line">
-      <div class="character" id="duck-portrait"> 
-        <img src="assets/personaje-pato2.png" style="    width: 160%;
-    left: -35%;
-    top: -15%;">
-        <div class="characterBackground"></div>      
-      </div>
-      <div class="characterDialogueBox" id="characterDialogueBoxDuck01-portrait">
-        <p>Tengo ganas de ir a un recital pero <b>me quedé sin entradas!</b></p>
-        <img src="assets/text-box-bottom-yellow-left.svg" style="left: 15%;">
-      </div>
+  <div class="container"> 
+
+    <div id="line-01" class="line">
+      <!--PORTRAIT-->
+      <div class="character-portrait-wrapper" style="position: relative;">
+        <div class="character-portrait"> 
+            <img src="assets/personaje-pato2.png" style="left: -37%;top: -15%;width: 165%;">
+            <div class="characterBackground" style="background-color: var(--color-yellow);"></div>      
+        </div>
+      </div>   
+      <!--BUBBLE-->
+      <div class="character-bubble-space" style="position: relative; width: 55%; height: 50%; align-items: flex-start;">
+        <div class="character-bubble" style="background-color: var(--color-white);">
+          <div class="character-bubble-wrapper">
+            <p>¿Qué andan? Che, Quiero ir a un espectáculo pero me quedé sin entrada.</p>
+            <div class="character-bubble-arrow-wrapper" style="left: var(--round-corners);">
+              <img src="assets/text-box-bottom-white-left.svg">
+            </div>           
+          </div>
+        </div>
+      </div>  
     </div>
 
-    <div class="line">
-      <div class="character" id="dog-portrait" style="right: 0px; left: auto;"> 
-        <img src="assets/personaje-perro.png" style="left: -22%;top: 22%;width: 160%;">
-        <div class="characterBackground" style="background-color: var(--color-blue);"></div>      
-      </div>
-      <div class="characterDialogueBox" id="characterDialogueBoxDog01-portrait" style="background-color: var(--color-white); right: auto; left: 0px;">
-        <p>Tranqui Pato, te ayudo a buscar alguna en las redes :)</p>
-        <img src="assets/text-box-bottom-white-right.svg" style="right: 15%;">
-      </div>
+    <div id="line-02" class="line" style="flex-direction: row-reverse; ">
+      <!--PORTRAIT-->
+      <div class="character-portrait-wrapper" style="position: relative;">
+        <div class="character-portrait"> 
+            <img src="assets/personaje-gato.png" style="left: -49%;width: 190%;">
+            <div class="characterBackground" style="background-color: var(--color-orange);"></div>      
+        </div>
+      </div>   
+      <!--BUBBLE-->
+      <div class="character-bubble-space" style="position: relative; width: 55%; height: 50%; align-items: flex-end;">
+        <div class="character-bubble" style="background-color: var(--color-yellow);">
+          <div class="character-bubble-wrapper">
+            <p>Tranqui Pato, yo te ayudo a buscar alguna en las redes :)</p>
+            <div class="character-bubble-arrow-wrapper" style="right: var(--round-corners);">
+              <img src="assets/text-box-bottom-yellow-right.svg">
+            </div>           
+          </div>
+        </div>
+      </div>  
     </div>
 
-    <div class="line">
-      <div class="character" id="cat-portrait"> 
-        <img src="assets/personaje-gato.png" style="left: -59.8%; width: 210%; top: 2%;">
-        <div class="characterBackground" style="background-color: var(--color-orange);"></div>      
-      </div>
-      <div class="characterDialogueBox" id="characterDialogueBoxCat01-portrait" style="left: 33%; right: auto;">
-        <p>Me sumo!</p>
-        <img src="assets/text-box-bottom-yellow-left.svg" style="right: 30%;">
-      </div>
+    <div id="line-03" class="line">
+      <!--PORTRAIT-->
+      <div class="character-portrait-wrapper" style="position: relative;">
+        <div class="character-portrait"> 
+            <img src="assets/personaje-perro.png" style="left: -30%;">
+            <div class="characterBackground" style="background-color: var(--color-blue);"></div>      
+        </div>
+      </div>   
+      <!--BUBBLE-->
+      <div class="character-bubble-space" style="position: relative; width: 55%; height: 50%; align-items: flex-start;">
+        <div class="character-bubble" style="background-color: var(--color-white);">
+          <div class="character-bubble-wrapper">
+            <p>Me sumo a la misión!</p>
+            <div class="character-bubble-arrow-wrapper" style="left: var(--round-corners);">
+              <img src="assets/text-box-bottom-white-left.svg">
+            </div>           
+          </div>
+        </div>
+      </div>  
     </div>
-  </div>  <!--END PORTRAIT-->  
+
+  </div>  
+
 </div>
   
 <!-- GAME -------------------------------------------------------------------------------------------------------------------------------------------------->

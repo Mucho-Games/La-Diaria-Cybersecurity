@@ -1,81 +1,71 @@
-var elemDialogueBoxDuck;
-var elemDialogueBoxDog;
-var elemDialogueBoxCat;
-
 var elemDialogueText = [];
+var elemLines = [];
 
-var elemCharactersLeft;
-var elemCharactersRight;
-
-var elemCharacterDuck;
-var elemCharacterDog;
-var elemCharacterCat;
-
+var introAnimationCurrentLineIndex = 0;
+var introAnimationCurrentDialogue;
 var introAnimationTime = 0;
 var introAnimationPlaying = false;
 var dialogueTexts = [];
-
+var linesShown = [];
 
 function showIntroAnimation () 
 {
 	setView('introAnimation');
 	subscribe(introAnimation)
 
-	var suffix = landscape ?  'landScape' : 'portrait';
-
-	elemDialogueBoxDuck = document.getElementById('characterDialogueBoxDuck01-'+suffix);
-	elemDialogueBoxDog = document.getElementById('characterDialogueBoxDog01-'+suffix);
-	elemDialogueBoxCat = document.getElementById('characterDialogueBoxCat01-'+suffix);
-
-	elemDialogueText = document.querySelectorAll('.introAnimation .'+suffix+ ' .characterDialogueBox p');
-
-	elemCharactersLeft = document.getElementById('introCharactersLeft');
-	elemCharactersRight = document.getElementById('introCharactersRight');
-
-	elemCharacterDuck = document.getElementById('duck-'+suffix);
-	elemCharacterDog = document.getElementById('dog-'+suffix);
-	elemCharacterCat = document.getElementById('cat-'+suffix);
+	elemDialogueText = document.querySelectorAll('.introAnimation .character-bubble p');
+	elemLines = document.querySelectorAll('.introAnimation .line');
 
 	for (var i = 0; i < elemDialogueText.length; i++) {
 		dialogueTexts.push(elemDialogueText[i].innerHTML);
 	}
-
-	console.log(dialogueTexts);
-
-	elemDialogueBoxDog.style.display = 'none';
-	elemDialogueBoxCat.style.display = 'none';
-	elemCharactersRight.style.display = 'none';
-	elemCharacterCat.style.display = 'none';
-	elemCharacterDog.style.display = 'none';
+	for (var i = 0; i < elemLines.length; i++) {
+		elemLines[i].style.display = 'none';
+		linesShown.push(false);
+	}
 
 	introAnimationPlaying = true;
 	introAnimationTime = 0;
 
-	new Dialogue(elemDialogueText[0], dialogueTexts[0]);
+	
 }
 function introAnimation (deltaTime) 
 {
-	introAnimationTime += deltaTime;
-
-	if (introAnimationTime > 1.5 && elemDialogueBoxDog.style.display == 'none') 
+	if (introAnimationCurrentLineIndex < linesShown.length) 
 	{
-		elemDialogueBoxDog.style.display = 'flex';
-		elemCharactersRight.style.display = 'flex';
-		elemCharacterDog.style.display = 'flex';
-		new Dialogue(elemDialogueText[1], dialogueTexts[1]);
+		if (!linesShown[introAnimationCurrentLineIndex]) 
+		{
+			introAnimationCurrentDialogue = showLine(introAnimationCurrentLineIndex);
+		}
+		else if (!introAnimationCurrentDialogue.writing) 
+		{
+			introAnimationTime += deltaTime;
+			if (introAnimationTime > 1) 
+			{
+				introAnimationCurrentLineIndex++;
+				introAnimationTime = 0;
+			}
+		}
 	}
-	if (introAnimationTime > 4 && elemDialogueBoxCat.style.display == 'none') 
+	else 
 	{
-		elemDialogueBoxCat.style.display = 'flex';
-		elemCharacterCat.style.display = 'flex';
-		new Dialogue(elemDialogueText[2], dialogueTexts[2]);
-	}
-	if (introAnimationTime > 7) {
-		unsubscribe(introAnimation);
-		introAnimationPlaying = false;
+		introAnimationTime += deltaTime;
+		if (introAnimationTime > 2) 
+		{
+			unsubscribe(introAnimation);
+			introAnimationPlaying = false;
+		}
 	}
 }
+function showLine (index) 
+{
+	console.log(elemLines[index]);
+	var dialogue = new Dialogue(elemDialogueText[index], dialogueTexts[index]);
+	elemLines[index].style.display = 'flex';
+	linesShown[index] = true;
 
+	return dialogue;
+}
 class Dialogue {
     constructor(elem, text) 
     {
@@ -89,13 +79,16 @@ class Dialogue {
 
         this.writeDialogue = this.writeDialogue.bind(this);
 
+        this.writing = true;
+
         subscribe(this.writeDialogue);
+        console.log("starting dialogue on element: " + this.elem);
     }
 
     writeDialogue(deltaTime) 
     {
         this.time += deltaTime;
-
+         console.log("writing dialogue on element: " + this.elem);
         if (this.time > this.writingSpeed) 
         {
         	if (this.text[this.currentIndex] == '<')
@@ -115,7 +108,9 @@ class Dialogue {
             this.elem.innerHTML = this.currentText;
         }
 
-        if (this.currentIndex === this.text.length) {
+        if (this.currentIndex === this.text.length) 
+        {
+        	this.writing = false;
             unsubscribe(this.writeDialogue);
         }
     }

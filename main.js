@@ -55,7 +55,7 @@ async function initialize ()
     elemAnswerMainCharacter = document.querySelector('#answerAnimationCharacter img');
     elemAnswerMainBubble = document.querySelector('#answerAnimation .character-bubble');
     elemAnswerMainBubbleArrow = document.querySelector('#answerAnimation .character-bubble .character-bubble-arrow-wrapper img');
-    elemAnswerMainText = document.querySelector('.character-bubble p');
+    elemAnswerMainText = document.querySelector('#answerAnimation .character-bubble p');
     elemAnswerMainTitle = document.querySelector('#answer-animation-header img');
 
     elemAnimationAnswer = document.querySelector('#answerAnim');
@@ -268,11 +268,7 @@ function onScreenSizeChange()
     }
     else if (currentView == 1)
     {
-        var containerLand = document.querySelector(`.introAnimation .landScape`); 
-        var containerPortrait = document.querySelector(`.introAnimation .portrait`); 
 
-        containerLand.style.display = landscape ? 'flex' : 'none';
-        containerPortrait.style.display = landscape ? 'none' : 'flex';
     }
     else if (currentView == 2)
     {
