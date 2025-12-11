@@ -141,6 +141,10 @@ function showSubQuestion (index)
 
     elemSubQuestionCont.style.display = 'flex';
     elemSubQuestionCont.style.height = '100%';
+    elemSubQuestionCont.style.justifyContent = 'center';
+
+    document.getElementById('subQuestions-container').style.height = '78%';
+    document.getElementById('subQuestions-container').style.justifyContent = 'space-around';
 
     currentQuestion.subQuestions[index].getDOMElements();
     currentQuestion.subQuestions[index].populate();
@@ -180,6 +184,9 @@ function answerSubQuestion (option, state)
     elemAnswerMainBubbleArrow.src = 'assets/text-box-bottom-yellow-left.svg';
 
     elemSubQuestionCont.style.height = '73%';
+    elemSubQuestionCont.style.justifyContent = 'flex-start';
+    document.getElementById('subQuestions-container').style.height = '100%';
+    document.getElementById('subQuestions-container').style.justifyContent = 'center';
 
     new Dialogue(elemAnswerMainText, currentQuestion.subQuestions[subQuestionIndex].message);
 

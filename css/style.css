@@ -22,8 +22,8 @@ html, body
   --round-corners: 30px;
   --game-layout-margin: 0.4em;
 
-  --font-size-header: 1.3em;
-  --font-size-body: 1em;
+  --font-size-header: 1.7rem;
+  --font-size-body: 1.1rem;
 
   margin: 0;
   padding: 0;
@@ -32,6 +32,7 @@ html, body
 p 
 {
   font-family: Karla;
+  font-size: var(--font-size-body);
 }
 b {
     font-weight: 900;
@@ -620,8 +621,9 @@ b {
   display: none;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 
-  background-color: var(--color-rgba-olive-2);
+  background-color: var(--color-olive);
   border-radius: var(--round-corners);
 }
 #subQuestions-container
@@ -671,7 +673,7 @@ b {
 }
 .game .option2 p
 {
-  width: 75%;
+  width: 80%;
 }
 .option2 .wrong-answer-circle 
 {
@@ -776,6 +778,12 @@ b {
 .endScreen #results .your-score .final-score img
 {
   height: 60%;
+}
+.your-score .header p {
+  font-size: calc(var(--font-size-header) * 1.5) !important;
+}
+.your-score .final-score p {
+  font-size: calc(var(--font-size-header) * 3) !important;
 }
 .endScreen .dialogue
 {
