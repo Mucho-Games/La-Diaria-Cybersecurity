@@ -307,6 +307,8 @@ b {
   justify-content: center;
   gap: 1%;
 }
+
+/* HUD---------------------------------------------------------*/
 #hud
 {
     width: 100%;
@@ -326,6 +328,7 @@ b {
 }
 #hud > #score 
 {
+  position: relative;
   width: 15%;
   height: 75%;
   display: flex;
@@ -406,6 +409,51 @@ b {
   border-radius: 200px;
   bottom: 0%;
 }
+#gainScore 
+{
+  position: absolute;
+  width: 90px;
+  height: 35px;
+  display: flex;
+  left: 30%;
+  bottom: -55%;
+  z-index: 999;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+#gainScore.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+#gainScore.exit {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+#gainScore.hidden {
+  display: none;
+}
+#gainScore > div
+{
+  background-color: var(--color-green);
+  width: 100%;
+  height: 100%;
+  border-radius: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#gainScore p 
+{
+  font-size: 1.4em;
+  color: var(--color-yellow);
+  font-weight: 800;
+}
+/* HUD---------------------------------------------------------*/
 
 #gamePanel 
 {
@@ -818,6 +866,14 @@ b {
   overflow: hidden;
   border-radius: 300px;
   left: 0;
+
+  transform: scale(0);
+  transition:
+    transform 0.2s var(--bounce-ease);
+}
+.character-portrait.show
+{
+  transform: scale(1);
 }
 .character-portrait .characterBackground 
 {
@@ -839,7 +895,18 @@ b {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  transform-origin: bottom left;
+
+  transform: scale(0);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
+.character-bubble-space.show 
+{
+  transform: scale(1);
+}
+
 .character-bubble 
 {
   position: relative;

@@ -68,7 +68,7 @@
         </div>
       </div>   
       <!--BUBBLE-->
-      <div class="character-bubble-space" style="position: relative; width: 55%; height: 50%; align-items: flex-end;">
+      <div class="character-bubble-space" style="position: relative; width: 55%; height: 50%; align-items: flex-end; transform-origin: bottom right;">
         <div class="character-bubble" style="background-color: var(--color-yellow);">
           <div class="character-bubble-wrapper">
             <p>Tranqui Pato, yo te ayudo a buscar alguna en las redes :)</p>
@@ -112,6 +112,12 @@
     <div id="score"> 
       <img src="assets/icon-points.svg" alt="">
       <p> 000 </p>
+
+      <div id="gainScore">
+        <div>
+          <p> +30 </p>
+        </div>
+      </div>
     </div>
     <div id="header"> 
       <img src="assets/logo-alt.svg" alt="">
@@ -121,13 +127,13 @@
       <p id="goalLevel"> /05 </p>
 
       <div class="character-portrait-wrapper" style="left: 10%; bottom: 7%; position: relative;">
-      <div class="character-portrait"> 
-          <img src="assets/personaje-pato2.png" style="left: -40%;top: -10%;">
-          <div class="characterBackground" style="background-color: var(--color-yellow);"></div>      
+        <div class="character-portrait" style="transform: scale(1);"> 
+            <img src="assets/personaje-pato2.png" style="left: -40%;top: -10%;">
+            <div class="characterBackground" style="background-color: var(--color-yellow);"></div>      
+        </div>
       </div>
     </div>
 
-    </div>
   </div>
 
   <div id="gamePanel">
@@ -161,10 +167,10 @@
       </div>
 
       <div class="game" id="multipleChoice">
-        <button class="option" id="option1" onclick="onClickButtonOption(0)">
+<!--         <button class="option" id="option1" onclick="onClickButtonOption(0)">
           <img src="assets/button-back-orange.svg" style="position: absolute; width: 100%; height: 100%;">
           <img src="assets/label-fake.svg" style="position: absolute; width: 100%; height: 34%;">
-        </button>
+        </button> -->
         <button class="option" id="option2" onclick="onClickButtonOption(1)">
           <img src="assets/button-back-blue.svg" style="position: absolute; width: 100%; height: 100%;">
           <img src="assets/label-sus.svg" style="position: absolute; width: 100%; height: 43%; bottom: 31%;">

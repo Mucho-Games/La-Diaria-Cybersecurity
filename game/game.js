@@ -19,6 +19,7 @@ var elemPlayerLevelsAmount;
 var elemPlayerScore;
 var elemPlayerScoreCont;
 var elemPlayerLevelCont;
+var elemGainScore;
 
 //Question Elements
 var elemQuestionCont;
@@ -38,6 +39,9 @@ var elemAnimationAnswer;
 
 //END SCREEN ELEM
 var elemFinalPlayerScore;
+var elemFinalCharacterPortrait;
+var elemFinalCharacterBubble;
+var elemFinalCharacterText;
 
 //DOM ELEMENTS--------------------------------------------
 
@@ -55,6 +59,11 @@ function startGame ()
 function endGame () 
 {
     elemFinalPlayerScore.innerHTML = String(currentPlayerScore).padStart(3, "0");
+    show(elemFinalCharacterPortrait)
+    show(elemFinalCharacterBubble);
+
+    new Dialogue(elemFinalCharacterText, "Increíble pero cierto!");
+
     setView('endScreen');
 }
 
@@ -115,6 +124,8 @@ async function answerQuestion (state, option)
     elemAnswerMainTitle.style.display = 'inline-block';
     elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
     elemAnswerMainBubbleArrow.src = 'assets/text-box-bottom-white-left.svg';
+
+    show(elemAnswerMainBubble.parentElement);
 
     new Dialogue(elemAnswerMainText, currentQuestion.textsAnswer[option]);
 
@@ -183,6 +194,8 @@ function answerSubQuestion (option, state)
     elemAnswerMainBubble.style.backgroundColor = 'var(--color-yellow)';
     elemAnswerMainBubbleArrow.src = 'assets/text-box-bottom-yellow-left.svg';
 
+    show(elemAnswerMainBubble.parentElement);
+
     elemSubQuestionCont.style.height = '73%';
     elemSubQuestionCont.style.justifyContent = 'flex-start';
     document.getElementById('subQuestions-container').style.height = '100%';
@@ -224,6 +237,8 @@ function endLevel ()
     elemAnswerMainBubbleArrow.src = 'assets/text-box-bottom-yellow-left.svg';
 
     elemSubQuestionCont.style.height = '73%';
+
+    show(elemAnswerMainBubble.parentElement);
 
     new Dialogue(elemAnswerMainText, currentQuestion.finalMessage);
 
@@ -275,6 +290,12 @@ function updatePlayerScore (newValue)
     updatePlayerScore_currentT = 0;
     updatePlayerScore_startValue = currentPlayerScore;
     currentPlayerScore = newValue;
+    var diff = currentPlayerScore - updatePlayerScore_startValue;
+
+    var points = elemGainScore.querySelector('p');
+    points.innerHTML = "+" + diff;
+
+    showOneShot(elemGainScore, 2.5);
 
     subscribe(_updatePlayerScore);
 } 
@@ -289,4 +310,28 @@ function _updatePlayerScore (deltaTime)
     if (updatePlayerScore_currentTN >= 1) {
         unsubscribe(_updatePlayerScore);
     }
+}
+
+async function showOneShot(elem, duration) 
+{
+  show(elem);
+
+  await sleep(duration);
+
+  elem.classList.remove("show");
+  elem.classList.add("exit");
+
+  await new Promise(resolve =>
+    elem.addEventListener("transitionend", resolve, { once: true })
+  );
+
+  elem.classList.add("hidden");
+  elem.classList.remove("exit");
+}
+function show (elem) 
+{
+  elem.classList.remove("hidden", "exit");
+  elem.offsetHeight;
+
+  elem.classList.add("show");
 }

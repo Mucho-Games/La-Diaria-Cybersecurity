@@ -62,6 +62,10 @@ function showLine (index)
 	console.log(elemLines[index]);
 	var dialogue = new Dialogue(elemDialogueText[index], dialogueTexts[index]);
 	elemLines[index].style.display = 'flex';
+	var bubble = elemLines[index].querySelector('.character-bubble-space');
+	var portrait = elemLines[index].querySelector('.character-portrait');
+	show(bubble);
+	show(portrait);
 	linesShown[index] = true;
 
 	return dialogue;
