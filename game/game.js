@@ -119,8 +119,8 @@ async function answerQuestion (state, option)
     }
 
     elemAnswerMainCont.style.display = 'block';
-    elemAnswerMainBottom.style.backgroundColor = option == 0 ? 'var(--color-orange)' : option == 1 ? 'var(--color-blue)' : 'var(--color-green)';
-    elemAnswerMainTitle.src = option == 0 ? 'assets/label-fake.svg' : option == 1 ? 'assets/label-sus.svg' : 'assets/label-true.svg';
+    elemAnswerMainBottom.style.backgroundColor = option == 0 ? 'var(--color-blue)' : option == 1 ? 'var(--color-green)' : 'var(--color-orange)';
+    elemAnswerMainTitle.src = option == 0 ? 'assets/label-sus.svg' : option == 1 ? 'assets/label-true.svg' : 'assets/label-fake.svg';
     elemAnswerMainTitle.style.display = 'inline-block';
     elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
     elemAnswerMainBubbleArrow.src = 'assets/text-box-bottom-white-left.svg';
