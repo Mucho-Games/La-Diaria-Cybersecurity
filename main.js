@@ -53,8 +53,10 @@ async function initialize ()
     //Elems answer main question
     elemAnswerMainCont = document.getElementById("answer-main-animation-cont");
     elemAnswerMainBottom = document.getElementById("answerAnimation");
-    elemAnswerMainCharacter = document.querySelector('#answerAnimationCharacter img');
+    elemAnswerMainCharacter = document.querySelector('#answer-animation-character');
+    elemAnswerMainBubbleSpace = document.querySelector('#answerAnimation .character-bubble-space');
     elemAnswerMainBubble = document.querySelector('#answerAnimation .character-bubble');
+    elemAnswerMainBubbleArrowWrapper = document.querySelector('#answerAnimation .character-bubble .character-bubble-arrow-wrapper');
     elemAnswerMainBubbleArrow = document.querySelector('#answerAnimation .character-bubble .character-bubble-arrow-wrapper img');
     elemAnswerMainText = document.querySelector('#answerAnimation .character-bubble p');
     elemAnswerMainTitle = document.querySelector('#answer-animation-header img');
@@ -282,9 +284,5 @@ function onScreenSizeChange()
         elemPlayerLevelCont.style.width = landscape ? '15%' : '18%';
         var options = document.querySelectorAll(`.game .option`);
         options.forEach(o => o.style.width = landscape ? '26%' : '30%');
-        var characterOnAnswer = document.getElementById('answerAnimationCharacter');
-        characterOnAnswer.style.height = landscape ? '300%' : '270%';
-        characterOnAnswer.style.top = landscape ? '-30%' : '-35%';
-        characterOnAnswer.style.left = landscape ? '-5%' : '-7%';
     }
 }

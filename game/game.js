@@ -30,7 +30,9 @@ var elemSubQuestionCont;
 var elemAnswerMainCont;
 var elemAnswerMainBottom;
 var elemAnswerMainCharacter;
+var elemAnswerMainBubbleSpace;
 var elemAnswerMainBubble;
+var elemAnswerMainBubbleArrowWrapper;
 var elemAnswerMainBubbleArrow;
 var elemAnswerMainText;
 var elemAnswerMainTitle;
@@ -72,6 +74,8 @@ function endGame ()
 async function newQuestion () 
 {
     document.removeEventListener('click', newQuestion);
+
+    elemAnswerMainCont.style.display = 'none';
 
     if (currentQuestionsAmount >= levelsAmount)  {//<---------------------------------------- has to move this from here this is nasty
         endGame();
@@ -118,12 +122,14 @@ async function answerQuestion (state, option)
         // playAnimation(elemAnimationAnswer, 2);
     }
 
-    elemAnswerMainCont.style.display = 'block';
-    elemAnswerMainBottom.style.backgroundColor = option == 0 ? 'var(--color-blue)' : option == 1 ? 'var(--color-green)' : 'var(--color-orange)';
-    elemAnswerMainTitle.src = option == 0 ? 'assets/label-sus.svg' : option == 1 ? 'assets/label-true.svg' : 'assets/label-fake.svg';
-    elemAnswerMainTitle.style.display = 'inline-block';
+    elemAnswerMainCont.style.display = 'flex';
+
+    elemAnswerMainCharacter.style.left = option == 0 ? '43%' : '13%';
+    elemAnswerMainBubbleSpace.style.left = option == 0 ? '17.5%' : '32%';
     elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
-    elemAnswerMainBubbleArrow.src = 'assets/text-box-bottom-white-left.svg';
+    elemAnswerMainBubbleArrow.src = option == 0 ? 
+    'assets/text-box-bottom-white-right.svg' : 'assets/text-box-bottom-white-left.svg';
+    elemAnswerMainBubbleArrowWrapper.style = option == 0 ? 'right: var(--round-corners)' : 'left: var(--round-corners)';
 
     show(elemAnswerMainBubble.parentElement);
 
@@ -188,18 +194,21 @@ function answerSubQuestion (option, state)
     multipleChoiceDisabled = true;
     questionState++;
 
-    elemAnswerMainCont.style.display = 'block';
-    elemAnswerMainBottom.style.backgroundColor = 'var(--color-white)';
-    elemAnswerMainTitle.style.display = 'none';
-    elemAnswerMainBubble.style.backgroundColor = 'var(--color-yellow)';
-    elemAnswerMainBubbleArrow.src = 'assets/text-box-bottom-yellow-left.svg';
+    elemAnswerMainCont.style.display = 'flex';
+
+    elemAnswerMainCharacter.style.left = option == 0 ? '43%' : '13%';
+    elemAnswerMainBubbleSpace.style.left = option == 0 ? '17.5%' : '32%';
+    elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
+    elemAnswerMainBubbleArrow.src = option == 0 ? 
+    'assets/text-box-bottom-white-right.svg' : 'assets/text-box-bottom-white-left.svg';
+    elemAnswerMainBubbleArrowWrapper.style = option == 0 ? 'right: var(--round-corners)' : 'left: var(--round-corners)';
 
     show(elemAnswerMainBubble.parentElement);
 
-    elemSubQuestionCont.style.height = '73%';
-    elemSubQuestionCont.style.justifyContent = 'flex-start';
-    document.getElementById('subQuestions-container').style.height = '100%';
-    document.getElementById('subQuestions-container').style.justifyContent = 'center';
+    //elemSubQuestionCont.style.height = '73%';
+    //elemSubQuestionCont.style.justifyContent = 'flex-start';
+    //document.getElementById('subQuestions-container').style.height = '100%';
+    //document.getElementById('subQuestions-container').style.justifyContent = 'center';
 
     new Dialogue(elemAnswerMainText, currentQuestion.subQuestions[subQuestionIndex].message);
 
@@ -230,13 +239,15 @@ function endLevel ()
 {
     multipleChoiceDisabled = true;
 
-    elemAnswerMainCont.style.display = 'block';
-    elemAnswerMainBottom.style.backgroundColor = 'var(--color-white)';
-    elemAnswerMainTitle.style.display = 'none';
-    elemAnswerMainBubble.style.backgroundColor = 'var(--color-yellow)';
-    elemAnswerMainBubbleArrow.src = 'assets/text-box-bottom-yellow-left.svg';
+    elemAnswerMainCont.style.display = 'flex';
 
-    elemSubQuestionCont.style.height = '73%';
+    elemAnswerMainCharacter.style.left = '13%';
+    elemAnswerMainBubbleSpace.style.left = '32%';
+    elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
+    elemAnswerMainBubbleArrow.src = 'assets/text-box-bottom-white-left.svg';
+    elemAnswerMainBubbleArrowWrapper.style = 'left: var(--round-corners)';
+
+    //elemSubQuestionCont.style.height = '73%';
 
     show(elemAnswerMainBubble.parentElement);
 

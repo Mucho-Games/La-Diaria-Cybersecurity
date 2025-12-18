@@ -481,35 +481,6 @@ b {
   flex-wrap: nowrap;
   justify-content: space-between;
 }
-#answerAnimation 
-{
-  position: absolute;
-  width: 100%;
-  height: 30%;
-  bottom: 0;
-  background-color: var(--color-orange);
-}
-#answerAnimationCharacter 
-{
-  position: absolute;
-  height: 300%;
-  top: -30%;
-  left: -5%;
-}
-#answer-animation-header
-{
-  position: absolute;
-  width: auto;
-  height: 10%;
-  bottom: 12%;
-  right: 6%;
-}
-#answer-animation-header *
-{
-  position: relative;
-  width: auto;
-  height: 100%;
-}
 /* QUESTION ELEMENTS ----------------------------------------------------------------------------------------------- */
 #question-container 
 {
@@ -656,6 +627,49 @@ b {
 }
 
 /* BOTTOM BUTTONS ELEMENTS ----------------------------------------------------------------------------------------------- END */
+
+/* MESSAGE BETWEEN QUESTIONS --------------------------------------------------------------------------------------------*/
+
+#answer-main-animation-cont 
+{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-rgba-olive);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+#answerAnimation 
+{
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  bottom: 0;
+}
+#answer-animation-character
+{
+  position: absolute;
+  height: 100%;
+  left: 10%;
+  top: 50%;
+}
+#answer-animation-header
+{
+  position: absolute;
+  width: auto;
+  height: 10%;
+  bottom: 12%;
+  right: 6%;
+}
+#answer-animation-header *
+{
+  position: relative;
+  width: auto;
+  height: 100%;
+}
+
+/* MESSAGE BETWEEN QUESTIONS --------------------------------------------------------------------------------------------*/
 
 /* SUBQUESTION ELEMENTS ----------------------------------------------------------------------------------------------- */
 #subQuestions

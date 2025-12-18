@@ -224,35 +224,6 @@
         </div>
       </div>
     </div>
-
-    <div id="answer-main-animation-cont" class="opacity-overlay" style="position:absolute; width: 100%; height: 100%; background-color: var(--color-rgba-olive);">
-      <div id="answerAnimation">
-        <div style="position: relative; width: 100%; height: 100%;">
-
-          <div id="answerAnimationCharacter">
-            <img src="assets/personaje-gato.png" style="height: 100%;">
-          </div>
-
-          <div id="answer-animation-header">
-            <div class="animation-header-wrapper">
-              <img src="assets/label-fake.svg">
-            </div>
-          </div>
-
-          <div class="character-bubble-space" style="position: absolute; width: 65%; height: 50%; right: 4%; top: 6%; align-items: flex-start;">
-            <div class="character-bubble" style="background-color: var(--color-white);">
-              <div class="character-bubble-wrapper">
-                <p>Correcto! es una pena pero Perro se quedará sin show. Esta publicación puede ser una estafa.</p>
-                <div class="character-bubble-arrow-wrapper" style="left: var(--round-corners);">
-                  <img src="assets/text-box-bottom-white-left.svg">
-                </div>           
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
   </div>
 
     <!-- Answer animation --->
@@ -261,6 +232,35 @@
   </div>
   
 </div>
+
+<div id="answer-main-animation-cont" class="opacity-overlay" style="position:absolute; width: 100%; height: 100%; background-color: var(--color-rgba-olive); display: none;">
+    <div id="answerAnimation">
+      <div style="position: relative; width: 100%; height: 100%; overflow: hidden;">
+
+        <div id="answer-animation-character">
+          <img src="assets/personaje-gato.png" style="height: 100%;">
+        </div>
+
+<!--         <div id="answer-animation-header">
+          <div class="animation-header-wrapper">
+            <img src="assets/label-fake.svg">
+          </div>
+        </div> -->
+
+        <div class="character-bubble-space" style="position: absolute; width: 50%; height: 30%; left: 32%; bottom: 52%; align-items: flex-start; justify-content: flex-end;">
+          <div class="character-bubble" style="background-color: var(--color-white);">
+            <div class="character-bubble-wrapper">
+              <p>Correcto! es una pena pero Perro se quedará sin show. Esta publicación puede ser una estafa.</p>
+              <div class="character-bubble-arrow-wrapper" style="left: var(--round-corners);">
+                <img src="assets/text-box-bottom-white-left.svg">
+              </div>           
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
 <!-- ENDSCREEN -------------------------------------------------------------------------------------------------------------------------------------------------->
 <div class="endScreen" id="container" style="display: none;">
