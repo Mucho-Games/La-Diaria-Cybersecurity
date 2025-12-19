@@ -36,6 +36,7 @@ var elemAnswerMainBubbleArrowWrapper;
 var elemAnswerMainBubbleArrow;
 var elemAnswerMainText;
 var elemAnswerMainTitle;
+var elemAnswerMainButtonsClone;
 
 var elemAnimationAnswer;
 
@@ -99,6 +100,7 @@ async function newQuestion ()
     elemPlayerLevel.innerHTML = "0"+currentQuestionsAmount;
 
     elemAnswerMainCont.style.display = 'none';
+    elemMultipleChoiceCont.style.display = 'flex';
 
     multipleChoiceDisabled = false;
 
@@ -124,12 +126,32 @@ async function answerQuestion (state, option)
 
     elemAnswerMainCont.style.display = 'flex';
 
-    elemAnswerMainCharacter.style.left = option == 0 ? '43%' : '13%';
-    elemAnswerMainBubbleSpace.style.left = option == 0 ? '17.5%' : '32%';
+    if (option == 1) {
+        elemAnswerMainCharacter.style.removeProperty('right');
+        elemAnswerMainCharacter.style.left = '-2%';
+        elemAnswerMainBubbleSpace.style.removeProperty('left');
+        elemAnswerMainBubbleSpace.style.right = '6%';
+    }
+    else
+    {
+        elemAnswerMainCharacter.style.removeProperty('left');
+        elemAnswerMainCharacter.style.right = '-2%';
+        elemAnswerMainBubbleSpace.style.removeProperty('right');
+        elemAnswerMainBubbleSpace.style.left = '6%';
+    }
+
     elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
     elemAnswerMainBubbleArrow.src = option == 0 ? 
     'assets/text-box-bottom-white-right.svg' : 'assets/text-box-bottom-white-left.svg';
     elemAnswerMainBubbleArrowWrapper.style = option == 0 ? 'right: var(--round-corners)' : 'left: var(--round-corners)';
+
+    elemAnswerMainButtonsClone.style.display = 'flex';
+    //elemMultipleChoiceCont.style.display = 'none';
+
+    var optionsClone = document.querySelectorAll(`#question-buttons-clone .option`);
+    elemAnswerMainButtonsClone.style.flexDirection = option == 0 ? 'row' : 'row-reverse';
+    optionsClone[0].style.display = option == 0 ? 'flex' : 'none';
+    optionsClone[1].style.display = option == 1 ? 'flex' : 'none';
 
     show(elemAnswerMainBubble.parentElement);
 
@@ -196,12 +218,26 @@ function answerSubQuestion (option, state)
 
     elemAnswerMainCont.style.display = 'flex';
 
-    elemAnswerMainCharacter.style.left = option == 0 ? '43%' : '13%';
-    elemAnswerMainBubbleSpace.style.left = option == 0 ? '17.5%' : '32%';
+    if (option == 1) {
+        elemAnswerMainCharacter.style.removeProperty('right');
+        elemAnswerMainCharacter.style.left = '-2%';
+        elemAnswerMainBubbleSpace.style.removeProperty('left');
+        elemAnswerMainBubbleSpace.style.right = '6%';
+    }
+    else
+    {
+        elemAnswerMainCharacter.style.removeProperty('left');
+        elemAnswerMainCharacter.style.right = '-2%';
+        elemAnswerMainBubbleSpace.style.removeProperty('right');
+        elemAnswerMainBubbleSpace.style.left = '6%';
+    }
+
     elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
     elemAnswerMainBubbleArrow.src = option == 0 ? 
     'assets/text-box-bottom-white-right.svg' : 'assets/text-box-bottom-white-left.svg';
     elemAnswerMainBubbleArrowWrapper.style = option == 0 ? 'right: var(--round-corners)' : 'left: var(--round-corners)';
+
+    elemAnswerMainButtonsClone.style.display = 'none';
 
     show(elemAnswerMainBubble.parentElement);
 
@@ -241,11 +277,16 @@ function endLevel ()
 
     elemAnswerMainCont.style.display = 'flex';
 
-    elemAnswerMainCharacter.style.left = '13%';
-    elemAnswerMainBubbleSpace.style.left = '32%';
+    elemAnswerMainCharacter.style.removeProperty('right');
+    elemAnswerMainCharacter.style.left = '-2%';
+    elemAnswerMainBubbleSpace.style.removeProperty('left');
+    elemAnswerMainBubbleSpace.style.right = '6%';
+
     elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
     elemAnswerMainBubbleArrow.src = 'assets/text-box-bottom-white-left.svg';
     elemAnswerMainBubbleArrowWrapper.style = 'left: var(--round-corners)';
+
+    elemAnswerMainButtonsClone.style.display = 'none';
 
     //elemSubQuestionCont.style.height = '73%';
 

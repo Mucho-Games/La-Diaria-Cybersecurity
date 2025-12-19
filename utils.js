@@ -31,6 +31,18 @@ function getElementScreenPosition (elem) {
     };
 }
 
+function overlayDiv(source, target) 
+{
+  const rect = source.getBoundingClientRect();
+
+  target.style.position = "fixed";
+  target.style.left = rect.left + "px";
+  target.style.top = rect.top + "px";
+  target.style.width = rect.width + "px";
+  target.style.height = rect.height + "px";
+  target.style.zIndex = "9999";
+}
+
 function normalize(x, y) {
     const len = Math.hypot(x, y);
     if (len === 0) return { x: 0, y: 0 };

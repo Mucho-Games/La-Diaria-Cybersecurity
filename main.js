@@ -60,6 +60,7 @@ async function initialize ()
     elemAnswerMainBubbleArrow = document.querySelector('#answerAnimation .character-bubble .character-bubble-arrow-wrapper img');
     elemAnswerMainText = document.querySelector('#answerAnimation .character-bubble p');
     elemAnswerMainTitle = document.querySelector('#answer-animation-header img');
+    elemAnswerMainButtonsClone = document.getElementById('question-buttons-clone');
 
     elemAnimationAnswer = document.querySelector('#answerAnim');
 
@@ -284,5 +285,24 @@ function onScreenSizeChange()
         elemPlayerLevelCont.style.width = landscape ? '15%' : '18%';
         var options = document.querySelectorAll(`.game .option`);
         options.forEach(o => o.style.width = landscape ? '26%' : '30%');
+        var optionsClone = document.querySelectorAll(`#question-buttons-clone .option`);
+        optionsClone.forEach(o => o.style.width = landscape ? '26%' : '30%');
+
+        if (landscape) 
+        {
+            elemAnswerMainBottom.style.height = `${answerOverlayRefResolution[1]}px`;
+            elemAnswerMainBottom.style.width = `${answerOverlayRefResolution[0]}px`;
+            elemAnswerMainBottom.style.transformOrigin = 'bottom center'
+            elemAnswerMainBottom.style.transform = `scale(${viewFinalScaling})`;
+        }
+        else
+        {
+            elemAnswerMainBottom.style.height = `${answerOverlayRefResolutionPortrait[1]}px`;
+            elemAnswerMainBottom.style.width = `${answerOverlayRefResolutionPortrait[0]}px`;
+            elemAnswerMainBottom.style.transformOrigin = 'bottom center'
+            elemAnswerMainBottom.style.transform = `scale(${viewFinalScaling})`;
+        }
+
+        overlayDiv(elemMultipleChoiceCont, elemAnswerMainButtonsClone);
     }
 }

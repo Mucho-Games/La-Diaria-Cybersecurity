@@ -7,4 +7,6 @@ const views = ["titleScreen", "introAnimation", "game", "endScreen"];
 const viewsColors = ["--color-green", "--color-green", "--color-blue", "--color-orange"];
 const viewsRefResolutions = [[1100, 910], [1100, 910], [670, 910], [800, 910]];
 const viewsRefResolutionsPortrait = [[910, 910], [550, 910], [550, 910], [550, 910]];
+const answerOverlayRefResolution = [670, 910];
+const answerOverlayRefResolutionPortrait = [550, 910];
 const levelsAmount = 1;
