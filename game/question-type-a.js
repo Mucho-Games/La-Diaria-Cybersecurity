@@ -8,8 +8,9 @@ var elemNewsBody;
 
 class QuestionTypeA 
 {
-    constructor(profilePic, username, usernameURL, image, footNote, header, body, correctOption, textsAnswer, subQuestions, finalMessage) 
+    constructor(intro, profilePic, username, usernameURL, image, footNote, header, body, correctOption, textsAnswer, subQuestions, finalMessage) 
     {
+    	this.intro = intro;
     	this.profilePic = profilePic;
     	this.username = username;
     	this.usernameURL = usernameURL;

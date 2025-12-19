@@ -3,6 +3,12 @@
   [
     { 
       "questionType": 0,
+      "intro":
+      [
+        "¿Qué andan? Che, Quiero ir a un espectáculo pero me quedé sin entrada.",
+        "Tranqui Pato, yo te ayudo a buscar alguna en las redes :)",
+        "Me sumo a la misión!"
+      ],
       "profilePic": "pp-00",
       "username": "Espectáculos y eventos Uruguay",
       "usernameURL": "Gastón Lopez - 5 de mayo de 2024",
@@ -33,6 +39,98 @@
           [
             true,
             true,
+            true
+          ],
+          "message": "Las tres opciones son correctas, este tipo de publicaciones pueden ser una estafa, aplicá estos tres pasos para no caer en un fraude."
+        }
+      ],
+
+      "finalMessage": "No es confiable ponerse en contacto directo por wtsp con desconocidos. Además, es fácil simular los tickets digitales para asistir a espectáculos, pero pueden ser falsos. Es preferible acudir a los medios de venta oficiales."
+    },
+    { 
+      "questionType": 0,
+      "intro":
+      [
+        "Viendo videos de fútbol en Youtube, me apareció  esta publicidad del pistolero que parece interesante. ¿Qué les parece?",
+        "Que grande Luis! a ver eso...",
+        "¿Plata fácil?¿Dónde?"
+      ],
+      "profilePic": "pp-00",
+      "username": "Espectáculos y eventos Uruguay",
+      "usernameURL": "Gastón Lopez - 5 de mayo de 2024",
+      "img": "img-01",
+      "footNote": "18 comentarios",
+      "header": "Vendo entradas para Emilia domingo",
+      "body": "Vendo dos entradas digitales para ver a Emilia el domingo 12 a las 21 hrs. en el Antel Arena, Uruguay!! Interesados escribir 096956427",
+
+      "correctOption": 0,
+
+      "textsAnswer":
+      [
+        "¡Correcto!",
+        "Mi olfato gatuno tiene dudas. ¿Vamos a verificarlo juntos?"    
+      ],
+
+      "subQuestions": 
+      [
+        {
+          "subQuestion": "¿Qué pasos puedas dar para saber si es o no un publicación falsa?", 
+          "options": 
+          [
+            "Luis Suárez es una persona uruguaya muy conocida internacionalmente, el video debe ser verdadero.", 
+            "El portal de noticias Milenio existe, por eso me parece confiable.", 
+            "Mmm ahora que lo pienso mejor, es dudosa: es raro que te den un millón de pesos en un mes."
+          ], 
+          "optionsValues": 
+          [
+            false,
+            false,
+            true
+          ],
+          "message": "Las tres opciones son correctas, este tipo de publicaciones pueden ser una estafa, aplicá estos tres pasos para no caer en un fraude."
+        }
+      ],
+
+      "finalMessage": "No es confiable ponerse en contacto directo por wtsp con desconocidos. Además, es fácil simular los tickets digitales para asistir a espectáculos, pero pueden ser falsos. Es preferible acudir a los medios de venta oficiales."
+    },
+    { 
+      "questionType": 0,
+      "intro":
+      [
+        "Viendo videos de fútbol en Youtube, me apareció  esta publicidad del pistolero que parece interesante. ¿Qué les parece?",
+        "Que grande Luis! a ver eso...",
+        "¿Plata fácil?¿Dónde?"
+      ],
+      "profilePic": "pp-00",
+      "username": "Espectáculos y eventos Uruguay",
+      "usernameURL": "Gastón Lopez - 5 de mayo de 2024",
+      "img": "img-01",
+      "footNote": "18 comentarios",
+      "header": "Vendo entradas para Emilia domingo",
+      "body": "Vendo dos entradas digitales para ver a Emilia el domingo 12 a las 21 hrs. en el Antel Arena, Uruguay!! Interesados escribir 096956427",
+
+      "correctOption": 0,
+
+      "textsAnswer":
+      [
+        "¡Correcto!",
+        "Mi olfato gatuno tiene dudas. ¿Vamos a verificarlo juntos?"    
+      ],
+
+      "subQuestions": 
+      [
+        {
+          "subQuestion": "¿Qué pasos puedas dar para saber si es o no un publicación falsa?", 
+          "options": 
+          [
+            "Luis Suárez es una persona uruguaya muy conocida internacionalmente, el video debe ser verdadero.", 
+            "El portal de noticias Milenio existe, por eso me parece confiable.", 
+            "Mmm ahora que lo pienso mejor, es dudosa: es raro que te den un millón de pesos en un mes."
+          ], 
+          "optionsValues": 
+          [
+            false,
+            false,
             true
           ],
           "message": "Las tres opciones son correctas, este tipo de publicaciones pueden ser una estafa, aplicá estos tres pasos para no caer en un fraude."

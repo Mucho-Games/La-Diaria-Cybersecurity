@@ -9,4 +9,4 @@ const viewsRefResolutions = [[1100, 910], [1100, 910], [670, 910], [800, 910]];
 const viewsRefResolutionsPortrait = [[910, 910], [550, 910], [550, 910], [550, 910]];
 const answerOverlayRefResolution = [670, 910];
 const answerOverlayRefResolutionPortrait = [550, 910];
-const levelsAmount = 1;
+const levelsAmount = 3;

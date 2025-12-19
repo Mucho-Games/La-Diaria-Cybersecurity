@@ -83,9 +83,10 @@ async function newQuestion ()
         return;
     }
 
-    currentQuestion = getRandomElement(questionBank);
+    //currentQuestion = getRandomElement(questionBank);
+    currentQuestion = questionBank[currentQuestionsAmount];
 
-    showIntroAnimation();
+    showIntroAnimation(currentQuestion.intro);
 
     console.log(introAnimationPlaying);
     await waitFor(() => !introAnimationPlaying);
@@ -196,7 +197,17 @@ function answerSubQuestion (option, state)
     if (state == 1) //wrong answer
     {
         currentQuestion.subQuestions[subQuestionIndex].markWrong(option);
-        currentQuestion.subQuestions[subQuestionIndex].markCorrect(currentQuestion.subQuestions[subQuestionIndex].correctAnswer, false);
+
+        for (var i = currentQuestion.subQuestions[subQuestionIndex].optionsValues.length - 1; i >= 0; i--) 
+        {
+            if (i == option) continue;
+
+            if (currentQuestion.subQuestions[subQuestionIndex].optionsValues[i]) 
+            {
+                currentQuestion.subQuestions[subQuestionIndex].markCorrect(i, false);
+            }
+        }
+        
 
         // elemAnimationAnswer.style.backgroundColor = 'red';
         // elemAnimationAnswer.querySelector('p').innerHTML = "EQUIVOCADO!";
