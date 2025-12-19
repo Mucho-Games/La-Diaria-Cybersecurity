@@ -218,24 +218,14 @@ function answerSubQuestion (option, state)
 
     elemAnswerMainCont.style.display = 'flex';
 
-    if (option == 1) {
-        elemAnswerMainCharacter.style.removeProperty('right');
-        elemAnswerMainCharacter.style.left = '-2%';
-        elemAnswerMainBubbleSpace.style.removeProperty('left');
-        elemAnswerMainBubbleSpace.style.right = '6%';
-    }
-    else
-    {
-        elemAnswerMainCharacter.style.removeProperty('left');
-        elemAnswerMainCharacter.style.right = '-2%';
-        elemAnswerMainBubbleSpace.style.removeProperty('right');
-        elemAnswerMainBubbleSpace.style.left = '6%';
-    }
+    elemAnswerMainCharacter.style.removeProperty('left');
+    elemAnswerMainCharacter.style.right = '-2%';
+    elemAnswerMainBubbleSpace.style.removeProperty('right');
+    elemAnswerMainBubbleSpace.style.left = '6%';
 
     elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
-    elemAnswerMainBubbleArrow.src = option == 0 ? 
-    'assets/text-box-bottom-white-right.svg' : 'assets/text-box-bottom-white-left.svg';
-    elemAnswerMainBubbleArrowWrapper.style = option == 0 ? 'right: var(--round-corners)' : 'left: var(--round-corners)';
+    elemAnswerMainBubbleArrow.src = 'assets/text-box-bottom-white-right.svg';
+    elemAnswerMainBubbleArrowWrapper.style = 'right: var(--round-corners)';
 
     elemAnswerMainButtonsClone.style.display = 'none';
 
