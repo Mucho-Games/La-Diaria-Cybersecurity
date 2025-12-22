@@ -1047,3 +1047,34 @@ b {
     transform: translateX(-100%); 
   }
 }
+
+.cat-avatar .characterBackground
+{
+  background-color: var(--color-orange) !important;
+}
+.cat-avatar img
+{
+  left: -49% !important;
+  top: 5% !important;
+  width: 190% !important;
+}
+.pato-avatar .characterBackground
+{
+  background-color: var(--color-yellow) !important;
+}
+.pato-avatar img
+{
+  left: -37% !important;
+  top: -15% !important;
+  width: 165% !important;
+}
+.dog-avatar .characterBackground
+{
+  background-color: var(--color-blue) !important;
+}
+.dog-avatar img
+{
+  left: -30% !important;
+  top: 5% !important;
+  width: 170% !important;
+}

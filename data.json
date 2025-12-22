@@ -6,9 +6,18 @@
       "questionType": 0,
       "intro":
       [
-        "¿Qué andan? Che, Quiero ir a un espectáculo pero me quedé sin entrada.",
-        "Tranqui Pato, yo te ayudo a buscar alguna en las redes :)",
-        "Me sumo a la misión!"
+        {
+          "character": 0,
+          "text": "¿Qué andan? Che, Quiero ir a un espectáculo pero me quedé sin entrada."
+        },
+        {
+          "character": 1,
+          "text": "Tranqui Pato, yo te ayudo a buscar alguna en las redes :)"
+        },
+        {
+          "character": 2,
+          "text": "Me sumo a la misión!"
+        }       
       ],
       "profilePic": "pp-00",
       "username": "Espectáculos y eventos Uruguay",
@@ -61,9 +70,18 @@
       "questionType": 0,
       "intro":
       [
-        "Viendo videos de fútbol en Youtube, me apareció  esta publicidad del pistolero que parece interesante. ¿Qué les parece?",
-        "¿Un millón de pesos en un mes?",
-        "Mejor olfateemos juntos a ver de qué se trata."
+        {
+          "character": 2,
+          "text": "Viendo videos de fútbol en Youtube, me apareció  esta publicidad del pistolero que parece interesante. ¿Qué les parece?"
+        },
+        {
+          "character": 0,
+          "text": "¿Un millón de pesos en un mes?"
+        },
+        {
+          "character": 1,
+          "text": "Mejor olfateemos juntos a ver de qué se trata."
+        }
       ],
       "profilePic": "pp-01",
       "username": "Milenio Portal oficial",
@@ -133,9 +151,18 @@
       "questionType": 0,
       "intro":
       [
-        "Mi prima me pasó este video de TikTok. Ahora quiero una cama elástica para poner en el patio y saltar con otros animales.",
-        "¡Qué divertido! ¡Mirá qué tiernos cómo saltan!",
-        "Prestame la lupa, Pato, que a este video hay que mirarlo muy de cerca."
+        {
+          "character": 0,
+          "text": "Mi prima me pasó este video de TikTok. Ahora quiero una cama elástica para poner en el patio y saltar con otros animales."
+        },
+        {
+          "character": 2,
+          "text": "¡Qué divertido! ¡Mirá qué tiernos cómo saltan!"
+        },
+        {
+          "character": 1,
+          "text": "Prestame la lupa, Pato, que a este video hay que mirarlo muy de cerca."
+        }   
       ],
       "profilePic": "pp-02",
       "username": "El Noticiero Televen oficial",
