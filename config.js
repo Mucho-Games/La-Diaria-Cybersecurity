@@ -12,3 +12,4 @@ const answerOverlayRefResolutionPortrait = [550, 910];
 const levelsAmount = 3;
 const charactersAvatars = ["assets/personaje-pato2.png", "assets/personaje-gato.png", "assets/personaje-perro.png"];
 const charactersAvatarsStyles = ["pato-avatar", "cat-avatar", "dog-avatar"];
+const charactersAnswerStyles = ["pato-answer", "cat-answer", "dog-answer"];

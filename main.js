@@ -54,6 +54,7 @@ async function initialize ()
     elemAnswerMainCont = document.getElementById("answer-main-animation-cont");
     elemAnswerMainBottom = document.getElementById("answerAnimation");
     elemAnswerMainCharacter = document.querySelector('#answer-animation-character');
+    elemAnswerMainCharacterIMG = document.querySelector('#answer-animation-character img');
     elemAnswerMainBubbleSpace = document.querySelector('#answerAnimation .character-bubble-space');
     elemAnswerMainBubble = document.querySelector('#answerAnimation .character-bubble');
     elemAnswerMainBubbleArrowWrapper = document.querySelector('#answerAnimation .character-bubble .character-bubble-arrow-wrapper');

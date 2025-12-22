@@ -31,8 +31,14 @@
 
       "textsAnswer":
       [
-        "¡Bien dicho! Pato podría quedarse sin show, pero peor es ser víctima de una estafa. ¡A chequear!",
-        "Mi olfato me indica lo contrario. Este contenido es dudoso."    
+        {
+          "character": 1,
+          "text": "¡Bien dicho! Pato podría quedarse sin show, pero peor es ser víctima de una estafa. ¡A chequear!"
+        },
+        {
+          "character": 1,
+          "text": "Mi olfato me indica lo contrario. Este contenido es dudoso." 
+        }  
       ],
 
       "subQuestions": 
@@ -95,8 +101,14 @@
 
       "textsAnswer":
       [
-        "¡Correcto!",
-        "Mi sexto sentido tiene dudas... ¿Vamos a verificarlo juntos?"    
+        {
+          "character": 0,
+          "text": "¡Correcto!"
+        },
+        {
+          "character": 1,
+          "text": "Mi sexto sentido tiene dudas... ¿Vamos a verificarlo juntos?"
+        }        
       ],
 
       "subQuestions": 
@@ -176,8 +188,14 @@
 
       "textsAnswer":
       [
-        "Estamos de acuerdo. Igual, investiguemos un poco más.",
-        "Ups, es un contenido falso."    
+        {
+          "character": 0,
+          "text": "Estamos de acuerdo. Igual, investiguemos un poco más."
+        },
+        {
+          "character": 1,
+          "text": "Ups, es un contenido falso."
+        }        
       ],
 
       "subQuestions": 

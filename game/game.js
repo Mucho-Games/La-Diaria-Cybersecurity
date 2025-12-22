@@ -31,6 +31,7 @@ var elemSubQuestionCont;
 var elemAnswerMainCont;
 var elemAnswerMainBottom;
 var elemAnswerMainCharacter;
+var elemAnswerMainCharacterIMG;
 var elemAnswerMainBubbleSpace;
 var elemAnswerMainBubble;
 var elemAnswerMainBubbleArrowWrapper;
@@ -131,6 +132,14 @@ async function answerQuestion (state, option)
 
     elemAnswerMainCont.style.display = 'flex';
 
+    //set image of character
+    var characterIndex = currentQuestion.textsAnswer[option].character;
+    charactersAnswerStyles.forEach(s => elemAnswerMainCharacter.classList.remove(s));
+    elemAnswerMainCharacter.offsetHeight;
+    elemAnswerMainCharacter.classList.add(charactersAnswerStyles[characterIndex]);
+    elemAnswerMainCharacterIMG.src = charactersAvatars[characterIndex];
+
+    //set sides and textbox
     if (option == 0) 
     {
         elemAnswerMainCharacter.style.removeProperty('left');
@@ -163,7 +172,7 @@ async function answerQuestion (state, option)
 
     show(elemAnswerMainBubble.parentElement);
 
-    new Dialogue(elemAnswerMainText, currentQuestion.textsAnswer[option]);
+    new Dialogue(elemAnswerMainText, currentQuestion.textsAnswer[option].text);
 
     multipleChoiceDisabled = true;
     questionOptionSelected = option;
