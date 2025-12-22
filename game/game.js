@@ -96,6 +96,11 @@ async function newQuestion ()
     await waitFor(() => !introAnimationPlaying);
     console.log(introAnimationPlaying);
 
+    document.addEventListener('click', startLevel, { once: true });
+}
+
+function startLevel () 
+{
     currentQuestion.getDOMElements();
     currentQuestion.populate();
 
@@ -112,7 +117,6 @@ async function newQuestion ()
 
     setView('game');
 }
-
 async function answerQuestion (state, option) 
 {
     if (state == 1) //wrong answer
