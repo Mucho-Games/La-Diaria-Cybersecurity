@@ -1,5 +1,6 @@
 //GAME VARS
 var questionState = -1;
+var questionOptionSelected = -1;
 var currentView = 0;
 
 var currentQuestion;
@@ -96,6 +97,7 @@ async function newQuestion ()
     currentQuestion.populate();
 
     questionState = 0;
+    questionOptionSelected = -1;
     currentQuestionsAmount++;
 
     elemPlayerLevel.innerHTML = "0"+currentQuestionsAmount;
@@ -127,18 +129,19 @@ async function answerQuestion (state, option)
 
     elemAnswerMainCont.style.display = 'flex';
 
-    if (option == 1) {
-        elemAnswerMainCharacter.style.removeProperty('right');
-        elemAnswerMainCharacter.style.left = '-2%';
-        elemAnswerMainBubbleSpace.style.removeProperty('left');
-        elemAnswerMainBubbleSpace.style.right = '6%';
-    }
-    else
+    if (option == 0) 
     {
         elemAnswerMainCharacter.style.removeProperty('left');
         elemAnswerMainCharacter.style.right = '-2%';
         elemAnswerMainBubbleSpace.style.removeProperty('right');
         elemAnswerMainBubbleSpace.style.left = '6%';
+    }
+    else
+    {
+        elemAnswerMainCharacter.style.removeProperty('right');
+        elemAnswerMainCharacter.style.left = '-2%';
+        elemAnswerMainBubbleSpace.style.removeProperty('left');
+        elemAnswerMainBubbleSpace.style.right = '6%';       
     }
 
     elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
@@ -159,6 +162,7 @@ async function answerQuestion (state, option)
     new Dialogue(elemAnswerMainText, currentQuestion.textsAnswer[option]);
 
     multipleChoiceDisabled = true;
+    questionOptionSelected = option;
     questionState++;
 
     setTimeout(function() 
@@ -170,11 +174,11 @@ async function answerQuestion (state, option)
 
 function endMainQuestion () 
 { 
-    showSubQuestion(questionState-1); 
+    showSubQuestion(); 
     document.removeEventListener('click', endMainQuestion);
 }
 
-function showSubQuestion (index) 
+function showSubQuestion () 
 {
     multipleChoiceDisabled = false;
     elemAnswerMainCont.style.display = 'none';
@@ -186,25 +190,26 @@ function showSubQuestion (index)
     document.getElementById('subQuestions-container').style.height = '78%';
     document.getElementById('subQuestions-container').style.justifyContent = 'space-around';
 
-    currentQuestion.subQuestions[index].getDOMElements();
-    currentQuestion.subQuestions[index].populate();
+    if (currentQuestion.subQuestions.length < 2)
+        questionOptionSelected = 0;
+
+    currentQuestion.subQuestions[questionOptionSelected].getDOMElements();
+    currentQuestion.subQuestions[questionOptionSelected].populate();
 }
 
 function answerSubQuestion (option, state) 
 {
-    var subQuestionIndex = questionState-1;
-
     if (state == 1) //wrong answer
     {
-        currentQuestion.subQuestions[subQuestionIndex].markWrong(option);
+        currentQuestion.subQuestions[questionOptionSelected].markWrong(option);
 
-        for (var i = currentQuestion.subQuestions[subQuestionIndex].optionsValues.length - 1; i >= 0; i--) 
+        for (var i = currentQuestion.subQuestions[questionOptionSelected].optionsValues.length - 1; i >= 0; i--) 
         {
             if (i == option) continue;
 
-            if (currentQuestion.subQuestions[subQuestionIndex].optionsValues[i]) 
+            if (currentQuestion.subQuestions[questionOptionSelected].optionsValues[i]) 
             {
-                currentQuestion.subQuestions[subQuestionIndex].markCorrect(i, false);
+                currentQuestion.subQuestions[questionOptionSelected].markCorrect(i, false);
             }
         }
         
@@ -217,7 +222,7 @@ function answerSubQuestion (option, state)
     {
         updatePlayerScore(currentPlayerScore + 30);
 
-        currentQuestion.subQuestions[subQuestionIndex].markCorrect(option, true);
+        currentQuestion.subQuestions[questionOptionSelected].markCorrect(option, true);
 
         // elemAnimationAnswer.style.backgroundColor = 'green';
         // elemAnimationAnswer.querySelector('p').innerHTML = "BIEN HECHO!";
@@ -229,18 +234,19 @@ function answerSubQuestion (option, state)
 
     elemAnswerMainCont.style.display = 'flex';
 
-    if (option == 1) {
-        elemAnswerMainCharacter.style.removeProperty('right');
-        elemAnswerMainCharacter.style.left = '-2%';
-        elemAnswerMainBubbleSpace.style.removeProperty('left');
-        elemAnswerMainBubbleSpace.style.right = '6%';
-    }
-    else
+    if (option == 0) 
     {
         elemAnswerMainCharacter.style.removeProperty('left');
         elemAnswerMainCharacter.style.right = '-2%';
         elemAnswerMainBubbleSpace.style.removeProperty('right');
         elemAnswerMainBubbleSpace.style.left = '6%';
+    }
+    else
+    {   
+        elemAnswerMainCharacter.style.removeProperty('right');
+        elemAnswerMainCharacter.style.left = '-2%';
+        elemAnswerMainBubbleSpace.style.removeProperty('left');
+        elemAnswerMainBubbleSpace.style.right = '6%';
     }
 
     elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
@@ -257,7 +263,7 @@ function answerSubQuestion (option, state)
     //document.getElementById('subQuestions-container').style.height = '100%';
     //document.getElementById('subQuestions-container').style.justifyContent = 'center';
 
-    new Dialogue(elemAnswerMainText, currentQuestion.subQuestions[subQuestionIndex].message);
+    new Dialogue(elemAnswerMainText, currentQuestion.subQuestions[questionOptionSelected].message);
 
     setTimeout(function() 
     { 
@@ -303,7 +309,7 @@ function endLevel ()
 
     show(elemAnswerMainBubble.parentElement);
 
-    new Dialogue(elemAnswerMainText, currentQuestion.finalMessage);
+    new Dialogue(elemAnswerMainText, currentQuestion.finalMessage[questionOptionSelected]);
 
     setTimeout(function() 
     { 
@@ -334,7 +340,7 @@ function onClickOption (option)
     }
     else if (questionState > 0) //On second instance of question
     {
-        if (currentQuestion.subQuestions[questionState-1].optionsValues[option])
+        if (currentQuestion.subQuestions[questionOptionSelected].optionsValues[option])
         {
             answerSubQuestion(option, 0);
         }
