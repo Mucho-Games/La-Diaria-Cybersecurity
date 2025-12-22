@@ -2,7 +2,14 @@
   "questions":
   [
     { 
+      "index": 0,
       "questionType": 0,
+      "intro":
+      [
+        "¿Qué andan? Che, Quiero ir a un espectáculo pero me quedé sin entrada.",
+        "Tranqui Pato, yo te ayudo a buscar alguna en las redes :)",
+        "Me sumo a la misión!"
+      ],
       "profilePic": "pp-00",
       "username": "Espectáculos y eventos Uruguay",
       "usernameURL": "Gastón Lopez - 5 de mayo de 2024",
@@ -39,7 +46,153 @@
         }
       ],
 
-      "finalMessage": "No es confiable ponerse en contacto directo por wtsp con desconocidos. Además, es fácil simular los tickets digitales para asistir a espectáculos, pero pueden ser falsos. Es preferible acudir a los medios de venta oficiales."
+      "finalMessage": 
+      [
+        "No es confiable ponerse en contacto directo por wtsp con desconocidos. Además, es fácil simular los tickets digitales para asistir a espectáculos, pero pueden ser falsos. Es preferible acudir a los medios de venta oficiales."
+      ]
+    },
+
+
+
+
+
+    { 
+      "index": 1,
+      "questionType": 0,
+      "intro":
+      [
+        "Viendo videos de fútbol en Youtube, me apareció  esta publicidad del pistolero que parece interesante. ¿Qué les parece?",
+        "¿Un millón de pesos en un mes?",
+        "Mejor olfateemos juntos a ver de qué se trata."
+      ],
+      "profilePic": "pp-01",
+      "username": "Milenio Portal oficial",
+      "usernameURL": "3,9 k suscriptores",
+      "img": "img-01",
+      "footNote": "386 visualizaciones  hace 17 horas",
+      "header": "SUMATE A ESTA OPORTUNIDAD",
+      "body": "En el video Luis Suárez te invita a ganar 1.000.000 UY en tu primer mes de inversión o te devolverá tu dinero.",
+
+      "correctOption": 0,
+
+      "textsAnswer":
+      [
+        "¡Correcto!",
+        "Mi olfato gatuno tiene dudas. ¿Vamos a verificarlo juntos?"    
+      ],
+
+      "subQuestions": 
+      [
+        {
+          "subQuestion": "¿Por qué creés que es dudoso?", 
+          "options": 
+          [
+            "Parece hecho con Inteligencia Artificial.", 
+            "Luis Suárez es jugador de fútbol, no habla de inversiones.", 
+            "La noticia no está en un medio uruguayo."
+          ], 
+          "optionsValues": 
+          [
+            true,
+            false,
+            false
+          ],
+          "message": "Cuando veas videos aseguráte que la voz no suene metálica, que se corresponda con el movimiento de la boca al hablar."
+        },
+        {
+          "subQuestion": "¿Qué pasos puedas dar para saber si es o no un publicación falsa?", 
+          "options": 
+          [
+            "Luis Suárez es una persona uruguaya muy conocida internacionalmente, el video debe ser verdadero.", 
+            "El portal de noticias Milenio existe, por eso me parece confiable.", 
+            "Mmm ahora que lo pienso mejor, es dudosa: es raro que te den un millón de pesos en un mes."
+          ], 
+          "optionsValues": 
+          [
+            false,
+            false,
+            true
+          ],
+          "message": "Este video fue hecho con inteligencia artificial y no es real que Luis Suárez invite a invertir. Si bien Milenio es un medio de noticias mexicano real, esta noticia simula ser de Milenio pero tampoco lo es."
+        }
+      ],
+
+      "finalMessage": 
+      [
+        "¡Y no lo olvides! Siempre debes estar atento a aquello que parece demasiado ventajoso y chequear la dirección de la web a la que te dirige el enlace. En este caso, Milenio existe, pero esta web era falsa.",
+        "Recomendación gatuna: siempre desconfiar de las propuestas que prometen grandes ganancias o retribuciones, sean de dinero o no, por ejemplo, que te regalan un teléfono o algo costoso. Y no te olvides de chequear la dirección de la web a la que te dirige el enlace. En este caso, Milenio existe, pero esta web era falsa."
+      ]
+    },
+
+
+
+
+
+    { 
+      "index": 2,
+      "questionType": 0,
+      "intro":
+      [
+        "Mi prima me pasó este video de TikTok. Ahora quiero una cama elástica para poner en el patio y saltar con otros animales.",
+        "¡Qué divertido! ¡Mirá qué tiernos cómo saltan!",
+        "Prestame la lupa, Pato, que a este video hay que mirarlo muy de cerca."
+      ],
+      "profilePic": "pp-02",
+      "username": "El Noticiero Televen oficial",
+      "usernameURL": "47,5 k suscritptores",
+      "img": "img-02",
+      "footNote": "369 K visualizaciones",
+      "header": "Jugar es universal",
+      "body": "La inocencia de los animales en los trampolines.",
+
+      "correctOption": 0,
+
+      "textsAnswer":
+      [
+        "Estamos de acuerdo. Igual, investiguemos un poco más.",
+        "Ups, es un contenido falso."    
+      ],
+
+      "subQuestions": 
+      [
+        {
+          "subQuestion": "Veamos por qué", 
+          "options": 
+          [
+            "Si googleamos “animales saltando en camas elásticas” vamos a encontrar decenas de videos claramente falsos, donde saltan osos y hasta un yacaré.", 
+            "Es raro que justo una cámara los esté filmando.", 
+            "Si me genera mucha ternura o asombro, y ganas de compartir, es probable que no sea real."
+          ], 
+          "optionsValues": 
+          [
+            true,
+            false,
+            true
+          ],
+          "message": "Los contenidos que provocan reacciones inmediatas e intensas, como ternura o risa, muchas veces son falsos. Están pensados para que se vuelvan virales. Para verificarlos, podés hacer una búsqueda inversa de imágenes en Google Lens con una captura de pantalla."
+        },
+        {
+          "subQuestion": "Indica por qué es falso", 
+          "options": 
+          [
+            "Todos los videos de TikTok son falsos.", 
+            "Los conejos no pueden saltar en camas elásticas.", 
+            "Está hecho con inteligencia artificial."
+          ], 
+          "optionsValues": 
+          [
+            false,
+            false,
+            true
+          ],
+          "message": "Los contenidos que provocan reacciones inmediatas e intensas, como ternura o risa, muchas veces son falsos. Están pensados para que se vuelvan virales. Para verificarlos, podés hacer una búsqueda inversa de imágenes en Google Lens con una captura de pantalla."
+        }
+      ],
+
+      "finalMessage": 
+      [
+        "Recordá verificar todos los contenidos que vayas a compartir, en especial si te hicieron reaccionar. Existen páginas y aplicaciones para chequear si una foto o un video fueron creados con inteligencia artificial, y aunque no son herramientas 100% efectivas siguen siendo recomendables."
+      ]
     }
   ]
 }

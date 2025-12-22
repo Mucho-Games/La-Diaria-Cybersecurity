@@ -8,17 +8,18 @@ var introAnimationPlaying = false;
 var dialogueTexts = [];
 var linesShown = [];
 
-function showIntroAnimation () 
+function showIntroAnimation (texts) 
 {
 	setView('introAnimation');
-	subscribe(introAnimation)
 
 	elemDialogueText = document.querySelectorAll('.introAnimation .character-bubble p');
 	elemLines = document.querySelectorAll('.introAnimation .line');
 
-	for (var i = 0; i < elemDialogueText.length; i++) {
-		dialogueTexts.push(elemDialogueText[i].innerHTML);
+	dialogueTexts.length = 0;
+	for (var i = 0; i < texts.length; i++) {
+		dialogueTexts.push(texts[i]);
 	}
+	linesShown.length = 0;
 	for (var i = 0; i < elemLines.length; i++) {
 		elemLines[i].style.display = 'none';
 		linesShown.push(false);
@@ -27,7 +28,9 @@ function showIntroAnimation ()
 	introAnimationPlaying = true;
 	introAnimationTime = 0;
 
-	
+	introAnimationCurrentLineIndex = 0;
+
+	subscribe(introAnimation)
 }
 function introAnimation (deltaTime) 
 {

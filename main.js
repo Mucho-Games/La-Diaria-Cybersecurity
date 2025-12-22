@@ -94,6 +94,7 @@ async function loadQuestions() {
             {
                 return new QuestionTypeA 
                 (
+                    q.intro,
                     q.profilePic,
                     q.username,
                     q.usernameURL,
