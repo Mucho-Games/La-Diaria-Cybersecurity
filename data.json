@@ -130,7 +130,7 @@
           "message": "Cuando veas videos asegurate de que la voz no suene metálica y que se corresponda con el movimiento de la boca al hablar."
         },
         {
-          "subQuestion": "", 
+          "subQuestion": "¿Por qué creés que es verdadero?", 
           "options": 
           [
             "Luis Suárez es una persona muy conocida, así que el video debe ser verdadero.", 
