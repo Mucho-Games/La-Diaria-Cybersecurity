@@ -6,15 +6,20 @@ var introAnimationCurrentDialogue;
 var introAnimationTime = 0;
 var introAnimationPlaying = false;
 var dialogueTexts = [];
+var characters = [];
 var linesShown = [];
 
-function showIntroAnimation (texts) 
+function showIntroAnimation (texts, char) 
 {
 	setView('introAnimation');
 
 	elemDialogueText = document.querySelectorAll('.introAnimation .character-bubble p');
 	elemLines = document.querySelectorAll('.introAnimation .line');
 
+	characters.length = 0;
+	for (var i = 0; i < char.length; i++) {
+		characters.push(char[i]);
+	}
 	dialogueTexts.length = 0;
 	for (var i = 0; i < texts.length; i++) {
 		dialogueTexts.push(texts[i]);
@@ -67,6 +72,14 @@ function showLine (index)
 	elemLines[index].style.display = 'flex';
 	var bubble = elemLines[index].querySelector('.character-bubble-space');
 	var portrait = elemLines[index].querySelector('.character-portrait');
+	var portraitIMG = elemLines[index].querySelector('.character-portrait img');
+
+	var characterIndex = characters[index];
+	portraitIMG.src = charactersAvatars[characterIndex];
+	charactersAvatarsStyles.forEach(s => portrait.classList.remove(s));
+	portrait.offsetHeight;
+  	portrait.classList.add(charactersAvatarsStyles[characterIndex]);
+
 	show(bubble);
 	show(portrait);
 	linesShown[index] = true;

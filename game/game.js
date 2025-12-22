@@ -87,7 +87,9 @@ async function newQuestion ()
     //currentQuestion = getRandomElement(questionBank);
     currentQuestion = questionBank[currentQuestionsAmount];
 
-    showIntroAnimation(currentQuestion.intro);
+    const introTexts = currentQuestion.intro.map(entry => entry.text);
+    const introCharacters = currentQuestion.intro.map(entry => entry.character);
+    showIntroAnimation(introTexts, introCharacters);
 
     console.log(introAnimationPlaying);
     await waitFor(() => !introAnimationPlaying);
@@ -135,13 +137,15 @@ async function answerQuestion (state, option)
         elemAnswerMainCharacter.style.right = '-2%';
         elemAnswerMainBubbleSpace.style.removeProperty('right');
         elemAnswerMainBubbleSpace.style.left = '6%';
+        elemAnswerMainBubbleSpace.style.alignItems = 'flex-end';
     }
     else
     {
         elemAnswerMainCharacter.style.removeProperty('right');
         elemAnswerMainCharacter.style.left = '-2%';
         elemAnswerMainBubbleSpace.style.removeProperty('left');
-        elemAnswerMainBubbleSpace.style.right = '6%';       
+        elemAnswerMainBubbleSpace.style.right = '6%'; 
+        elemAnswerMainBubbleSpace.style.alignItems = 'flex-start';      
     }
 
     elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
@@ -240,6 +244,7 @@ function answerSubQuestion (option, state)
         elemAnswerMainCharacter.style.right = '-2%';
         elemAnswerMainBubbleSpace.style.removeProperty('right');
         elemAnswerMainBubbleSpace.style.left = '6%';
+        elemAnswerMainBubbleSpace.style.alignItems = 'flex-end';
     }
     else
     {   
@@ -247,6 +252,7 @@ function answerSubQuestion (option, state)
         elemAnswerMainCharacter.style.left = '-2%';
         elemAnswerMainBubbleSpace.style.removeProperty('left');
         elemAnswerMainBubbleSpace.style.right = '6%';
+        elemAnswerMainBubbleSpace.style.alignItems = 'flex-start';
     }
 
     elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
@@ -298,6 +304,7 @@ function endLevel ()
     elemAnswerMainCharacter.style.left = '-2%';
     elemAnswerMainBubbleSpace.style.removeProperty('left');
     elemAnswerMainBubbleSpace.style.right = '6%';
+    elemAnswerMainBubbleSpace.style.alignItems = 'flex-start';
 
     elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
     elemAnswerMainBubbleArrow.src = 'assets/text-box-bottom-white-left.svg';
