@@ -247,27 +247,27 @@ function answerSubQuestion (option, state)
 
     elemAnswerMainCont.style.display = 'flex';
 
-    if (option == 0) 
-    {
-        elemAnswerMainCharacter.style.removeProperty('left');
-        elemAnswerMainCharacter.style.right = '-2%';
-        elemAnswerMainBubbleSpace.style.removeProperty('right');
-        elemAnswerMainBubbleSpace.style.left = '6%';
-        elemAnswerMainBubbleSpace.style.alignItems = 'flex-end';
-    }
-    else
-    {   
-        elemAnswerMainCharacter.style.removeProperty('right');
-        elemAnswerMainCharacter.style.left = '-2%';
-        elemAnswerMainBubbleSpace.style.removeProperty('left');
-        elemAnswerMainBubbleSpace.style.right = '6%';
-        elemAnswerMainBubbleSpace.style.alignItems = 'flex-start';
-    }
+    // if (option == 0) 
+    // {
+    //     elemAnswerMainCharacter.style.removeProperty('left');
+    //     elemAnswerMainCharacter.style.right = '-2%';
+    //     elemAnswerMainBubbleSpace.style.removeProperty('right');
+    //     elemAnswerMainBubbleSpace.style.left = '6%';
+    //     elemAnswerMainBubbleSpace.style.alignItems = 'flex-end';
+    // }
+    // else
+    // {   
+    //     elemAnswerMainCharacter.style.removeProperty('right');
+    //     elemAnswerMainCharacter.style.left = '-2%';
+    //     elemAnswerMainBubbleSpace.style.removeProperty('left');
+    //     elemAnswerMainBubbleSpace.style.right = '6%';
+    //     elemAnswerMainBubbleSpace.style.alignItems = 'flex-start';
+    // }
 
-    elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
-    elemAnswerMainBubbleArrow.src = option == 0 ? 
-    'assets/text-box-bottom-white-right.svg' : 'assets/text-box-bottom-white-left.svg';
-    elemAnswerMainBubbleArrowWrapper.style = option == 0 ? 'right: var(--round-corners)' : 'left: var(--round-corners)';
+    // elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
+    // elemAnswerMainBubbleArrow.src = option == 0 ? 
+    // 'assets/text-box-bottom-white-right.svg' : 'assets/text-box-bottom-white-left.svg';
+    // elemAnswerMainBubbleArrowWrapper.style = option == 0 ? 'right: var(--round-corners)' : 'left: var(--round-corners)';
 
     elemAnswerMainButtonsClone.style.display = 'none';
 
@@ -309,15 +309,15 @@ function endLevel ()
 
     elemAnswerMainCont.style.display = 'flex';
 
-    elemAnswerMainCharacter.style.removeProperty('right');
-    elemAnswerMainCharacter.style.left = '-2%';
-    elemAnswerMainBubbleSpace.style.removeProperty('left');
-    elemAnswerMainBubbleSpace.style.right = '6%';
-    elemAnswerMainBubbleSpace.style.alignItems = 'flex-start';
+    // elemAnswerMainCharacter.style.removeProperty('right');
+    // elemAnswerMainCharacter.style.left = '-2%';
+    // elemAnswerMainBubbleSpace.style.removeProperty('left');
+    // elemAnswerMainBubbleSpace.style.right = '6%';
+    // elemAnswerMainBubbleSpace.style.alignItems = 'flex-start';
 
-    elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
-    elemAnswerMainBubbleArrow.src = 'assets/text-box-bottom-white-left.svg';
-    elemAnswerMainBubbleArrowWrapper.style = 'left: var(--round-corners)';
+    // elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
+    // elemAnswerMainBubbleArrow.src = 'assets/text-box-bottom-white-left.svg';
+    // elemAnswerMainBubbleArrowWrapper.style = 'left: var(--round-corners)';
 
     elemAnswerMainButtonsClone.style.display = 'none';
 
