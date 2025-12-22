@@ -8,15 +8,15 @@
       [
         {
           "character": 0,
-          "text": "¿Qué andan? Che, Quiero ir a un espectáculo pero me quedé sin entrada."
+          "text": "Che, quiero ir a un show pero me quedé sin entrada."
         },
         {
           "character": 1,
-          "text": "Tranqui Pato, yo te ayudo a buscar alguna en las redes :)"
+          "text": "Tranqui, Pato. Yo te ayudo a buscar alguna en las redes :)"
         },
         {
           "character": 2,
-          "text": "Me sumo a la misión!"
+          "text": "¡Me sumo a la misión!"
         }       
       ],
       "profilePic": "pp-00",
@@ -25,25 +25,25 @@
       "img": "img-00",
       "footNote": "18 comentarios",
       "header": "Vendo entradas para Emilia domingo",
-      "body": "Vendo dos entradas digitales para ver a Emilia el domingo 12 a las 21 hrs. en el Antel Arena, Uruguay!! Interesados escribir 096956427",
+      "body": "Vendo dos entradas digitales para ver a Emilia el domingo 12 a las 21 hrs. en el Antel Arena, Uruguay! Interesados escribir 096956427",
 
       "correctOption": 0,
 
       "textsAnswer":
       [
-        "¡Correcto! es una pena pero Perro se podría quedarse sin show. Saquen sus lupas ¡a chequear!",
-        "Mis orejas indican lo contrario. Es un contenido dudoso."    
+        "¡Bien dicho! Pato podría quedarse sin show, pero peor es ser víctima de una estafa. ¡A chequear!",
+        "Mi olfato me indica lo contrario. Este contenido es dudoso."    
       ],
 
       "subQuestions": 
       [
         {
-          "subQuestion": "¿Qué pasos puedas dar para saber si es o no un publicación falsa?", 
+          "subQuestion": "¿Qué pasos podés dar para saber si la publicación es falsa o no?", 
           "options": 
           [
-            "Leer los comentarios para ver si alguien comenta que haya tenido una mala experiencia.", 
-            "Investigar la cuenta Espectáculos y eventos Uruguay, corroborar fecha, hora y lugar del show.", 
-            "Aplicar la búsqueda reversa de imágenes con Google Lens directo en la publicación para ver si otra persona hizo una denuncia online por este contenido."
+            "Leer los comentarios por si alguien comenta que tuvo una mala experiencia.", 
+            "Investigar la página que subió esa oferta. Corroborar que sea la fecha, hora y lugar correcto del show.", 
+            "Usar Google Lens para hacer una búsqueda inversa y ver si alguien hizo una denuncia por ese contenido."
           ], 
           "optionsValues": 
           [
@@ -51,13 +51,13 @@
             true,
             true
           ],
-          "message": "Las tres opciones son correctas, este tipo de publicaciones pueden ser una estafa, aplicá estos tres pasos para no caer en un fraude."
+          "message": "Las tres opciones son correctas. Este tipo de publicaciones puede ser una estafa, así que conviene aplicar los tres pasos para evitar que nos engañen."
         }
       ],
 
       "finalMessage": 
       [
-        "No es confiable ponerse en contacto directo por wtsp con desconocidos. Además, es fácil simular los tickets digitales para asistir a espectáculos, pero pueden ser falsos. Es preferible acudir a los medios de venta oficiales."
+        "Además, no es confiable ponerse en contacto directo por WhatsApp con desconocidos. Y en el caso de los tickets digitales, son muy fáciles de simular o de vender el mismo a varias personas. Lo preferible es acudir siempre a medios de venta oficiales."
       ]
     },
 
@@ -72,7 +72,7 @@
       [
         {
           "character": 2,
-          "text": "Viendo videos de fútbol en Youtube, me apareció  esta publicidad del pistolero que parece interesante. ¿Qué les parece?"
+          "text": "Mirando videos de fútbol en YouTube me apareció esta publicidad de Suárez. ¿Qué les parece?"
         },
         {
           "character": 0,
@@ -96,7 +96,7 @@
       "textsAnswer":
       [
         "¡Correcto!",
-        "Mi olfato gatuno tiene dudas. ¿Vamos a verificarlo juntos?"    
+        "Mi sexto sentido tiene dudas... ¿Vamos a verificarlo juntos?"    
       ],
 
       "subQuestions": 
@@ -105,9 +105,9 @@
           "subQuestion": "¿Por qué creés que es dudoso?", 
           "options": 
           [
-            "Parece hecho con Inteligencia Artificial.", 
-            "Luis Suárez es jugador de fútbol, no habla de inversiones.", 
-            "La noticia no está en un medio uruguayo."
+            "Parece hecho con inteligencia Artificial.", 
+            "Un futbolista no suele hablar de inversiones.", 
+            "La noticia no está en ningún medio uruguayo."
           ], 
           "optionsValues": 
           [
@@ -115,15 +115,15 @@
             false,
             false
           ],
-          "message": "Cuando veas videos aseguráte que la voz no suene metálica, que se corresponda con el movimiento de la boca al hablar."
+          "message": "Cuando veas videos asegurate de que la voz no suene metálica y que se corresponda con el movimiento de la boca al hablar."
         },
         {
-          "subQuestion": "¿Qué pasos puedas dar para saber si es o no un publicación falsa?", 
+          "subQuestion": "", 
           "options": 
           [
-            "Luis Suárez es una persona uruguaya muy conocida internacionalmente, el video debe ser verdadero.", 
+            "Luis Suárez es una persona muy conocida, así que el video debe ser verdadero.", 
             "El portal de noticias Milenio existe, por eso me parece confiable.", 
-            "Mmm ahora que lo pienso mejor, es dudosa: es raro que te den un millón de pesos en un mes."
+            "Es raro que te den un millón de pesos en un mes."
           ], 
           "optionsValues": 
           [
@@ -137,8 +137,8 @@
 
       "finalMessage": 
       [
-        "¡Y no lo olvides! Siempre debes estar atento a aquello que parece demasiado ventajoso y chequear la dirección de la web a la que te dirige el enlace. En este caso, Milenio existe, pero esta web era falsa.",
-        "Recomendación gatuna: siempre desconfiar de las propuestas que prometen grandes ganancias o retribuciones, sean de dinero o no, por ejemplo, que te regalan un teléfono o algo costoso. Y no te olvides de chequear la dirección de la web a la que te dirige el enlace. En este caso, Milenio existe, pero esta web era falsa."
+        "¡No te olvides! Prestá atención a todo aquello que parece demasiado bueno para ser cierto, porque posiblemente sea así. Y chequeá la web a la que te dirigen los enlaces. En este caso, Mileno existe, pero esta web es falsa.",
+        "Recomendación gatuna: Desconfiá de las propuestas que prometen grandes ganancias o regalos, por ejemplo un teléfono o algo costoso. Y no te olvides de chequear la dirección de la web a la que te dirigen los enlaces. En este caso Mileno existe, pero esta web es falsa."
       ]
     },
 
