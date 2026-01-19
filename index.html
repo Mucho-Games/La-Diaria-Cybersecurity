@@ -15,18 +15,96 @@
   
 <div class="root">
 
-<div id="logoCeibal" style="position: absolute;
+<!-- TOP BAR -------------------------------------------------------------------------------------------------------------------------------------------------->
+<div id="top-bar" style="position: absolute;
     top: 0;
     z-index: 10;
     width: 100%;
-    height: 9%;
+    height: 7%;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;"> 
-    <img src="assets/logo-ceibal.svg" style="height: 80%"> 
+    <div style="position: relative;
+      width: 99%;
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;">
+
+      <img src="assets/logo-ceibal.svg" style="height: 110%"> 
+
+      <div id="top-menu" style="height: 80%;
+        aspect-ratio: 1.8;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;">
+        <button onclick="onClickButtonCredits()">
+          <img src="assets/icon-help.svg" style="position: absolute; width: 100%; height: 100%;">
+        </button>
+        <button onclick="onClickButtonSettings()">
+          <img src="assets/icon-dropDown.svg" style="position: absolute; width: 100%; height: 100%;">
+        </button>
+      </div>
+
+    </div>
+</div>
+<!-- CREDITS SCREEN -------------------------------------------------------------------------------------------------------------------------------------------------->
+<div id="credits-screen-main" style="position: absolute;width: 100%;height: 100%;background-color: var(--color-blue);z-index: 100;display: none;justify-content: center;">
+  <div class="credits-screen" id="container" 
+    style="
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4.5%;
+    color: white;">
+
+    <button onclick="onClickButtonCloseCredits()" 
+    style="position: absolute; width: 10%; aspect-ratio: 1; top: 0px;">
+      <img src="assets/button-close.svg" style="position: relative; width: 100%; height: 100%;">
+    </button>
+
+    <p style="width: 50%; text-align: center;">
+      <b>ReInformados 2.0</b> es una plataforma segura Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. 
+    </p>
+    <p> <b>Apoya</b> </p>
+    <img src="assets/logo-ceibal-white.svg" style="height: 5%"> 
+    <img src="assets/logo-gigantes.svg" style="height: 4.5%">
+    <img src="assets/logo-laDiaria.svg" style="height: 5%">
+
+    <p style="position: absolute; width: 100%; height: 1%; bottom: 0px; color: white; text-align: center;">Diseñado por Gigantes y desarrollado por Mucho Games © 2026</p>
   </div>
 
+
+</div>
+
+<!-- SETTINGS SCREEN -------------------------------------------------------------------------------------------------------------------------------------------------->
+<div id="settings-screen-main" style="position: absolute;width: 100%;height: 100%;background-color: var(--color-yellow);z-index: 100;display: none;justify-content: center;">
+  <div class="settings-screen" id="container" 
+    style="
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4.5%;
+    color: white;">
+
+    <button onclick="onClickButtonCloseSettings()" 
+    style="position: absolute; width: 10%; aspect-ratio: 1; top: 0px;">
+      <img src="assets/button-close.svg" style="position: relative; width: 100%; height: 100%;">
+    </button>
+
+    <div style="width: 70%; height: 60%; background-color: var(--color-olive); border-radius: var(--round-corners);" > 
+      
+    </div>
+
+  </div>
+
+
+</div>
 <!-- TITLESCREEN -------------------------------------------------------------------------------------------------------------------------------------------------->
 <div class="titleScreen" id="container">
 
@@ -40,9 +118,9 @@
     </div>
   </div>
 
-  <div class="titleScreen" id="buttonPlay">
+  <button class="titleScreen" id="buttonPlay" onclick="onClickButtonPlay()">
      <img src="assets/button-play.svg" alt="">
-  </div>  
+  </button>  
 </div>
 
 <!-- INTRO ANIMATION -------------------------------------------------------------------------------------------------------------------------------------------------->
@@ -179,19 +257,13 @@
       </div>
 
       <div class="game" id="multipleChoice">
-<!--         <button class="option" id="option1" onclick="onClickButtonOption(0)">
-          <img src="assets/button-back-orange.svg" style="position: absolute; width: 100%; height: 100%;">
-          <img src="assets/label-fake.svg" style="position: absolute; width: 100%; height: 34%;">
-        </button> -->
-        <button class="option" id="option2" onclick="onClickButtonOption(0)">
-          <img src="assets/button-back-blue.svg" style="position: absolute; width: 100%; height: 100%;">
-          <img src="assets/label-sus.svg" style="position: absolute; width: 100%; height: 36%; bottom: 31%;">
-        </button>
-        <button class="option" id="option3" onclick="onClickButtonOption(1)">
-          <img src="assets/button-back-green.svg" style="position: absolute; width: 100%; height: 100%;">
-          <img src="assets/label-true.svg" style="position: absolute; width: 100%; height: 33%;">
-        </button>
-      </div>
+      <button class="option" id="option2" onclick="onClickButtonOption(0)">
+        <img src="assets/button-sus.svg" style="position: absolute; width: 100%; height: 100%;">
+      </button>
+      <button class="option" id="option3" onclick="onClickButtonOption(1)" style="width: 34%">
+        <img src="assets/button-true.svg" style="position: absolute; width: 100%; height: 100%;">
+      </button>
+    </div>
 
     </div>
 
@@ -224,16 +296,8 @@
         </div>
       </div>
     </div>
-  </div>
 
-    <!-- Answer animation --->
-  <div class="animation" id="answerAnim">
-      <p> Bien Hecho! </p>
-  </div>
-  
-</div>
-
-<div id="answer-main-animation-cont" class="opacity-overlay" style="position:absolute; width: 100%; height: 100%; background-color: var(--color-rgba-black); display: none;">
+    <div id="answer-main-animation-cont" class="opacity-overlay" style="position:absolute; width: 100%; height: 100%; background-color: var(--color-rgba-black); display: none;">
     <div id="answerAnimation">
       <div style="position: relative; width: 100%; height: 100%; overflow: hidden;">
 
@@ -272,7 +336,18 @@
         </button>
     </div>
 
+</div>
+
   </div>
+
+    <!-- Answer animation --->
+  <div class="animation" id="answerAnim">
+      <p> Bien Hecho! </p>
+  </div>
+  
+</div>
+
+
 
 <!-- ENDSCREEN -------------------------------------------------------------------------------------------------------------------------------------------------->
 <div class="endScreen" id="container" style="display: none;">
@@ -312,6 +387,10 @@
     </div>
 
   </div>
+</div>
+
+<div id="top-corner-menus" style="position: absolute; width: 10%; top: 0px; right: 0px; background-color: black;">
+
 </div>
 
 <!--DEBUG ------------------------------------------------------------------------------------------------------------------------------------------->

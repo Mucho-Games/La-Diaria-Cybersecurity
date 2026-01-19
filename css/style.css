@@ -48,7 +48,9 @@ b {
   justify-content: center;   /* center horizontally */
   align-items: flex-end;     /* stick to bottom */
 }
-
+#container{
+  position: absolute;
+}
 /* DEBUG -------------------------------------------------*/
 .debugBar {
   position: fixed; /* Positions relative to the viewport */
@@ -65,6 +67,30 @@ b {
   flex-wrap: nowrap;
 }
 
+#top-menu button
+{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 80%;
+  aspect-ratio: 1;
+
+  background: none;
+  border: none;
+}
+
+.credits-screen button
+{
+  background: none;
+  border: none;
+}
+.settings-screen button
+{
+  background: none;
+  border: none;
+}
 /* TITLE SCREEN -----------------------------------------------------------*/
 .titleScreen#container 
 {
@@ -128,6 +154,9 @@ b {
   justify-content: center;
 
   width: 10%;
+
+  background: none;
+  border: none;
 }
 .titleScreen#buttonPlay img 
 {
@@ -602,7 +631,7 @@ b {
 .game#multipleChoice 
 {
   position: absolute;
-  bottom: 0%;
+  bottom: 2%;
   width: 100%;
   height: 8%;
 

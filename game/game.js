@@ -367,6 +367,26 @@ function onClickOption (option)
     }
 }
 
+function onClickButtonPlay () {
+    if (currentView == 0)
+        startGame();
+}
+function onClickButtonCredits () {
+    document.getElementById('credits-screen-main').style.display = "flex";
+}
+function onClickButtonCloseCredits () {
+    document.getElementById('credits-screen-main').style.display = "none";
+}
+function onClickButtonSettings () {
+    document.getElementById('settings-screen-main').style.display = "flex";
+}
+function onClickButtonCloseSettings () {
+    document.getElementById('settings-screen-main').style.display = "none";
+}
+function onClickButtonMusic () {}
+function onClickButtonSound () {}
+function onClickButtonReturnToHome () {}
+
 var updatePlayerScore_currentT = 0;
 var updatePlayerScore_currentTN = 0;
 var updatePlayerScore_startValue = 0;
