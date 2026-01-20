@@ -76,6 +76,7 @@ function endGame ()
 
 async function newQuestion () 
 {
+    document.getElementById('next-button-intro').style.display = 'none';
     document.getElementById('next-button').style.display = 'none';
     document.getElementById('answer-sticker').style.display = 'none';
     elemAnswerMainCont.style.display = 'none';
@@ -92,10 +93,14 @@ async function newQuestion ()
     const introCharacters = currentQuestion.intro.map(entry => entry.character);
     showIntroAnimation(introTexts, introCharacters);
 
-    console.log(introAnimationPlaying);
     await waitFor(() => !introAnimationPlaying);
-    console.log(introAnimationPlaying);
 
+    document.getElementById('next-button-intro').style.display = 'flex';
+
+    buttonNextAction = startMainQuestion;      
+}
+function startMainQuestion () 
+{
     currentQuestion.getDOMElements();
     currentQuestion.populate();
 
@@ -112,7 +117,6 @@ async function newQuestion ()
 
     setView('game');
 }
-
 async function answerQuestion (state, option) 
 {
     document.getElementById('overlay-buttons').style.display = 'flex';
