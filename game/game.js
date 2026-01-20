@@ -76,8 +76,8 @@ function endGame ()
 
 async function newQuestion () 
 {
-    document.removeEventListener('click', newQuestion);
-
+    document.getElementById('next-button').style.display = 'none';
+    document.getElementById('answer-sticker').style.display = 'none';
     elemAnswerMainCont.style.display = 'none';
 
     if (currentQuestionsAmount >= levelsAmount)  {//<---------------------------------------- has to move this from here this is nasty
@@ -115,6 +115,9 @@ async function newQuestion ()
 
 async function answerQuestion (state, option) 
 {
+    document.getElementById('overlay-buttons').style.display = 'flex';
+    document.getElementById('next-button').style.display = 'flex';
+
     if (state == 1) //wrong answer
     {
         // elemAnimationAnswer.style.backgroundColor = 'red';
@@ -180,7 +183,7 @@ async function answerQuestion (state, option)
 
     setTimeout(function() 
     { 
-        document.addEventListener('click', endMainQuestion);
+        buttonNextAction = endMainQuestion;
     }, 
     1000);    
 }
@@ -188,13 +191,15 @@ async function answerQuestion (state, option)
 function endMainQuestion () 
 { 
     showSubQuestion(); 
-    document.removeEventListener('click', endMainQuestion);
 }
 
 function showSubQuestion () 
 {
+    document.getElementById('next-button').style.display = 'none';
     multipleChoiceDisabled = false;
-    elemAnswerMainCont.style.display = 'none';
+    document.getElementById('overlay-buttons').style.display = 'none';
+    elemAnswerMainCont.style.display = 'none';    
+    document.getElementById('answer-sticker').style.display = 'none';
 
     elemSubQuestionCont.style.display = 'flex';
     elemSubQuestionCont.style.height = '100%';
@@ -212,6 +217,8 @@ function showSubQuestion ()
 
 function answerSubQuestion (option, state) 
 {
+    document.getElementById('next-button').style.display = 'flex';
+
     if (state == 1) //wrong answer
     {
         currentQuestion.subQuestions[questionOptionSelected].markWrong(option);
@@ -246,6 +253,9 @@ function answerSubQuestion (option, state)
     questionState++;
 
     elemAnswerMainCont.style.display = 'flex';
+
+    elemAnswerMainCharacter.classList.remove('full-body');
+    elemAnswerMainBubbleSpace.classList.remove('final-message');
 
     if (option == 0) 
     {
@@ -282,7 +292,7 @@ function answerSubQuestion (option, state)
 
     setTimeout(function() 
     { 
-        document.addEventListener('click', endSubQuestion);
+         buttonNextAction = endSubQuestion;
     }, 
     1000); 
 }
@@ -299,8 +309,6 @@ function endSubQuestion ()
     {
         showSubQuestion(questionState-1);
     }
-
-    document.removeEventListener('click', endSubQuestion);
 }
 
 function endLevel () 
@@ -308,6 +316,13 @@ function endLevel ()
     multipleChoiceDisabled = true;
 
     elemAnswerMainCont.style.display = 'flex';
+
+    elemAnswerMainCharacter.classList.add('full-body');
+    elemAnswerMainBubbleSpace.classList.add('final-message');
+
+    document.getElementById('next-button').style.display = 'flex';
+    document.getElementById('answer-sticker').style.display = 'flex';
+    document.querySelector('#answer-sticker img').src = currentQuestion.correctAnswer == 0 ? 'assets/sticker-fake.svg' : 'assets/sticker-legit.svg';
 
     elemAnswerMainCharacter.style.removeProperty('right');
     elemAnswerMainCharacter.style.left = '-2%';
@@ -329,7 +344,7 @@ function endLevel ()
 
     setTimeout(function() 
     { 
-        document.addEventListener('click', newQuestion);
+        buttonNextAction = newQuestion;
     }, 
     1000); 
 }
@@ -370,6 +385,14 @@ function onClickOption (option)
 function onClickButtonPlay () {
     if (currentView == 0)
         startGame();
+}
+let buttonNextAction = null;
+function onClickButtonNext () 
+{
+    if (!buttonNextAction) return;
+    const fn = buttonNextAction;
+    buttonNextAction = null;
+    fn();
 }
 function onClickButtonCredits () {
     document.getElementById('credits-screen-main').style.display = "flex";

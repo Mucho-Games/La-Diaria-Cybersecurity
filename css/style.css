@@ -16,8 +16,8 @@ html, body
   --color-rgb-orange: rgb(255, 97, 0);
   --color-rgb-blue: rgb(0, 139, 248);
   --color-rgb-green: rgb(0, 215, 0);
-  --color-rgba-olive: rgba(67, 65, 6, 0.6);
-  --color-rgba-olive-2: rgba(67, 65, 6, 0.9);
+  --color-rgba-olive: rgba(67, 65, 6, 0.8);
+  --color-rgba-olive-2: rgba(67, 65, 6, 0.95);
   --color-rgba-black: rgba(0, 0, 0, 0.7);
 
   --round-corners: 30px;
@@ -37,6 +37,10 @@ p
 }
 b {
     font-weight: 900;
+}
+.hidden 
+{
+  display: none !important;
 }
 .root 
 {
@@ -499,7 +503,7 @@ b {
 
   overflow: hidden;
 }
-#layoutGame 
+.layoutGame 
 {
   position: relative;
   width: 85%;
@@ -655,6 +659,12 @@ b {
   background: none;
   border: none;
 }
+.next-button
+{
+  position: absolute;
+  width: 13%;
+  bottom: 4.25%;
+}
 
 /* BOTTOM BUTTONS ELEMENTS ----------------------------------------------------------------------------------------------- END */
 
@@ -673,7 +683,7 @@ b {
 #answerAnimation 
 {
   position: absolute;
-  width: 50%;
+  width: 100%;
   height: 100%;
   bottom: 0;
 }
@@ -682,6 +692,13 @@ b {
   position: absolute;
   height: 100%;
   top: 50%;
+}
+#answer-animation-character.full-body
+{
+  position: absolute;
+  height: 90%;
+  bottom: 0%;
+  top: unset !important;
 }
 #answer-animation-header
 {
@@ -701,10 +718,9 @@ b {
 #question-buttons-clone
 {
   position: absolute;
-  bottom: 0%;
+  bottom: 2%;
   width: 100%;
   height: 8%;
-
   display: flex;
   align-self: stretch;
   justify-content: space-between;
@@ -725,7 +741,13 @@ b {
   background: none;
   border: none;
 }
-
+#answer-sticker 
+{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2;
+  transform: translateY(-15%);
+}
 /* MESSAGE BETWEEN QUESTIONS --------------------------------------------------------------------------------------------*/
 
 /* SUBQUESTION ELEMENTS ----------------------------------------------------------------------------------------------- */
@@ -972,6 +994,13 @@ b {
     opacity 0.2s ease,
     transform 0.2s ease;
 }
+.character-bubble-space.final-message
+{
+  top: 4% !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  right: 4% !important;
+}
 .character-bubble-space.show 
 {
   transform: scale(1);
@@ -1051,7 +1080,11 @@ b {
   padding: 10px;
   text-align: center;
 }
-
+.button-clear 
+{
+  background: none;
+  border: none;
+}
 /* ANIMATIONS DEFS --------------------------------------------------------*/
 
 @keyframes appearScale{

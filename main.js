@@ -218,22 +218,20 @@ function onScreenSizeChange()
         // var optionsClone = document.querySelectorAll(`#question-buttons-clone .option`);
         // optionsClone.forEach(o => o.style.width = landscape ? '26%' : '30%');
 
-        if (landscape) 
-        {
-            elemAnswerMainBottom.style.height = `${answerOverlayRefResolution[1]}px`;
-            elemAnswerMainBottom.style.width = `${answerOverlayRefResolution[0]}px`;
-            elemAnswerMainBottom.style.transformOrigin = 'bottom center'
-            elemAnswerMainBottom.style.transform = `scale(${viewFinalScaling})`;
-        }
-        else
-        {
-            elemAnswerMainBottom.style.height = `${answerOverlayRefResolutionPortrait[1]}px`;
-            elemAnswerMainBottom.style.width = `${answerOverlayRefResolutionPortrait[0]}px`;
-            elemAnswerMainBottom.style.transformOrigin = 'bottom center'
-            elemAnswerMainBottom.style.transform = `scale(${viewFinalScaling})`;
-        }
-
-        overlayDiv(elemMultipleChoiceCont, elemAnswerMainButtonsClone);
+        // if (landscape) 
+        // {
+        //     elemAnswerMainBottom.style.height = `${answerOverlayRefResolution[1]}px`;
+        //     elemAnswerMainBottom.style.width = `${answerOverlayRefResolution[0]}px`;
+        //     elemAnswerMainBottom.style.transformOrigin = 'bottom center'
+        //     elemAnswerMainBottom.style.transform = `scale(${viewFinalScaling})`;
+        // }
+        // else
+        // {
+        //     elemAnswerMainBottom.style.height = `${answerOverlayRefResolutionPortrait[1]}px`;
+        //     elemAnswerMainBottom.style.width = `${answerOverlayRefResolutionPortrait[0]}px`;
+        //     elemAnswerMainBottom.style.transformOrigin = 'bottom center'
+        //     elemAnswerMainBottom.style.transform = `scale(${viewFinalScaling})`;
+        // }
     }
 }
 
