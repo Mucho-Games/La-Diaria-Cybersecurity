@@ -8,6 +8,8 @@ var currentQuestionsAmount = 0;
 var currentPlayerScore = 0;
 
 var multipleChoiceDisabled = false;
+var musicEnabled = true;
+var soundEnabled = true; 
 
 //DOM ELEMENTS--------------------------------------------
 var elemRoot;
@@ -413,10 +415,39 @@ function onClickButtonSettings () {
 function onClickButtonCloseSettings () {
     document.getElementById('settings-screen-main').style.display = "none";
 }
-function onClickButtonMusic () {}
-function onClickButtonSound () {}
-function onClickButtonReturnToHome () {}
+function onToggleMusic (enabled) 
+{
+    musicEnabled = enabled; 
+    console.log("music: " + enabled);
+}
+function onToggleSound (enabled) 
+{
+    soundEnabled = enabled; 
+    console.log("sound: " + enabled);
+}
+function onClickButtonReturnToHome () 
+{
+    resetGame();
+}
 
+function resetGame () 
+{
+    questionState = -1;
+    questionOptionSelected = -1;
+    currentView = 0;
+
+    currentQuestion;
+    currentQuestionsAmount = 0;
+    currentPlayerScore = 0;
+
+    buttonNextAction = null;
+
+    updateSubscribers = [];
+
+    document.getElementById('credits-screen-main').style.display = "none";
+    document.getElementById('settings-screen-main').style.display = "none";
+    setView('titleScreen');
+}
 var updatePlayerScore_currentT = 0;
 var updatePlayerScore_currentTN = 0;
 var updatePlayerScore_startValue = 0;

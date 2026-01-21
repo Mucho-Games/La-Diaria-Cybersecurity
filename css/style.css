@@ -1092,6 +1092,14 @@ b {
 {
   background: none;
   border: none;
+
+  transform: scale(1.0);
+  transition: .1s;
+}
+.button-clear:hover 
+{
+  transform: scale(1.08);
+  cursor: pointer;
 }
 /* ANIMATIONS DEFS --------------------------------------------------------*/
 
@@ -1160,4 +1168,97 @@ b {
   position: relative;
   height: 100%;
   top: -6%;
+}
+
+.settings-popup
+{
+  width: 70%;
+  height: 50%;
+  background-color: var(--color-olive);
+  border-radius: var(--round-corners);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7%;
+}
+
+
+/*SLIDER----------------------------------------------------------------
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  aspect-ratio: 3;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider 
+{
+  position: absolute;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 1000px;
+  background-color: var(--color-white);
+
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before 
+{
+  position: absolute;
+  content: "";
+  height: 100%;
+  aspect-ratio: 1;
+
+  background-color: var(--color-orange);
+
+  border-radius: 1000px;
+
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider img
+{
+  position: relative;
+  height: 75%;
+  z-index: 1;
+  left: 4%;
+  transform: translateX(0%);
+
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+input:checked + .slider img 
+{
+  transform: translateX(270%);
+}
+
+input:checked + .slider {
+  background-color: var(--color-green);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(200%);
+  -ms-transform: translateX(200%);
+  transform: translateX(200%);
 }
