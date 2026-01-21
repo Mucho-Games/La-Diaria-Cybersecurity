@@ -53,7 +53,7 @@
 </div>
 <!-- CREDITS SCREEN -------------------------------------------------------------------------------------------------------------------------------------------------->
 <div id="credits-screen-main" style="position: absolute;width: 100%;height: 100%;background-color: var(--color-blue);z-index: 100;display: none;justify-content: center;">
-  <div class="credits-screen" id="container" 
+  <div class="credits-screen view-container" 
     style="
     display: flex;
     flex-direction: column;
@@ -83,7 +83,7 @@
 
 <!-- SETTINGS SCREEN -------------------------------------------------------------------------------------------------------------------------------------------------->
 <div id="settings-screen-main" style="position: absolute;width: 100%;height: 100%;background-color: var(--color-yellow);z-index: 100;display: none;justify-content: center;">
-  <div class="settings-screen" id="container" 
+  <div class="settings-screen view-container" 
     style="
     display: flex;
     flex-direction: column;
@@ -106,7 +106,7 @@
 
 </div>
 <!-- TITLESCREEN -------------------------------------------------------------------------------------------------------------------------------------------------->
-<div class="titleScreen" id="container">
+<div class="titleScreen view-container">
 
   <div class="titleScreen" id="header" >
     <img src="assets/logo.svg" alt="">
@@ -123,8 +123,17 @@
   </button>  
 </div>
 
+<!-- OVERLAY BUTTONS --->
+<div class="overlay-view view-container" style="z-index: 99; pointer-events: none;">
+
+    <button id="next-button" class="next-button button-clear" onclick="onClickButtonNext()" style="display: none;  pointer-events: auto;"> 
+    <img src="assets/button-next.svg" style="width: 100%; height: 100%;">
+  </button>
+
+</div>
+
 <!-- INTRO ANIMATION -------------------------------------------------------------------------------------------------------------------------------------------------->
-<div class="introAnimation" id="container" style="display: none;"> <!--viewport-->
+<div class="introAnimation view-container" style="display: none;"> <!--viewport-->
 
   <div class="container"> 
 
@@ -193,14 +202,10 @@
 
   </div>  
 
-  <button id="next-button-intro" class="next-button button-clear" onclick="onClickButtonNext()"> 
-    <img src="assets/button-next.svg" style="width: 100%; height: 100%;">
-  </button>
-
 </div>
   
 <!-- GAME -------------------------------------------------------------------------------------------------------------------------------------------------->
-<div class="game" id="container">
+<div class="game view-container">
 
   <div id="hud">
     <div id="score"> 
@@ -343,10 +348,6 @@
 
   </div>
 
-  <button id="next-button" class="next-button button-clear" onclick="onClickButtonNext()"> 
-    <img src="assets/button-next.svg" style="width: 100%; height: 100%;">
-  </button>
-
   </div> <!--game panel end -->
 
 </div>
@@ -354,7 +355,7 @@
 
 
 <!-- ENDSCREEN -------------------------------------------------------------------------------------------------------------------------------------------------->
-<div class="endScreen" id="container" style="display: none;">
+<div class="endScreen view-container" style="display: none;">
 
   <div class="logo">
     <img src="assets/logo-alt.svg">

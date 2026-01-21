@@ -167,7 +167,7 @@ function setView (newView)
 
     for (var i = inGameViewsAmount; i >= 0; i--) 
     {
-        var viewGrid = document.querySelector(`.${views[i]}#container`);
+        var viewGrid = document.querySelector(`.${views[i]}.view-container`);
         viewGrid.style.display = i == currentView ? `flex` : `none`;
     }
 
@@ -195,6 +195,7 @@ function onScreenSizeChange()
     var viewFinalScaling = ResizeView(currentView);
     ResizeView(4); //credits screen
     ResizeView(5); //settings screen
+    ResizeView(6); //overlay view
 
     if (!initialized) return; //layouts specifics
 
@@ -209,7 +210,7 @@ function onScreenSizeChange()
     }
     else if (currentView == 2)
     {
-        var container = document.querySelector(`.game#container`);
+        var container = document.querySelector(`.game.view-container`);
         container.style.justifyContent = landscape ? 'center' : 'space-around';
         elemPlayerScoreCont.style.width = landscape ? '15%' : '18%';
         elemPlayerLevelCont.style.width = landscape ? '15%' : '18%';
@@ -237,7 +238,7 @@ function onScreenSizeChange()
 
 function ResizeView (index) 
 {  
-    var view = document.querySelector(`.${views[index]}#container`);
+    var view = document.querySelector(`.${views[index]}.view-container`);
     var windowWidth = 0;
     var windowHeight = 0; 
     var _landscape = aspectRatio >= thresholdRatio;

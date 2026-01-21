@@ -4,10 +4,44 @@ const thresholdRatio = 0.75;
 const maxLandAspectRatio = 0.7;
 const maxPortraitAspectRatio = 10/16;
 const debug = false;
-const views = ["titleScreen", "introAnimation", "game", "endScreen", "credits-screen", "settings-screen"];
-const viewsColors = ["--color-green", "--color-green", "--color-blue", "--color-orange", "--color-blue"];
-const viewsRefResolutions = [[1100, 910], [1100, 910], [670, 910], [800, 910], [550, 900], [550, 900]];
-const viewsRefResolutionsPortrait = [[910, 910], [550, 900], [550, 800], [550, 800], [550, 900], [550, 900]];
+const views = 
+[
+	"titleScreen", 
+	"introAnimation", 
+	"game", 
+	"endScreen", 
+	"credits-screen", 
+	"settings-screen", 
+	"overlay-view"
+];
+const viewsColors = 
+[
+	"--color-green", 
+	"--color-green", 
+	"--color-blue", 
+	"--color-orange", 
+	"--color-blue"
+];
+const viewsRefResolutions = 
+[
+	[1100, 910], //title
+	[1100, 910], //intro
+	[670, 910], //game
+	[800, 910], //end view
+	[550, 900], //credit
+	[550, 900], //settings
+	[670, 910] //overlay view <---- has to be the same as game to match the layout
+];
+const viewsRefResolutionsPortrait = 
+[
+	[910, 910], //title
+	[550, 900], //intro
+	[550, 800], //game
+	[550, 800], //end view
+	[550, 900], //credits
+	[550, 900], //settings
+	[550, 800] //overlay-view <---- has to be the same as game to match the layout
+];
 const answerOverlayRefResolution = [670, 910];
 const answerOverlayRefResolutionPortrait = [550, 800];
 const levelsAmount = 3;

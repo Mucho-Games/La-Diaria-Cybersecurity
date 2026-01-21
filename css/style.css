@@ -52,7 +52,8 @@ b {
   justify-content: center;   /* center horizontally */
   align-items: flex-end;     /* stick to bottom */
 }
-#container{
+.view-container
+{
   position: absolute;
 }
 /* DEBUG -------------------------------------------------*/
@@ -69,6 +70,13 @@ b {
   align-items: center;
   flex-direction: row;
   flex-wrap: nowrap;
+}
+
+.overlay-view
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #top-menu button
@@ -96,7 +104,7 @@ b {
   border: none;
 }
 /* TITLE SCREEN -----------------------------------------------------------*/
-.titleScreen#container 
+.titleScreen.view-container 
 {
   position: absolute;
 	width: 100%;
@@ -169,7 +177,7 @@ b {
   display: block;
 }
 /* INTRO ANIMATION -----------------------------------------------------------*/
-.introAnimation#container 
+.introAnimation.view-container 
 {
   position: absolute;
   width: 100%;
@@ -331,7 +339,7 @@ b {
   bottom: 0px;
 }
 /* GAME -----------------------------------------------------------*/
-.game#container 
+.game.view-container 
 {
   position: absolute;
 
@@ -663,7 +671,7 @@ b {
 {
   position: absolute;
   width: 13%;
-  bottom: 4.25%;
+  bottom: 9.5%;
 }
 
 /* BOTTOM BUTTONS ELEMENTS ----------------------------------------------------------------------------------------------- END */
@@ -841,7 +849,7 @@ b {
 /* SUBQUESTION ELEMENTS ----------------------------------------------------------------------------------------------- END */
 
 /* END SCREEN ------------------------------------------------------------------------------------------------------------------ */
-.endScreen#container 
+.endScreen.view-container 
 {
   position: absolute;
 

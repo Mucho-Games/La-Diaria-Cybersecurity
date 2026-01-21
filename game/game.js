@@ -76,7 +76,6 @@ function endGame ()
 
 async function newQuestion () 
 {
-    document.getElementById('next-button-intro').style.display = 'none';
     document.getElementById('next-button').style.display = 'none';
     document.getElementById('answer-sticker').style.display = 'none';
     elemAnswerMainCont.style.display = 'none';
@@ -95,12 +94,14 @@ async function newQuestion ()
 
     await waitFor(() => !introAnimationPlaying);
 
-    document.getElementById('next-button-intro').style.display = 'flex';
+    document.getElementById('next-button').style.display = 'flex';
 
     buttonNextAction = startMainQuestion;      
 }
 function startMainQuestion () 
 {
+    document.getElementById('next-button').style.display = 'none';
+
     currentQuestion.getDOMElements();
     currentQuestion.populate();
 
@@ -393,6 +394,8 @@ function onClickButtonPlay () {
 let buttonNextAction = null;
 function onClickButtonNext () 
 {
+    console.log("button next");
+
     if (!buttonNextAction) return;
     const fn = buttonNextAction;
     buttonNextAction = null;
