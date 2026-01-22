@@ -48,7 +48,7 @@ async function initialize ()
     elemPlayerLevelCont = document.querySelector('#hud > #level');
     elemPlayerLevel = document.querySelector("#hud > #level > p");
     elemPlayerLevelsAmount = document.querySelector('#hud > #level > #goalLevel');
-    elemGainScore = document.getElementById("gainScore");
+    elemGainScore = document.querySelector("#hud #score .gainScore");
 
     //Elems answer main question
     elemAnswerMainCont = document.getElementById("answer-main-animation-cont");
@@ -66,10 +66,10 @@ async function initialize ()
     elemAnimationAnswer = document.querySelector('#answerAnim');
 
     //End Screen
-    elemFinalPlayerScore = document.querySelector('.endScreen #results .your-score .final-score p');
-    elemFinalCharacterPortrait = document.querySelector('.endScreen .character-portrait');
-    elemFinalCharacterBubble = document.querySelector('.endScreen .character-bubble-space');
-    elemFinalCharacterText = document.querySelector('.endScreen .character-bubble p');
+    elemFinalPlayerScore = document.querySelector('.end-level-screen #results .your-score .final-score p');
+    elemFinalCharacterPortrait = document.querySelector('.end-level-screen .character-portrait');
+    elemFinalCharacterBubble = document.querySelector('.end-level-screen .character-bubble-space');
+    elemFinalCharacterText = document.querySelector('.end-level-screen .character-bubble p');
 
     setView('titleScreen');
 

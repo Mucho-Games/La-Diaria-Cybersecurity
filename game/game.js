@@ -122,7 +122,6 @@ function startMainQuestion ()
 }
 async function answerQuestion (state, option) 
 {
-    document.getElementById('overlay-buttons').style.display = 'flex';
     document.getElementById('next-button').style.display = 'flex';
 
     if (state == 1) //wrong answer
@@ -133,7 +132,7 @@ async function answerQuestion (state, option)
     }
     else if (state == 0) //right answer
     {
-        updatePlayerScore(currentPlayerScore + 100);
+        updatePlayerScore(currentPlayerScore + 100, elemGainScore, elemPlayerScore);
 
         // elemAnimationAnswer.style.backgroundColor = 'green';
         // elemAnimationAnswer.querySelector('p').innerHTML = "BIEN HECHO!";
@@ -247,7 +246,7 @@ function answerSubQuestion (option, state)
     }
     else if (state == 0) //right answer
     {
-        updatePlayerScore(currentPlayerScore + 30);
+        updatePlayerScore(currentPlayerScore + 30, elemGainScore, elemPlayerScore);
 
         currentQuestion.subQuestions[questionOptionSelected].markCorrect(option, true);
 
@@ -351,12 +350,34 @@ function endLevel ()
 
     setTimeout(function() 
     { 
-        buttonNextAction = newQuestion;
+        buttonNextAction = endLevelScore;
     }, 
     1000); 
 }
 
+function endLevelScore () 
+{
+    setView('end-level-screen');
 
+    document.getElementById('next-button').style.display = 'none';
+
+    elemFinalPlayerScore.innerHTML = String(currentPlayerScore).padStart(3, "0");
+    show(elemFinalCharacterPortrait)
+    show(elemFinalCharacterBubble);
+
+    new Dialogue(elemFinalCharacterText, "Increíble pero cierto!");
+
+    var popUpScore = document.querySelector('.end-level-screen .gainScore');
+    var scoreElement = document.querySelector('.end-level-screen .final-score p')
+    updatePlayerScore(currentPlayerScore + 50, popUpScore, scoreElement);
+
+    setTimeout(function() 
+    { 
+        document.getElementById('next-button').style.display = 'flex';
+        buttonNextAction = newQuestion;
+    }, 
+    1000); 
+}
 
 
 function onClickOption (option) 
@@ -446,22 +467,29 @@ function resetGame ()
 
     document.getElementById('credits-screen-main').style.display = "none";
     document.getElementById('settings-screen-main').style.display = "none";
+
+    document.getElementById('next-button').style.display = 'none';
+
     setView('titleScreen');
 }
+
 var updatePlayerScore_currentT = 0;
 var updatePlayerScore_currentTN = 0;
 var updatePlayerScore_startValue = 0;
-function updatePlayerScore (newValue) 
+var updatePlayerScore_targetScore = null;
+function updatePlayerScore (newValue, targetPopUp, targetScore) 
 {
     updatePlayerScore_currentT = 0;
     updatePlayerScore_startValue = currentPlayerScore;
+    updatePlayerScore_targetScore = targetScore;
+
     currentPlayerScore = newValue;
     var diff = currentPlayerScore - updatePlayerScore_startValue;
 
-    var points = elemGainScore.querySelector('p');
+    var points = targetPopUp.querySelector('p'); //elemGainScore.querySelector (p)
     points.innerHTML = "+" + diff;
 
-    showOneShot(elemGainScore, 2.5);
+    showOneShot(targetPopUp, 2.5);
 
     subscribe(_updatePlayerScore);
 } 
@@ -471,7 +499,7 @@ function _updatePlayerScore (deltaTime)
     updatePlayerScore_currentTN = clamp01(updatePlayerScore_currentT);
 
     var val = Math.floor(lerp(updatePlayerScore_startValue, currentPlayerScore, updatePlayerScore_currentTN));
-    elemPlayerScore.innerHTML = String(val).padStart(3, "0");
+    updatePlayerScore_targetScore.innerHTML = String(val).padStart(3, "0"); //elem player score
 
     if (updatePlayerScore_currentTN >= 1) {
         unsubscribe(_updatePlayerScore);

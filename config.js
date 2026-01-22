@@ -9,7 +9,7 @@ const views =
 	"titleScreen", 
 	"introAnimation", 
 	"game", 
-	"endScreen", 
+	"end-level-screen", 
 	"credits-screen", 
 	"settings-screen", 
 	"overlay-view"

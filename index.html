@@ -167,7 +167,7 @@
       <div class="character-bubble-space" style="position: relative; width: 55%; height: 50%; align-items: flex-start;">
         <div class="character-bubble" style="background-color: var(--color-white);">
           <div class="character-bubble-wrapper">
-            <p>¿Qué andan? Che, Quiero ir a un espectáculo pero me quedé sin entrada.</p>
+            <p>empty</p>
             <div class="character-bubble-arrow-wrapper" style="left: var(--round-corners);">
               <img src="assets/text-box-bottom-white-left.svg">
             </div>           
@@ -188,7 +188,7 @@
       <div class="character-bubble-space" style="position: relative; width: 55%; height: 50%; align-items: flex-end; transform-origin: bottom right;">
         <div class="character-bubble" style="background-color: var(--color-yellow);">
           <div class="character-bubble-wrapper">
-            <p>Tranqui Pato, yo te ayudo a buscar alguna en las redes :)</p>
+            <p>empty</p>
             <div class="character-bubble-arrow-wrapper" style="right: var(--round-corners);">
               <img src="assets/text-box-bottom-yellow-right.svg">
             </div>           
@@ -209,7 +209,7 @@
       <div class="character-bubble-space" style="position: relative; width: 55%; height: 50%; align-items: flex-start;">
         <div class="character-bubble" style="background-color: var(--color-white);">
           <div class="character-bubble-wrapper">
-            <p>Me sumo a la misión!</p>
+            <p>empty</p>
             <div class="character-bubble-arrow-wrapper" style="left: var(--round-corners);">
               <img src="assets/text-box-bottom-white-left.svg">
             </div>           
@@ -227,14 +227,21 @@
 
   <div id="hud">
     <div id="score"> 
+
       <img src="assets/icon-points.svg" alt="">
       <p> 000 </p>
 
-      <div id="gainScore">
+      <div class="gainScore" 
+      style="
+        width: 90px;
+        height: 35px;
+        left: 30%;
+        bottom: -55%;">
         <div>
           <p> +30 </p>
         </div>
       </div>
+
     </div>
     <div id="header"> 
       <img src="assets/logo-alt.svg" alt="">
@@ -298,26 +305,26 @@
       <div id="subQuestions-container">
         <div id="subQuestions-header">
           <h3>
-            ¿bla bla bla bla blabla bla bla bla bla bla bla blabla bla bla bla bla?bla bla bla bla bla?
+            empty
           </h3>
         </div>
         <div id="subQuestions-options">
-          <button class="option2" id="option2-1" onclick="onClickButtonOption(0)">
+          <button class="option2 button-clear" id="option2-1" onclick="onClickButtonOption(0)">
             <div class="wrong-answer-circle"> <img src="assets/circle-orange.svg"> <img src="assets/cross.svg"> </div>
             <p class="center">  
-            Opcion 1 blah 
+            empty 
             </p>
           </button>
-          <button class="option2" id="option2-2" onclick="onClickButtonOption(1)">
+          <button class="option2 button-clear" id="option2-2" onclick="onClickButtonOption(1)">
             <div class="wrong-answer-circle"> <img src="assets/circle-orange.svg"> <img src="assets/cross.svg"> </div>
             <p class="center"> 
-            Opcion 1 blah 
+            empty  
             </p>
           </button>
-          <button class="option2" id="option2-3" onclick="onClickButtonOption(2)">
+          <button class="option2 button-clear" id="option2-3" onclick="onClickButtonOption(2)">
             <div class="wrong-answer-circle"> <img src="assets/circle-orange.svg"> <img src="assets/cross.svg"> </div>
             <p class="center"> 
-            Opcion 1 blah 
+            empty  
             </p>
           </button>
         </div>
@@ -373,7 +380,7 @@
 
 
 <!-- ENDSCREEN -------------------------------------------------------------------------------------------------------------------------------------------------->
-<div class="endScreen view-container" style="display: none;">
+<div class="end-level-screen view-container" style="display: none;">
 
   <div class="logo">
     <img src="assets/logo-alt.svg">
@@ -381,7 +388,7 @@
 
   <div id="results">
 
-    <div class="character-portrait-wrapper" style="left: 10%; bottom: 7%; position: relative;">
+    <div class="character-portrait-wrapper" style="bottom: 7%; position: relative;">
       <div class="character-portrait"> 
           <img src="assets/personaje-perro.png" style="left: -30%;">
           <div class="characterBackground" style="background-color: var(--color-blue);"></div>      
@@ -406,6 +413,19 @@
       <div class="final-score">
         <img src="assets/icon-points.svg">
         <p> 000 </p>
+      </div>
+
+      <div class="gainScore" 
+            style="
+            bottom: 5%;
+            height: 24%;
+            padding-left: 4%;
+            aspect-ratio: 2;">
+        <div>
+          <p style="font-size: 2.3em;"> 
+            +30 
+          </p>
+        </div>
       </div>
     </div>
 
