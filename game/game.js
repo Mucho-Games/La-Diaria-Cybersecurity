@@ -63,29 +63,11 @@ function startGame ()
     newQuestion();
 }
 
-function endGame () 
-{
-    elemFinalPlayerScore.innerHTML = String(currentPlayerScore).padStart(3, "0");
-    show(elemFinalCharacterPortrait)
-    show(elemFinalCharacterBubble);
-
-    new Dialogue(elemFinalCharacterText, "Increíble pero cierto!");
-
-    setView('endScreen');
-}
-
-
-
 async function newQuestion () 
 {
     document.getElementById('next-button').style.display = 'none';
     document.getElementById('answer-sticker').style.display = 'none';
     elemAnswerMainCont.style.display = 'none';
-
-    if (currentQuestionsAmount >= levelsAmount)  {//<---------------------------------------- has to move this from here this is nasty
-        endGame();
-        return;
-    }
 
     //currentQuestion = getRandomElement(questionBank);
     currentQuestion = questionBank[currentQuestionsAmount];
@@ -126,17 +108,12 @@ async function answerQuestion (state, option)
 
     if (state == 1) //wrong answer
     {
-        // elemAnimationAnswer.style.backgroundColor = 'red';
-        // elemAnimationAnswer.querySelector('p').innerHTML = "EQUIVOCADO!";
-        // playAnimation(elemAnimationAnswer, 2);
+
     }
     else if (state == 0) //right answer
     {
         updatePlayerScore(currentPlayerScore + 100, elemGainScore, elemPlayerScore);
-
-        // elemAnimationAnswer.style.backgroundColor = 'green';
-        // elemAnimationAnswer.querySelector('p').innerHTML = "BIEN HECHO!";
-        // playAnimation(elemAnimationAnswer, 2);
+        playSound("sfx-success-01");
     }
 
     elemAnswerMainCont.style.display = 'flex';
@@ -174,6 +151,7 @@ async function answerQuestion (state, option)
     elemAnswerMainButtonsClone.style.display = 'flex';
     //elemMultipleChoiceCont.style.display = 'none';
 
+    document.getElementById('overlay-buttons').style.display = 'flex';
     var optionsClone = document.querySelectorAll(`#question-buttons-clone .option`);
     elemAnswerMainButtonsClone.style.flexDirection = option == 0 ? 'row' : 'row-reverse';
     optionsClone[0].style.display = option == 0 ? 'flex' : 'none';
@@ -357,9 +335,12 @@ function endLevel ()
 
 function endLevelScore () 
 {
+    var endGame = currentQuestionsAmount >= levelsAmount;
+
     setView('end-level-screen');
 
     document.getElementById('next-button').style.display = 'none';
+    document.getElementById('home-button-overlay').style.display = 'none';
 
     elemFinalPlayerScore.innerHTML = String(currentPlayerScore).padStart(3, "0");
     show(elemFinalCharacterPortrait)
@@ -371,14 +352,20 @@ function endLevelScore ()
     var scoreElement = document.querySelector('.end-level-screen .final-score p')
     updatePlayerScore(currentPlayerScore + 50, popUpScore, scoreElement);
 
+    playSound("sfx-success-01");
+
     setTimeout(function() 
-    { 
-        document.getElementById('next-button').style.display = 'flex';
-        buttonNextAction = newQuestion;
+    {           
+        if (endGame) 
+            document.getElementById('home-button-overlay').style.display = 'flex';
+        else 
+        {
+            document.getElementById('next-button').style.display = 'flex';
+            buttonNextAction = newQuestion;
+        }
     }, 
     1000); 
 }
-
 
 function onClickOption (option) 
 {
@@ -439,12 +426,25 @@ function onClickButtonCloseSettings () {
 function onToggleMusic (enabled) 
 {
     musicEnabled = enabled; 
-    console.log("music: " + enabled);
+    var music = document.getElementById("bgMusic");
+    if (musicEnabled) 
+    {
+      music.play();
+    } else {
+      music.pause();
+    }
 }
 function onToggleSound (enabled) 
 {
     soundEnabled = enabled; 
-    console.log("sound: " + enabled);
+}
+function playSound (sound) 
+{
+    if (!soundEnabled) return;
+
+    var s = document.getElementById(sound);
+    s.currentTime = 0;
+    s.play();
 }
 function onClickButtonReturnToHome () 
 {
@@ -469,6 +469,7 @@ function resetGame ()
     document.getElementById('settings-screen-main').style.display = "none";
 
     document.getElementById('next-button').style.display = 'none';
+    document.getElementById('home-button-overlay').style.display = 'none';
 
     setView('titleScreen');
 }

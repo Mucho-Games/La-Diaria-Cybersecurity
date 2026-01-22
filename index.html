@@ -11,6 +11,12 @@
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
+<audio id="bgMusic" src="sound/background-music.ogg" loop preload="auto"></audio>
+<audio id="sfx-hover" src="sound/sfx-hover.wav" preload="auto"></audio>
+<audio id="sfx-click" src="sound/sfx-click.wav" preload="auto"></audio>
+<audio id="sfx-dialogue" src="sound/sfx-dialogue.wav" preload="auto"></audio>
+<audio id="sfx-success-01" src="sound/sfx-success-01.wav" preload="auto"></audio>
+
 <body>
   
 <div class="root">
@@ -144,8 +150,12 @@
 <!-- OVERLAY BUTTONS --->
 <div class="overlay-view view-container" style="z-index: 99; pointer-events: none;">
 
-    <button id="next-button" class="next-button button-clear" onclick="onClickButtonNext()" style="display: none;  pointer-events: auto;"> 
+  <button id="next-button" class="next-button button-clear" onclick="onClickButtonNext()" style="display: none;  pointer-events: auto;"> 
     <img src="assets/button-next.svg" style="width: 100%; height: 100%;">
+  </button>
+
+  <button id="home-button-overlay" class="next-button button-clear" onclick="onClickButtonReturnToHome()" style="display: none;  pointer-events: auto;"> 
+    <img src="assets/button-home.svg" style="width: 100%; height: 100%;">
   </button>
 
 </div>
@@ -295,7 +305,7 @@
           <img src="assets/button-sus.svg" style="position: absolute; width: 100%; height: 100%;">
         </button>
         <button class="option button-clear" id="option3" onclick="onClickButtonOption(1)" style="width: 34%">
-          <img src="assets/button-true.svg" style="position: absolute; width: 100%; height: 100%;">
+          <img src="assets/button-facts.svg" style="position: absolute; width: 100%; height: 100%;">
         </button>
       </div>
 
@@ -364,10 +374,10 @@
 
     <div id="question-buttons-clone">
         <button class="option" id="option2">
-          <img src="assets/button-sus.svg" style="position: absolute; width: 100%; height: 100%;">
+          <img src="assets/button-sus-text.svg" style="position: absolute; width: 100%; height: 100%;">
         </button>
         <button class="option" id="option3" style="width: 34%">
-          <img src="assets/button-true.svg" style="position: absolute; width: 100%; height: 100%;">
+          <img src="assets/button-facts-text.svg" style="position: absolute; width: 100%; height: 100%;">
         </button>
     </div>
 

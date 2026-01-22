@@ -71,6 +71,9 @@ async function initialize ()
     elemFinalCharacterBubble = document.querySelector('.end-level-screen .character-bubble-space');
     elemFinalCharacterText = document.querySelector('.end-level-screen .character-bubble p');
 
+    initializeSounds();
+
+    document.getElementById("bgMusic").play();
     setView('titleScreen');
 
     await loadQuestions();
@@ -81,6 +84,22 @@ async function initialize ()
     currentUpdate = setInterval(update, 1000.0/fps);
 }
 
+function initializeSounds () 
+{
+    const sfxHover = document.getElementById("sfx-hover");
+    const sfxClick = document.getElementById("sfx-click");
+
+    var buttons = document.querySelectorAll('button');
+
+    buttons.forEach(b => {
+      b.addEventListener("mouseenter", () => {
+        playSound('sfx-hover');
+      });
+      b.addEventListener("click", () => {
+        playSound('sfx-click');
+      });
+    });
+}
 async function loadQuestions() {
     try {
         const response = await fetch('./data.json');
