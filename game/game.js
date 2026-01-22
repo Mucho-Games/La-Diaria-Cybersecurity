@@ -8,6 +8,8 @@ var currentQuestionsAmount = 0;
 var currentPlayerScore = 0;
 
 var multipleChoiceDisabled = false;
+var musicEnabled = true;
+var soundEnabled = true; 
 
 //DOM ELEMENTS--------------------------------------------
 var elemRoot;
@@ -61,29 +63,11 @@ function startGame ()
     newQuestion();
 }
 
-function endGame () 
-{
-    elemFinalPlayerScore.innerHTML = String(currentPlayerScore).padStart(3, "0");
-    show(elemFinalCharacterPortrait)
-    show(elemFinalCharacterBubble);
-
-    new Dialogue(elemFinalCharacterText, "Increíble pero cierto!");
-
-    setView('endScreen');
-}
-
-
-
 async function newQuestion () 
 {
-    document.removeEventListener('click', newQuestion);
-
+    document.getElementById('next-button').style.display = 'none';
+    document.getElementById('answer-sticker').style.display = 'none';
     elemAnswerMainCont.style.display = 'none';
-
-    if (currentQuestionsAmount >= levelsAmount)  {//<---------------------------------------- has to move this from here this is nasty
-        endGame();
-        return;
-    }
 
     //currentQuestion = getRandomElement(questionBank);
     currentQuestion = questionBank[currentQuestionsAmount];
@@ -92,15 +76,16 @@ async function newQuestion ()
     const introCharacters = currentQuestion.intro.map(entry => entry.character);
     showIntroAnimation(introTexts, introCharacters);
 
-    console.log(introAnimationPlaying);
     await waitFor(() => !introAnimationPlaying);
-    console.log(introAnimationPlaying);
 
-    document.addEventListener('click', startLevel, { once: true });
+    document.getElementById('next-button').style.display = 'flex';
+
+    buttonNextAction = startMainQuestion;      
 }
-
-function startLevel () 
+function startMainQuestion () 
 {
+    document.getElementById('next-button').style.display = 'none';
+
     currentQuestion.getDOMElements();
     currentQuestion.populate();
 
@@ -119,19 +104,16 @@ function startLevel ()
 }
 async function answerQuestion (state, option) 
 {
+    document.getElementById('next-button').style.display = 'flex';
+
     if (state == 1) //wrong answer
     {
-        // elemAnimationAnswer.style.backgroundColor = 'red';
-        // elemAnimationAnswer.querySelector('p').innerHTML = "EQUIVOCADO!";
-        // playAnimation(elemAnimationAnswer, 2);
+
     }
     else if (state == 0) //right answer
     {
-        updatePlayerScore(currentPlayerScore + 100);
-
-        // elemAnimationAnswer.style.backgroundColor = 'green';
-        // elemAnimationAnswer.querySelector('p').innerHTML = "BIEN HECHO!";
-        // playAnimation(elemAnimationAnswer, 2);
+        updatePlayerScore(currentPlayerScore + 100, elemGainScore, elemPlayerScore);
+        playSound("sfx-success-01");
     }
 
     elemAnswerMainCont.style.display = 'flex';
@@ -169,6 +151,7 @@ async function answerQuestion (state, option)
     elemAnswerMainButtonsClone.style.display = 'flex';
     //elemMultipleChoiceCont.style.display = 'none';
 
+    document.getElementById('overlay-buttons').style.display = 'flex';
     var optionsClone = document.querySelectorAll(`#question-buttons-clone .option`);
     elemAnswerMainButtonsClone.style.flexDirection = option == 0 ? 'row' : 'row-reverse';
     optionsClone[0].style.display = option == 0 ? 'flex' : 'none';
@@ -184,7 +167,7 @@ async function answerQuestion (state, option)
 
     setTimeout(function() 
     { 
-        document.addEventListener('click', endMainQuestion);
+        buttonNextAction = endMainQuestion;
     }, 
     1000);    
 }
@@ -192,13 +175,15 @@ async function answerQuestion (state, option)
 function endMainQuestion () 
 { 
     showSubQuestion(); 
-    document.removeEventListener('click', endMainQuestion);
 }
 
 function showSubQuestion () 
 {
+    document.getElementById('next-button').style.display = 'none';
     multipleChoiceDisabled = false;
-    elemAnswerMainCont.style.display = 'none';
+    document.getElementById('overlay-buttons').style.display = 'none';
+    elemAnswerMainCont.style.display = 'none';    
+    document.getElementById('answer-sticker').style.display = 'none';
 
     elemSubQuestionCont.style.display = 'flex';
     elemSubQuestionCont.style.height = '100%';
@@ -216,6 +201,8 @@ function showSubQuestion ()
 
 function answerSubQuestion (option, state) 
 {
+    document.getElementById('next-button').style.display = 'flex';
+
     if (state == 1) //wrong answer
     {
         currentQuestion.subQuestions[questionOptionSelected].markWrong(option);
@@ -237,7 +224,7 @@ function answerSubQuestion (option, state)
     }
     else if (state == 0) //right answer
     {
-        updatePlayerScore(currentPlayerScore + 30);
+        updatePlayerScore(currentPlayerScore + 30, elemGainScore, elemPlayerScore);
 
         currentQuestion.subQuestions[questionOptionSelected].markCorrect(option, true);
 
@@ -251,27 +238,30 @@ function answerSubQuestion (option, state)
 
     elemAnswerMainCont.style.display = 'flex';
 
-    // if (option == 0) 
-    // {
-    //     elemAnswerMainCharacter.style.removeProperty('left');
-    //     elemAnswerMainCharacter.style.right = '-2%';
-    //     elemAnswerMainBubbleSpace.style.removeProperty('right');
-    //     elemAnswerMainBubbleSpace.style.left = '6%';
-    //     elemAnswerMainBubbleSpace.style.alignItems = 'flex-end';
-    // }
-    // else
-    // {   
-    //     elemAnswerMainCharacter.style.removeProperty('right');
-    //     elemAnswerMainCharacter.style.left = '-2%';
-    //     elemAnswerMainBubbleSpace.style.removeProperty('left');
-    //     elemAnswerMainBubbleSpace.style.right = '6%';
-    //     elemAnswerMainBubbleSpace.style.alignItems = 'flex-start';
-    // }
+    elemAnswerMainCharacter.classList.remove('full-body');
+    elemAnswerMainBubbleSpace.classList.remove('final-message');
 
-    // elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
-    // elemAnswerMainBubbleArrow.src = option == 0 ? 
-    // 'assets/text-box-bottom-white-right.svg' : 'assets/text-box-bottom-white-left.svg';
-    // elemAnswerMainBubbleArrowWrapper.style = option == 0 ? 'right: var(--round-corners)' : 'left: var(--round-corners)';
+    if (option == 0) 
+    {
+        elemAnswerMainCharacter.style.removeProperty('left');
+        elemAnswerMainCharacter.style.right = '-2%';
+        elemAnswerMainBubbleSpace.style.removeProperty('right');
+        elemAnswerMainBubbleSpace.style.left = '6%';
+        elemAnswerMainBubbleSpace.style.alignItems = 'flex-end';
+    }
+    else
+    {   
+        elemAnswerMainCharacter.style.removeProperty('right');
+        elemAnswerMainCharacter.style.left = '-2%';
+        elemAnswerMainBubbleSpace.style.removeProperty('left');
+        elemAnswerMainBubbleSpace.style.right = '6%';
+        elemAnswerMainBubbleSpace.style.alignItems = 'flex-start';
+    }
+
+    elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
+    elemAnswerMainBubbleArrow.src = option == 0 ? 
+    'assets/text-box-bottom-white-right.svg' : 'assets/text-box-bottom-white-left.svg';
+    elemAnswerMainBubbleArrowWrapper.style = option == 0 ? 'right: var(--round-corners)' : 'left: var(--round-corners)';
 
     elemAnswerMainButtonsClone.style.display = 'none';
 
@@ -286,7 +276,7 @@ function answerSubQuestion (option, state)
 
     setTimeout(function() 
     { 
-        document.addEventListener('click', endSubQuestion);
+         buttonNextAction = endSubQuestion;
     }, 
     1000); 
 }
@@ -303,8 +293,6 @@ function endSubQuestion ()
     {
         showSubQuestion(questionState-1);
     }
-
-    document.removeEventListener('click', endSubQuestion);
 }
 
 function endLevel () 
@@ -313,15 +301,22 @@ function endLevel ()
 
     elemAnswerMainCont.style.display = 'flex';
 
-    // elemAnswerMainCharacter.style.removeProperty('right');
-    // elemAnswerMainCharacter.style.left = '-2%';
-    // elemAnswerMainBubbleSpace.style.removeProperty('left');
-    // elemAnswerMainBubbleSpace.style.right = '6%';
-    // elemAnswerMainBubbleSpace.style.alignItems = 'flex-start';
+    elemAnswerMainCharacter.classList.add('full-body');
+    elemAnswerMainBubbleSpace.classList.add('final-message');
 
-    // elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
-    // elemAnswerMainBubbleArrow.src = 'assets/text-box-bottom-white-left.svg';
-    // elemAnswerMainBubbleArrowWrapper.style = 'left: var(--round-corners)';
+    document.getElementById('next-button').style.display = 'flex';
+    document.getElementById('answer-sticker').style.display = 'flex';
+    document.querySelector('#answer-sticker img').src = currentQuestion.correctAnswer == 0 ? 'assets/sticker-fake.svg' : 'assets/sticker-legit.svg';
+
+    elemAnswerMainCharacter.style.removeProperty('right');
+    elemAnswerMainCharacter.style.left = '-2%';
+    elemAnswerMainBubbleSpace.style.removeProperty('left');
+    elemAnswerMainBubbleSpace.style.right = '6%';
+    elemAnswerMainBubbleSpace.style.alignItems = 'flex-start';
+
+    elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
+    elemAnswerMainBubbleArrow.src = 'assets/text-box-bottom-white-left.svg';
+    elemAnswerMainBubbleArrowWrapper.style = 'left: var(--round-corners)';
 
     elemAnswerMainButtonsClone.style.display = 'none';
 
@@ -333,13 +328,44 @@ function endLevel ()
 
     setTimeout(function() 
     { 
-        document.addEventListener('click', newQuestion);
+        buttonNextAction = endLevelScore;
     }, 
     1000); 
 }
 
+function endLevelScore () 
+{
+    var endGame = currentQuestionsAmount >= levelsAmount;
 
+    setView('end-level-screen');
 
+    document.getElementById('next-button').style.display = 'none';
+    document.getElementById('home-button-overlay').style.display = 'none';
+
+    elemFinalPlayerScore.innerHTML = String(currentPlayerScore).padStart(3, "0");
+    show(elemFinalCharacterPortrait)
+    show(elemFinalCharacterBubble);
+
+    new Dialogue(elemFinalCharacterText, "Increíble pero cierto!");
+
+    var popUpScore = document.querySelector('.end-level-screen .gainScore');
+    var scoreElement = document.querySelector('.end-level-screen .final-score p')
+    updatePlayerScore(currentPlayerScore + 50, popUpScore, scoreElement);
+
+    playSound("sfx-success-01");
+
+    setTimeout(function() 
+    {           
+        if (endGame) 
+            document.getElementById('home-button-overlay').style.display = 'flex';
+        else 
+        {
+            document.getElementById('next-button').style.display = 'flex';
+            buttonNextAction = newQuestion;
+        }
+    }, 
+    1000); 
+}
 
 function onClickOption (option) 
 {
@@ -371,20 +397,100 @@ function onClickOption (option)
     }
 }
 
+function onClickButtonPlay () {
+    if (currentView == 0)
+        startGame();
+}
+let buttonNextAction = null;
+function onClickButtonNext () 
+{
+    console.log("button next");
+
+    if (!buttonNextAction) return;
+    const fn = buttonNextAction;
+    buttonNextAction = null;
+    fn();
+}
+function onClickButtonCredits () {
+    document.getElementById('credits-screen-main').style.display = "flex";
+}
+function onClickButtonCloseCredits () {
+    document.getElementById('credits-screen-main').style.display = "none";
+}
+function onClickButtonSettings () {
+    document.getElementById('settings-screen-main').style.display = "flex";
+}
+function onClickButtonCloseSettings () {
+    document.getElementById('settings-screen-main').style.display = "none";
+}
+function onToggleMusic (enabled) 
+{
+    musicEnabled = enabled; 
+    var music = document.getElementById("bgMusic");
+    if (musicEnabled) 
+    {
+      music.play();
+    } else {
+      music.pause();
+    }
+}
+function onToggleSound (enabled) 
+{
+    soundEnabled = enabled; 
+}
+function playSound (sound) 
+{
+    if (!soundEnabled) return;
+
+    var s = document.getElementById(sound);
+    s.currentTime = 0;
+    s.play();
+}
+function onClickButtonReturnToHome () 
+{
+    resetGame();
+}
+
+function resetGame () 
+{
+    questionState = -1;
+    questionOptionSelected = -1;
+    currentView = 0;
+
+    currentQuestion;
+    currentQuestionsAmount = 0;
+    currentPlayerScore = 0;
+
+    buttonNextAction = null;
+
+    updateSubscribers = [];
+
+    document.getElementById('credits-screen-main').style.display = "none";
+    document.getElementById('settings-screen-main').style.display = "none";
+
+    document.getElementById('next-button').style.display = 'none';
+    document.getElementById('home-button-overlay').style.display = 'none';
+
+    setView('titleScreen');
+}
+
 var updatePlayerScore_currentT = 0;
 var updatePlayerScore_currentTN = 0;
 var updatePlayerScore_startValue = 0;
-function updatePlayerScore (newValue) 
+var updatePlayerScore_targetScore = null;
+function updatePlayerScore (newValue, targetPopUp, targetScore) 
 {
     updatePlayerScore_currentT = 0;
     updatePlayerScore_startValue = currentPlayerScore;
+    updatePlayerScore_targetScore = targetScore;
+
     currentPlayerScore = newValue;
     var diff = currentPlayerScore - updatePlayerScore_startValue;
 
-    var points = elemGainScore.querySelector('p');
+    var points = targetPopUp.querySelector('p'); //elemGainScore.querySelector (p)
     points.innerHTML = "+" + diff;
 
-    showOneShot(elemGainScore, 2.5);
+    showOneShot(targetPopUp, 2.5);
 
     subscribe(_updatePlayerScore);
 } 
@@ -394,7 +500,7 @@ function _updatePlayerScore (deltaTime)
     updatePlayerScore_currentTN = clamp01(updatePlayerScore_currentT);
 
     var val = Math.floor(lerp(updatePlayerScore_startValue, currentPlayerScore, updatePlayerScore_currentTN));
-    elemPlayerScore.innerHTML = String(val).padStart(3, "0");
+    updatePlayerScore_targetScore.innerHTML = String(val).padStart(3, "0"); //elem player score
 
     if (updatePlayerScore_currentTN >= 1) {
         unsubscribe(_updatePlayerScore);

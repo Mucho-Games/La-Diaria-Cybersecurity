@@ -48,7 +48,7 @@ async function initialize ()
     elemPlayerLevelCont = document.querySelector('#hud > #level');
     elemPlayerLevel = document.querySelector("#hud > #level > p");
     elemPlayerLevelsAmount = document.querySelector('#hud > #level > #goalLevel');
-    elemGainScore = document.getElementById("gainScore");
+    elemGainScore = document.querySelector("#hud #score .gainScore");
 
     //Elems answer main question
     elemAnswerMainCont = document.getElementById("answer-main-animation-cont");
@@ -66,11 +66,14 @@ async function initialize ()
     elemAnimationAnswer = document.querySelector('#answerAnim');
 
     //End Screen
-    elemFinalPlayerScore = document.querySelector('.endScreen #results .your-score .final-score p');
-    elemFinalCharacterPortrait = document.querySelector('.endScreen .character-portrait');
-    elemFinalCharacterBubble = document.querySelector('.endScreen .character-bubble-space');
-    elemFinalCharacterText = document.querySelector('.endScreen .character-bubble p');
+    elemFinalPlayerScore = document.querySelector('.end-level-screen #results .your-score .final-score p');
+    elemFinalCharacterPortrait = document.querySelector('.end-level-screen .character-portrait');
+    elemFinalCharacterBubble = document.querySelector('.end-level-screen .character-bubble-space');
+    elemFinalCharacterText = document.querySelector('.end-level-screen .character-bubble p');
 
+    initializeSounds();
+
+    document.getElementById("bgMusic").play();
     setView('titleScreen');
 
     await loadQuestions();
@@ -81,6 +84,22 @@ async function initialize ()
     currentUpdate = setInterval(update, 1000.0/fps);
 }
 
+function initializeSounds () 
+{
+    const sfxHover = document.getElementById("sfx-hover");
+    const sfxClick = document.getElementById("sfx-click");
+
+    var buttons = document.querySelectorAll('button');
+
+    buttons.forEach(b => {
+      b.addEventListener("mouseenter", () => {
+        playSound('sfx-hover');
+      });
+      b.addEventListener("click", () => {
+        playSound('sfx-click');
+      });
+    });
+}
 async function loadQuestions() {
     try {
         const response = await fetch('./data.json');
@@ -155,8 +174,9 @@ function unsubscribe(fn) {
 function setView (newView) 
 {
     console.log("Setting new view: " + newView);
+    var inGameViewsAmount = 3;
 
-    for (var i = views.length - 1; i >= 0; i--) 
+    for (var i = inGameViewsAmount; i >= 0; i--) 
     {
         if (views[i] == newView) {
         	currentView = i;
@@ -164,9 +184,9 @@ function setView (newView)
         }
     }
 
-    for (var i = views.length - 1; i >= 0; i--) 
+    for (var i = inGameViewsAmount; i >= 0; i--) 
     {
-        var viewGrid = document.querySelector(`.${views[i]}#container`);
+        var viewGrid = document.querySelector(`.${views[i]}.view-container`);
         viewGrid.style.display = i == currentView ? `flex` : `none`;
     }
 
@@ -184,29 +204,70 @@ function playAnimation (animElement, duration)
 
 function onClickAnywhere () 
 {
-    if (currentView == 0)
-        startGame();
+    
 }
 
 function onScreenSizeChange() 
 {
     aspectRatio = window.innerWidth / window.innerHeight;
 
-    const thresholdRatio = 0.75; //added a little padding to avoid small gaps on layout at the borders
+    var viewFinalScaling = ResizeView(currentView);
+    ResizeView(4); //credits screen
+    ResizeView(5); //settings screen
+    ResizeView(6); //overlay view
 
-    var view = document.querySelector(`.${views[currentView]}#container`);
+    if (!initialized) return; //layouts specifics
 
-    var width = 0; //declaring this var here to be read and written all over the function execution and only here
-    var height = 0; //declaring this var here to be read and written all over the function execution and only here
-
-    landscape = aspectRatio >= thresholdRatio;
-
-    if (landscape) /*LAND MODE---------------------*/
+    if (currentView == 0) //titlescreen layout updates
     {
-        var windowWidth = window.innerWidth - 80;
-        var windowHeight = window.innerHeight - 60;
+        var buttonPlay = document.querySelector('.titleScreen#buttonPlay');
+        buttonPlay.style.height = `${document.querySelector('.titleScreen#header').offsetHeight}px`;
+    }
+    else if (currentView == 1)
+    {
 
-        var viewRefSize = viewsRefResolutions[currentView];
+    }
+    else if (currentView == 2)
+    {
+        var container = document.querySelector(`.game.view-container`);
+        container.style.justifyContent = landscape ? 'center' : 'space-around';
+        elemPlayerScoreCont.style.width = landscape ? '15%' : '18%';
+        elemPlayerLevelCont.style.width = landscape ? '15%' : '18%';
+        // var options = document.querySelectorAll(`.game .option`);
+        // options.forEach(o => o.style.width = landscape ? '26%' : '30%');
+        // var optionsClone = document.querySelectorAll(`#question-buttons-clone .option`);
+        // optionsClone.forEach(o => o.style.width = landscape ? '26%' : '30%');
+
+        // if (landscape) 
+        // {
+        //     elemAnswerMainBottom.style.height = `${answerOverlayRefResolution[1]}px`;
+        //     elemAnswerMainBottom.style.width = `${answerOverlayRefResolution[0]}px`;
+        //     elemAnswerMainBottom.style.transformOrigin = 'bottom center'
+        //     elemAnswerMainBottom.style.transform = `scale(${viewFinalScaling})`;
+        // }
+        // else
+        // {
+        //     elemAnswerMainBottom.style.height = `${answerOverlayRefResolutionPortrait[1]}px`;
+        //     elemAnswerMainBottom.style.width = `${answerOverlayRefResolutionPortrait[0]}px`;
+        //     elemAnswerMainBottom.style.transformOrigin = 'bottom center'
+        //     elemAnswerMainBottom.style.transform = `scale(${viewFinalScaling})`;
+        // }
+    }
+}
+
+function ResizeView (index) 
+{  
+    var view = document.querySelector(`.${views[index]}.view-container`);
+    var windowWidth = 0;
+    var windowHeight = 0; 
+    var _landscape = aspectRatio >= thresholdRatio;
+
+    if (_landscape) /*LAND MODE---------------------*/
+    {
+        windowWidth = window.innerWidth - 80;
+        windowHeight = window.innerHeight - 60;
+
+        var viewRefSize = viewsRefResolutions[index];
         var viewScalingWidth = 1;
         var viewScalingHeight = 1;
         var viewFinalScaling = 1;
@@ -236,10 +297,10 @@ function onScreenSizeChange()
     } 
     else /*PORTRAIT MODE---------------------*/
     {
-        var windowWidth = window.innerWidth - 30;
-        var windowHeight = window.innerHeight - 60;
+        windowWidth = window.innerWidth - 30;
+        windowHeight = (window.innerHeight * 0.9) - 60;
 
-        var viewRefSize = viewsRefResolutionsPortrait[currentView];
+        var viewRefSize = viewsRefResolutionsPortrait[index];
         var viewScalingWidth = 1;
         var viewScalingHeight = 1;
         var viewFinalScaling = 1;
@@ -267,44 +328,5 @@ function onScreenSizeChange()
         view.style.bottom  = `${bottom}px`;
     }
 
-
-    if (!initialized) return; //layouts specifics
-
-    if (currentView == 0) //titlescreen layout updates
-    {
-        var buttonPlay = document.querySelector('.titleScreen#buttonPlay');
-        buttonPlay.style.height = `${document.querySelector('.titleScreen#header').offsetHeight}px`;
-    }
-    else if (currentView == 1)
-    {
-
-    }
-    else if (currentView == 2)
-    {
-        var container = document.querySelector(`.game#container`);
-        container.style.justifyContent = landscape ? 'center' : 'space-around';
-        elemPlayerScoreCont.style.width = landscape ? '15%' : '18%';
-        elemPlayerLevelCont.style.width = landscape ? '15%' : '18%';
-        var options = document.querySelectorAll(`.game .option`);
-        options.forEach(o => o.style.width = landscape ? '26%' : '30%');
-        var optionsClone = document.querySelectorAll(`#question-buttons-clone .option`);
-        optionsClone.forEach(o => o.style.width = landscape ? '26%' : '30%');
-
-        if (landscape) 
-        {
-            elemAnswerMainBottom.style.height = `${answerOverlayRefResolution[1]}px`;
-            elemAnswerMainBottom.style.width = `${answerOverlayRefResolution[0]}px`;
-            elemAnswerMainBottom.style.transformOrigin = 'bottom center'
-            elemAnswerMainBottom.style.transform = `scale(${viewFinalScaling})`;
-        }
-        else
-        {
-            elemAnswerMainBottom.style.height = `${answerOverlayRefResolutionPortrait[1]}px`;
-            elemAnswerMainBottom.style.width = `${answerOverlayRefResolutionPortrait[0]}px`;
-            elemAnswerMainBottom.style.transformOrigin = 'bottom center'
-            elemAnswerMainBottom.style.transform = `scale(${viewFinalScaling})`;
-        }
-
-        overlayDiv(elemMultipleChoiceCont, elemAnswerMainButtonsClone);
-    }
+    return viewFinalScaling;
 }

@@ -31,7 +31,7 @@ function getElementScreenPosition (elem) {
     };
 }
 
-function overlayDiv(source, target) 
+function copyDiv(source, target) 
 {
   const rect = source.getBoundingClientRect();
 
@@ -40,7 +40,6 @@ function overlayDiv(source, target)
   target.style.top = rect.top + "px";
   target.style.width = rect.width + "px";
   target.style.height = rect.height + "px";
-  target.style.zIndex = "9999";
 }
 
 function normalize(x, y) {

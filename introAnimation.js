@@ -86,7 +86,8 @@ function showLine (index)
 
 	return dialogue;
 }
-class Dialogue {
+class Dialogue 
+{
     constructor(elem, text) 
     {
         this.elem = elem;
@@ -96,6 +97,7 @@ class Dialogue {
         this.writingSpeed = 0.005;
         this.currentText = "";
         this.currentIndex = 0;
+        this.sound = 0;
 
         this.writeDialogue = this.writeDialogue.bind(this);
 
@@ -108,7 +110,7 @@ class Dialogue {
     writeDialogue(deltaTime) 
     {
         this.time += deltaTime;
-         console.log("writing dialogue on element: " + this.elem);
+        
         if (this.time > this.writingSpeed) 
         {
         	if (this.text[this.currentIndex] == '<')
@@ -123,6 +125,14 @@ class Dialogue {
 	            this.currentText += this.text[this.currentIndex];
 	            this.currentIndex++;
         	}
+
+        	this.sound++;
+        	if (this.sound >= 3) 
+        	{
+        		playSound('sfx-dialogue');
+        		this.sound = 0;
+        	}
+
             this.time -= this.writingSpeed;
 
             this.elem.innerHTML = this.currentText;
