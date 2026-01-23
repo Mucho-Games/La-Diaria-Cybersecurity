@@ -10,6 +10,14 @@ var questionBank = [];
 const coroutines = new CoroutineRunner();
 var updateSubscribers = [];
 
+window.addEventListener("load", 
+    () => {
+    const loader = document.getElementById("loading-screen");
+    loader.classList.add("hidden-special");
+
+    setTimeout(() => loader.remove(), 1000);
+});
+
 // INITIALIZE GAME
 document.addEventListener("DOMContentLoaded", initialize);
 

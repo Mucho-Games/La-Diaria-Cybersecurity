@@ -56,20 +56,26 @@ b {
 {
   position: absolute;
 }
-/* DEBUG -------------------------------------------------*/
-.debugBar {
-  position: fixed; /* Positions relative to the viewport */
-  top: 0; /* Aligns to the top edge of the viewport */
-  left: 0; /* Aligns to the left edge of the viewport */
-  width: 100%; /* Spans the full width of the viewport */
-  height: 50px; /* Spans the full height of the viewport */
-  z-index: 9999; /* Ensures it's on top of most other elements */
-  background-color: rgba(0, 0, 0, 0.5); /* Example: semi-transparent black background */
-  display: flex; /* Example: use flexbox for content centering */
-  justify-content: flex-start;
+
+#loading-screen 
+{
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-green);
+  color: white;
+  display: flex;
   align-items: center;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  justify-content: center;
+  z-index: 9999;
+
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+#loading-screen.hidden-special 
+{
+  opacity: 0;
+  pointer-events: none;
 }
 
 .overlay-view
