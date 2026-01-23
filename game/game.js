@@ -11,6 +11,8 @@ var multipleChoiceDisabled = false;
 var musicEnabled = true;
 var soundEnabled = true; 
 
+var abortController = new AbortController();
+
 //DOM ELEMENTS--------------------------------------------
 var elemRoot;
 var elemGameContainer;
@@ -58,12 +60,13 @@ function startGame ()
 {
     if (!initialized) return;
 
+    elemPlayerScore.innerHTML = String(0).padStart(3, "0");
     elemPlayerLevelsAmount.innerHTML = "/" + String(levelsAmount).padStart(2, "0");
 
-    newQuestion();
+    coroutines.start(newQuestion);
 }
 
-async function newQuestion () 
+function* newQuestion () //coroutine
 {
     document.getElementById('next-button').style.display = 'none';
     document.getElementById('answer-sticker').style.display = 'none';
@@ -76,15 +79,18 @@ async function newQuestion ()
     const introCharacters = currentQuestion.intro.map(entry => entry.character);
     showIntroAnimation(introTexts, introCharacters);
 
-    await waitFor(() => !introAnimationPlaying);
+    while (introAnimationPlaying) yield;
 
+    playSound("sfx-popUp-01");
     document.getElementById('next-button').style.display = 'flex';
 
     buttonNextAction = startMainQuestion;      
 }
 function startMainQuestion () 
 {
+    elemSubQuestionCont.style.display = 'none';
     document.getElementById('next-button').style.display = 'none';
+    document.getElementById('overlay-buttons').style.display = 'none';
 
     currentQuestion.getDOMElements();
     currentQuestion.populate();
@@ -102,13 +108,12 @@ function startMainQuestion ()
 
     setView('game');
 }
-async function answerQuestion (state, option) 
-{
-    document.getElementById('next-button').style.display = 'flex';
 
+function* answerQuestion (state, option)  //coroutine
+{
     if (state == 1) //wrong answer
     {
-
+        playSound("sfx-error");
     }
     else if (state == 0) //right answer
     {
@@ -117,6 +122,9 @@ async function answerQuestion (state, option)
     }
 
     elemAnswerMainCont.style.display = 'flex';
+
+    elemAnswerMainCharacter.classList.remove('full-body');
+    elemAnswerMainBubbleSpace.classList.remove('final-message');
 
     //set image of character
     var characterIndex = currentQuestion.textsAnswer[option].character;
@@ -159,17 +167,19 @@ async function answerQuestion (state, option)
 
     show(elemAnswerMainBubble.parentElement);
 
-    new Dialogue(elemAnswerMainText, currentQuestion.textsAnswer[option].text);
-
     multipleChoiceDisabled = true;
     questionOptionSelected = option;
     questionState++;
 
-    setTimeout(function() 
-    { 
-        buttonNextAction = endMainQuestion;
-    }, 
-    1000);    
+    var dialogue =  new Dialogue(elemAnswerMainText, currentQuestion.textsAnswer[option].text);
+
+    while (dialogue.writing) yield;
+
+    yield waitSeconds(0.5);
+
+    buttonNextAction = endMainQuestion;
+    document.getElementById('next-button').style.display = 'flex';
+    playSound("sfx-popUp-01");
 }
 
 function endMainQuestion () 
@@ -197,11 +207,12 @@ function showSubQuestion ()
 
     currentQuestion.subQuestions[questionOptionSelected].getDOMElements();
     currentQuestion.subQuestions[questionOptionSelected].populate();
+    currentQuestion.subQuestions[questionOptionSelected].interactable(true);
 }
 
-function answerSubQuestion (option, state) 
+function* answerSubQuestion (option, state)  //coroutine
 {
-    document.getElementById('next-button').style.display = 'flex';
+    document.getElementById('next-button').style.display = 'none';
 
     if (state == 1) //wrong answer
     {
@@ -216,25 +227,23 @@ function answerSubQuestion (option, state)
                 currentQuestion.subQuestions[questionOptionSelected].markCorrect(i, false);
             }
         }
-        
 
-        // elemAnimationAnswer.style.backgroundColor = 'red';
-        // elemAnimationAnswer.querySelector('p').innerHTML = "EQUIVOCADO!";
-        // playAnimation(elemAnimationAnswer, 2);
+        playSound("sfx-error");
     }
     else if (state == 0) //right answer
     {
         updatePlayerScore(currentPlayerScore + 30, elemGainScore, elemPlayerScore);
+        playSound("sfx-success-01");
 
         currentQuestion.subQuestions[questionOptionSelected].markCorrect(option, true);
-
-        // elemAnimationAnswer.style.backgroundColor = 'green';
-        // elemAnimationAnswer.querySelector('p').innerHTML = "BIEN HECHO!";
-        // playAnimation(elemAnimationAnswer, 2);
     }
+
+    currentQuestion.subQuestions[questionOptionSelected].interactable(false);
 
     multipleChoiceDisabled = true;
     questionState++;
+
+    yield waitSeconds(2);
 
     elemAnswerMainCont.style.display = 'flex';
 
@@ -267,18 +276,15 @@ function answerSubQuestion (option, state)
 
     show(elemAnswerMainBubble.parentElement);
 
-    //elemSubQuestionCont.style.height = '73%';
-    //elemSubQuestionCont.style.justifyContent = 'flex-start';
-    //document.getElementById('subQuestions-container').style.height = '100%';
-    //document.getElementById('subQuestions-container').style.justifyContent = 'center';
+    var dialogue = new Dialogue(elemAnswerMainText, currentQuestion.subQuestions[questionOptionSelected].message);
 
-    new Dialogue(elemAnswerMainText, currentQuestion.subQuestions[questionOptionSelected].message);
+    while (dialogue.writing) yield;
 
-    setTimeout(function() 
-    { 
-         buttonNextAction = endSubQuestion;
-    }, 
-    1000); 
+    yield waitSeconds(0.5);
+
+    buttonNextAction = endSubQuestion;
+    document.getElementById('next-button').style.display = 'flex';
+    playSound("sfx-popUp-01");
 }
 function endSubQuestion () 
 {
@@ -287,7 +293,7 @@ function endSubQuestion ()
 
     if (questionState >= currentQuestion.subQuestions.length) 
     {
-        endLevel();
+        coroutines.start(endLevel);
     }
     else
     {
@@ -295,8 +301,10 @@ function endSubQuestion ()
     }
 }
 
-function endLevel () 
+function* endLevel () //coroutine
 {
+    document.getElementById('next-button').style.display = 'none';
+
     multipleChoiceDisabled = true;
 
     elemAnswerMainCont.style.display = 'flex';
@@ -304,8 +312,6 @@ function endLevel ()
     elemAnswerMainCharacter.classList.add('full-body');
     elemAnswerMainBubbleSpace.classList.add('final-message');
 
-    document.getElementById('next-button').style.display = 'flex';
-    document.getElementById('answer-sticker').style.display = 'flex';
     document.querySelector('#answer-sticker img').src = currentQuestion.correctAnswer == 0 ? 'assets/sticker-fake.svg' : 'assets/sticker-legit.svg';
 
     elemAnswerMainCharacter.style.removeProperty('right');
@@ -324,16 +330,23 @@ function endLevel ()
 
     show(elemAnswerMainBubble.parentElement);
 
-    new Dialogue(elemAnswerMainText, currentQuestion.finalMessage[questionOptionSelected]);
+    var dialogue = new Dialogue(elemAnswerMainText, currentQuestion.finalMessage[questionOptionSelected]);
 
-    setTimeout(function() 
-    { 
-        buttonNextAction = endLevelScore;
-    }, 
-    1000); 
+    while (dialogue.writing) yield;
+
+    yield waitSeconds(0.5);
+
+    document.getElementById('answer-sticker').style.display = 'flex';
+    playSound("sfx-sticker");
+
+    yield waitSeconds(1.5);
+
+    buttonNextAction = () => { coroutines.start(endLevelScore); };
+    document.getElementById('next-button').style.display = 'flex';
+    playSound("sfx-popUp-01");
 }
 
-function endLevelScore () 
+function* endLevelScore () //coroutine
 {
     var endGame = currentQuestionsAmount >= levelsAmount;
 
@@ -354,17 +367,15 @@ function endLevelScore ()
 
     playSound("sfx-success-01");
 
-    setTimeout(function() 
-    {           
-        if (endGame) 
-            document.getElementById('home-button-overlay').style.display = 'flex';
-        else 
-        {
-            document.getElementById('next-button').style.display = 'flex';
-            buttonNextAction = newQuestion;
-        }
-    }, 
-    1000); 
+    yield waitSeconds(1);
+
+    if (endGame) 
+        document.getElementById('home-button-overlay').style.display = 'flex';
+    else 
+    {
+        document.getElementById('next-button').style.display = 'flex';
+        buttonNextAction = () => { coroutines.start(newQuestion); };
+    }
 }
 
 function onClickOption (option) 
@@ -377,22 +388,22 @@ function onClickOption (option)
     {
         if (currentQuestion.correctAnswer == option) 
         {
-            answerQuestion(0, option);
+            coroutines.start(answerQuestion, 0, option);
         }
         else
         {
-            answerQuestion(1, option);
+            coroutines.start(answerQuestion, 1, option);
         }
     }
     else if (questionState > 0) //On second instance of question
     {
         if (currentQuestion.subQuestions[questionOptionSelected].optionsValues[option])
         {
-            answerSubQuestion(option, 0);
+            coroutines.start(answerSubQuestion, option, 0);
         }
         else
         {
-            answerSubQuestion(option, 1);
+            coroutines.start(answerSubQuestion, option, 1);
         }
     }
 }
@@ -465,6 +476,10 @@ function resetGame ()
 
     updateSubscribers = [];
 
+    abortController.abort();
+    abortController = new AbortController();
+    coroutines.stopAll();
+
     document.getElementById('credits-screen-main').style.display = "none";
     document.getElementById('settings-screen-main').style.display = "none";
 
@@ -477,6 +492,7 @@ function resetGame ()
 var updatePlayerScore_currentT = 0;
 var updatePlayerScore_currentTN = 0;
 var updatePlayerScore_startValue = 0;
+var updatePlayerScore_soundT = 0;
 var updatePlayerScore_targetScore = null;
 function updatePlayerScore (newValue, targetPopUp, targetScore) 
 {
@@ -494,9 +510,10 @@ function updatePlayerScore (newValue, targetPopUp, targetScore)
 
     subscribe(_updatePlayerScore);
 } 
-function _updatePlayerScore (deltaTime)
+function _updatePlayerScore (deltaTime, elapsedTime)
 {
     updatePlayerScore_currentT += deltaTime;
+    updatePlayerScore_soundT += deltaTime;
     updatePlayerScore_currentTN = clamp01(updatePlayerScore_currentT);
 
     var val = Math.floor(lerp(updatePlayerScore_startValue, currentPlayerScore, updatePlayerScore_currentTN));
@@ -504,6 +521,11 @@ function _updatePlayerScore (deltaTime)
 
     if (updatePlayerScore_currentTN >= 1) {
         unsubscribe(_updatePlayerScore);
+    }
+
+    if (updatePlayerScore_soundT > 0.1) {
+        playSound("sfx-score");
+        updatePlayerScore_soundT = 0;
     }
 }
 

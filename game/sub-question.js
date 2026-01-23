@@ -49,5 +49,12 @@ class SubQuestion
             elemSubQuestionOptions[index].style.boxShadow = '0 0 0 0.2em var(--color-green)';
         }
     }
+    interactable(enabled) 
+    {
+        for (var i = 0; i < elemSubQuestionOptions.length; i++) 
+        {
+            elemSubQuestionOptions[i].style.pointerEvents = enabled ? 'auto' : 'none';
+        }
+    }
 }
 

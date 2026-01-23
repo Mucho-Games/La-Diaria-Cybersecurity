@@ -49,12 +49,24 @@ function normalize(x, y) {
 }
 
 //executions
-function waitFor(condition) {
-    return new Promise(resolve => {
+function cancellable(fn) {
+    const controller = new AbortController();
+    return {
+        run: (...args) => fn(...args, controller.signal),
+        cancel: () => controller.abort()
+    };
+}
+
+function waitFor(condition, signal) {
+    return new Promise((resolve, reject) => {
+        if (signal?.aborted) return reject("aborted");
+
         function check() {
+            if (signal?.aborted) return reject("aborted");
             if (condition()) resolve();
             else requestAnimationFrame(check);
         }
+
         check();
     });
 }

@@ -11,11 +11,16 @@
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
-<audio id="bgMusic" src="sound/background-music.ogg" loop preload="auto"></audio>
+<audio id="bgMusic" src="sound/background-music.ogg" loop preload="auto" onloadeddata="this.volume=0.5"></audio>
+
 <audio id="sfx-hover" src="sound/sfx-hover.wav" preload="auto"></audio>
 <audio id="sfx-click" src="sound/sfx-click.wav" preload="auto"></audio>
-<audio id="sfx-dialogue" src="sound/sfx-dialogue.wav" preload="auto"></audio>
+<audio id="sfx-dialogue" src="sound/sfx-dialogue.wav" preload="auto" onloadeddata="this.volume=0.5"></audio>
 <audio id="sfx-success-01" src="sound/sfx-success-01.wav" preload="auto"></audio>
+<audio id="sfx-sticker" src="sound/sfx-sticker.wav" preload="auto" onloadeddata="this.volume=0.6"></audio>
+<audio id="sfx-error" src="sound/sfx-error.wav" preload="auto" onloadeddata="this.volume=0.7"></audio>
+<audio id="sfx-popUp-01" src="sound/sfx-popUp-01.wav" preload="auto" onloadeddata="this.volume=0.5"></audio>
+<audio id="sfx-score" src="sound/sfx-score.wav" preload="auto" onloadeddata="this.volume=0.1"></audio>
 
 <body>
   
@@ -463,6 +468,7 @@
 <script src="titleScreen.js" defer></script>
 <script src="introAnimation.js" defer></script>
 
+<script src="coroutines.js" defer></script>
 <script src="main.js" defer></script>
 
 <script>

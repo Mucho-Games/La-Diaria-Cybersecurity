@@ -7,6 +7,7 @@ var landscape = true;
 
 var questionBank = [];
 
+const coroutines = new CoroutineRunner();
 var updateSubscribers = [];
 
 // INITIALIZE GAME
@@ -150,24 +151,31 @@ async function loadQuestions() {
     }
 }
 
-function update() 
-{
-    deltaTime = (performance.now() - lastTimeUpdate) * 0.001;
-    lastTimeUpdate = performance.now();
-    
-	updateSubscribers.forEach(fn => fn(deltaTime));
+function update() {
+    const now = performance.now();
+    const deltaTime = (now - lastTimeUpdate) * 0.001;
+    lastTimeUpdate = now;
+
+    [...updateSubscribers].forEach(sub => {
+        const elapsedTime = (now - sub.startTime) * 0.001;
+        sub.fn(...sub.args, deltaTime, elapsedTime);
+    });
+
+    coroutines.update(deltaTime);
 }
 
-function subscribe(fn) 
-{
-    const index = updateSubscribers.indexOf(fn);
-    if (index !== -1) updateSubscribers.splice(index, 1);
+function subscribe(fn, ...args) {
+    const sub = {
+        fn,
+        args,
+        startTime: performance.now()
+    };
 
-    updateSubscribers.push(fn);
+    updateSubscribers.push(sub);
 }
 
 function unsubscribe(fn) {
-    const index = updateSubscribers.indexOf(fn);
+    const index = updateSubscribers.findIndex(sub => sub.fn === fn);
     if (index !== -1) updateSubscribers.splice(index, 1);
 }
 

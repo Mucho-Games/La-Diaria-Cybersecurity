@@ -37,7 +37,7 @@ function showIntroAnimation (texts, char)
 
 	subscribe(introAnimation)
 }
-function introAnimation (deltaTime) 
+function introAnimation (deltaTime, elapsedTime) 
 {
 	if (introAnimationCurrentLineIndex < linesShown.length) 
 	{
@@ -107,7 +107,7 @@ class Dialogue
         console.log("starting dialogue on element: " + this.elem);
     }
 
-    writeDialogue(deltaTime) 
+    writeDialogue(deltaTime, elapsedTime) 
     {
         this.time += deltaTime;
         

@@ -37,7 +37,7 @@ const viewsRefResolutionsPortrait =
 	[910, 910], //title
 	[550, 900], //intro
 	[550, 800], //game
-	[550, 800], //end view
+	[700, 800], //end view
 	[550, 900], //credits
 	[550, 900], //settings
 	[550, 800] //overlay-view <---- has to be the same as game to match the layout
