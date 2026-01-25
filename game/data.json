@@ -1,0 +1,838 @@
+{
+  "questions":
+  [
+    { 
+      "index": 0,
+      "questionType": 0,
+      "intro":
+      [
+        {
+          "character": 0,
+          "text": "Che, quiero ir a un show pero me quedé sin entrada."
+        },
+        {
+          "character": 1,
+          "text": "Tranqui, Pato. Yo te ayudo a buscar alguna en las redes :)"
+        },
+        {
+          "character": 2,
+          "text": "¡Me sumo a la misión!"
+        }       
+      ],
+      "profilePic": "pp-00",
+      "username": "Espectáculos y eventos Uruguay",
+      "usernameURL": "Gastón Lopez - 5 de mayo de 2024",
+      "img": "img-00",
+      "footNote": "18 comentarios",
+      "header": "Vendo entradas para Emilia domingo",
+      "body": "Vendo dos entradas digitales para ver a Emilia el domingo 12 a las 21 hrs. en el Antel Arena, Uruguay! Interesados escribir 096956427",
+
+      "correctOption": 0,
+
+      "textsAnswer":
+      [
+        {
+          "character": 1,
+          "text": "¡Bien dicho! Pato podría quedarse sin show, pero peor es ser víctima de una estafa. ¡A chequear!"
+        },
+        {
+          "character": 1,
+          "text": "Mi olfato me indica lo contrario. Este contenido es dudoso." 
+        }  
+      ],
+
+      "subQuestions": 
+      [
+        {
+          "subQuestion": "¿Qué pasos podés dar para saber si la publicación es falsa o no?", 
+          "options": 
+          [
+            "Leer los comentarios por si alguien comenta que tuvo una mala experiencia.", 
+            "Investigar la página que subió esa oferta. Corroborar que sea la fecha, hora y lugar correcto del show.", 
+            "Usar Google Lens para hacer una búsqueda inversa y ver si alguien hizo una denuncia por ese contenido."
+          ], 
+          "optionsValues": 
+          [
+            true,
+            true,
+            true
+          ],
+          "message": "Las tres opciones son correctas. Este tipo de publicaciones puede ser una estafa, así que conviene aplicar los tres pasos para evitar que nos engañen."
+        }
+      ],
+
+      "finalMessage": 
+      [
+        "Además, no es confiable ponerse en contacto directo por WhatsApp con desconocidos. Y en el caso de los tickets digitales, son muy fáciles de simular o de vender el mismo a varias personas. Lo preferible es acudir siempre a medios de venta oficiales."
+      ]
+    },
+
+
+
+
+
+    { 
+      "index": 1,
+      "questionType": 0,
+      "intro":
+      [
+        {
+          "character": 2,
+          "text": "Mirando videos de fútbol en YouTube me apareció esta publicidad de Suárez. ¿Qué les parece?"
+        },
+        {
+          "character": 0,
+          "text": "¿Un millón de pesos en un mes?"
+        },
+        {
+          "character": 1,
+          "text": "Mejor olfateemos juntos a ver de qué se trata."
+        }
+      ],
+      "profilePic": "pp-01",
+      "username": "Milenio Portal oficial",
+      "usernameURL": "3,9 k suscriptores",
+      "img": "img-01",
+      "footNote": "386 visualizaciones  hace 17 horas",
+      "header": "SUMATE A ESTA OPORTUNIDAD",
+      "body": "En el video Luis Suárez te invita a ganar 1.000.000 UY en tu primer mes de inversión o te devolverá tu dinero.",
+
+      "correctOption": 0,
+
+      "textsAnswer":
+      [
+        {
+          "character": 0,
+          "text": "¡Correcto!"
+        },
+        {
+          "character": 0,
+          "text": "Mi sexto sentido tiene dudas... ¿Vamos a verificarlo juntos?"
+        }        
+      ],
+
+      "subQuestions": 
+      [
+        {
+          "subQuestion": "¿Por qué creés que es dudoso?", 
+          "options": 
+          [
+            "Parece hecho con inteligencia Artificial.", 
+            "Un futbolista no suele hablar de inversiones.", 
+            "La noticia no está en ningún medio uruguayo."
+          ], 
+          "optionsValues": 
+          [
+            true,
+            false,
+            false
+          ],
+          "message": "Cuando veas videos asegurate de que la voz no suene metálica y que se corresponda con el movimiento de la boca al hablar."
+        },
+        {
+          "subQuestion": "¿Por qué creés que es verdadero?", 
+          "options": 
+          [
+            "Luis Suárez es una persona muy conocida, así que el video debe ser verdadero.", 
+            "El portal de noticias Milenio existe, por eso me parece confiable.", 
+            "Es raro que te den un millón de pesos en un mes."
+          ], 
+          "optionsValues": 
+          [
+            false,
+            false,
+            true
+          ],
+          "message": "Este video fue hecho con inteligencia artificial y no es real que Luis Suárez invite a invertir. Si bien Milenio es un medio de noticias mexicano real, esta noticia simula ser de Milenio pero tampoco lo es."
+        }
+      ],
+
+      "finalMessage": 
+      [
+        "¡No te olvides! Prestá atención a todo aquello que parece demasiado bueno para ser cierto, porque posiblemente sea así. Y chequeá la web a la que te dirigen los enlaces. En este caso, Mileno existe, pero esta web es falsa.",
+        "Recomendación gatuna: Desconfiá de las propuestas que prometen grandes ganancias o regalos, por ejemplo un teléfono o algo costoso. Y no te olvides de chequear la dirección de la web a la que te dirigen los enlaces. En este caso Mileno existe, pero esta web es falsa."
+      ]
+    },
+
+
+
+
+
+    { 
+      "index": 2,
+      "questionType": 0,
+      "intro":
+      [
+        {
+          "character": 0,
+          "text": "Mi prima me pasó este video de TikTok. Ahora quiero una cama elástica para poner en el patio y saltar con otros animales."
+        },
+        {
+          "character": 2,
+          "text": "¡Qué divertido! ¡Mirá qué tiernos cómo saltan!"
+        },
+        {
+          "character": 1,
+          "text": "Prestame la lupa, Pato, que a este video hay que mirarlo muy de cerca."
+        }   
+      ],
+      "profilePic": "pp-02",
+      "username": "El Noticiero Televen oficial",
+      "usernameURL": "47,5 k suscritptores",
+      "img": "img-02",
+      "footNote": "369 K visualizaciones",
+      "header": "Jugar es universal",
+      "body": "La inocencia de los animales en los trampolines.",
+
+      "correctOption": 0,
+
+      "textsAnswer":
+      [
+        {
+          "character": 0,
+          "text": "Estamos de acuerdo. Igual, investiguemos un poco más."
+        },
+        {
+          "character": 1,
+          "text": "Ups, es un contenido falso."
+        }        
+      ],
+
+      "subQuestions": 
+      [
+        {
+          "subQuestion": "Veamos por qué", 
+          "options": 
+          [
+            "Si googleamos “animales saltando en camas elásticas” vamos a encontrar decenas de videos claramente falsos, donde saltan osos y hasta un yacaré.", 
+            "Es raro que justo una cámara los esté filmando.", 
+            "Si me genera mucha ternura o asombro, y ganas de compartir, es probable que no sea real."
+          ], 
+          "optionsValues": 
+          [
+            true,
+            false,
+            true
+          ],
+          "message": "Los contenidos que provocan reacciones inmediatas e intensas, como ternura o risa, muchas veces son falsos. Están pensados para que se vuelvan virales. Para verificarlos, podés hacer una búsqueda inversa de imágenes en Google Lens con una captura de pantalla."
+        },
+        {
+          "subQuestion": "Indica por qué es falso", 
+          "options": 
+          [
+            "Todos los videos de TikTok son falsos.", 
+            "Los conejos no pueden saltar en camas elásticas.", 
+            "Está hecho con inteligencia artificial."
+          ], 
+          "optionsValues": 
+          [
+            false,
+            false,
+            true
+          ],
+          "message": "Los contenidos que provocan reacciones inmediatas e intensas, como ternura o risa, muchas veces son falsos. Están pensados para que se vuelvan virales. Para verificarlos, podés hacer una búsqueda inversa de imágenes en Google Lens con una captura de pantalla."
+        }
+      ],
+
+      "finalMessage": 
+      [
+        "Recordá verificar todos los contenidos que vayas a compartir, en especial si te hicieron reaccionar. Existen páginas y aplicaciones para chequear si una foto o un video fueron creados con inteligencia artificial, y aunque no son herramientas 100% efectivas siguen siendo recomendables."
+      ]
+    },
+
+
+
+
+    { 
+      "index": 3,
+      "questionType": 0,
+      "intro":
+      [
+        {
+          "character": 0,
+          "text": "Pensaba irme de vacaciones a nadar por Latinoamérica pero con esta noticia tendré que pensar bien qué ríos agarro."
+        },
+        {
+          "character": 2,
+          "text": "¡Me hago pichí del miedo!"
+        },
+        {
+          "character": 1,
+          "text": "¡Antes de tomar una decisión veamos bien de qué se trata!"
+        }   
+      ],
+      "profilePic": "pp-02",
+      "username": "Go Communication",
+      "usernameURL": "23,7 k suscriptores",
+      "img": "img-02",
+      "footNote": "126 K visualizaciones hace 20 horas",
+      "header": "Jugar es universal",
+      "body": "La inocencia de los animales en los trampolines.",
+
+      "correctOption": 0,
+
+      "textsAnswer":
+      [
+        {
+          "character": 1,
+          "text": "Nuestras narices apuntan hacia el mismo lado, ¡desconfiemos! o mejor dicho, ¡investiguemos!"
+        },
+        {
+          "character": 1,
+          "text": "Desconfío de ese video... ¡Al agua pata! revisemos a ver de qué se trata."
+        }        
+      ],
+
+      "subQuestions": 
+      [
+        {
+          "subQuestion": "¿Por qué crees que es dudoso?", 
+          "options": 
+          [
+            "Es imposible que siempre haya una cámara filmando.", 
+            "No existen serpientes así de grandes.", 
+            "Es un video hecho para crear alarma y miedo."
+          ], 
+          "optionsValues": 
+          [
+            false,
+            false,
+            true
+          ],
+          "message": "Es importante dudar cuando algo nos llama la atención inmediatamente y continuar la búsqueda para confirmar la información. En este caso si buscamos en un búscador \"Anaconda gigante Amazonas\" enseguida veremos que es una noticia falsa."
+        },
+        {
+          "subQuestion": "¿Este video podría ser hecho con Inteligencia Artificial? Marca cuál respuesta es la correcta.", 
+          "options": 
+          [
+            "No, porque el amazonas y sus ríos existen y hay serpientes grandes.", 
+            "Sí, podría ser falso porque el tamaño de la anaconda es exagerado.", 
+            "No, porque fue filmado por una cámara desde un helicóptero."
+          ], 
+          "optionsValues": 
+          [
+            false,
+            true,
+            false
+          ],
+          "message": "Si bien hay muchos ríos parecidos a ese en el Amazonas y puede que el video áreo sea real, con Inteligencia artificial pueden crearse elementos falsos dentro de videos verdaderos, como en este caso, la serpiente."
+        }
+      ],
+
+      "finalMessage": 
+      [
+        "Este tipo de videos, además de ser falsos, generan daño en las sociedades porque contribuyen a que nos cueste más distinguir información real de aquella que no lo es.",
+        "Recuerda que si ves un contenido que te hace reaccionar inmediatamente, puede ser falso y estar contruído especialmente para que se vuelva viral."
+      ]
+    },
+
+
+
+
+    { 
+      "index": 4,
+      "questionType": 0,
+      "intro":
+      [
+        {
+          "character": 1,
+          "text": "A los gatos no nos gusta el agua, pero la nieve... quién te dice, dan ganas de probar y salir a dar un paseo. ¿Venis?"
+        },
+        {
+          "character": 2,
+          "text": "Me encantaría ser un perro de la nieve, tener ojos azules como un Siberiano y un barril como un San Bernardo."
+        },
+        {
+          "character": 0,
+          "text": "¡Yo me sumo, pero veamos en qué esquina para ese iceberg para subirnos!"
+        }   
+      ],
+      "profilePic": "pp-02",
+      "username": "Televisión Pública Noticias",
+      "usernameURL": "892 k suscriptores",
+      "img": "img-02",
+      "footNote": "39.638 K visualizaciones- 17 dic 2024",
+      "header": "Jugar es universal",
+      "body": "La inocencia de los animales en los trampolines.",
+
+      "correctOption": 1,
+
+      "textsAnswer":
+      [
+        {
+          "character": 2,
+          "text": "Tengo miedo Gata, mirá si quedamos a la deriva nosotros también."
+        },
+        {
+          "character": 0,
+          "text": "Estuve pensando y antes de tomar una decisión importante a partir de algo que vemos en redes, es importante verificar la información."
+        }        
+      ],
+
+      "subQuestions": 
+      [
+        {
+          "subQuestion": "¿Qué hay en esa imagen que indique que el contenido puede ser verdadero?", 
+          "options": 
+          [
+            "Es un video de una señal de televisión pública, las señales de los países suelen tener información verificada.", 
+            "Tiene bastante información específica, y cita a un grupo de científicos que es real: British Antartic Survey (BAS)", 
+            "La gráfica del video parece seria."
+          ], 
+          "optionsValues": 
+          [
+            true,
+            true,
+            false
+          ],
+          "message": "Nunca te dejes llevar por las apariencias, en este caso la noticia es real, pero no por su gráfica o solo porque está en un medio público, sino porque parte de información proporcionada por un colectivo científico con su propia web donde podemos averiguar más datos."
+        },
+
+        {
+          "subQuestion": "¿Qué harías para verificar si esta información es verdadera?", 
+          "options": 
+          [
+            "Preguntarle a una amiga o amigo qué opina.", 
+            "Buscar en TikTok más información sobre el tema.", 
+            "Buscar en un navegador (como Google) y chequear que la información aparezca en portales de noticias y vinculados a la temática."
+          ], 
+          "optionsValues": 
+          [
+            false,
+            false,
+            true
+          ],
+          "message": "Los portales de noticias suelen ser confiables, pero como nos sucede a todas y todos, pueden equivocarse. Lo mejor siempre será chequear que la información sea proporcionada por fuentes o instituciones confiables y relevantes para el tema."
+        }
+      ],
+
+      "finalMessage": 
+      [
+        "Más es más. Cuánto más investigamos, más información tenemos para tomar buenas decisiones.",
+        "Parecía que no pero al final la información era real. Recuerden siempre tener la lupa y las manos listas para chequear."
+      ]
+    },
+
+
+
+
+
+    { 
+      "index": 5,
+      "questionType": 0,
+      "intro":
+      [
+        {
+          "character": 2,
+          "text": "auuuuuu! Aullido detector de niño genio, ¡miren! ¡descubrió un dinosaurio en San José!"
+        },
+        {
+          "character": 0,
+          "text": "mmm, no lo sé, los científicos adultos suelen ser los que descubren fósiles y nuevas especies."
+        } 
+      ],
+      "profilePic": "pp-02",
+      "username": "San José Ahora",
+      "usernameURL": "12,5 k suscriptores",
+      "img": "img-02",
+      "footNote": "52 K visualizaciones- 20 ene 2024",
+      "header": "Jugar es universal",
+      "body": "La inocencia de los animales en los trampolines.",
+
+      "correctOption": 1,
+
+      "textsAnswer":
+      [
+        {
+          "character": 2,
+          "text": "Las noticias que vemos en redes sociales muchas veces no son ciertas."
+        },
+        {
+          "character": 0,
+          "text": "¡Es una gran noticia! ¡Auuuuu!"
+        }        
+      ],
+
+      "subQuestions": 
+      [
+        {
+          "subQuestion": "¿Podría esta información ser verdadera?", 
+          "options": 
+          [
+            "Sí, porque si hacemos una búsqueda vamos a encontrar links a otras noticias e informes en sitios oficiales.", 
+            "Sí, porque las niñas y los niños saben mucho de fósiles.", 
+            "No, porque las noticias verdaderas solamente están en los portales de noticias."
+          ], 
+          "optionsValues": 
+          [
+            true,
+            false,
+            false
+          ],
+          "message": "Muchas personas utilizan las redes sociales para informarse. Acordate de chequear que las noticias que aparecen estén disponibles también en sitios de confianza, y buscar en Internet los nombres de los científicos o investigadores que se nombran, para corroborar su nombre con su oficio."
+        },
+
+        {
+          "subQuestion": "¿Qué pista ves en esta que pueda ayudarnos a comprobar si es verdadera?", 
+          "options": 
+          [
+            "La foto parece real, en Kiyú hay esos barrancos", 
+            "Hay comentarios que afirman que eso sucedió.", 
+            "Aparece un link de un portal informativo e indica que el video fue filmado por Canal 5."
+          ], 
+          "optionsValues": 
+          [
+            false,
+            false,
+            true
+          ],
+          "message": "Aunque la noticia sea buena y nos guste que un niño pueda encontrar un fósil, siempre es mejor buscar más evidencia y descartar que se trate de información falsa."
+        }
+      ],
+
+      "finalMessage": 
+      [
+        "Pensar por nosotros mismos y buscar más información es algo que día a día construye nuestro sentido crítico.",
+        "No conviene quedarse con la primera lectura de la información que nos importa. Una segunda búsqueda sirve para corroborar. Ahora sí, ¡a buscar fósiles!"
+      ]
+    },
+
+
+
+
+    { 
+      "index": 6,
+      "questionType": 0,
+      "intro":
+      [
+        {
+          "character": 1,
+          "text": "Miauuu. ¡Me duele la panza! Miauuu."
+        },
+        {
+          "character": 2,
+          "text": "Auuuuu. Mirá, Cata, buscando en las redes encontré algo que puede ayudarte."
+        },
+        {
+          "character": 0,
+          "text": "¿Cuac? Algo no se ve bien. ¡Desconfío y pico!"
+        }
+      ],
+      "profilePic": "pp-02",
+      "username": "Aprendé con Gil",
+      "usernameURL": "7,453  suscriptores",
+      "img": "img-02",
+      "footNote": "249 visualizaciones- 12 mar 2024",
+      "header": "Jugar es universal",
+      "body": "La inocencia de los animales en los trampolines.",
+
+      "correctOption": 0,
+
+      "textsAnswer":
+      [
+        {
+          "character": 1,
+          "text": "Suerte que leíste con atención, Pato. Esas pastillas son para cuerpos humanos, no para gatos."
+        },
+        {
+          "character": 1,
+          "text": "Tenés razón, Pato. Esas pastillas son para cuerpos humanos y yo soy un animal."
+        }        
+      ],
+
+      "subQuestions": 
+      [
+        {
+          "subQuestion": "¿Por qué Pato duda de este contenido?", 
+          "options": 
+          [
+            "Parece ser una fórmula mágica, que llama nuestra atención con promesas poco probables.", 
+            "La señora no está vestida con indumentaria médica.", 
+            "El frasco se ve muy chico como para contener todo lo que necesita un cuerpo humano."
+          ], 
+          "optionsValues": 
+          [
+            true,
+            false,
+            false
+          ],
+          "message": "Nada de este video es real. La mujer es un avatar creado con Inteligencia Artificial para difundir información dudosa que sirve para engañar a los usuarios y vender productos."
+        },
+
+        {
+          "subQuestion": "¿Qué pista ves en esta que pueda ayudarnos a comprobar si es verdadera?", 
+          "options": 
+          [
+            "Porque la vemos hablando a cámara sobre las pastillas.", 
+            "Porque en su cuenta hay más videos en donde aconseja de temas médicos.", 
+            "En realidad con lo que vemos no es posible saber si es médica o si tiene conocimientos profesionales de medicina."
+          ], 
+          "optionsValues": 
+          [
+            false,
+            false,
+            true
+          ],
+          "message": "La mujer del video no es médica. ¡Ni siquiera es una persona real! Es una modelo creada con Inteligencia Artificial a la que se le puede indicar qué decir y cómo verse para parecer confiable."
+        }
+      ],
+
+      "finalMessage": 
+      [
+        "Siempre, pero más cuando se trata de temas vinculados a la salud, es importante buscar información confiable en instituciones médicas profesionales.",
+        "Cuando encuentres mensajes que tratan de venderte o darte soluciones para grandes problemas, es importante chequear la información. Revisá los nombres, hacé búsquedas inversas de imágenes y asegurate de encontrar más evidencia."
+      ]
+    },
+
+
+
+
+    { 
+      "index": 7,
+      "questionType": 0,
+      "intro":
+      [
+        {
+          "character": 2,
+          "text": "¡Mirá qué caniche tan simpático! ¿Tendrá redes sociales y lo invitamos a ir a la playa juntos?"
+        },
+        {
+          "character": 1,
+          "text": "Ay, Rope, ese perro claramente no es de acá, así que la noticia debe ser de otro país."
+        }
+      ],
+      "profilePic": "pp-02",
+      "username": "Portal del Condado",
+      "usernameURL": "35,8 k suscriptores",
+      "img": "img-02",
+      "footNote": "103 visualizaciones- 18 ene 2026",
+      "header": "Jugar es universal",
+      "body": "La inocencia de los animales en los trampolines.",
+
+      "correctOption": 1,
+
+      "textsAnswer":
+      [
+        {
+          "character": 1,
+          "text": "Yo desconfío de esa noticia. La imagen parece hecha con Inteligencia Artificial."
+        },
+        {
+          "character": 0,
+          "text": "¡Pero quería saber a qué playas puedo ir a nadar! Entremos a la noticia."
+        }        
+      ],
+
+      "subQuestions": 
+      [
+        {
+          "subQuestion": "¿Qué pensás de lo que dice Cata?", 
+          "options": 
+          [
+            "Estoy de acuerdo con ella. Y si la imagen no es real, el contenido informativo tampoco.", 
+            "No estoy de acuerdo con Cata. La imagen puede ser creada con Inteligencia Artificial y la noticia ser verdadera."
+          ], 
+          "optionsValues": 
+          [
+            false,
+            true
+          ],
+          "message": "El uso de la Inteligencia Artificial para generar imágenes no es algo engañoso de por sí. Es importante que la imagen no se haga pasar por una fotografía verdadera y que esté simplemente a modo ilustrativo."
+        },
+
+        {
+          "subQuestion": "¿Quién creés que tiene razón?", 
+          "options": 
+          [
+            "Cata, porque claramente es una imagen hecha con Inteligencia Artificial. La noticia es falsa.", 
+            "Pato, porque es importante saber qué playas están habilitadas, aunque la imagen no se corresponda.", 
+            "Ninguno de los dos. La noticia es verdadera pero tiene una imagen hecha con Inteligencia Artificial que busca captar más lectores."
+          ], 
+          "optionsValues": 
+          [
+            false,
+            false,
+            true
+          ],
+          "message": "La Inteligencia Artificial no siempre es un indicador de que la información sea falsa. Esa imagen simplemente ilustra la noticia, y cuando eso sucede el medio de comunicación debe advertirlo, como en este caso."
+        }
+      ],
+
+      "finalMessage": 
+      [
+        "Es importante que se aclare cuando se utilizan herramientas de Inteligencia Artificial para la creación, porque se evitan confusiones.",
+        "Siempre se debe aclarar si se utilizan herramientas de Inteligencia Artificial para la creación de contenidos. Cualquier información extra que aporte a la claridad del mensaje ayuda a quienes les llega."
+      ]
+    },
+
+
+
+
+    { 
+      "index": 8,
+      "questionType": 0,
+      "intro":
+      [
+        {
+          "character": 1,
+          "text": "¡Necesito ese piano! ¿Saben cuántos memes nuevos de gatitos podría hacer con él?"
+        },
+        {
+          "character": 2,
+          "text": "¡Qué lindo! ¿Quién te mandó ese mensaje?"
+        },
+        {
+          "character": 1,
+          "text": "Mi prima Kitty, que sabía que andaba buscando uno. ¡A sacar las garras y romper la chanchita!"
+        }
+      ],
+      "profilePic": "pp-02",
+      "username": "Familia",
+      "usernameURL": "Tu",
+      "img": "img-02",
+      "footNote": "12:08 a.m.",
+      "header": "Jugar es universal",
+      "body": "La inocencia de los animales en los trampolines.",
+
+      "correctOption": 0,
+
+      "textsAnswer":
+      [
+        {
+          "character": 2,
+          "text": "Me encantaría ayudar a Cata a conseguir ese piano, pero antes tengo que investigar un poco más."
+        },
+        {
+          "character": 0,
+          "text": "Amigos, se me pararon las plumas de punta. Hay algo sospechoso con ese mensaje."
+        }        
+      ],
+
+      "subQuestions": 
+      [
+        {
+          "subQuestion": "¿Qué puede hacer Rope para chequear la información?", 
+          "options": 
+          [
+            "Llamar al teléfono y pedir más datos, como por ejemplo el nombre de la empresa de mudanzas.", 
+            "Hacer una búsqueda reversa de la imagen y confirmar que fuera una fotografía tomada por la señora y no bajada de Internet.",
+            "Buscar más información en Internet, corroborar que existe ese modelo de piano y esa ciudad en el departamento."
+          ], 
+          "optionsValues": 
+          [
+            true,
+            true,
+            true
+          ],
+          "message": "Hay muchas formas de chequear la información y debemos utilizarlas incluso cuando la información llega de parte de personas cercanas y de nuestra confianza."
+        },
+
+        {
+          "subQuestion": "¿Qué elementos hacen que el mensaje parezca sospechoso?", 
+          "options": 
+          [
+            "La redacción es confusa.", 
+            "El nombre del esposo no es muy común en nuestro país.", 
+            "Menciona que al esposo no le gustará que lo venda y luego dice que él falleció."
+          ], 
+          "optionsValues": 
+          [
+            true,
+            true,
+            true
+          ],
+          "message": "Para chequear si la información es verdadera podemos hacer una búsqueda inversa de la imagen. Así podremos corroborar si es una fotografía tomada por la señora o, como en el caso de esta estafa, había sido bajada de Internet."
+        }
+      ],
+
+      "finalMessage": 
+      [
+        "No importa la edad, la experiencia o a qué nos dediquemos: todas las personas podemos caer en una estafa. La única forma de prevenirlo es no tomar decisiones rápidas y tomarnos el tiempo para chequear la información.",
+        "Aun cuando recibimos un mensaje muy atractivo de parte de alguien que conocemos, es importante desconfiar y verificar antes de actuar."
+      ]
+    },
+
+
+
+
+    { 
+      "index": 9,
+      "questionType": 0,
+      "intro":
+      [
+        {
+          "character": 0,
+          "text": "¡Cuac! ¡Alerta! ¡Cuac! Mi tía Margarita me reenvió este mensaje. ¡Tenemos una misión!"
+        },
+        {
+          "character": 2,
+          "text": "Mis cuatro patas están listas para colaborar."
+        }
+      ],
+      "profilePic": "pp-02",
+      "username": "María Carolina Barrios",
+      "usernameURL": "Tu",
+      "img": "img-02",
+      "footNote": "10:35 p.m.",
+      "header": "Jugar es universal",
+      "body": "La inocencia de los animales en los trampolines.",
+
+      "correctOption": 1,
+
+      "textsAnswer":
+      [
+        {
+          "character": 1,
+          "text": "Yo también quiero ayudar, pero tengo miedo de que sea una estafa."
+        },
+        {
+          "character": 1,
+          "text": "¡Qué gran equipo que formamos! Yo me encargo de la colecta."
+        }        
+      ],
+
+      "subQuestions": 
+      [
+        {
+          "subQuestion": "¿Qué podemos hacer para estar más seguros?", 
+          "options": 
+          [
+            "Solamente ayudar si conocemos personalmente a la persona damnificada.", 
+            "Ayudar solamente si el mensaje viene acompañado por fotos.",
+            "Ayudar luego de haber chequeado los datos del mensaje, por ejemplo: que la policlínica existe, que esa persona trabaja ahí, y que la fecha coincida con la noticia del link."
+          ], 
+          "optionsValues": 
+          [
+            false,
+            false,
+            true
+          ],
+          "message": "Siempre es recomendable leer los pedidos de ayuda con calma, buscando todos los datos necesarios para asegurarse de que la colaboración será usada para lo que se indica."
+        },
+
+        {
+          "subQuestion": "¿Qué debería hacer Cata antes de la colecta?", 
+          "options": 
+          [
+            "Leer la noticia del link y corroborar que el mensaje coincide con lo sucedido y con la fecha.", 
+            "Ir hasta la Policlínica de Sayago.", 
+            "Buscar información de la policlínica, llamar por teléfono, preguntar si la persona trabaja ahí y si efectivamente hay una colecta para ayudarla."
+          ], 
+          "optionsValues": 
+          [
+            true,
+            false,
+            true
+          ],
+          "message": "Involucrarnos en temas sociales y dar lo mejor de nosotros mismos es genial. Utilizar correctamente las herramientas digitales ayuda a no frustrarnos si somos víctimas de un engaño."
+        }
+      ],
+
+      "finalMessage": 
+      [
+        "Verificar la información puede tomarnos pocos minutos, y nos ayuda a estar seguros y tranquilos con nuestras decisiones.",
+        "Verificar la información puede tomarnos pocos minutos, y nos ayuda a estar seguros y tranquilos con nuestras decisiones."
+      ]
+    }
+  ]
+}

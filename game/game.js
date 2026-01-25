@@ -77,6 +77,7 @@ function* newQuestion () //coroutine
 
     const introTexts = currentQuestion.intro.map(entry => entry.text);
     const introCharacters = currentQuestion.intro.map(entry => entry.character);
+
     showIntroAnimation(introTexts, introCharacters);
 
     while (introAnimationPlaying) yield;
@@ -551,4 +552,11 @@ function show (elem)
   elem.offsetHeight;
 
   elem.classList.add("show");
+}
+function hide(elem)
+{
+    elem.classList.remove("show");
+    elem.offsetHeight;
+
+    elem.classList.add("hidden");
 }

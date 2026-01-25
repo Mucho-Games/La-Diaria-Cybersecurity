@@ -16,16 +16,22 @@ function showIntroAnimation (texts, char)
 	elemDialogueText = document.querySelectorAll('.introAnimation .character-bubble p');
 	elemLines = document.querySelectorAll('.introAnimation .line');
 
+	for (var i = elemLines.length - 1; i >= 0; i--) {
+		elemLines[i].style.display = 'none';
+	}
+
 	characters.length = 0;
 	for (var i = 0; i < char.length; i++) {
 		characters.push(char[i]);
 	}
+
 	dialogueTexts.length = 0;
 	for (var i = 0; i < texts.length; i++) {
 		dialogueTexts.push(texts[i]);
 	}
+
 	linesShown.length = 0;
-	for (var i = 0; i < elemLines.length; i++) {
+	for (var i = 0; i < texts.length; i++) {
 		elemLines[i].style.display = 'none';
 		linesShown.push(false);
 	}
