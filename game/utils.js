@@ -16,6 +16,9 @@ function clamp(num, min, max) {
 function clamp01(num) {
   return Math.max(0, Math.min(num, 1));
 }
+function clampIndex(i, arr) {
+    return Math.max(0, Math.min(i, arr.length - 1));
+}
 function getRandomElement(arr) {
     const randomIndex = Math.floor(Math.random() * arr.length);
     return arr[randomIndex];

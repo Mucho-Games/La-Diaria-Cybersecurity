@@ -110,32 +110,81 @@ function startMainQuestion ()
     setView('game');
 }
 
-function* answerQuestion (state, option)  //coroutine
+function* answerQuestion (state, option, i)  //coroutine
 {
-    if (state == 1) //wrong answer
+    document.getElementById('next-button').style.display = 'none';
+
+    if (i == 0) 
     {
-        playSound("sfx-error");
-    }
-    else if (state == 0) //right answer
-    {
-        updatePlayerScore(currentPlayerScore + 100, elemGainScore, elemPlayerScore);
-        playSound("sfx-success-01");
+        multipleChoiceDisabled = true;
+        questionOptionSelected = option;
+        questionState++;
+
+        if (state == 1) //wrong answer
+        {
+            playSound("sfx-error");
+        }
+        else if (state == 0) //right answer
+        {
+            updatePlayerScore(currentPlayerScore + 100, elemGainScore, elemPlayerScore);
+            playSound("sfx-success-01");
+        }
+
+        elemAnswerMainButtonsClone.style.display = 'flex';
+        document.getElementById('overlay-buttons').style.display = 'flex';
+        var optionsClone = document.querySelectorAll(`#question-buttons-clone .option`);
+        elemAnswerMainButtonsClone.style.flexDirection = option == 0 ? 'row' : 'row-reverse';
+        optionsClone[0].style.display = option == 0 ? 'flex' : 'none';
+        optionsClone[1].style.display = option == 1 ? 'flex' : 'none';
     }
 
+    console.log(questionOptionSelected);
+
+    var rightSide = questionOptionSelected == 0;
+    var dialogueAmount = currentQuestion.textsAnswer[option].length;
+    var dialogueIndex = i;
+
+    yield* characterTalk(currentQuestion.textsAnswer[option][dialogueIndex].text, currentQuestion.textsAnswer[option][dialogueIndex].character, false, rightSide);
+
+    dialogueIndex += 1;
+
+    yield waitSeconds(0.5);
+
+    buttonNextAction = () => 
+    {
+        if (dialogueIndex < dialogueAmount) 
+            coroutines.start(answerQuestion, state, option, dialogueIndex);
+        else
+            endMainQuestion();
+    }
+
+    document.getElementById('next-button').style.display = 'flex';
+    playSound("sfx-popUp-01");
+}
+
+function* characterTalk (text, character, fullBody, rightSide) 
+{
+    console.log("Character diag" + "appear on right: " + rightSide);
     elemAnswerMainCont.style.display = 'flex';
 
-    elemAnswerMainCharacter.classList.remove('full-body');
-    elemAnswerMainBubbleSpace.classList.remove('final-message');
-
-    //set image of character
-    var characterIndex = currentQuestion.textsAnswer[option].character;
+    if (fullBody) 
+    {
+        elemAnswerMainCharacter.classList.add('full-body');
+        elemAnswerMainBubbleSpace.classList.add('final-message');
+    }
+    else
+    {
+        elemAnswerMainCharacter.classList.remove('full-body');
+        elemAnswerMainBubbleSpace.classList.remove('final-message');
+    }
+    
     charactersAnswerStyles.forEach(s => elemAnswerMainCharacter.classList.remove(s));
     elemAnswerMainCharacter.offsetHeight;
-    elemAnswerMainCharacter.classList.add(charactersAnswerStyles[characterIndex]);
-    elemAnswerMainCharacterIMG.src = charactersAvatars[characterIndex];
+    elemAnswerMainCharacter.classList.add(charactersAnswerStyles[character]);
+    elemAnswerMainCharacterIMG.src = charactersAvatars[character];
 
     //set sides and textbox
-    if (option == 0) 
+    if (rightSide) 
     {
         elemAnswerMainCharacter.style.removeProperty('left');
         elemAnswerMainCharacter.style.right = '-2%';
@@ -153,34 +202,15 @@ function* answerQuestion (state, option)  //coroutine
     }
 
     elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
-    elemAnswerMainBubbleArrow.src = option == 0 ? 
+    elemAnswerMainBubbleArrow.src = rightSide ? 
     'assets/text-box-bottom-white-right.svg' : 'assets/text-box-bottom-white-left.svg';
-    elemAnswerMainBubbleArrowWrapper.style = option == 0 ? 'right: var(--round-corners)' : 'left: var(--round-corners)';
-
-    elemAnswerMainButtonsClone.style.display = 'flex';
-    //elemMultipleChoiceCont.style.display = 'none';
-
-    document.getElementById('overlay-buttons').style.display = 'flex';
-    var optionsClone = document.querySelectorAll(`#question-buttons-clone .option`);
-    elemAnswerMainButtonsClone.style.flexDirection = option == 0 ? 'row' : 'row-reverse';
-    optionsClone[0].style.display = option == 0 ? 'flex' : 'none';
-    optionsClone[1].style.display = option == 1 ? 'flex' : 'none';
+    elemAnswerMainBubbleArrowWrapper.style = rightSide ? 'right: var(--round-corners)' : 'left: var(--round-corners)';
 
     show(elemAnswerMainBubble.parentElement);
 
-    multipleChoiceDisabled = true;
-    questionOptionSelected = option;
-    questionState++;
-
-    var dialogue =  new Dialogue(elemAnswerMainText, currentQuestion.textsAnswer[option].text);
+    var dialogue =  new Dialogue(elemAnswerMainText, text);
 
     while (dialogue.writing) yield;
-
-    yield waitSeconds(0.5);
-
-    buttonNextAction = endMainQuestion;
-    document.getElementById('next-button').style.display = 'flex';
-    playSound("sfx-popUp-01");
 }
 
 function endMainQuestion () 
@@ -203,87 +233,74 @@ function showSubQuestion ()
     document.getElementById('subQuestions-container').style.height = '78%';
     document.getElementById('subQuestions-container').style.justifyContent = 'space-around';
 
-    if (currentQuestion.subQuestions.length < 2)
-        questionOptionSelected = 0;
+    var subQuestionIndex = clampIndex(questionOptionSelected, currentQuestion.subQuestions);
 
-    currentQuestion.subQuestions[questionOptionSelected].getDOMElements();
-    currentQuestion.subQuestions[questionOptionSelected].populate();
-    currentQuestion.subQuestions[questionOptionSelected].interactable(true);
+    currentQuestion.subQuestions[subQuestionIndex].getDOMElements();
+    currentQuestion.subQuestions[subQuestionIndex].populate();
+    currentQuestion.subQuestions[subQuestionIndex].interactable(true);
 }
 
-function* answerSubQuestion (option, state)  //coroutine
+function* answerSubQuestion (option, state, i)  //coroutine
 {
+    console.log(i);
+
     document.getElementById('next-button').style.display = 'none';
+    var subQuestionIndex = clampIndex(questionOptionSelected, currentQuestion.subQuestions);
 
-    if (state == 1) //wrong answer
+    if (i == 0) 
     {
-        currentQuestion.subQuestions[questionOptionSelected].markWrong(option);
-
-        for (var i = currentQuestion.subQuestions[questionOptionSelected].optionsValues.length - 1; i >= 0; i--) 
+        if (state == 1) //wrong answer
         {
-            if (i == option) continue;
+            currentQuestion.subQuestions[subQuestionIndex].markWrong(option);
 
-            if (currentQuestion.subQuestions[questionOptionSelected].optionsValues[i]) 
+            for (var s = currentQuestion.subQuestions[subQuestionIndex].optionsValues.length - 1; s >= 0; s--) 
             {
-                currentQuestion.subQuestions[questionOptionSelected].markCorrect(i, false);
+                if (s == option) continue;
+
+                if (currentQuestion.subQuestions[subQuestionIndex].optionsValues[s]) 
+                {
+                    currentQuestion.subQuestions[subQuestionIndex].markCorrect(s, false);
+                }
             }
+
+            playSound("sfx-error");
+        }
+        else if (state == 0) //right answer
+        {
+            updatePlayerScore(currentPlayerScore + 30, elemGainScore, elemPlayerScore);
+            playSound("sfx-success-01");
+
+            currentQuestion.subQuestions[subQuestionIndex].markCorrect(option, true);
         }
 
-        playSound("sfx-error");
+        currentQuestion.subQuestions[subQuestionIndex].interactable(false);
+
+        multipleChoiceDisabled = true;
+        questionState++;
+
+        yield waitSeconds(2);
     }
-    else if (state == 0) //right answer
-    {
-        updatePlayerScore(currentPlayerScore + 30, elemGainScore, elemPlayerScore);
-        playSound("sfx-success-01");
-
-        currentQuestion.subQuestions[questionOptionSelected].markCorrect(option, true);
-    }
-
-    currentQuestion.subQuestions[questionOptionSelected].interactable(false);
-
-    multipleChoiceDisabled = true;
-    questionState++;
-
-    yield waitSeconds(2);
-
-    elemAnswerMainCont.style.display = 'flex';
-
-    elemAnswerMainCharacter.classList.remove('full-body');
-    elemAnswerMainBubbleSpace.classList.remove('final-message');
-
-    if (option == 0) 
-    {
-        elemAnswerMainCharacter.style.removeProperty('left');
-        elemAnswerMainCharacter.style.right = '-2%';
-        elemAnswerMainBubbleSpace.style.removeProperty('right');
-        elemAnswerMainBubbleSpace.style.left = '6%';
-        elemAnswerMainBubbleSpace.style.alignItems = 'flex-end';
-    }
-    else
-    {   
-        elemAnswerMainCharacter.style.removeProperty('right');
-        elemAnswerMainCharacter.style.left = '-2%';
-        elemAnswerMainBubbleSpace.style.removeProperty('left');
-        elemAnswerMainBubbleSpace.style.right = '6%';
-        elemAnswerMainBubbleSpace.style.alignItems = 'flex-start';
-    }
-
-    elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
-    elemAnswerMainBubbleArrow.src = option == 0 ? 
-    'assets/text-box-bottom-white-right.svg' : 'assets/text-box-bottom-white-left.svg';
-    elemAnswerMainBubbleArrowWrapper.style = option == 0 ? 'right: var(--round-corners)' : 'left: var(--round-corners)';
 
     elemAnswerMainButtonsClone.style.display = 'none';
 
-    show(elemAnswerMainBubble.parentElement);
+    var rightSide = questionOptionSelected != 0;
+    var dialogueAmount = currentQuestion.subQuestions[subQuestionIndex].message.length;
+    var dialogueIndex = i;
 
-    var dialogue = new Dialogue(elemAnswerMainText, currentQuestion.subQuestions[questionOptionSelected].message);
+    yield* characterTalk(currentQuestion.subQuestions[subQuestionIndex].message[i].text, currentQuestion.subQuestions[subQuestionIndex].message[i].character, false, rightSide);
 
-    while (dialogue.writing) yield;
+    dialogueIndex += 1;
 
     yield waitSeconds(0.5);
 
-    buttonNextAction = endSubQuestion;
+    buttonNextAction = () => 
+    {
+        if (dialogueIndex < dialogueAmount) 
+            coroutines.start(answerSubQuestion, option, state, dialogueIndex);
+        else
+            endSubQuestion();
+    }
+
     document.getElementById('next-button').style.display = 'flex';
     playSound("sfx-popUp-01");
 }
@@ -294,7 +311,7 @@ function endSubQuestion ()
 
     if (questionState >= currentQuestion.subQuestions.length) 
     {
-        coroutines.start(endLevel);
+        coroutines.start(endLevel, 0);
     }
     else
     {
@@ -302,47 +319,41 @@ function endSubQuestion ()
     }
 }
 
-function* endLevel () //coroutine
+function* endLevel (i) //coroutine
 {
     document.getElementById('next-button').style.display = 'none';
+    var finalMessageIndex = clampIndex(questionOptionSelected, currentQuestion.finalMessage);
 
-    multipleChoiceDisabled = true;
+    if (i == 0) 
+    {        
+        elemAnswerMainButtonsClone.style.display = 'none';
 
-    elemAnswerMainCont.style.display = 'flex';
+        multipleChoiceDisabled = true;
 
-    elemAnswerMainCharacter.classList.add('full-body');
-    elemAnswerMainBubbleSpace.classList.add('final-message');
+        document.querySelector('#answer-sticker img').src = currentQuestion.correctAnswer == 0 ? 'assets/sticker-fake.svg' : 'assets/sticker-legit.svg';
+    }
 
-    document.querySelector('#answer-sticker img').src = currentQuestion.correctAnswer == 0 ? 'assets/sticker-fake.svg' : 'assets/sticker-legit.svg';
+    var dialogueAmount = currentQuestion.finalMessage[finalMessageIndex].length;
+    var dialogueIndex = i;
 
-    elemAnswerMainCharacter.style.removeProperty('right');
-    elemAnswerMainCharacter.style.left = '-2%';
-    elemAnswerMainBubbleSpace.style.removeProperty('left');
-    elemAnswerMainBubbleSpace.style.right = '6%';
-    elemAnswerMainBubbleSpace.style.alignItems = 'flex-start';
+    yield* characterTalk(currentQuestion.finalMessage[finalMessageIndex][dialogueIndex].text, currentQuestion.finalMessage[finalMessageIndex][dialogueIndex].character, true, false);
 
-    elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
-    elemAnswerMainBubbleArrow.src = 'assets/text-box-bottom-white-left.svg';
-    elemAnswerMainBubbleArrowWrapper.style = 'left: var(--round-corners)';
-
-    elemAnswerMainButtonsClone.style.display = 'none';
-
-    //elemSubQuestionCont.style.height = '73%';
-
-    show(elemAnswerMainBubble.parentElement);
-
-    var dialogue = new Dialogue(elemAnswerMainText, currentQuestion.finalMessage[questionOptionSelected]);
-
-    while (dialogue.writing) yield;
+    dialogueIndex += 1;
 
     yield waitSeconds(0.5);
 
-    document.getElementById('answer-sticker').style.display = 'flex';
-    playSound("sfx-sticker");
+    if (dialogueIndex < dialogueAmount) 
+    {
+        buttonNextAction = () => { coroutines.start(endLevel, dialogueIndex); };
+    }
+    else
+    {
+        buttonNextAction = () => { coroutines.start(endLevelScore); };
+        document.getElementById('answer-sticker').style.display = 'flex';
+        playSound("sfx-sticker");
+        yield waitSeconds(1.5);
+    }    
 
-    yield waitSeconds(1.5);
-
-    buttonNextAction = () => { coroutines.start(endLevelScore); };
     document.getElementById('next-button').style.display = 'flex';
     playSound("sfx-popUp-01");
 }
@@ -389,29 +400,34 @@ function onClickOption (option)
     {
         if (currentQuestion.correctAnswer == option) 
         {
-            coroutines.start(answerQuestion, 0, option);
+            coroutines.start(answerQuestion, 0, option, 0);
         }
         else
         {
-            coroutines.start(answerQuestion, 1, option);
+            coroutines.start(answerQuestion, 1, option, 0);
         }
     }
     else if (questionState > 0) //On second instance of question
     {
-        if (currentQuestion.subQuestions[questionOptionSelected].optionsValues[option])
+        var subQuestionIndex = clampIndex(questionOptionSelected, currentQuestion.subQuestions);
+
+        if (currentQuestion.subQuestions[subQuestionIndex].optionsValues[option])
         {
-            coroutines.start(answerSubQuestion, option, 0);
+            coroutines.start(answerSubQuestion, option, 0, 0);
         }
         else
         {
-            coroutines.start(answerSubQuestion, option, 1);
+            coroutines.start(answerSubQuestion, option, 1, 0);
         }
     }
 }
 
-function onClickButtonPlay () {
+function onClickButtonPlay () 
+{
     if (currentView == 0)
         startGame();
+
+    document.getElementById("bgMusic").play();
 }
 let buttonNextAction = null;
 function onClickButtonNext () 

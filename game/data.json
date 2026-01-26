@@ -31,14 +31,18 @@
 
       "textsAnswer":
       [
-        {
+        [
+          {
           "character": 1,
           "text": "¡Bien dicho! Pato podría quedarse sin show, pero peor es ser víctima de una estafa. ¡A chequear!"
-        },
-        {
+          }
+        ],
+        [
+          {
           "character": 1,
           "text": "Mi olfato me indica lo contrario. Este contenido es dudoso." 
-        }  
+          }  
+        ]
       ],
 
       "subQuestions": 
@@ -57,13 +61,24 @@
             true,
             true
           ],
-          "message": "Las tres opciones son correctas. Este tipo de publicaciones puede ser una estafa, así que conviene aplicar los tres pasos para evitar que nos engañen."
+          "message": 
+          [
+            {
+              "character": 1,
+              "text": "Las tres opciones son correctas. Este tipo de publicaciones puede ser una estafa, así que conviene aplicar los tres pasos para evitar que nos engañen."
+            }
+          ]
         }
       ],
 
       "finalMessage": 
       [
-        "Además, no es confiable ponerse en contacto directo por WhatsApp con desconocidos. Y en el caso de los tickets digitales, son muy fáciles de simular o de vender el mismo a varias personas. Lo preferible es acudir siempre a medios de venta oficiales."
+        [
+          {
+          "character": 1,
+          "text": "Además, no es confiable ponerse en contacto directo por WhatsApp con desconocidos. Y en el caso de los tickets digitales, son muy fáciles de simular o de vender el mismo a varias personas. Lo preferible es acudir siempre a medios de venta oficiales."
+          }
+        ]
       ]
     },
 
@@ -101,14 +116,18 @@
 
       "textsAnswer":
       [
-        {
+        [
+          {
           "character": 0,
           "text": "¡Correcto!"
-        },
-        {
-          "character": 0,
+          }
+        ],
+        [
+          {
+          "character": 1,
           "text": "Mi sexto sentido tiene dudas... ¿Vamos a verificarlo juntos?"
-        }        
+          }
+        ]        
       ],
 
       "subQuestions": 
@@ -127,7 +146,13 @@
             false,
             false
           ],
-          "message": "Cuando veas videos asegurate de que la voz no suene metálica y que se corresponda con el movimiento de la boca al hablar."
+          "message": 
+          [
+            {
+              "character": 0,
+              "text": "Cuando veas videos asegurate de que la voz no suene metálica y que se corresponda con el movimiento de la boca al hablar."
+            }
+          ]
         },
         {
           "subQuestion": "¿Por qué creés que es verdadero?", 
@@ -143,14 +168,29 @@
             false,
             true
           ],
-          "message": "Este video fue hecho con inteligencia artificial y no es real que Luis Suárez invite a invertir. Si bien Milenio es un medio de noticias mexicano real, esta noticia simula ser de Milenio pero tampoco lo es."
+          "message": 
+          [
+            {
+              "character": 1,
+              "text": "Este video fue hecho con inteligencia artificial y no es real que Luis Suárez invite a invertir. Si bien Milenio es un medio de noticias mexicano real, esta noticia simula ser de Milenio pero tampoco lo es."
+            }
+          ]
         }
       ],
-
       "finalMessage": 
       [
-        "¡No te olvides! Prestá atención a todo aquello que parece demasiado bueno para ser cierto, porque posiblemente sea así. Y chequeá la web a la que te dirigen los enlaces. En este caso, Mileno existe, pero esta web es falsa.",
-        "Recomendación gatuna: Desconfiá de las propuestas que prometen grandes ganancias o regalos, por ejemplo un teléfono o algo costoso. Y no te olvides de chequear la dirección de la web a la que te dirigen los enlaces. En este caso Mileno existe, pero esta web es falsa."
+        [
+          {
+          "character": 0,
+          "text": "¡No te olvides! Prestá atención a todo aquello que parece demasiado bueno para ser cierto, porque posiblemente sea así. Y chequeá la web a la que te dirigen los enlaces. En este caso, Milenio existe, pero esta web es falsa."
+          }
+        ],
+        [
+          {
+          "character": 1,
+          "text": "Recomendación gatuna: Desconfiá de las propuestas que prometen grandes ganancias o regalos, por ejemplo un teléfono o algo costoso. Y no te olvides de chequear la dirección de la web a la que te dirigen los enlaces. En este caso Mileno existe, pero esta web es falsa."
+          }
+        ]
       ]
     },
 
@@ -178,7 +218,7 @@
       ],
       "profilePic": "pp-02",
       "username": "El Noticiero Televen oficial",
-      "usernameURL": "47,5 k suscritptores",
+      "usernameURL": "47,5 k suscriptores",
       "img": "img-02",
       "footNote": "369 K visualizaciones",
       "header": "Jugar es universal",
@@ -188,14 +228,18 @@
 
       "textsAnswer":
       [
-        {
-          "character": 0,
-          "text": "Estamos de acuerdo. Igual, investiguemos un poco más."
-        },
-        {
-          "character": 1,
-          "text": "Ups, es un contenido falso."
-        }        
+        [
+          {
+            "character": 0,
+            "text": "Estamos de acuerdo. Igual, investiguemos un poco más."
+          }
+        ],
+        [
+          {
+            "character": 1,
+            "text": "Ups, es un contenido falso."
+          } 
+        ]       
       ],
 
       "subQuestions": 
@@ -214,7 +258,13 @@
             false,
             true
           ],
-          "message": "Los contenidos que provocan reacciones inmediatas e intensas, como ternura o risa, muchas veces son falsos. Están pensados para que se vuelvan virales. Para verificarlos, podés hacer una búsqueda inversa de imágenes en Google Lens con una captura de pantalla."
+          "message": 
+          [
+            {
+              "character": 0,
+              "text": "Los contenidos que provocan reacciones inmediatas e intensas, como ternura o risa, muchas veces son falsos. Están pensados para que se vuelvan virales. Para verificarlos, podés hacer una búsqueda inversa de imágenes en Google Lens con una captura de pantalla."
+            }
+          ]
         },
         {
           "subQuestion": "Indica por qué es falso", 
@@ -230,13 +280,29 @@
             false,
             true
           ],
-          "message": "Los contenidos que provocan reacciones inmediatas e intensas, como ternura o risa, muchas veces son falsos. Están pensados para que se vuelvan virales. Para verificarlos, podés hacer una búsqueda inversa de imágenes en Google Lens con una captura de pantalla."
+          "message": 
+          [
+            {
+              "character": 1,
+              "text": "Los contenidos que provocan reacciones inmediatas e intensas, como ternura o risa, muchas veces son falsos. Están pensados para que se vuelvan virales. Para verificarlos, podés hacer una búsqueda inversa de imágenes en Google Lens con una captura de pantalla."
+            }
+          ]
         }
       ],
-
       "finalMessage": 
       [
-        "Recordá verificar todos los contenidos que vayas a compartir, en especial si te hicieron reaccionar. Existen páginas y aplicaciones para chequear si una foto o un video fueron creados con inteligencia artificial, y aunque no son herramientas 100% efectivas siguen siendo recomendables."
+        [
+          {
+          "character": 1,
+          "text": "Recordá verificar todos los contenidos que vayas a compartir, en especial si te hicieron reaccionar. Existen páginas y aplicaciones para chequear si una foto o un video fueron creados con inteligencia artificial, y aunque no son herramientas 100% efectivas siguen siendo recomendables."
+          }
+        ],
+        [
+          {
+          "character": 0,
+          "text": "Recordá verificar todos los contenidos que vayas a compartir, en especial si te hicieron reaccionar. Existen páginas y aplicaciones para chequear si una foto o un video fueron creados con inteligencia artificial, y aunque no son herramientas 100% efectivas siguen siendo recomendables."
+          }
+        ]
       ]
     },
 
@@ -254,11 +320,11 @@
         },
         {
           "character": 2,
-          "text": "¡Me hago pichí del miedo!"
+          "text": "¡Tené mucho cuidado, Pato!"
         },
         {
           "character": 1,
-          "text": "¡Antes de tomar una decisión veamos bien de qué se trata!"
+          "text": "Eso siempre. Pero antes de entrar en pánico veamos de qué se trata."
         }   
       ],
       "profilePic": "pp-03",
@@ -273,20 +339,24 @@
 
       "textsAnswer":
       [
-        {
-          "character": 1,
-          "text": "Nuestras narices apuntan hacia el mismo lado, ¡desconfiemos! o mejor dicho, ¡investiguemos!"
-        },
-        {
-          "character": 1,
-          "text": "Desconfío de ese video... ¡Al agua pata! revisemos a ver de qué se trata."
-        }        
+        [
+          {
+            "character": 1,
+            "text": "Estamos de acuerdo. Lo mejor es olfatear un poco, a ver qué encontramos."
+          }
+        ],
+        [
+          {
+            "character": 1,
+            "text": "Sigo desconfiando de ese video, mejor revisemos. ¡Al agua, Pata!"
+          }  
+        ]      
       ],
 
       "subQuestions": 
       [
         {
-          "subQuestion": "¿Por qué crees que es dudoso?", 
+          "subQuestion": "¿Por qué te genera dudas el video?", 
           "options": 
           [
             "Es imposible que siempre haya una cámara filmando.", 
@@ -299,7 +369,13 @@
             false,
             true
           ],
-          "message": "Es importante dudar cuando algo nos llama la atención inmediatamente y continuar la búsqueda para confirmar la información. En este caso si buscamos en un búscador \"Anaconda gigante Amazonas\" enseguida veremos que es una noticia falsa."
+          "message": 
+          [
+            {
+              "character": 1,
+              "text": "Es importante dudar, incluso cuando estamos viendo un lugar real y conocido. Si buscamos en Internet “Anaconda gigante Amazonas” rápidamente vamos a ver que se trata de una noticia falsa."
+            }
+          ]
         },
         {
           "subQuestion": "¿Este video podría ser hecho con Inteligencia Artificial? Marca cuál respuesta es la correcta.", 
@@ -315,14 +391,30 @@
             true,
             false
           ],
-          "message": "Si bien hay muchos ríos parecidos a ese en el Amazonas y puede que el video áreo sea real, con Inteligencia artificial pueden crearse elementos falsos dentro de videos verdaderos, como en este caso, la serpiente."
+          "message": 
+          [
+            {
+              "character": 1,
+              "text": "Si bien existen ríos como ese y quizás el video aéreo sea real, con Inteligencia Artificial pueden crearse elementos falsos dentro de un video verdadero, como ocurre en este caso con la serpiente."
+            }
+          ]     
         }
       ],
 
       "finalMessage": 
       [
-        "Este tipo de videos, además de ser falsos, generan daño en las sociedades porque contribuyen a que nos cueste más distinguir información real de aquella que no lo es.",
-        "Recuerda que si ves un contenido que te hace reaccionar inmediatamente, puede ser falso y estar contruído especialmente para que se vuelva viral."
+        [
+          {
+          "character": 1,
+          "text": "Este tipo de videos, además de ser falsos, hacen daño. Porque empiezan a afectar nuestra capacidad de distinguir la información real de la que no lo es. ¡Nunca te quedes con la duda!"
+          }
+        ],
+        [
+          {
+          "character": 1,
+          "text": "Acordate que si ves un contenido que te genera una reacción inmediata, puede ser falso. Y que lo hayan creado especialmente para que se viralizara."
+          }
+        ]
       ]
     },
 
@@ -336,16 +428,12 @@
       [
         {
           "character": 1,
-          "text": "A los gatos no nos gusta el agua, pero la nieve... quién te dice, dan ganas de probar y salir a dar un paseo. ¿Venis?"
+          "text": "A los gatos no nos gusta el agua, pero con el hielo es diferente. ¿Qué dicen? ¿Salimos a dar un paseo en iceberg?"
         },
         {
           "character": 2,
-          "text": "Me encantaría ser un perro de la nieve, tener ojos azules como un Siberiano y un barril como un San Bernardo."
-        },
-        {
-          "character": 0,
-          "text": "¡Yo me sumo, pero veamos en qué esquina para ese iceberg para subirnos!"
-        }   
+          "text": "Podría cumplir mi sueño de tener ojos azules como un siberiano y tirar de un trineo. ¡O tener un barril como un San Bernardo!"
+        }
       ],
       "profilePic": "pp-04",
       "username": "Televisión Pública Noticias",
@@ -359,20 +447,32 @@
 
       "textsAnswer":
       [
-        {
+        [
+          {
           "character": 2,
-          "text": "Tengo miedo Gata, mirá si quedamos a la deriva nosotros también."
-        },
-        {
+          "text": "Cata, me da un poco de miedo quedarnos a la deriva en el medio del mar."
+          },
+          {
+          "character": 1,
+          "text": "Tranquilo, Rope. Averigüemos un poco, que capaz que no es tan así."
+          }
+        ],
+        [
+          {
           "character": 0,
-          "text": "Estuve pensando y antes de tomar una decisión importante a partir de algo que vemos en redes, es importante verificar la información."
-        }        
+          "text": "Ahora que lo pienso, antes de decidir nuestras vacaciones por algo que vimos en redes, no cuesta nada verificar la información."
+          },
+          {
+          "character": 1,
+          "text": "¡Bien pensado! ¡Choque de patas!"
+          }
+        ]        
       ],
 
       "subQuestions": 
       [
         {
-          "subQuestion": "¿Qué hay en esa imagen que indique que el contenido puede ser verdadero?", 
+          "subQuestion": "¿Qué cosas de esta imagen nos indican que el contenido podría ser verdadero?", 
           "options": 
           [
             "Es un video de una señal de televisión pública, las señales de los países suelen tener información verificada.", 
@@ -385,7 +485,13 @@
             true,
             false
           ],
-          "message": "Nunca te dejes llevar por las apariencias, en este caso la noticia es real, pero no por su gráfica o solo porque está en un medio público, sino porque parte de información proporcionada por un colectivo científico con su propia web donde podemos averiguar más datos."
+          "message": 
+          [
+            {
+              "character": 1,
+              "text": "Nunca te dejes llevar por las apariencias, en este caso la noticia es real, pero no por su gráfica o solo porque está en un medio público, sino porque parte de información proporcionada por un colectivo científico con su propia web donde podemos averiguar más datos."
+            }
+          ]    
         },
 
         {
@@ -402,14 +508,30 @@
             false,
             true
           ],
-          "message": "Los portales de noticias suelen ser confiables, pero como nos sucede a todas y todos, pueden equivocarse. Lo mejor siempre será chequear que la información sea proporcionada por fuentes o instituciones confiables y relevantes para el tema."
+          "message": 
+          [
+            {
+              "character": 1,
+              "text": "Los portales de noticias suelen ser confiables, aunque también pueden equivocarse como nos pasa a nosotros. Siempre conviene buscar el video original y chequear que la información venga de instituciones que sepan del tema."
+            }
+          ]      
         }
       ],
 
       "finalMessage": 
       [
-        "Más es más. Cuánto más investigamos, más información tenemos para tomar buenas decisiones.",
-        "Parecía que no pero al final la información era real. Recuerden siempre tener la lupa y las manos listas para chequear."
+        [
+          {
+          "character": 1,
+          "text": "Cuanto más investiguemos, más información vamos a tener para tomar la mejor decisión. ¡Pero todavía no sé a qué hora pasa el iceberg!"
+          }
+        ],
+        [
+          {
+          "character": 0,
+          "text": "Parecía que no, pero al final resultó que la información era cierta. No cuesta nada tener la lupa pronta y las alas listas para investigar. O las manos, claro."
+          }
+        ]
       ]
     },
 
@@ -443,14 +565,26 @@
 
       "textsAnswer":
       [
-        {
-          "character": 2,
-          "text": "Las noticias que vemos en redes sociales muchas veces no son ciertas."
-        },
-        {
+        [
+          {
           "character": 0,
+          "text": "Las noticias que vemos en redes sociales muchas veces no son ciertas."
+          },
+          {
+          "character": 2,
+          "text": "¡Auuuuu! Es cierto. Mejor chequear la información antes que tener que ladrar, digo, lamentar."
+          }
+        ],
+        [
+          {
+          "character": 2,
           "text": "¡Es una gran noticia! ¡Auuuuu!"
-        }        
+          },
+          {
+          "character": 0,
+          "text": "Me encantaría que fuera verdadera, pero dejá de mover la cola y observemos con atención."
+          }
+        ]        
       ],
 
       "subQuestions": 
@@ -469,7 +603,13 @@
             false,
             false
           ],
-          "message": "Muchas personas utilizan las redes sociales para informarse. Acordate de chequear que las noticias que aparecen estén disponibles también en sitios de confianza, y buscar en Internet los nombres de los científicos o investigadores que se nombran, para corroborar su nombre con su oficio."
+          "message": 
+          [
+            {
+              "character": 0,
+              "text": "Muchas personas utilizan las redes sociales para informarse. Acordate de chequear que las noticias que aparecen estén disponibles también en sitios de confianza, y buscar en Internet los nombres de los científicos o investigadores que se nombran, para corroborar su nombre con su oficio."
+            }
+          ]          
         },
 
         {
@@ -486,14 +626,30 @@
             false,
             true
           ],
-          "message": "Aunque la noticia sea buena y nos guste que un niño pueda encontrar un fósil, siempre es mejor buscar más evidencia y descartar que se trate de información falsa."
+          "message": 
+          [
+            {
+              "character": 0,
+              "text": "Aunque la noticia sea buena y nos guste que un niño pueda encontrar un fósil, siempre es mejor buscar más evidencia y descartar que se trate de información falsa."
+            }
+          ]
         }
       ],
 
       "finalMessage": 
       [
-        "Pensar por nosotros mismos y buscar más información es algo que día a día construye nuestro sentido crítico.",
-        "No conviene quedarse con la primera lectura de la información que nos importa. Una segunda búsqueda sirve para corroborar. Ahora sí, ¡a buscar fósiles!"
+        [
+          {
+          "character": 0,
+          "text": "Pensar por nosotros mismos y buscar más información es algo que día a día construye nuestro sentido crítico."
+          }
+        ],
+        [
+          {
+          "character": 0,
+          "text": "No conviene quedarse con la primera lectura de la información que nos importa. Una segunda búsqueda sirve para corroborar. Ahora sí, ¡a buscar fósiles!"
+          }
+        ]
       ]
     },
 
@@ -530,14 +686,30 @@
 
       "textsAnswer":
       [
-        {
+        [
+          {
           "character": 1,
           "text": "Suerte que leíste con atención, Pato. Esas pastillas son para cuerpos humanos, no para gatos."
-        },
-        {
+          },
+          {
+          "character": 0,
+          "text": "Bueno, también tengo dudas de que sean para humanos..."
+          }
+        ],
+        [
+          {
           "character": 1,
           "text": "Tenés razón, Pato. Esas pastillas son para cuerpos humanos y yo soy un animal."
-        }        
+          },
+          {
+          "character": 2,
+          "text": "No necesitamos una doctora sino una veterinaria."
+          },
+          {
+          "character": 0,
+          "text": "¿Y cómo sabés que ella es doctora?"
+          }
+        ]        
       ],
 
       "subQuestions": 
@@ -556,7 +728,13 @@
             false,
             false
           ],
-          "message": "Nada de este video es real. La mujer es un avatar creado con Inteligencia Artificial para difundir información dudosa que sirve para engañar a los usuarios y vender productos."
+          "message": 
+          [
+            {
+              "character": 0,
+              "text": "Nada de este video es real. La mujer es un avatar creado con Inteligencia Artificial para difundir información dudosa que sirve para engañar a los usuarios y vender productos."
+            }
+          ]
         },
 
         {
@@ -573,14 +751,30 @@
             false,
             true
           ],
-          "message": "La mujer del video no es médica. ¡Ni siquiera es una persona real! Es una modelo creada con Inteligencia Artificial a la que se le puede indicar qué decir y cómo verse para parecer confiable."
+          "message": 
+          [
+            {
+              "character": 0,
+              "text": "La mujer del video no es médica. ¡Ni siquiera es una persona real! Es una modelo creada con Inteligencia Artificial a la que se le puede indicar qué decir y cómo verse para parecer confiable."
+            }
+          ]
         }
       ],
 
       "finalMessage": 
       [
-        "Siempre, pero más cuando se trata de temas vinculados a la salud, es importante buscar información confiable en instituciones médicas profesionales.",
-        "Cuando encuentres mensajes que tratan de venderte o darte soluciones para grandes problemas, es importante chequear la información. Revisá los nombres, hacé búsquedas inversas de imágenes y asegurate de encontrar más evidencia."
+        [
+          {
+          "character": 0,
+          "text": "Siempre, pero más cuando se trata de temas vinculados a la salud, es importante buscar información confiable en instituciones médicas profesionales."
+          }
+        ],
+        [
+          {
+          "character": 1,
+          "text": "Cuando encuentres mensajes que tratan de venderte o darte soluciones para grandes problemas, es importante chequear la información. Revisá los nombres, hacé búsquedas inversas de imágenes y asegurate de encontrar más evidencia."
+          }
+        ]
       ]
     },
 
@@ -613,14 +807,22 @@
 
       "textsAnswer":
       [
-        {
+        [
+          {
           "character": 1,
           "text": "Yo desconfío de esa noticia. La imagen parece hecha con Inteligencia Artificial."
-        },
-        {
+          }
+        ],
+        [
+          {
           "character": 0,
           "text": "¡Pero quería saber a qué playas puedo ir a nadar! Entremos a la noticia."
-        }        
+          },
+          {
+          "character": 1,
+          "text": "Mirá esas palmeras y esa camisa, además de que acá los perros no usan lentes de sol. Debe ser falso."
+          }
+        ]        
       ],
 
       "subQuestions": 
@@ -637,7 +839,13 @@
             false,
             true
           ],
-          "message": "El uso de la Inteligencia Artificial para generar imágenes no es algo engañoso de por sí. Es importante que la imagen no se haga pasar por una fotografía verdadera y que esté simplemente a modo ilustrativo."
+          "message": 
+          [
+            {
+              "character": 1,
+              "text": "El uso de la Inteligencia Artificial para generar imágenes no es algo engañoso de por sí. Es importante que la imagen no se haga pasar por una fotografía verdadera y que esté simplemente a modo ilustrativo."
+            }
+          ]         
         },
 
         {
@@ -654,14 +862,30 @@
             false,
             true
           ],
-          "message": "La Inteligencia Artificial no siempre es un indicador de que la información sea falsa. Esa imagen simplemente ilustra la noticia, y cuando eso sucede el medio de comunicación debe advertirlo, como en este caso."
+          "message": 
+          [
+            {
+              "character": 1,
+              "text": "La Inteligencia Artificial no siempre es un indicador de que la información sea falsa. Esa imagen simplemente ilustra la noticia, y cuando eso sucede el medio de comunicación debe advertirlo, como en este caso."
+            }
+          ]
         }
       ],
 
       "finalMessage": 
       [
-        "Es importante que se aclare cuando se utilizan herramientas de Inteligencia Artificial para la creación, porque se evitan confusiones.",
-        "Siempre se debe aclarar si se utilizan herramientas de Inteligencia Artificial para la creación de contenidos. Cualquier información extra que aporte a la claridad del mensaje ayuda a quienes les llega."
+        [
+          {
+          "character": 1,
+          "text": "Es importante que se aclare cuando se utilizan herramientas de Inteligencia Artificial para la creación, porque se evitan confusiones."
+          }
+        ],
+        [
+          {
+          "character": 1,
+          "text": "Siempre se debe aclarar si se utilizan herramientas de Inteligencia Artificial para la creación de contenidos. Cualquier información extra que aporte a la claridad del mensaje ayuda a quienes les llega."
+          }
+        ]
       ]
     },
 
@@ -698,14 +922,18 @@
 
       "textsAnswer":
       [
-        {
+        [
+          {
           "character": 2,
           "text": "Me encantaría ayudar a Cata a conseguir ese piano, pero antes tengo que investigar un poco más."
-        },
-        {
+          }
+        ],
+        [
+          {
           "character": 0,
           "text": "Amigos, se me pararon las plumas de punta. Hay algo sospechoso con ese mensaje."
-        }        
+          }
+        ]        
       ],
 
       "subQuestions": 
@@ -724,7 +952,13 @@
             true,
             true
           ],
-          "message": "Hay muchas formas de chequear la información y debemos utilizarlas incluso cuando la información llega de parte de personas cercanas y de nuestra confianza."
+          "message": 
+          [
+            {
+              "character": 2,
+              "text": "Hay muchas formas de chequear la información y debemos utilizarlas incluso cuando la información llega de parte de personas cercanas y de nuestra confianza."
+            }
+          ]
         },
 
         {
@@ -741,14 +975,30 @@
             true,
             true
           ],
-          "message": "Para chequear si la información es verdadera podemos hacer una búsqueda inversa de la imagen. Así podremos corroborar si es una fotografía tomada por la señora o, como en el caso de esta estafa, había sido bajada de Internet."
+          "message": 
+          [
+            {
+              "character": 0,
+              "text": "Para chequear si la información es verdadera podemos hacer una búsqueda inversa de la imagen. Así podremos corroborar si es una fotografía tomada por la señora o, como en el caso de esta estafa, había sido bajada de Internet."
+            }
+          ]
         }
       ],
 
       "finalMessage": 
       [
-        "No importa la edad, la experiencia o a qué nos dediquemos: todas las personas podemos caer en una estafa. La única forma de prevenirlo es no tomar decisiones rápidas y tomarnos el tiempo para chequear la información.",
-        "Aun cuando recibimos un mensaje muy atractivo de parte de alguien que conocemos, es importante desconfiar y verificar antes de actuar."
+        [
+          {
+          "character": 2,
+          "text": "No importa la edad, la experiencia o a qué nos dediquemos: todas las personas podemos caer en una estafa. La única forma de prevenirlo es no tomar decisiones rápidas y tomarnos el tiempo para chequear la información."
+          }
+        ],
+        [
+          {
+          "character": 0,
+          "text": "Aun cuando recibimos un mensaje muy atractivo de parte de alguien que conocemos, es importante desconfiar y verificar antes de actuar."
+          }
+        ]
       ]
     },
 
@@ -781,14 +1031,18 @@
 
       "textsAnswer":
       [
-        {
+        [
+          {
           "character": 1,
           "text": "Yo también quiero ayudar, pero tengo miedo de que sea una estafa."
-        },
-        {
+          }
+        ],
+        [
+          {
           "character": 1,
           "text": "¡Qué gran equipo que formamos! Yo me encargo de la colecta."
-        }        
+          }
+        ]        
       ],
 
       "subQuestions": 
@@ -807,7 +1061,13 @@
             false,
             true
           ],
-          "message": "Siempre es recomendable leer los pedidos de ayuda con calma, buscando todos los datos necesarios para asegurarse de que la colaboración será usada para lo que se indica."
+          "message": 
+          [
+            {
+              "character": 1,
+              "text": "Siempre es recomendable leer los pedidos de ayuda con calma, buscando todos los datos necesarios para asegurarse de que la colaboración será usada para lo que se indica."
+            }
+          ]
         },
 
         {
@@ -824,14 +1084,24 @@
             false,
             true
           ],
-          "message": "Involucrarnos en temas sociales y dar lo mejor de nosotros mismos es genial. Utilizar correctamente las herramientas digitales ayuda a no frustrarnos si somos víctimas de un engaño."
+          "message": 
+          [
+            {
+              "character": 1,
+              "text": "Involucrarnos en temas sociales y dar lo mejor de nosotros mismos es genial. Utilizar correctamente las herramientas digitales ayuda a no frustrarnos si somos víctimas de un engaño."
+            }
+          ]
         }
       ],
 
       "finalMessage": 
       [
-        "Verificar la información puede tomarnos pocos minutos, y nos ayuda a estar seguros y tranquilos con nuestras decisiones.",
-        "Verificar la información puede tomarnos pocos minutos, y nos ayuda a estar seguros y tranquilos con nuestras decisiones."
+        [
+          {
+          "character": 1,
+          "text": "Verificar la información puede tomarnos pocos minutos, y nos ayuda a estar seguros y tranquilos con nuestras decisiones."
+          }
+        ]
       ]
     }
   ]
