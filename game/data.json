@@ -359,9 +359,9 @@
           "subQuestion": "¿Por qué te genera dudas el video?", 
           "options": 
           [
-            "Es imposible que siempre haya una cámara filmando.", 
-            "No existen serpientes así de grandes.", 
-            "Es un video hecho para crear alarma y miedo."
+            "Es imposible que haya una cámara filmando todo el tiempo.", 
+            "No existen serpientes tan grandes.", 
+            "Es un video hecho para asustar a las personas."
           ], 
           "optionsValues": 
           [
@@ -440,7 +440,7 @@
       "usernameURL": "892 k suscriptores",
       "img": "img-04",
       "footNote": "39.638 K visualizaciones- 17 dic 2024",
-      "header": "El Iceberg más grande del mundo a la deriva",
+      "header": "El Iceberg más grande del mundo flota a la deriva",
       "body": "El iceberg A23a, considerado el más grande del mundo, se desprendió de la plataforma de hielo Filchner en la Antártida en 1986, pero permaneció encallado décadas hasta liberarse y comenzar a navegar hacia el océano Atlántico Sur en 2023-2024.",
 
       "correctOption": 1,
@@ -498,9 +498,9 @@
           "subQuestion": "¿Qué harías para verificar si esta información es verdadera?", 
           "options": 
           [
-            "Preguntarle a una amiga o amigo qué opina.", 
-            "Buscar en TikTok más información sobre el tema.", 
-            "Buscar en un navegador (como Google) y chequear que la información aparezca en portales de noticias y vinculados a la temática."
+            "Pedirle su opinión a un amigo o una amiga.", 
+            "Buscar más información del tema en TikTok.", 
+            "Visitar sitios de noticas para chequear la información escrita sobre este tema."
           ], 
           "optionsValues": 
           [
@@ -546,11 +546,11 @@
       [
         {
           "character": 2,
-          "text": "auuuuuu! Aullido detector de niño genio, ¡miren! ¡descubrió un dinosaurio en San José!"
+          "text": "¡Auuuuu! Estoy olfateando a un niño genio. ¡Miren! Descubrió un dinosaurio en San José."
         },
         {
-          "character": 0,
-          "text": "mmm, no lo sé, los científicos adultos suelen ser los que descubren fósiles y nuevas especies."
+          "character": 1,
+          "text": "No sé, Rope. Los científicos adultos suelen ser los que descubren restos fósiles."
         } 
       ],
       "profilePic": "pp-05",
@@ -679,7 +679,7 @@
       "usernameURL": "7,453  suscriptores",
       "img": "img-06",
       "footNote": "249 visualizaciones- 12 mar 2024",
-      "header": "¡Remedio natural e inmediato para todos los dolores estomacales!",
+      "header": "Este frasco contiene los minerales vitales que el cuerpo humano necesita",
       "body": "Con sólo estos 5 ingredientes vas a poder curarte de todos los dolores que te aquejan después de las comidas, seguime que te cuento más.",
 
       "correctOption": 0,
