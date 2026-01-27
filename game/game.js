@@ -427,7 +427,8 @@ function onClickButtonPlay ()
     if (currentView == 0)
         startGame();
 
-    document.getElementById("bgMusic").play();
+    if (musicEnabled) 
+        document.getElementById("bgMusic").play();
 }
 let buttonNextAction = null;
 function onClickButtonNext () 
