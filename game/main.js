@@ -82,7 +82,8 @@ async function initialize ()
 
     initializeSounds();
 
-    document.getElementById("bgMusic").play();
+    //document.getElementById("bgMusic").play(); <--- start with music disabled
+    onToggleMusic(false);
     setView('titleScreen');
 
     await loadQuestions();

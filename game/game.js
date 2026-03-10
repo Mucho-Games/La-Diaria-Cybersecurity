@@ -3,6 +3,7 @@ var questionState = -1;
 var questionOptionSelected = -1;
 var currentView = 0;
 
+var questionsPool = [];
 var currentQuestion;
 var currentQuestionsAmount = 0;
 var currentPlayerScore = 0;
@@ -60,12 +61,20 @@ function startGame ()
 {
     if (!initialized) return;
 
+    questionsPool = [];
+    for (var i = questionBank.length - 1; i >= 0; i--) {
+        questionsPool.push(i);
+    }
+
     elemPlayerScore.innerHTML = String(0).padStart(3, "0");
     elemPlayerLevelsAmount.innerHTML = "/" + String(levelsAmount).padStart(2, "0");
 
     coroutines.start(newQuestion);
 }
-
+function pickRandomQuestionIndex() {
+    const randomIndex = Math.floor(Math.random() * questionsPool.length);
+    return questionsPool.splice(randomIndex, 1)[0];
+}
 function* newQuestion () //coroutine
 {
     document.getElementById('next-button').style.display = 'none';
@@ -73,7 +82,8 @@ function* newQuestion () //coroutine
     elemAnswerMainCont.style.display = 'none';
 
     //currentQuestion = getRandomElement(questionBank);
-    currentQuestion = questionBank[currentQuestionsAmount];
+    //currentQuestion = questionBank[currentQuestionsAmount];
+    currentQuestion = questionBank[pickRandomQuestionIndex()];
 
     const introTexts = currentQuestion.intro.map(entry => entry.text);
     const introCharacters = currentQuestion.intro.map(entry => entry.character);

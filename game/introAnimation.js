@@ -101,6 +101,7 @@ class Dialogue
 
         this.time = 0;
         this.writingSpeed = 0.005;
+        this.charactersPerTick = 1000;
         this.currentText = "";
         this.currentIndex = 0;
         this.sound = 0;
@@ -119,29 +120,36 @@ class Dialogue
         
         if (this.time > this.writingSpeed) 
         {
-        	if (this.text[this.currentIndex] == '<')
-        	{
-        		do {
-        			this.currentText += this.text[this.currentIndex];
-            		this.currentIndex++;
-        		} while(this.text[this.currentIndex] != '>')
-        	}
-        	else
-        	{
-	            this.currentText += this.text[this.currentIndex];
-	            this.currentIndex++;
-        	}
+        	var currentTickCharacters = 0;
 
-        	this.sound++;
-        	if (this.sound >= 3) 
+        	while(currentTickCharacters < this.charactersPerTick && this.currentIndex < this.text.length) 
         	{
-        		playSound('sfx-dialogue');
-        		this.sound = 0;
+	        	if (this.text[this.currentIndex] == '<')
+	        	{
+	        		do {
+	        			this.currentText += this.text[this.currentIndex];
+	            		this.currentIndex++;
+	            		currentTickCharacters++;
+	        		} while(this.text[this.currentIndex] != '>')
+	        	}
+	        	else
+	        	{
+		            this.currentText += this.text[this.currentIndex];
+		            this.currentIndex++;
+		            currentTickCharacters++;
+	        	}
+
+	        	this.sound++;
+	        	if (this.sound >= 3) 
+	        	{
+	        		playSound('sfx-dialogue');
+	        		this.sound = 0;
+	        	}
+
+	            this.time -= this.writingSpeed;
+
+	            this.elem.innerHTML = this.currentText;
         	}
-
-            this.time -= this.writingSpeed;
-
-            this.elem.innerHTML = this.currentText;
         }
 
         if (this.currentIndex === this.text.length) 
