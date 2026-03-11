@@ -10,9 +10,10 @@ const views =
 	"introAnimation", 
 	"game", 
 	"end-level-screen", 
+	"end-game-screen",
 	"credits-screen", 
 	"settings-screen", 
-	"overlay-view"
+	"overlay-view",
 ];
 const viewsColors = 
 [
@@ -20,7 +21,8 @@ const viewsColors =
 	"--color-green", 
 	"--color-blue", 
 	"--color-orange", 
-	"--color-blue"
+	"--color-orange", 
+	"--color-blue",
 ];
 const viewsRefResolutions = 
 [
@@ -28,6 +30,7 @@ const viewsRefResolutions =
 	[1100, 910], //intro
 	[670, 910], //game
 	[800, 910], //end view
+	[800, 910], //end game view
 	[550, 900], //credit
 	[550, 900], //settings
 	[670, 910] //overlay view <---- has to be the same as game to match the layout
@@ -38,6 +41,7 @@ const viewsRefResolutionsPortrait =
 	[550, 900], //intro
 	[550, 800], //game
 	[700, 800], //end view
+	[700, 800], //end game view
 	[550, 900], //credits
 	[550, 900], //settings
 	[550, 800] //overlay-view <---- has to be the same as game to match the layout

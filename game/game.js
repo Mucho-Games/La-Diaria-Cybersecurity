@@ -61,6 +61,9 @@ function startGame ()
 {
     if (!initialized) return;
 
+    setView('end-game-screen');
+    return;
+
     questionsPool = [];
     for (var i = questionBank.length - 1; i >= 0; i--) {
         questionsPool.push(i);

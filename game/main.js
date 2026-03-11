@@ -191,9 +191,9 @@ function unsubscribe(fn) {
 function setView (newView) 
 {
     console.log("Setting new view: " + newView);
-    var inGameViewsAmount = 3;
+    var inGameViewsAmount = 5; //Amount of views that are full screen and not overlay
 
-    for (var i = inGameViewsAmount; i >= 0; i--) 
+    for (var i = 0; i < inGameViewsAmount; i++) 
     {
         if (views[i] == newView) {
         	currentView = i;
