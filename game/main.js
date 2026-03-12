@@ -229,9 +229,9 @@ function onScreenSizeChange()
     aspectRatio = window.innerWidth / window.innerHeight;
 
     var viewFinalScaling = ResizeView(currentView);
-    ResizeView(4); //credits screen
-    ResizeView(5); //settings screen
-    ResizeView(6); //overlay view
+    ResizeView(5); //credits screen
+    ResizeView(6); //settings screen
+    ResizeView(7); //overlay view
 
     if (!initialized) return; //layouts specifics
 

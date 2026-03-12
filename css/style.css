@@ -1086,7 +1086,7 @@ b {
   border-radius: var(--round-corners);
   background-color: var(--color-olive);
   width: 100%;
-  height: 55%;
+  height: 49%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1178,6 +1178,15 @@ b {
   width: 100%;
   height: 50%;
   top: -42%;
+}
+.end-game-screen .full-body-character
+{
+  position: absolute;
+  height: 100%;
+  width: 33%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
 }
 /* END GAME SCREEN ------------------------------------------------------------------------------------------------------------- */
 #answerAnim 

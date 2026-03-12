@@ -61,7 +61,7 @@ function startGame ()
 {
     if (!initialized) return;
 
-    setView('end-game-screen');
+    coroutines.start(endGame, 1100);
     return;
 
     questionsPool = [];
@@ -394,13 +394,67 @@ function* endLevelScore () //coroutine
 
     yield waitSeconds(1);
 
-    if (endGame) 
-        document.getElementById('home-button-overlay').style.display = 'flex';
-    else 
-    {
-        document.getElementById('next-button').style.display = 'flex';
+    document.getElementById('next-button').style.display = 'flex';
+
+    if (endGame)
+        buttonNextAction = () => { coroutines.start(endGame, currentPlayerScore); };
+    else
         buttonNextAction = () => { coroutines.start(newQuestion); };
+}
+
+function* endGame (finalScore) //coroutine
+{
+    setView('end-game-screen');
+
+    document.getElementById('next-button').style.display = 'none';
+    document.getElementById('home-button-overlay').style.display = 'none';
+
+    let e_playerScore = document.querySelector('.end-game-screen .results .your-score .final-score p');
+    let e_dialogueBubble = document.querySelector('.end-game-screen .character-bubble-space');
+    let e_dialogueText = document.querySelector('.end-game-screen .character-bubble p');
+    let e_meterPoint = document.querySelectorAll('.end-game-screen .score-meter > *');
+    console.log(e_meterPoint);
+
+    //100 for answering the main question ok, 
+    //30 for answering the subquestion ok, 
+    //50 for finishing the question.
+    let i_maxPossibleScore = levelsAmount * (100 + 30 + 50); 
+    //7 because the visual counter is divided in 7 parts
+    let i_playerCompletionLevel = Math.min(Math.floor((finalScore / i_maxPossibleScore) * 7.0), 6);
+    //0, 1 -> bad text
+    //2, 3, 4 -> good text
+    //5, 6 -> excelent text
+    let s_finalDialogueText = 
+    i_playerCompletionLevel <= 1 ? completionLevelsTexts[0] :
+    i_playerCompletionLevel <= 4 ? completionLevelsTexts[1] :
+    completionLevelsTexts[2];
+
+    e_playerScore.innerHTML = String(finalScore).padStart(3, "0");
+
+    //Update score meter
+    //Remove old data - clear
+    for (var i = 0; i < e_meterPoint.length; i++) 
+    {
+        e_meterPoint[i].classList.remove("selected");
+        e_meterPoint[i].classList.remove("nearby");
     }
+    //Assign new classes to meter
+    e_meterPoint[i_playerCompletionLevel].classList.add("selected");  
+    if (i_playerCompletionLevel + 1 < e_meterPoint.length)
+        e_meterPoint[i_playerCompletionLevel+1].classList.add("nearby");
+    if (i_playerCompletionLevel - 1 >= 0)
+        e_meterPoint[i_playerCompletionLevel-1].classList.add("nearby");
+    
+    //show(elemFinalCharacterPortrait)
+    show(e_dialogueBubble);
+
+    new Dialogue(e_dialogueText, s_finalDialogueText);
+
+    playSound("sfx-success-01");
+
+    yield waitSeconds(1);
+   
+    document.getElementById('home-button-overlay').style.display = 'flex';
 }
 
 function onClickOption (option) 
