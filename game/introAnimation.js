@@ -1,9 +1,6 @@
 var elemDialogueText = [];
 var elemLines = [];
 
-var introAnimationCurrentLineIndex = 0;
-var introAnimationCurrentDialogue;
-var introAnimationTime = 0;
 var introAnimationPlaying = false;
 var dialogueTexts = [];
 var characters = [];
@@ -18,6 +15,12 @@ function showIntroAnimation (texts, char)
 
 	for (var i = elemLines.length - 1; i >= 0; i--) {
 		elemLines[i].style.display = 'none';
+
+		let bubble = elemLines[i].querySelector('.character-bubble-space');
+		let portrait = elemLines[i].querySelector('.character-portrait');
+
+		hide(bubble);
+		hide(portrait);
 	}
 
 	characters.length = 0;
@@ -37,60 +40,42 @@ function showIntroAnimation (texts, char)
 	}
 
 	introAnimationPlaying = true;
-	introAnimationTime = 0;
 
-	introAnimationCurrentLineIndex = 0;
-
-	subscribe(introAnimation)
+	coroutines.start(introAnimation)
 }
-function introAnimation (deltaTime, elapsedTime) 
+function* introAnimation () 
 {
-	if (introAnimationCurrentLineIndex < linesShown.length) 
+	for (var i = 0; i < dialogueTexts.length; i++) 
 	{
-		if (!linesShown[introAnimationCurrentLineIndex]) 
-		{
-			introAnimationCurrentDialogue = showLine(introAnimationCurrentLineIndex);
-		}
-		else if (!introAnimationCurrentDialogue.writing) 
-		{
-			introAnimationTime += deltaTime;
-			if (introAnimationTime > 1) 
-			{
-				introAnimationCurrentLineIndex++;
-				introAnimationTime = 0;
-			}
-		}
+		yield* showLine(i);
+		yield waitSeconds(2);
 	}
-	else 
-	{
-		introAnimationTime += deltaTime;
-		if (introAnimationTime > 0.5) 
-		{
-			unsubscribe(introAnimation);
-			introAnimationPlaying = false;
-		}
-	}
-}
-function showLine (index) 
-{
-	console.log(elemLines[index]);
-	var dialogue = new Dialogue(elemDialogueText[index], dialogueTexts[index]);
-	elemLines[index].style.display = 'flex';
-	var bubble = elemLines[index].querySelector('.character-bubble-space');
-	var portrait = elemLines[index].querySelector('.character-portrait');
-	var portraitIMG = elemLines[index].querySelector('.character-portrait img');
 
-	var characterIndex = characters[index];
+	introAnimationPlaying = false;
+}
+function* showLine (index) 
+{
+	let bubble = elemLines[index].querySelector('.character-bubble-space');
+	let portrait = elemLines[index].querySelector('.character-portrait');
+	let portraitIMG = elemLines[index].querySelector('.character-portrait img');
+
+	let characterIndex = characters[index];
 	portraitIMG.src = charactersAvatars[characterIndex];
 	charactersAvatarsStyles.forEach(s => portrait.classList.remove(s));
 	portrait.offsetHeight;
   	portrait.classList.add(charactersAvatarsStyles[characterIndex]);
 
-	show(bubble);
+	elemLines[index].style.display = 'flex';
 	show(portrait);
-	linesShown[index] = true;
 
-	return dialogue;
+	yield waitSeconds(0.3);
+
+	elemDialogueText[index].innerHTML = dialogueTexts[index];
+	show(bubble);
+
+	playSound('sfx-dialogue');
+
+	linesShown[index] = true;
 }
 class Dialogue 
 {
