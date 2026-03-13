@@ -174,53 +174,64 @@ function* answerQuestion (state, option, i)  //coroutine
 
 function* characterTalk (text, character, fullBody, rightSide) 
 {
-    console.log("Character diag" + "appear on right: " + rightSide);
+    let e_characterContainer = document.querySelector('#answer-animation-character');
+    let e_characterImage = document.querySelector('#answer-animation-character img');
+    let e_bubbleContainer = document.querySelector('#answerAnimation .character-bubble-space');
+    let e_bubble = document.querySelector('#answerAnimation .character-bubble');
+    let e_bubbleText = document.querySelector('#answerAnimation .character-bubble p');
+    let e_bubbleArrow = document.querySelector('#answerAnimation .character-bubble .character-bubble-arrow-wrapper img');
+    let e_bubbleArrowWrapper = document.querySelector('#answerAnimation .character-bubble .character-bubble-arrow-wrapper');
+
     elemAnswerMainCont.style.display = 'flex';
 
     if (fullBody) 
     {
-        elemAnswerMainCharacter.classList.add('full-body');
-        elemAnswerMainBubbleSpace.classList.add('final-message');
+        e_characterContainer.classList.add('full-body');
+        e_bubbleContainer.classList.add('final-message');
     }
     else
     {
-        elemAnswerMainCharacter.classList.remove('full-body');
-        elemAnswerMainBubbleSpace.classList.remove('final-message');
+        e_characterContainer.classList.remove('full-body');
+        e_bubbleContainer.classList.remove('final-message');
     }
     
-    charactersAnswerStyles.forEach(s => elemAnswerMainCharacter.classList.remove(s));
-    elemAnswerMainCharacter.offsetHeight;
-    elemAnswerMainCharacter.classList.add(charactersAnswerStyles[character]);
-    elemAnswerMainCharacterIMG.src = charactersAvatars[character];
+    charactersAnswerStyles.forEach(s => e_characterContainer.classList.remove(s));
+    e_characterContainer.offsetHeight;
+    e_characterContainer.classList.add(charactersAnswerStyles[character]);
+    e_characterImage.src = charactersAvatars[character];
 
     //set sides and textbox
     if (rightSide) 
     {
-        elemAnswerMainCharacter.style.removeProperty('left');
-        elemAnswerMainCharacter.style.right = '-2%';
-        elemAnswerMainBubbleSpace.style.removeProperty('right');
-        elemAnswerMainBubbleSpace.style.left = '6%';
-        elemAnswerMainBubbleSpace.style.alignItems = 'flex-end';
+        e_characterContainer.style.removeProperty('left');
+        e_characterContainer.style.right = '-2%';
+        e_bubbleContainer.style.removeProperty('right');
+        e_bubbleContainer.style.left = '6%';
+        e_bubbleContainer.style.alignItems = 'flex-end';
     }
     else
     {
-        elemAnswerMainCharacter.style.removeProperty('right');
-        elemAnswerMainCharacter.style.left = '-2%';
-        elemAnswerMainBubbleSpace.style.removeProperty('left');
-        elemAnswerMainBubbleSpace.style.right = '6%'; 
-        elemAnswerMainBubbleSpace.style.alignItems = 'flex-start';      
+        e_characterContainer.style.removeProperty('right');
+        e_characterContainer.style.left = '-2%';
+        e_bubbleContainer.style.removeProperty('left');
+        e_bubbleContainer.style.right = '6%'; 
+        e_bubbleContainer.style.alignItems = 'flex-start';      
     }
 
-    elemAnswerMainBubble.style.backgroundColor = 'var(--color-white)';
-    elemAnswerMainBubbleArrow.src = rightSide ? 
+    e_bubble.style.backgroundColor = 'var(--color-white)';
+    e_bubbleArrow.src = rightSide ? 
     'assets/text-box-bottom-white-right.svg' : 'assets/text-box-bottom-white-left.svg';
-    elemAnswerMainBubbleArrowWrapper.style = rightSide ? 'right: var(--round-corners)' : 'left: var(--round-corners)';
+    e_bubbleArrowWrapper.style = rightSide ? 'right: var(--round-corners)' : 'left: var(--round-corners)';
 
-    show(elemAnswerMainBubble.parentElement);
+    hide(e_bubble.parentElement);
 
-    var dialogue =  new Dialogue(elemAnswerMainText, text);
+    yield waitSeconds(0.3);
 
-    while (dialogue.writing) yield;
+    e_bubbleText.innerHTML = text;
+
+    show(e_bubble.parentElement);
+
+    yield waitSeconds(1);
 }
 
 function endMainQuestion () 
