@@ -61,9 +61,6 @@ function startGame ()
 {
     if (!initialized) return;
 
-    coroutines.start(endGame, 1100);
-    return;
-
     questionsPool = [];
     for (var i = questionBank.length - 1; i >= 0; i--) {
         questionsPool.push(i);
@@ -373,7 +370,7 @@ function* endLevel (i) //coroutine
 
 function* endLevelScore () //coroutine
 {
-    var endGame = currentQuestionsAmount >= levelsAmount;
+    let b_endGame = currentQuestionsAmount >= levelsAmount;
 
     setView('end-level-screen');
 
@@ -396,7 +393,7 @@ function* endLevelScore () //coroutine
 
     document.getElementById('next-button').style.display = 'flex';
 
-    if (endGame)
+    if (b_endGame)
         buttonNextAction = () => { coroutines.start(endGame, currentPlayerScore); };
     else
         buttonNextAction = () => { coroutines.start(newQuestion); };
