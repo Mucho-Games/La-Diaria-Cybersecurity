@@ -39,12 +39,12 @@ const viewsRefResolutionsPortrait =
 [
 	[910, 910], //title
 	[550, 900], //intro
-	[550, 800], //game
+	[590, 900], //game
 	[700, 800], //end view
 	[700, 800], //end game view
 	[550, 900], //credits
 	[550, 900], //settings
-	[550, 800] //overlay-view <---- has to be the same as game to match the layout
+	[590, 900] //overlay-view <---- has to be the same as game to match the layout
 ];
 const answerOverlayRefResolution = [670, 910];
 const answerOverlayRefResolutionPortrait = [550, 800];

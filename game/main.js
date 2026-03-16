@@ -268,7 +268,7 @@ function onScreenSizeChange()
         var container = document.querySelector(`.game.view-container`);
         container.style.justifyContent = landscape ? 'center' : 'space-around';
         elemPlayerScoreCont.style.width = landscape ? '15%' : '18%';
-        elemPlayerLevelCont.style.width = landscape ? '15%' : '18%';
+        elemPlayerLevelCont.style.width = landscape ? '15.5%' : '18%'; //<---------------------------NOT GETTING CALLED
         // var options = document.querySelectorAll(`.game .option`);
         // options.forEach(o => o.style.width = landscape ? '26%' : '30%');
         // var optionsClone = document.querySelectorAll(`#question-buttons-clone .option`);
@@ -334,7 +334,7 @@ function ResizeView (index)
     else /*PORTRAIT MODE---------------------*/
     {
         windowWidth = window.innerWidth - 30;
-        windowHeight = (window.innerHeight * 0.9) - 60;
+        windowHeight = (window.innerHeight * 0.95) - 60;
 
         var viewRefSize = viewsRefResolutionsPortrait[index];
         var viewScalingWidth = 1;
