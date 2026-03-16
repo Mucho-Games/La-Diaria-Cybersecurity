@@ -120,7 +120,7 @@ async function loadQuestions() {
 
         questionBank = data.questions.map(
             q => {
-            if (q.questionType == 0) //contemplating future type of questions structure
+            if (q.questionType == 0)
             {
                 return new QuestionTypeA 
                 (
@@ -148,7 +148,26 @@ async function loadQuestions() {
             }
             else
             {
-                return null;
+                return new QuestionTypeB 
+                (
+                    q.intro,
+                    q.profilePic,
+                    q.username,
+                    q.usernameURL,
+                    q.img,
+                    q.correctOption,
+                    q.textsAnswer,
+                    q.subQuestions.map(
+                        sq => { 
+                        return new SubQuestion(
+                            sq.subQuestion,
+                            sq.options,
+                            sq.optionsValues,
+                            sq.message
+                            );
+                    }),
+                    q.finalMessage
+                );
             }           
         });
 
