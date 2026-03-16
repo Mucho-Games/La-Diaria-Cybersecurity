@@ -220,7 +220,7 @@ function setView (newView)
         }
     }
 
-    for (var i = inGameViewsAmount; i >= 0; i--) 
+    for (var i = 0; i < inGameViewsAmount; i++) 
     {
         var viewGrid = document.querySelector(`.${views[i]}.view-container`);
         viewGrid.style.display = i == currentView ? `flex` : `none`;
