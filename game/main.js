@@ -247,7 +247,7 @@ function onScreenSizeChange()
 {
     aspectRatio = window.innerWidth / window.innerHeight;
 
-    var viewFinalScaling = ResizeView(currentView);
+    var landscape = ResizeView(currentView);
     ResizeView(5); //credits screen
     ResizeView(6); //settings screen
     ResizeView(7); //overlay view
@@ -364,5 +364,5 @@ function ResizeView (index)
         view.style.bottom  = `${bottom}px`;
     }
 
-    return viewFinalScaling;
+    return _landscape;
 }
