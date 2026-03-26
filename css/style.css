@@ -821,7 +821,8 @@ b {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
+  gap: 5%;
 }
 .game .option2 
 {

@@ -142,7 +142,7 @@ function* answerQuestion (state, option, i)  //coroutine
 
         elemAnswerMainButtonsClone.style.display = 'flex';
         document.getElementById('overlay-buttons').style.display = 'flex';
-        var optionsClone = document.querySelectorAll(`#question-buttons-clone .option`);
+        let optionsClone = document.querySelectorAll(`#question-buttons-clone .option`);
         elemAnswerMainButtonsClone.style.flexDirection = option == 0 ? 'row' : 'row-reverse';
         optionsClone[0].style.display = option == 0 ? 'flex' : 'none';
         optionsClone[1].style.display = option == 1 ? 'flex' : 'none';
@@ -150,11 +150,15 @@ function* answerQuestion (state, option, i)  //coroutine
 
     console.log(questionOptionSelected);
 
-    var rightSide = questionOptionSelected == 0;
-    var dialogueAmount = currentQuestion.textsAnswer[option].length;
-    var dialogueIndex = i;
+    let rightSide = questionOptionSelected == 0;
 
-    yield* characterTalk(currentQuestion.textsAnswer[option][dialogueIndex].text, currentQuestion.textsAnswer[option][dialogueIndex].character, false, rightSide);
+    //Avoid picking a non existing response
+    let dialogue = currentQuestion.textsAnswer.length > option ? currentQuestion.textsAnswer[option] : currentQuestion.textsAnswer[option-1]
+    
+    let dialogueAmount = dialogue.length;
+    let dialogueIndex = i;
+
+    yield* characterTalk(dialogue[dialogueIndex].text, dialogue[dialogueIndex].character, false, rightSide);
 
     dialogueIndex += 1;
 

@@ -26,6 +26,14 @@ class SubQuestion
 
         for (var i = 0; i < elemSubQuestionOptionsContent.length; i++) 
         {
+            if (this.options.length <= i) 
+            {
+                elemSubQuestionOptions[i].style.display = 'none';
+                continue;
+            }
+
+            elemSubQuestionOptions[i].style.display = 'flex';
+
             elemSubQuestionOptionsContent[i].innerHTML = [i + 1] +". " + this.options[i];
 
             elemSubQuestionOptionsWrongCircle[i].style.display = 'none';
