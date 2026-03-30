@@ -7,6 +7,7 @@ var questionsPool = [];
 var currentQuestion;
 var currentQuestionsAmount = 0;
 var currentPlayerScore = 0;
+var currentRound = 0;
 
 var multipleChoiceDisabled = false;
 var musicEnabled = true;
@@ -69,13 +70,24 @@ function startGame ()
     elemPlayerScore.innerHTML = String(0).padStart(3, "0");
     elemPlayerLevelsAmount.innerHTML = "/" + String(levelsAmount).padStart(2, "0");
 
+    startRound();
+}
+function startRound () 
+{
+    currentRound++;
+    currentQuestionsAmount = 0;
     coroutines.start(introGame);
 }
 function* introGame () 
 {
+    document.getElementById('next-button').style.display = 'none';
+    document.getElementById('home-button-overlay').style.display = 'none';
+
     let buttonNext = document.querySelector('.intro-game .button-container button');
+    let introTextBox = document.querySelector('.intro-game .text-box p');
 
     buttonNext.style.display = 'none';
+    introTextBox.innerHTML = gameIntroTexts[currentRound-1];
 
     setView('intro-game');
 
@@ -127,6 +139,7 @@ function startMainQuestion ()
     currentQuestionsAmount++;
 
     elemPlayerLevel.innerHTML = "0"+currentQuestionsAmount;
+    elemPlayerScore.innerHTML = `${currentPlayerScore}`.padStart(3, "0");
 
     elemAnswerMainCont.style.display = 'none';
     elemMultipleChoiceCont.style.display = 'flex';
@@ -401,7 +414,7 @@ function* endLevel (i) //coroutine
 
 function* endLevelScore () //coroutine
 {
-    let b_endGame = currentQuestionsAmount >= levelsAmount;
+    let b_endRound = currentQuestionsAmount >= levelsAmount;
 
     setView('end-level-screen');
 
@@ -422,15 +435,16 @@ function* endLevelScore () //coroutine
 
     yield waitSeconds(1);
 
+    playSound("sfx-popUp-01");
     document.getElementById('next-button').style.display = 'flex';
 
-    if (b_endGame)
-        buttonNextAction = () => { coroutines.start(endGame, currentPlayerScore); };
+    if (b_endRound)
+        buttonNextAction = () => { coroutines.start(endRound, currentPlayerScore); };
     else
         buttonNextAction = () => { coroutines.start(newQuestion); };
 }
 
-function* endGame (finalScore) //coroutine
+function* endRound (finalScore) //coroutine
 {
     setView('end-game-screen');
 
@@ -446,7 +460,8 @@ function* endGame (finalScore) //coroutine
     //100 for answering the main question ok, 
     //30 for answering the subquestion ok, 
     //50 for finishing the question.
-    let i_maxPossibleScore = levelsAmount * (100 + 30 + 50); 
+    //x * currentRound because score keeps growing between rounds
+    let i_maxPossibleScore = levelsAmount * (100 + 30 + 50) * currentRound; 
     //7 because the visual counter is divided in 7 parts
     let i_playerCompletionLevel = Math.min(Math.floor((finalScore / i_maxPossibleScore) * 7.0), 6);
     //0, 1 -> bad text
@@ -481,8 +496,18 @@ function* endGame (finalScore) //coroutine
     playSound("sfx-success-01");
 
     yield waitSeconds(1);
-   
-    document.getElementById('home-button-overlay').style.display = 'flex';
+    
+    playSound("sfx-popUp-01");
+
+    if (currentRound < roundsAmount)
+    {
+        buttonNextAction = () => { startRound(); };
+        document.getElementById('next-button').style.display = 'flex';
+    }
+    else
+    {
+        document.getElementById('home-button-overlay').style.display = 'flex';
+    }    
 }
 
 function onClickOption (option) 
@@ -592,6 +617,7 @@ function resetGame ()
     currentQuestion;
     currentQuestionsAmount = 0;
     currentPlayerScore = 0;
+    currentRound = 0;
 
     buttonNextAction = null;
 

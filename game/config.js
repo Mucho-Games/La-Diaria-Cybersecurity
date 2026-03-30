@@ -53,7 +53,6 @@ const viewsRefResolutionsPortrait =
 ];
 const answerOverlayRefResolution = [670, 910];
 const answerOverlayRefResolutionPortrait = [550, 800];
-const levelsAmount = 6;
 const charactersAvatars = ["assets/personaje-pato2.png", "assets/personaje-gato.png", "assets/personaje-perro.png"];
 const charactersAvatarsStyles = ["pato-avatar", "cat-avatar", "dog-avatar"];
 const charactersAnswerStyles = ["pato-answer", "cat-answer", "dog-answer"];
@@ -62,3 +61,9 @@ const completionLevelsTexts = [
 	"Gran trabajo, sigue así y no olvides desconfiar de las grandes promesas.",
 	"Excelente trabajo, sigue así y no olvides desconfiar de las grandes promesas. Wow!"
 ];
+const gameIntroTexts = [
+	"<b>Rope, Gata y Pato tienen un streaming</b> donde comparten información, videos y contenidos que le gustan con su comunidad. Están buscando a alguien para sumar al equipo de producción que <b>los ayude a identificar qué contenidos son confiables para su transmisión.</b> ¿Podrás ayudarlos?",
+	"<b>Bienvenido al equipo de producción</b>, necesitamos que <b>nos ayudes a evitar que compartamos noticias falsas, engañosas o estafas en línea.</b> Entremos a la reunión de producción para ver qué se está conversando."
+]
+const levelsAmount = 6;
+const roundsAmount = 2;
