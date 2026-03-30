@@ -210,9 +210,8 @@ function unsubscribe(fn) {
 function setView (newView) 
 {
     console.log("Setting new view: " + newView);
-    var inGameViewsAmount = 6; //Amount of views that are full screen and not overlay
 
-    for (var i = 0; i < inGameViewsAmount; i++) 
+    for (var i = 0; i < fullScreenViewsAmount; i++) 
     {
         if (views[i] == newView) {
         	currentView = i;
@@ -220,7 +219,7 @@ function setView (newView)
         }
     }
 
-    for (var i = 0; i < inGameViewsAmount; i++) 
+    for (var i = 0; i < fullScreenViewsAmount; i++) 
     {
         var viewGrid = document.querySelector(`.${views[i]}.view-container`);
         viewGrid.style.display = i == currentView ? `flex` : `none`;
@@ -248,9 +247,9 @@ function onScreenSizeChange()
     aspectRatio = window.innerWidth / window.innerHeight;
 
     var landscape = ResizeView(currentView);
-    ResizeView(5); //credits screen
-    ResizeView(6); //settings screen
-    ResizeView(7); //overlay view
+    ResizeView(fullScreenViewsAmount); //credits screen
+    ResizeView(fullScreenViewsAmount+1); //settings screen
+    ResizeView(fullScreenViewsAmount+2); //overlay view
 
     if (!initialized) return; //layouts specifics
 

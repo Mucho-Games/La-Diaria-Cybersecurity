@@ -4,6 +4,7 @@ const thresholdRatio = 0.75;
 const maxLandAspectRatio = 0.7;
 const maxPortraitAspectRatio = 10/16;
 const debug = false;
+const fullScreenViewsAmount = 6;
 const views = 
 [
 	"titleScreen", 
