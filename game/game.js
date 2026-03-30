@@ -69,7 +69,23 @@ function startGame ()
     elemPlayerScore.innerHTML = String(0).padStart(3, "0");
     elemPlayerLevelsAmount.innerHTML = "/" + String(levelsAmount).padStart(2, "0");
 
-    coroutines.start(newQuestion);
+    coroutines.start(introGame);
+}
+function* introGame () 
+{
+    let buttonNext = document.querySelector('.intro-game .button-container button');
+
+    buttonNext.style.display = 'none';
+
+    setView('intro-game');
+
+    yield waitSeconds(1);
+
+    buttonNext.style.display = 'flex';
+
+    buttonIntroGameAction = () => { coroutines.start(newQuestion); }
+
+    playSound("sfx-popUp-01");
 }
 function pickRandomQuestionIndex() {
     const randomIndex = Math.floor(Math.random() * questionsPool.length);
@@ -508,6 +524,14 @@ function onClickButtonPlay ()
 
     if (musicEnabled) 
         document.getElementById("bgMusic").play();
+}
+let buttonIntroGameAction = null;
+function onClickButtonIntroGame () 
+{
+    if (!buttonIntroGameAction) return;
+    const fn = buttonIntroGameAction;
+    buttonIntroGameAction = null;
+    fn();
 }
 let buttonNextAction = null;
 function onClickButtonNext () 

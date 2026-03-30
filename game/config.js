@@ -11,18 +11,20 @@ const views =
 	"game", 
 	"end-level-screen", 
 	"end-game-screen",
+	"intro-game",
 	"credits-screen", 
 	"settings-screen", 
 	"overlay-view",
 ];
 const viewsColors = 
 [
-	"--color-green", 
-	"--color-green", 
-	"--color-blue", 
-	"--color-orange", 
-	"--color-orange", 
-	"--color-blue",
+	"--color-green", //0 title 
+	"--color-green", //1 intro level
+	"--color-blue", //2 game 
+	"--color-orange", //3 end view 
+	"--color-orange", //4 end game view 
+	"--color-blue", //5 intro game
+	"--color-blue", //6 credit
 ];
 const viewsRefResolutions = 
 [
@@ -31,20 +33,22 @@ const viewsRefResolutions =
 	[670, 910], //game
 	[800, 910], //end view
 	[800, 910], //end game view
-	[550, 900], //credit
-	[550, 900], //settings
+	[800, 910], //intro game
+	[550, 900], //credit <--- Overlay
+	[550, 900], //settings <--- Overlay
 	[670, 910] //overlay view <---- has to be the same as game to match the layout
 ];
 const viewsRefResolutionsPortrait = 
 [
-	[910, 910], //title
-	[550, 900], //intro
-	[590, 900], //game
-	[700, 800], //end view
-	[700, 800], //end game view
-	[550, 900], //credits
-	[550, 900], //settings
-	[590, 900] //overlay-view <---- has to be the same as game to match the layout
+	[910, 910], //0 title 
+	[550, 900], //1 intro
+	[590, 900], //2 game
+	[700, 800], //3 end view
+	[700, 800], //4 end game view
+	[700, 1100], //5 intro game
+	[550, 900], //6 credits <--- Overlay
+	[550, 900], //7 settings <--- Overlay
+	[590, 900]  //8 overlay-view <--- Overlay <---- has to be the same as game to match the layout
 ];
 const answerOverlayRefResolution = [670, 910];
 const answerOverlayRefResolutionPortrait = [550, 800];
