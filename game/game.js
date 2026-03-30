@@ -468,9 +468,9 @@ function* endRound (finalScore) //coroutine
     //2, 3, 4 -> good text
     //5, 6 -> excelent text
     let s_finalDialogueText = 
-    i_playerCompletionLevel <= 1 ? completionLevelsTexts[0] :
-    i_playerCompletionLevel <= 4 ? completionLevelsTexts[1] :
-    completionLevelsTexts[2];
+    i_playerCompletionLevel <= 1 ? completionLevelsTexts[currentRound-1][0] :
+    i_playerCompletionLevel <= 4 ? completionLevelsTexts[currentRound-1][1] :
+    completionLevelsTexts[currentRound-1][2];
 
     e_playerScore.innerHTML = String(finalScore).padStart(3, "0");
 

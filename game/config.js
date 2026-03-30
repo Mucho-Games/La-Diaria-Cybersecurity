@@ -56,10 +56,18 @@ const answerOverlayRefResolutionPortrait = [550, 800];
 const charactersAvatars = ["assets/personaje-pato2.png", "assets/personaje-gato.png", "assets/personaje-perro.png"];
 const charactersAvatarsStyles = ["pato-avatar", "cat-avatar", "dog-avatar"];
 const charactersAnswerStyles = ["pato-answer", "cat-answer", "dog-answer"];
-const completionLevelsTexts = [
-	"Vamos bien. Para el próximo programa recuerda chequear antes cada contenido que te interese y así evitaremos la desinformación.",
-	"Gran trabajo, sigue así y no olvides desconfiar de las grandes promesas.",
-	"Excelente trabajo, sigue así y no olvides desconfiar de las grandes promesas. Wow!"
+const completionLevelsTexts = 
+[
+	[
+	"Venís bien pero recordá chequear toda la información que llegue a ti.",
+	"Tu trabajo fue genial, no te olvides de desconfiar cuando veas algo muy ventajoso.",
+	"¡Excelente! Este equipo de producción te necesita: dato verificado"
+	],
+	[
+	"Recuerda profundizar en tus búsquedas. Desconfía más sobre lo que miras en internet, y no te quedes con una sola fuente de información ! siguiendo estos pasos…. ¡Este streaming es un éxito!",
+	"Ya tienes las herramientas para detectar información engañosa. Recuerda chequear siempre la información en cuentas confiables.",
+	"¡Felicitaciones! tu participación en este equipo sí que hizo la diferencia. Estás listo para seguir combatiendo la desinformación."
+	]
 ];
 const gameIntroTexts = [
 	"<b>Rope, Gata y Pato tienen un streaming</b> donde comparten información, videos y contenidos que le gustan con su comunidad. Están buscando a alguien para sumar al equipo de producción que <b>los ayude a identificar qué contenidos son confiables para su transmisión.</b> ¿Podrás ayudarlos?",
