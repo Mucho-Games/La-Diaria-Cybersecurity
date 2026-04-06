@@ -48,10 +48,10 @@ class QuestionTypeA
 		elemContentTypeA.style.display = 'flex';
 		elemContentTypeB.style.display = 'none';
 
-		elemProfilePic.src = questionsImgDirectory + this.profilePic + '.jpg';
+		elemProfilePic.src = questionsImgDirectory + this.profilePic + '.png';
 		elemUsername.innerHTML = this.username;
 		elemUsernameURL.innerHTML = this.usernameURL;
-		elemImage.src = questionsImgDirectory + this.image + '.jpg';
+		elemImage.src = questionsImgDirectory + this.image + '.png';
 		elemImageFootNote.innerHTML = this.footNote;
 		elemNewsHeader.innerHTML = this.header;
 		elemNewsBody.innerHTML = this.body;
@@ -91,7 +91,7 @@ class QuestionTypeB
 		elemContentTypeA.style.display = 'none';
 		elemContentTypeB.style.display = 'flex';
 
-		elemProfilePic.src = questionsImgDirectory + this.profilePic + '.jpg';
+		elemProfilePic.src = questionsImgDirectory + this.profilePic + '.png';
 		elemUsername.innerHTML = this.username;
 		elemUsernameURL.innerHTML = this.usernameURL;
 		elemContentImage.src = questionsImgDirectory + this.contentImage + '.png';

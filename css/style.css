@@ -609,7 +609,8 @@ b {
 {
   position: relative;
   width: 100%;
-  height:  auto;
+  object-fit: contain;
+  height: 100%;
 }
 #question-type-a .question-image {
   width: 100%;

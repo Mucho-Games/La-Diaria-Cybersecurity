@@ -19,10 +19,10 @@
           "text": "Acá venden dos. ¿Deberíamos contarle a nuestra audiencia?"
         }       
       ],
-      "profilePic": "pp-00",
+      "profilePic": "profile-e",
       "username": "Espectáculos y eventos Uruguay",
       "usernameURL": "Gastón Lopez - 5 de mayo de 2024",
-      "img": "img-00",
+      "img": "img-entradas",
       "footNote": "18 comentarios",
       "header": "Vendo entradas para Emilia domingo",
       "body": "Vendo dos entradas digitales para ver a Emilia el domingo 12 a las 21 hrs. en el Antel Arena, Uruguay! Interesados escribir 096956427",
@@ -104,12 +104,12 @@
           "text": "Puede ser una primicia para el programa... o la oportunidad de hacernos millonarios."
         }
       ],
-      "profilePic": "pp-01",
+      "profilePic": "profile-m",
       "username": "Milenio Portal oficial",
       "usernameURL": "3,9 k suscriptores",
-      "img": "img-01",
+      "img": "img-suarez",
       "footNote": "386 visualizaciones  hace 17 horas",
-      "header": "SUMATE A ESTA OPORTUNIDAD",
+      "header": "Con este proyecto ganarás aproximadamente 1000000 UYU en tu primer mes de inversión — o te devolveré tu dinero.",
       "body": "En el video Luis Suárez te invita a ganar 1.000.000 UY en tu primer mes de inversión o te devolverá tu dinero.",
 
       "correctOption": 0,
@@ -200,7 +200,7 @@
 
     { 
       "index": 2,
-      "questionType": 0,
+      "questionType": 1,
       "intro":
       [
         {
@@ -212,10 +212,10 @@
           "text": "A ver, prestame la lupa, que a este tipo de videos hay que mirarlos muy de cerca para ver si son confiables."
         } 
       ],
-      "profilePic": "pp-02",
+      "profilePic": "profile-n",
       "username": "El Noticiero Televen oficial",
       "usernameURL": "47,5 k suscriptores",
-      "img": "img-02",
+      "img": "img-conejos",
       "footNote": "369 K visualizaciones",
       "header": "Jugar es universal",
       "body": "La inocencia de los animales en los trampolines.",
@@ -301,7 +301,7 @@
 
     { 
       "index": 3,
-      "questionType": 0,
+      "questionType": 1,
       "intro":
       [
         {
@@ -317,10 +317,10 @@
           "text": "Eso siempre. Pero no entremos en pánico qué es lo que busca este tipo de información. Analicemos juntos."
         }   
       ],
-      "profilePic": "pp-03",
+      "profilePic": "profile-gc",
       "username": "Go Communication",
       "usernameURL": "23,7 k suscriptores",
-      "img": "img-03",
+      "img": "img-anaconda",
       "footNote": "126 K visualizaciones hace 20 horas",
       "header": "Enorme anaconda es captada en El Amazonas",
       "body": "Una anaconda de dimensiones nunca antes registradas fue captada esta semana en pleno cauce del río Amazonas. El avistamiento ocurrió cuando un equipo de investigadores realizaba un sobrevuelo de rutina y logró grabar al enorme reptil desplazándose lentamente entre las aguas.",
@@ -425,10 +425,10 @@
           "text": "Si llega a venir para acá me subo y me pongo a  tirar de un trineo!!"
         }
       ],
-      "profilePic": "pp-04",
-      "username": "Televisión Pública Noticias",
+      "profilePic": "profile-eo",
+      "username": "El Observador",
       "usernameURL": "892 k suscriptores",
-      "img": "img-04",
+      "img": "img-iceberg",
       "footNote": "39.638 K visualizaciones- 17 dic 2024",
       "header": "El Iceberg más grande del mundo flota a la deriva",
       "body": "El iceberg A23a, considerado el más grande del mundo, se desprendió de la plataforma de hielo Filchner en la Antártida en 1986, pero permaneció encallado décadas hasta liberarse y comenzar a navegar hacia el océano Atlántico Sur en 2023-2024.",
@@ -543,10 +543,10 @@
           "text": "No sé, Rope. Las personas adultas que hacen ciencia suelen ser los que descubren restos fósiles."
         } 
       ],
-      "profilePic": "pp-05",
+      "profilePic": "profile-f",
       "username": "San José Ahora",
       "usernameURL": "12,5 k suscriptores",
-      "img": "img-05",
+      "img": "img-fosil",
       "footNote": "52 K visualizaciones- 20 ene 2024",
       "header": "Niño descubre un nuevo fósil en Uruguay",
       "body": "Niño de 8 años encontró un fósil prehistórico en Kiyú de 250 mil años de antigüedad. El resto fue analizado por paleontólogos uruguayos que lo llevaron al laboratorio.",
@@ -648,7 +648,7 @@
 
     { 
       "index": 6,
-      "questionType": 1,
+      "questionType": 0,
       "intro":
       [
         {
@@ -660,13 +660,13 @@
           "text": "Siempre es bueno compartir algo positivo y educativo ¿sumamos esta noticia?"
         }
       ],
-      "profilePic": "pp-06",
-      "username": "Aprendé con Gil",
+      "profilePic": "profile-mp",
+      "username": "Montevideo Portal",
       "usernameURL": "7,453  suscriptores",
-      "img": "img-06",
+      "img": "img-hermanos",
       "footNote": "249 visualizaciones- 12 mar 2024",
-      "header": "Este frasco contiene los minerales vitales que el cuerpo humano necesita",
-      "body": "Con sólo estos 5 ingredientes vas a poder curarte de todos los dolores que te aquejan después de las comidas, seguime que te cuento más.",
+      "header": "Justo a tiempo: menor de 14 años aplica maniobra Heimlich y salva a su primo",
+      "body": "Sucedió en Brasil. El adolescente aprendió el procedimiento en videos y supo usarlo cuando llegó el momento.",
 
       "correctOption": 1,
 
@@ -748,10 +748,10 @@
           "text": "Ay, Rope, ese perro claramente no es real. A lo lejos te das cuenta que está hecho con IA! Tenés que mirar bien, el brillo, la luz y el contexto de la foto. Analicemos por separado la noticia, qué te parece?"
         }
       ],
-      "profilePic": "pp-07",
-      "username": "Portal del Condado",
+      "profilePic": "profile-ep",
+      "username": "El País",
       "usernameURL": "35,8 k suscriptores",
-      "img": "img-07",
+      "img": "img-dogo",
       "footNote": "103 visualizaciones- 18 ene 2026",
       "header": "Cuáles son las bajadas habilitadas para mascotas este verano y a qué razas de perro les gusta ir más a la playa.",
       "body": "En Montevideo, la Intendencia mantiene habilitada la Playa Miramar en la zona de Carrasco y áreas específicas en el Puerto del Buceo. Por su parte, el departamento de Canelones ofrece sectores delimitados en balnearios populares como Atlántida y Parque del Plata.",
@@ -848,7 +848,7 @@
 
     { 
       "index": 8,
-      "questionType": 1,
+      "questionType": 0,
       "intro":
       [
         {
@@ -864,13 +864,13 @@
           "text": "Todo el mundo lo hace, no debe ser un problema…"
         }
       ],
-      "profilePic": "pp-08",
-      "username": "Familia",
-      "usernameURL": "Tu",
-      "img": "img-08",
+      "profilePic": "profile-eo",
+      "username": "El Observador",
+      "usernameURL": "430k suscriptores",
+      "img": "img-casino",
       "footNote": "12:08 a.m.",
-      "header": "Adolescentes acumulan deudas de hasta 400.000 dólares por apuestas",
-      "body": "Cada vez más adolescentes caen en las apuestas online, acumulando deudas impensadas y riesgos que comienzan incluso antes de los 15 años. Publicidad invasiva, ídolos deportivos como gancho y un acceso ilimitado desde el celular conforman un cóctel que, según especialistas, está encendiendo todas las alarmas.",
+      "header": "Cada vez más adolescentes caen en las apuestas online, acumulando deudas impensadas y riesgos que comienzan incluso antes de los 15 años.",
+      "body": "Publicidad invasiva, ídolos deportivos como gancho y un acceso ilimitado desde el celular conforman un cóctel que, según especialistas, está encendiendo todas las alarmas.",
 
       "correctOption": 1,
 
@@ -982,10 +982,10 @@
           "text": "Mis cuatro patas están listas para colaborar."
         }
       ],
-      "profilePic": "pp-08",
+      "profilePic": "profile-w",
       "username": "María Carolina Barrios",
       "usernameURL": "Tu",
-      "img": "img-09",
+      "img": "img-sayago",
       "footNote": "10:35 p.m.",
       "header": "Llamado a la colectividad",
       "body": "Buenas, ¿cómo están? Mi nombre es María Carolina Barrios y estamos trabajando en la policlínica de Sayago ayudando a una familia que perdió todo en un incendio el pasado viernes 3 de marzo a la noche. Cualquier cosa que tengan para donar es una ayuda valiosa.",
@@ -1089,13 +1089,13 @@
           "text": "Preguntale a la IA si es cierto, no se deberían atacar centros educativos."
         }
       ],
-      "profilePic": "pp-08",
-      "username": "María Carolina Barrios",
-      "usernameURL": "Tu",
-      "img": "img-09",
+      "profilePic": "profile-gpt",
+      "username": "Chat IA",
+      "usernameURL": "",
+      "img": "img-guerra",
       "footNote": "10:35 p.m.",
-      "header": "Llamado a la colectividad",
-      "body": "Buenas, ¿cómo están? Mi nombre es María Carolina Barrios y estamos trabajando en la policlínica de Sayago ayudando a una familia que perdió todo en un incendio el pasado viernes 3 de marzo a la noche. Cualquier cosa que tengan para donar es una ayuda valiosa.",
+      "header": "",
+      "body": "",
 
       "correctOption": 1,
 
@@ -1171,10 +1171,10 @@
           "text": "Para mí croquetas de pescado, pero busquemos mejor cuáles son los postres favoritos de la mayoría de los niños y niñas."
         }
       ],
-      "profilePic": "",
-      "username": "",
+      "profilePic": "profile-g",
+      "username": "Buscador",
       "usernameURL": "",
-      "img": "",
+      "img": "img-postres",
       "footNote": "",
       "header": "",
       "body": "",
