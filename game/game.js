@@ -384,7 +384,7 @@ function* endLevel (i) //coroutine
 
         multipleChoiceDisabled = true;
 
-        document.querySelector('#answer-sticker img').src = currentQuestion.correctAnswer == 0 ? 'assets/sticker-fake.svg' : 'assets/sticker-legit.svg';
+        document.querySelector('#answer-sticker img').src = currentQuestion.correctAnswer == 0 ? 'assets/sticker-fake3.svg' : 'assets/sticker-legit3.svg';
     }
 
     var dialogueAmount = currentQuestion.finalMessage[finalMessageIndex].length;
