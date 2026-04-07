@@ -1114,6 +1114,7 @@ b {
 }
 .end-game-screen .results .your-score 
 {
+  padding-top: 7%;
   width: 60%;
   height: 30%;
   display: flex;
