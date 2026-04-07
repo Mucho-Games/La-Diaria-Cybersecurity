@@ -62,20 +62,27 @@ function startGame ()
 {
     if (!initialized) return;
 
-    questionsPool = [];
-    for (var i = questionBank.length - 1; i >= 0; i--) {
-        questionsPool.push(i);
-    }
+    loadAllQuestions();
 
     elemPlayerScore.innerHTML = String(0).padStart(3, "0");
     elemPlayerLevelsAmount.innerHTML = "/" + String(levelsAmount).padStart(2, "0");
 
     startRound();
 }
+function loadAllQuestions () 
+{
+    questionsPool = [];
+    for (var i = questionBank.length - 1; i >= 0; i--) {
+        questionsPool.push(i);
+    }
+
+    console.log('Loaded all questions');
+}
 function startRound () 
 {
     currentRound++;
     currentQuestionsAmount = 0;
+    currentPlayerScore = 0;
     coroutines.start(introGame);
 }
 function* introGame () 
@@ -83,11 +90,14 @@ function* introGame ()
     document.getElementById('next-button').style.display = 'none';
     document.getElementById('home-button-overlay').style.display = 'none';
 
-    let buttonNext = document.querySelector('.intro-game .button-container button');
+    let buttonHome = document.getElementById('button-intro-game-home');
+    let buttonNext = document.getElementById('button-intro-game-next');
     let introTextBox = document.querySelector('.intro-game .text-box p');
 
     buttonNext.style.display = 'none';
-    introTextBox.innerHTML = gameIntroTexts[currentRound-1];
+    buttonHome.style.display = 'none';
+
+    introTextBox.innerHTML = currentRound <= 1 ? gameIntroTexts[0] : gameIntroTexts[1];
 
     setView('intro-game');
 
@@ -97,9 +107,19 @@ function* introGame ()
 
     buttonIntroGameAction = () => { coroutines.start(newQuestion); }
 
+    if (currentRound > 1) 
+    {
+        buttonHome.style.display = 'flex';
+        buttonIntroGameHomeAction = () => { resetGame(); }
+    }
+
     playSound("sfx-popUp-01");
 }
-function pickRandomQuestionIndex() {
+function pickRandomQuestionIndex() 
+{
+    if (questionsPool.length <= 0) //reload all questions if used
+        loadAllQuestions();
+
     const randomIndex = Math.floor(Math.random() * questionsPool.length);
     return questionsPool.splice(randomIndex, 1)[0];
 }
@@ -457,20 +477,20 @@ function* endRound (finalScore) //coroutine
     let e_meterPoint = document.querySelectorAll('.end-game-screen .score-meter > *');
     console.log(e_meterPoint);
 
+    let i_finalTextsIndex = currentRound <= 1 ? 0 : 1;
     //100 for answering the main question ok, 
     //30 for answering the subquestion ok, 
     //50 for finishing the question.
-    //x * currentRound because score keeps growing between rounds
-    let i_maxPossibleScore = levelsAmount * (100 + 30 + 50) * currentRound; 
+    let i_maxPossibleScore = levelsAmount * (100 + 30 + 50); 
     //7 because the visual counter is divided in 7 parts
     let i_playerCompletionLevel = Math.min(Math.floor((finalScore / i_maxPossibleScore) * 7.0), 6);
     //0, 1 -> bad text
     //2, 3, 4 -> good text
     //5, 6 -> excelent text
     let s_finalDialogueText = 
-    i_playerCompletionLevel <= 1 ? completionLevelsTexts[currentRound-1][0] :
-    i_playerCompletionLevel <= 4 ? completionLevelsTexts[currentRound-1][1] :
-    completionLevelsTexts[currentRound-1][2];
+    i_playerCompletionLevel <= 1 ? completionLevelsTexts[i_finalTextsIndex][0] :
+    i_playerCompletionLevel <= 4 ? completionLevelsTexts[i_finalTextsIndex][1] :
+    completionLevelsTexts[i_finalTextsIndex][2];
 
     e_playerScore.innerHTML = String(finalScore).padStart(3, "0");
 
@@ -499,15 +519,8 @@ function* endRound (finalScore) //coroutine
     
     playSound("sfx-popUp-01");
 
-    if (currentRound < roundsAmount)
-    {
-        buttonNextAction = () => { startRound(); };
-        document.getElementById('next-button').style.display = 'flex';
-    }
-    else
-    {
-        document.getElementById('home-button-overlay').style.display = 'flex';
-    }    
+    buttonNextAction = () => { startRound(); };
+    document.getElementById('next-button').style.display = 'flex'; 
 }
 
 function onClickOption (option) 
@@ -556,6 +569,14 @@ function onClickButtonIntroGame ()
     if (!buttonIntroGameAction) return;
     const fn = buttonIntroGameAction;
     buttonIntroGameAction = null;
+    fn();
+}
+let buttonIntroGameHomeAction = null;
+function onClickButtonIntroGameHome () 
+{
+    if (!buttonIntroGameHomeAction) return;
+    const fn = buttonIntroGameHomeAction;
+    buttonIntroGameHomeAction = null;
     fn();
 }
 let buttonNextAction = null;

@@ -71,7 +71,6 @@ const completionLevelsTexts =
 ];
 const gameIntroTexts = [
 	"<b>Rope, Gata y Pato tienen un streaming</b> donde comparten información, videos y contenidos que le gustan con su comunidad. Están buscando a alguien para sumar al equipo de producción que <b>los ayude a identificar qué contenidos son confiables para su transmisión.</b> ¿Podrás ayudarlos?",
-	"<b>Bienvenido al equipo de producción</b>, necesitamos que <b>nos ayudes a evitar que compartamos noticias falsas, engañosas o estafas en línea.</b> Entremos a la reunión de producción para ver qué se está conversando."
+	"¡Bien hecho! ¿Estamos listos para <b>jugar otra ronda</b>?"
 ]
-const levelsAmount = 6;
-const roundsAmount = 2;
+const levelsAmount = 2;
