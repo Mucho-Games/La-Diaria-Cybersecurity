@@ -25,7 +25,7 @@
       "img": "img-entradas",
       "footNote": "18 comentarios",
       "header": "Vendo entradas para Emilia domingo",
-      "body": "Vendo dos entradas digitales para ver a Emilia el domingo 12 a las 21 hrs. en el Antel Arena, Uruguay! Interesados escribir 096956427",
+      "body": "Vendo dos entradas digitales para ver a Emilia el domingo 12 a las 21 hrs. en el Antel Arena, Uruguay! Interesados escribirme por privado",
 
       "correctOption": 0,
 
@@ -39,7 +39,7 @@
         ],
         [
           {
-          "character": 1,
+          "character": 0,
           "text": "Algo huele mal y no es este mate. Esto es sospechoso." 
           }  
         ]
@@ -310,11 +310,11 @@
         },
         {
           "character": 2,
-          "text": "¡Tené mucho cuidado, Pato!"
+          "text": "¡Tené mucho cuidado, Pata!"
         },
         {
           "character": 1,
-          "text": "Eso siempre. Pero no entremos en pánico qué es lo que busca este tipo de información. Analicemos juntos."
+          "text": "No entremos en pánico qué es lo que busca este tipo de información. Analicemos juntos, ¡nariz encendida!"
         }   
       ],
       "profilePic": "profile-gc",
@@ -338,7 +338,7 @@
         [
           {
             "character": 1,
-            "text": "Sigo desconfiando de esa noticia, mejor revisemos. Hay mucho contenido que parece verdadero y está hecho con IA, hoy es tan difícil darnos cuenta de las diferencias. ¡Al agua pata!"
+            "text": "Sigo desconfiando de esa noticia, mejor revisemos. Hay mucho contenido que parece verdadero y está hecho con IA, hoy es tan difícil darnos cuenta de las diferencias."
           }  
         ]      
       ],
@@ -418,15 +418,15 @@
       [
         {
           "character": 1,
-          "text": "No quiero ser amarga como este mate, pero creo que deberíamos arrancar el programa con la noticia del iceberg más grande del mundo que flota a la deriva y me da terrible miedo."
+          "text": "Creo que deberíamos arrancar el programa con la noticia del iceberg más grande del mundo que flota a la deriva."
         },
         {
           "character": 2,
           "text": "Si llega a venir para acá me subo y me pongo a  tirar de un trineo!!"
         }
       ],
-      "profilePic": "profile-eo",
-      "username": "El Observador",
+      "profilePic": "profile-tvp",
+      "username": "Televisión Pública Noticias",
       "usernameURL": "892 k suscriptores",
       "img": "img-iceberg",
       "footNote": "39.638 K visualizaciones- 17 dic 2024",
@@ -513,7 +513,7 @@
         [
           {
           "character": 1,
-          "text": "Cuanto más investiguemos, más información vamos a tener para tomar la mejor decisión. ¡Pero todavía no sé a qué hora pasa el iceberg!"
+          "text": "Cuanto más investiguemos, más información vamos a tener para tomar la mejor decisión."
           }
         ],
         [
@@ -807,7 +807,7 @@
           "options": 
           [
             "Cata, porque claramente es una imagen hecha con Inteligencia Artificial. La noticia es falsa.", 
-            "Pato, porque es importante saber qué playas están habilitadas, aunque la imagen no se corresponda.", 
+            "Pata, porque es importante saber qué playas están habilitadas, aunque la imagen no se corresponda.", 
             "Ninguno de los dos. La noticia es verdadera pero tiene una imagen hecha con Inteligencia Artificial que busca captar más lectores."
           ], 
           "optionsValues": 
@@ -894,7 +894,7 @@
           },
           {
           "character": 1,
-          "text": "¡Lista para zambullirnos en ese tema!"
+          "text": "¡Lista para escarbar en ese tema!"
           }
         ]        
       ],
