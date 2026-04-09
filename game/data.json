@@ -24,7 +24,7 @@
       "usernameURL": "Gastón Lopez - 5 de mayo de 2024",
       "img": "img-entradas",
       "footNote": "18 comentarios",
-      "header": "Vendo entradas para Emilia domingo",
+      "header": "Vendo entradas para Emilia el domingo",
       "body": "Vendo dos entradas digitales para ver a Emilia el domingo 12 a las 21 hrs. en el Antel Arena, Uruguay! Interesados escribirme por privado",
 
       "correctOption": 0,
@@ -233,7 +233,7 @@
         [
           {
             "character": 1,
-            "text": "No! es un contenido falso, miremos mejor algunos detalles."
+            "text": "¡No! es un contenido falso, miremos mejor algunos detalles."
           } 
         ]       
       ],
@@ -422,7 +422,7 @@
         },
         {
           "character": 2,
-          "text": "Si llega a venir para acá me subo y ¡Me pongo a  tirar de un trineo!"
+          "text": "Si llega a venir para acá me subo y ¡me pongo a  tirar de un trineo!"
         }
       ],
       "profilePic": "profile-tvp",
@@ -1104,7 +1104,7 @@
         [
           {
           "character": 0,
-          "text": "le pregunté a la IA y dice que es Falso ¿Lo usamos?"
+          "text": "Le pregunté a la IA y dice que es Falso ¿Lo usamos?"
           },
           {
           "character": 1,

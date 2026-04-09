@@ -70,7 +70,7 @@ const completionLevelsTexts =
 	]
 ];
 const gameIntroTexts = [
-	"<b>Rope, Gata y Pato tienen un streaming</b> donde comparten información, videos y contenidos que le gustan con su comunidad. Están buscando a alguien para sumar al equipo de producción que <b>los ayude a identificar qué contenidos son confiables para su transmisión.</b> ¿Podrás ayudarlos?",
+	"<b>Rope, Gata y Pata tienen un streaming</b> donde comparten información, videos y contenidos que le gustan con su comunidad. Están buscando a alguien para sumar al equipo de producción que <b>los ayude a identificar qué contenidos son confiables para su transmisión.</b> ¿Podrás ayudarlos?",
 	"¡Bien hecho! ¿Estamos listos para <b>jugar otra ronda</b>?"
 ]
 const levelsAmount = 6;
