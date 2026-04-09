@@ -227,7 +227,7 @@
         [
           {
             "character": 0,
-            "text": "Estamos de acuerdo. Igual, investiguemos un poco que nunca está de más!"
+            "text": "Estamos de acuerdo. Igual, investiguemos un poco que ¡Nunca está de más!"
           }
         ],
         [
@@ -314,7 +314,7 @@
         },
         {
           "character": 1,
-          "text": "No entremos en pánico qué es lo que busca este tipo de información. Analicemos juntos, ¡nariz encendida!"
+          "text": "No entremos en pánico qué es lo que busca este tipo de información. Analicemos juntos, ¡Nariz encendida!"
         }   
       ],
       "profilePic": "profile-gc",
@@ -338,7 +338,7 @@
         [
           {
             "character": 1,
-            "text": "Sigo desconfiando de esa noticia, mejor revisemos. Hay mucho contenido que parece verdadero y está hecho con IA, hoy es tan difícil darnos cuenta de las diferencias."
+            "text": "Sigo desconfiando de esa noticia, mejor revisemos. Hay mucho contenido que parece verdadero y está hecho con IA, ¡Hoy es tán difícil darnos cuenta de las diferencias!"
           }  
         ]      
       ],
@@ -402,7 +402,7 @@
         [
           {
           "character": 1,
-          "text": "Acordate que si ves un contenido que te genera una reacción inmediata, puede ser falso. Y que lo hayan producir especialmente para que se viralizara."
+          "text": "Acordate que si ves un contenido que te genera una reacción inmediata, puede ser falso. Y que lo hayan producido especialmente para que se viralizara."
           }
         ]
       ]
@@ -422,7 +422,7 @@
         },
         {
           "character": 2,
-          "text": "Si llega a venir para acá me subo y me pongo a  tirar de un trineo!!"
+          "text": "Si llega a venir para acá me subo y ¡Me pongo a  tirar de un trineo!"
         }
       ],
       "profilePic": "profile-tvp",
@@ -450,7 +450,7 @@
         [
           {
           "character": 0,
-          "text": "Ahora que lo pienso, antes de dar una noticia que vimos en redes deberíamos verificar la información ¿no? Me han dicho que tengo que tener doble cuidado con las noticias sensacionalistas."
+          "text": "Ahora que lo pienso, antes de dar una noticia que vimos en redes deberíamos verificar la información ¿No? Me han dicho que tengo que tener doble cuidado con las noticias sensacionalistas."
           },
           {
           "character": 1,
@@ -606,7 +606,7 @@
           "subQuestion": "¿Qué elementos pueden ayudarnos a comprobar si la información es cierta?", 
           "options": 
           [
-            "La foto parece real, de los barrancos de Kiyú", 
+            "La foto parece real, de los barrancos de Kiyú.", 
             "Algunos comentarios afirman que eso sucedió.", 
             "Aparece el link de un portal de noticias y se indica que el video fue filmado por Canal 5."
           ], 
@@ -637,7 +637,7 @@
         [
           {
           "character": 0,
-          "text": "No conviene quedarse con la primera lectura de la información que nos importa. Una segunda búsqueda sirve para corroborar. Ahora sí, ¡a buscar fósiles!"
+          "text": "No conviene quedarse con la primera lectura de la información que nos importa. Una segunda búsqueda sirve para corroborar. Ahora sí, ¡A buscar fósiles!"
           }
         ]
       ]
@@ -657,7 +657,7 @@
         },
         {
           "character": 2,
-          "text": "Siempre es bueno compartir algo positivo y educativo ¿sumamos esta noticia?"
+          "text": "Siempre es bueno compartir algo positivo y educativo ¿Sumamos esta noticia?"
         }
       ],
       "profilePic": "profile-mp",
@@ -679,7 +679,7 @@
           },
           {
           "character": 2,
-          "text": "¡Si!¡ ¡A chequear la información entonces! Guauuu"
+          "text": "¡Si! ¡A chequear la información entonces! Guauuu"
           }
         ],
         [
@@ -745,7 +745,7 @@
         },
         {
           "character": 1,
-          "text": "Ay, Rope, ese perro claramente no es real. A lo lejos te das cuenta que está hecho con IA! Tenés que mirar bien, el brillo, la luz y el contexto de la foto. Analicemos por separado la noticia, qué te parece?"
+          "text": "Ay, Rope, ese perro claramente no es real. A lo lejos te das cuenta que está hecho con IA! Tenés que mirar bien, el brillo, la luz y el contexto de la foto. Analicemos por separado la noticia ¿Qué te parece?"
         }
       ],
       "profilePic": "profile-ep",
@@ -853,7 +853,7 @@
       [
         {
           "character": 2,
-          "text": "Tengo una idea para la transmisión: ¿y si hacemos un juego de apuestas con premios?"
+          "text": "Tengo una idea para la transmisión: ¿Y si hacemos un juego de apuestas con premios?"
         },
         {
           "character": 1,
@@ -983,7 +983,7 @@
         }
       ],
       "profilePic": "profile-w",
-      "username": "María Carolina Barrios",
+      "username": "Número desconocido",
       "usernameURL": "Tu",
       "img": "img-sayago",
       "footNote": "10:35 p.m.",
@@ -1160,7 +1160,7 @@
       [
         {
           "character": 0,
-          "text": "Mucho mate pero nada de comer ¿y si pensamos alguna consigna para el programa y la vamos probando?"
+          "text": "Mucho mate pero nada de comer ¿Y si pensamos alguna consigna para el programa y la vamos probando?"
         },
         {
           "character": 2,
